@@ -572,7 +572,7 @@ namespace EnterprisePlanningSolution
                 rs.Close();
             }
 
-            MessageBox.Show("Alles Importiert");
+            MessageBox.Show("XML-File importiert");
 
             cn.Close();
 

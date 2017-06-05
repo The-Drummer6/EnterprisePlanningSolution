@@ -23,7 +23,7 @@ namespace EnterprisePlanningSolution
             this.Disposed += new System.EventHandler(this.LoginForm_Disposed);
         }
 
-        DashoardForm dashboardForm;
+        DashboardForm dashboardForm;
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
@@ -33,7 +33,8 @@ namespace EnterprisePlanningSolution
         {
 
         }
-
+        
+        //LogIn Button
         private void metroLink1_Click(object sender, EventArgs e)
         {
             string hashpw;
@@ -54,7 +55,7 @@ namespace EnterprisePlanningSolution
 
                 if (rs.Fields["passwort"].Value == hashpw)
                 {
-                    dashboardForm = new DashoardForm();
+                    dashboardForm = new DashboardForm();
                     dashboardForm.Show();
                     this.Hide();
                 }

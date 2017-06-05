@@ -142,6 +142,7 @@
             this.ClientSize = new System.Drawing.Size(675, 457);
             this.Controls.Add(this.metroPanel1);
             this.Name = "LoginForm";
+            this.Style = MetroFramework.MetroColorStyle.Silver;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.metroPanel1.ResumeLayout(false);

@@ -26,8 +26,34 @@ namespace EnterprisePlanningSolution
 
         private void StammdatenForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the '_PPS_DatenbankDataSet.Artikelstammdaten' table. You can move, or remove it, as needed.
-            this.artikelstammdatenTableAdapter.Fill(this._PPS_DatenbankDataSet.Artikelstammdaten);
+            //Recordset
+            ADODB.Connection cn = new ADODB.Connection();
+            ADODB.Recordset rs = new ADODB.Recordset();
+            string cnStr;
+
+            //Connection string.
+            cnStr = @"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = PPS-Datenbank.mdb";
+            cn.Open(cnStr);
+
+            rs.Open("Select * From Artikelstammdaten", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+
+            int i = 0;
+
+            while (!rs.EOF)
+            {
+                metroGrid1.Rows.Add();
+                metroGrid1.Rows[i].Cells["Artikelnummer"].Value = Convert.ToInt32(rs.Fields["Artikelnummer"].Value);
+                metroGrid1.Rows[i].Cells["Bezeichnung"].Value = rs.Fields["Bezeichnung"].Value;
+                metroGrid1.Rows[i].Cells["Verwendung"].Value = rs.Fields["Verwendung"].Value;
+                metroGrid1.Rows[i].Cells["Lieferkosten"].Value = rs.Fields["Lieferkosten"].Value;
+                metroGrid1.Rows[i].Cells["Lieferzeit"].Value = rs.Fields["Lieferzeit"].Value;
+                metroGrid1.Rows[i].Cells["Lieferzeitabweichung"].Value = rs.Fields["Lieferzeitabweichung"].Value;
+                rs.MoveNext();
+                ++i;
+            }
+
+            rs.Close();
+            cn.Close();
 
         }
     }

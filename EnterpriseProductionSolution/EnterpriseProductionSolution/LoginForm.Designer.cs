@@ -65,7 +65,7 @@
             this.usernameTextBox.SelectionStart = 0;
             this.usernameTextBox.ShortcutsEnabled = true;
             this.usernameTextBox.Size = new System.Drawing.Size(90, 23);
-            this.usernameTextBox.TabIndex = 1;
+            this.usernameTextBox.TabIndex = 0;
             this.usernameTextBox.UseSelectable = true;
             this.usernameTextBox.WaterMark = "Username";
             this.usernameTextBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -79,7 +79,7 @@
             this.metroLink1.Location = new System.Drawing.Point(290, 119);
             this.metroLink1.Name = "metroLink1";
             this.metroLink1.Size = new System.Drawing.Size(94, 80);
-            this.metroLink1.TabIndex = 3;
+            this.metroLink1.TabIndex = 2;
             this.metroLink1.UseSelectable = true;
             this.metroLink1.Click += new System.EventHandler(this.metroLink1_Click);
             // 
@@ -111,7 +111,7 @@
             this.passwordTextBox.SelectionStart = 0;
             this.passwordTextBox.ShortcutsEnabled = true;
             this.passwordTextBox.Size = new System.Drawing.Size(90, 23);
-            this.passwordTextBox.TabIndex = 2;
+            this.passwordTextBox.TabIndex = 1;
             this.passwordTextBox.UseSelectable = true;
             this.passwordTextBox.WaterMark = "Password";
             this.passwordTextBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));

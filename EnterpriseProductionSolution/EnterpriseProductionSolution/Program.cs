@@ -16,7 +16,10 @@ namespace EnterprisePlanningSolution
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+
+            //Für Testzwecke wird Login Page übersprungen
+            //Application.Run(new LoginForm());
+            Application.Run(new DashboardForm());
         }
     }
 }

@@ -13,6 +13,7 @@ namespace EnterprisePlanningSolution
     public partial class DashboardForm : MetroFramework.Forms.MetroForm
     {
         private StammdatenForm stammdatenForm;
+        private Periodenplanung planungsForm;
 
         public DashboardForm()
         {
@@ -35,6 +36,13 @@ namespace EnterprisePlanningSolution
         {
             stammdatenForm = new StammdatenForm();
             stammdatenForm.Show();
+            this.Hide();
+        }
+
+        private void metroTile2_Click(object sender, EventArgs e)
+        {
+            planungsForm = new Periodenplanung();
+            planungsForm.Show();
             this.Hide();
         }
     }

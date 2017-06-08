@@ -63,6 +63,7 @@
             this.metroTile2.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.metroTile2.UseSelectable = true;
             this.metroTile2.UseTileImage = true;
+            this.metroTile2.Click += new System.EventHandler(this.metroTile2_Click);
             // 
             // metroTile3
             // 
@@ -93,7 +94,7 @@
             this.metroTile4.UseSelectable = true;
             this.metroTile4.UseTileImage = true;
             // 
-            // DashoardForm
+            // DashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -102,7 +103,7 @@
             this.Controls.Add(this.metroTile3);
             this.Controls.Add(this.metroTile2);
             this.Controls.Add(this.metroTile1);
-            this.Name = "DashoardForm";
+            this.Name = "DashboardForm";
             this.Style = MetroFramework.MetroColorStyle.Silver;
             this.Text = "Enterprise Planning Solution";
             this.ResumeLayout(false);

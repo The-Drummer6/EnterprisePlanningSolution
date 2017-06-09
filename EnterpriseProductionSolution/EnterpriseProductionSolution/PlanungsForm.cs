@@ -13,17 +13,18 @@ namespace EnterprisePlanningSolution
 {
     public partial class Periodenplanung : MetroFramework.Forms.MetroForm
     {
-        //Recordset
 
 
+      
         public String cnStr = @"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = PPS-Datenbank.mdb";
         int neuPeriode;
 
         public Periodenplanung()
         {
-            InitializeComponent();
+             InitializeComponent();
             bearbeiten();
             periodenLabel1.Text = "Periode " + Convert.ToString(getNewPeriod());
+            addNewPeriod();
         }
 
         private void bearbeiten()
@@ -60,11 +61,10 @@ namespace EnterprisePlanningSolution
             //Recordset
             ADODB.Connection cn = new ADODB.Connection();
             ADODB.Recordset rs = new ADODB.Recordset();
-            
             cn.Open(cnStr);
 
             rs.Open("Select distinct planPeriod From Prognose ORDER BY planPeriod Desc", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-
+           
             List<int> Liste = new List<int>();
             while (!rs.EOF)
             {
@@ -73,7 +73,6 @@ namespace EnterprisePlanningSolution
             }
             rs.Close();
             cn.Close();
-
             return Liste.Count + 1;
         }
 
@@ -100,9 +99,9 @@ namespace EnterprisePlanningSolution
             //Recordset
             ADODB.Connection cn = new ADODB.Connection();
             ADODB.Recordset rs0 = new ADODB.Recordset();
-
-          
             cn.Open(cnStr);
+          
+          
 
             rs0.Open("Insert into Prognose (article, quantity, planPeriod, period) values (1,0," + neuPeriode + "," + neuPeriode + ")", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
             rs0.Open("Insert into Prognose (article, quantity, planPeriod, period) values (2,0," + neuPeriode + "," + neuPeriode + ")", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
@@ -180,11 +179,162 @@ namespace EnterprisePlanningSolution
             rs0.Open("Insert into productionlist (article, quantity, period) values (31,0," + neuPeriode + ")", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
             rs0.Open("Insert into productionlist (article, quantity, period) values (26,0," + neuPeriode + ")", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
 
-
             cn.Close();
             
         }
 
+        private void weiterButton1_Click(object sender, EventArgs e)
+        {
+            if (tBPP1N0.Text == "" || tBPP1N1.Text == "" || tBPP1N2.Text == "" || tBPP1N3.Text == "" || tBPP2N0.Text == "" || tBPP2N1.Text == "" || tBPP2N2.Text == "" || tBPP2N3.Text == "" || tBPP3N0.Text == "" || tBPP3N1.Text == "" || tBPP3N2.Text == "" || tBPP3N3.Text == "" || tBGP1N0.Text == "" || tBGP1N1.Text == "" || tBGP1N2.Text == "" || tBGP1N3.Text == "" || tBGP2N0.Text == "" || tBGP2N1.Text == "" || tBGP2N2.Text == "" || tBGP2N3.Text == "" || tBGP3N0.Text == "" || tBGP3N1.Text == "" || tBGP3N2.Text == "" || tBGP3N3.Text == "")
+            {
+                string LadeError = Thread.CurrentThread.CurrentUICulture.Name == "de" ? "Felder dürfen nicht leer sein!" : "Fields must not be empty!";
+                MessageBox.Show(LadeError);
 
+            }
+
+            int cB = getNewPeriod();
+            int cB1 = cB + 1;
+            int cB2 = cB + 2;
+            int cB3 = cB + 3;
+
+            tBPP0N0.Text = Convert.ToString(cB);
+            tBPP0N1.Text = Convert.ToString(cB1);
+            tBPP0N2.Text = Convert.ToString(cB2);
+            tBPP0N3.Text = Convert.ToString(cB3);
+            tBGP0N0.Text = Convert.ToString(cB);
+            tBGP0N1.Text = Convert.ToString(cB1);
+            tBGP0N2.Text = Convert.ToString(cB2);
+            tBGP0N3.Text = Convert.ToString(cB3);
+
+            ADODB.Connection cn = new ADODB.Connection();
+            ADODB.Recordset rsD1 = new ADODB.Recordset();
+            ADODB.Recordset rsD2 = new ADODB.Recordset();
+            ADODB.Recordset rs0 = new ADODB.Recordset();
+            ADODB.Recordset rs1 = new ADODB.Recordset();
+            ADODB.Recordset rs2 = new ADODB.Recordset();
+            ADODB.Recordset rs3 = new ADODB.Recordset();
+            ADODB.Recordset rsSW0 = new ADODB.Recordset();
+            ADODB.Recordset rsSW1 = new ADODB.Recordset();
+            ADODB.Recordset rsSW2 = new ADODB.Recordset();
+            ADODB.Recordset rsSW3 = new ADODB.Recordset();
+            string cnStr;
+            try
+            {
+                //Recordset
+
+
+                //Connection string.
+                cnStr = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source= PPS-Datenbank_2.mdb";
+                cn.Open(cnStr);
+
+                rs0.Open("Select * From Prognose where period =" + cB + " and  planPeriod =" + cB + " order by article", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs1.Open("Select * From Prognose where period =" + cB1 + "and planPeriod =" + cB + " order by article", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs2.Open("Select * From Prognose where period =" + cB2 + "and planPeriod =" + cB + " order by article", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs3.Open("Select * From Prognose where period =" + cB3 + "and planPeriod =" + cB + " order by article", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+
+                rsSW0.Open("Select * From sellwish where period =" + cB+ "and planPeriod =" + cB + " order by article", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rsSW1.Open("Select * From sellwish where period =" + cB1 + "and planPeriod =" + cB + " order by article", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rsSW2.Open("Select * From sellwish where period =" + cB2 + "and planPeriod =" + cB + " order by article", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rsSW3.Open("Select * From sellwish where period =" + cB3 + "and planPeriod =" + cB + " order by article", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+
+                while (!rs0.EOF)
+                {
+
+                    rs0.Fields["quantity"].Value = tBPP1N0.Text;
+                    rs0.MoveNext();
+                    rs0.Fields["quantity"].Value = tBPP2N0.Text;
+                    rs0.MoveNext();
+                    rs0.Fields["quantity"].Value = tBPP3N0.Text;
+                    rs0.MoveNext();
+                }
+                while (!rs1.EOF)
+                {
+                    rs1.Fields["quantity"].Value = tBPP1N1.Text;
+                    rs1.MoveNext();
+                    rs1.Fields["quantity"].Value = tBPP2N1.Text;
+                    rs1.MoveNext();
+                    rs1.Fields["quantity"].Value = tBPP3N1.Text;
+                    rs1.MoveNext();
+
+                }
+                while (!rs2.EOF)
+                {
+                    rs2.Fields["quantity"].Value = tBPP1N2.Text;
+                    rs2.MoveNext();
+                    rs2.Fields["quantity"].Value = tBPP2N2.Text;
+                    rs2.MoveNext();
+                    rs2.Fields["quantity"].Value = tBPP3N2.Text;
+                    rs2.MoveNext();
+
+                }
+                while (!rs3.EOF)
+                {
+                    rs3.Fields["quantity"].Value = tBPP1N3.Text;
+                    rs3.MoveNext();
+                    rs3.Fields["quantity"].Value = tBPP2N3.Text;
+                    rs3.MoveNext();
+                    rs3.Fields["quantity"].Value = tBPP3N3.Text;
+                    rs3.MoveNext();
+                }
+                while (!rsSW0.EOF)
+                {
+                    rsSW0.Fields["quantity"].Value = tBGP1N0.Text;
+                    rsSW0.MoveNext();
+                    rsSW0.Fields["quantity"].Value = tBGP2N0.Text;
+                    rsSW0.MoveNext();
+                    rsSW0.Fields["quantity"].Value = tBGP3N0.Text;
+                    rsSW0.MoveNext();
+                }
+                while (!rsSW1.EOF)
+                {
+                    rsSW1.Fields["quantity"].Value = tBGP1N1.Text;
+                    rsSW1.MoveNext();
+                    rsSW1.Fields["quantity"].Value = tBGP2N1.Text;
+                    rsSW1.MoveNext();
+                    rsSW1.Fields["quantity"].Value = tBGP3N1.Text;
+                    rsSW1.MoveNext();
+                }
+                while (!rsSW2.EOF)
+                {
+                    rsSW2.Fields["quantity"].Value = tBGP1N2.Text;
+                    rsSW2.MoveNext();
+                    rsSW2.Fields["quantity"].Value = tBGP2N2.Text;
+                    rsSW2.MoveNext();
+                    rsSW2.Fields["quantity"].Value = tBGP3N2.Text;
+                    rsSW2.MoveNext();
+
+                }
+                while (!rsSW3.EOF)
+                {
+                    rsSW3.Fields["quantity"].Value = tBGP1N3.Text;
+                    rsSW3.MoveNext();
+                    rsSW3.Fields["quantity"].Value = tBGP2N3.Text;
+                    rsSW3.MoveNext();
+                    rsSW3.Fields["quantity"].Value = tBGP3N3.Text;
+                    rsSW3.MoveNext();
+                }
+            }
+            catch (Exception test)
+            {
+                string LadeError = Thread.CurrentThread.CurrentUICulture.Name == "de" ? "Fehler bei der Eingabe: " + test.Message : "Error in the input";
+                MessageBox.Show(LadeError);
+
+            }
+            finally
+            {
+                s0.Close();
+                rs1.Close();
+                rs2.Close();
+                rs3.Close();
+                rsSW0.Close();
+                rsSW1.Close();
+                rsSW2.Close();
+                rsSW3.Close();
+                cn.Close();
+            }
+
+        metroTabControl1.SelectedIndex = 1;
+
+        }
     }
 }

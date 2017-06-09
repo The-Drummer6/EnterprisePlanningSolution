@@ -92,6 +92,7 @@
             this.lP1 = new MetroFramework.Controls.MetroLabel();
             this.lPeriode = new MetroFramework.Controls.MetroLabel();
             this.tBPP0N0 = new MetroFramework.Controls.MetroTextBox();
+            this.weiterButton1 = new System.Windows.Forms.Button();
             this.metroTabControl1.SuspendLayout();
             this.Prognose.SuspendLayout();
             this.metroPanel1.SuspendLayout();
@@ -133,6 +134,7 @@
             // 
             // metroPanel1
             // 
+            this.metroPanel1.Controls.Add(this.weiterButton1);
             this.metroPanel1.Controls.Add(this.groupBox2);
             this.metroPanel1.Controls.Add(this.groupBox1);
             this.metroPanel1.Controls.Add(this.periodenLabel1);
@@ -1519,6 +1521,16 @@
             this.tBPP0N0.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tBPP0N0.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
+            // weiterButton1
+            // 
+            this.weiterButton1.Location = new System.Drawing.Point(854, 34);
+            this.weiterButton1.Name = "weiterButton1";
+            this.weiterButton1.Size = new System.Drawing.Size(75, 23);
+            this.weiterButton1.TabIndex = 52;
+            this.weiterButton1.Text = "Weiter";
+            this.weiterButton1.UseVisualStyleBackColor = true;
+            this.weiterButton1.Click += new System.EventHandler(this.weiterButton1_Click);
+            // 
             // Periodenplanung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1613,5 +1625,6 @@
         private MetroFramework.Controls.MetroLabel lP1;
         private MetroFramework.Controls.MetroLabel lPeriode;
         private MetroFramework.Controls.MetroTextBox tBPP0N0;
+        private System.Windows.Forms.Button weiterButton1;
     }
 }

@@ -16,7 +16,7 @@ namespace EnterprisePlanningSolution
 
 
       
-        public String cnStr = @"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = PPS-Datenbank.mdb";
+        public string cnStr = @"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = PPS-Datenbank.mdb";
         int neuPeriode;
 
         public Periodenplanung()
@@ -217,14 +217,14 @@ namespace EnterprisePlanningSolution
             ADODB.Recordset rsSW1 = new ADODB.Recordset();
             ADODB.Recordset rsSW2 = new ADODB.Recordset();
             ADODB.Recordset rsSW3 = new ADODB.Recordset();
-            string cnStr;
+           
             try
             {
                 //Recordset
 
 
                 //Connection string.
-                cnStr = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source= PPS-Datenbank_2.mdb";
+               
                 cn.Open(cnStr);
 
                 rs0.Open("Select * From Prognose where period =" + cB + " and  planPeriod =" + cB + " order by article", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
@@ -322,7 +322,7 @@ namespace EnterprisePlanningSolution
             }
             finally
             {
-                s0.Close();
+                rs0.Close();
                 rs1.Close();
                 rs2.Close();
                 rs3.Close();

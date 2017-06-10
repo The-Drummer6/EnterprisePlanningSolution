@@ -23,7 +23,10 @@ namespace EnterprisePlanningSolution
         {
              InitializeComponent();
             bearbeiten();
-            periodenLabel1.Text = "Periode " + Convert.ToString(getNewPeriod());
+            metroTabControl1.SelectedIndex = 0;
+            periodenLabel1.Text = Convert.ToString(getNewPeriod());
+            periodenLabel2.Text = periodenLabel1.Text;
+            tBPeriode.Text = periodenLabel1.Text;
             addNewPeriod();
         }
 
@@ -178,7 +181,7 @@ namespace EnterprisePlanningSolution
             rs0.Open("Insert into productionlist (article, quantity, period) values (16,0," + neuPeriode + ")", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
             rs0.Open("Insert into productionlist (article, quantity, period) values (31,0," + neuPeriode + ")", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
             rs0.Open("Insert into productionlist (article, quantity, period) values (26,0," + neuPeriode + ")", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-
+           
             cn.Close();
             
         }
@@ -192,7 +195,7 @@ namespace EnterprisePlanningSolution
 
             }
 
-            int cB = getNewPeriod();
+            int cB = Convert.ToInt32(periodenLabel1.Text);
             int cB1 = cB + 1;
             int cB2 = cB + 2;
             int cB3 = cB + 3;
@@ -221,9 +224,6 @@ namespace EnterprisePlanningSolution
             try
             {
                 //Recordset
-
-
-                //Connection string.
                
                 cn.Open(cnStr);
 
@@ -335,6 +335,77 @@ namespace EnterprisePlanningSolution
 
         metroTabControl1.SelectedIndex = 1;
 
+        }
+
+        private void mweiterButton2_Click(object sender, EventArgs e)
+        {
+            if (tBP1.Text == "" || tBP1P.Text == "" || tBP1S.Text == "" || tBP2.Text == "" || tBP2P.Text == "" || tBP2S.Text == "" || tBP3.Text == "" || tBP3P.Text == "" || tBP3S.Text == "")
+            {
+                string LadeError = Thread.CurrentThread.CurrentUICulture.Name == "de" ? "Felder dürfen nicht leer sein!" : "Fields must not be empty!";
+                MessageBox.Show(LadeError);
+
+            }
+
+            int cB = Convert.ToInt32(periodenLabel1.Text);
+
+
+            tBPeriode.Text = Convert.ToString(cB);
+
+
+            ADODB.Connection cn = new ADODB.Connection();
+            ADODB.Recordset rs1 = new ADODB.Recordset();
+            ADODB.Recordset rs2 = new ADODB.Recordset();
+            ADODB.Recordset rs3 = new ADODB.Recordset();
+            
+            try
+            {
+                //Recordset
+
+                cn.Open(cnStr);
+
+                rs1.Open("Select * From selldirect where period =" + cB + "and article =" + 1, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs2.Open("Select * From selldirect where period =" + cB + "and article =" + 2, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs3.Open("Select * From selldirect where period =" + cB + "and article =" + 3, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+
+                while (!rs1.EOF)
+                {
+                    rs1.Fields["quantity"].Value = tBP1.Text;
+                    rs1.Fields["price"].Value = tBP1P.Text;
+                    rs1.Fields["penalty"].Value = tBP1S.Text;
+                    rs1.MoveNext();
+
+                }
+                while (!rs2.EOF)
+                {
+                    rs2.Fields["quantity"].Value = tBP2.Text;
+                    rs2.Fields["price"].Value = tBP2P.Text;
+                    rs2.Fields["penalty"].Value = tBP2S.Text;
+                    rs2.MoveNext();
+
+                }
+                while (!rs3.EOF)
+                {
+                    rs3.Fields["quantity"].Value = tBP3.Text;
+                    rs3.Fields["price"].Value = tBP3P.Text;
+                    rs3.Fields["penalty"].Value = tBP3S.Text;
+                    rs3.MoveNext();
+                }
+
+            }
+            catch (Exception)
+            {
+                string LadeError = Thread.CurrentThread.CurrentUICulture.Name == "de" ? "Fehler bei der Eingabe" : "Error in input";
+                MessageBox.Show(LadeError);
+            }
+            finally
+            {
+                rs1.Close();
+                rs2.Close();
+                rs3.Close();
+                cn.Close();
+            }
+        
+        metroTabControl1.SelectedIndex = 2;
         }
     }
 }

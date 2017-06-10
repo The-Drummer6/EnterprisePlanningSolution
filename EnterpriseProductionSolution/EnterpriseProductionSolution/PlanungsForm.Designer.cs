@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Periodenplanung));
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.Prognose = new System.Windows.Forms.TabPage();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
@@ -107,29 +108,9 @@
             this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
             this.metroTabControl2 = new MetroFramework.Controls.MetroTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.weiterButton3 = new MetroFramework.Controls.MetroButton();
-            this.periodenLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
-            this.Kaufteildisposition = new System.Windows.Forms.TabPage();
-            this.metroPanel4 = new MetroFramework.Controls.MetroPanel();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.Produktionsplanung = new System.Windows.Forms.TabPage();
-            this.metroPanel5 = new MetroFramework.Controls.MetroPanel();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.Kapazitätsplaung = new System.Windows.Forms.TabPage();
-            this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
-            this.saveLink2 = new MetroFramework.Controls.MetroLink();
-            this.metroLink1 = new MetroFramework.Controls.MetroLink();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label50 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -141,10 +122,13 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.E18 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
@@ -160,13 +144,12 @@
             this.label45 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.label52 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label46 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
-            this.label53 = new System.Windows.Forms.Label();
-            this.label54 = new System.Windows.Forms.Label();
-            this.label55 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
             this.label58 = new System.Windows.Forms.Label();
@@ -179,6 +162,25 @@
             this.label65 = new System.Windows.Forms.Label();
             this.label66 = new System.Windows.Forms.Label();
             this.label67 = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
+            this.label46 = new System.Windows.Forms.Label();
+            this.label55 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.weiterButton3 = new MetroFramework.Controls.MetroButton();
+            this.periodenLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.Kaufteildisposition = new System.Windows.Forms.TabPage();
+            this.metroPanel4 = new MetroFramework.Controls.MetroPanel();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.Produktionsplanung = new System.Windows.Forms.TabPage();
+            this.metroPanel5 = new MetroFramework.Controls.MetroPanel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.Kapazitätsplaung = new System.Windows.Forms.TabPage();
+            this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.saveLink2 = new MetroFramework.Controls.MetroLink();
+            this.metroLink1 = new MetroFramework.Controls.MetroLink();
+            this.rollbackButton = new MetroFramework.Controls.MetroLink();
             this.metroTabControl1.SuspendLayout();
             this.Prognose.SuspendLayout();
             this.metroPanel1.SuspendLayout();
@@ -191,17 +193,17 @@
             this.metroPanel3.SuspendLayout();
             this.metroTabControl2.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.Kaufteildisposition.SuspendLayout();
             this.metroPanel4.SuspendLayout();
             this.Produktionsplanung.SuspendLayout();
             this.metroPanel5.SuspendLayout();
             this.Kapazitätsplaung.SuspendLayout();
             this.metroPanel2.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroTabControl1
@@ -214,7 +216,7 @@
             this.metroTabControl1.Controls.Add(this.Kapazitätsplaung);
             this.metroTabControl1.Location = new System.Drawing.Point(23, 63);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 2;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(1092, 627);
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.UseSelectable = true;
@@ -2070,155 +2072,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Produkt 1";
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.tableLayoutPanel2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 38);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(984, 418);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Produkt 2";
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.tableLayoutPanel3);
-            this.tabPage3.Location = new System.Drawing.Point(4, 38);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(984, 418);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Produkt 3";
-            // 
-            // weiterButton3
-            // 
-            this.weiterButton3.Location = new System.Drawing.Point(912, 24);
-            this.weiterButton3.Name = "weiterButton3";
-            this.weiterButton3.Size = new System.Drawing.Size(75, 23);
-            this.weiterButton3.TabIndex = 6;
-            this.weiterButton3.Text = "Weiter";
-            this.weiterButton3.UseSelectable = true;
-            this.weiterButton3.Click += new System.EventHandler(this.weiterButton3_Click_1);
-            // 
-            // periodenLabel3
-            // 
-            this.periodenLabel3.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.periodenLabel3.Location = new System.Drawing.Point(94, 18);
-            this.periodenLabel3.Name = "periodenLabel3";
-            this.periodenLabel3.Size = new System.Drawing.Size(129, 29);
-            this.periodenLabel3.TabIndex = 5;
-            this.periodenLabel3.Text = "metroLabel5";
-            // 
-            // metroLabel6
-            // 
-            this.metroLabel6.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel6.Location = new System.Drawing.Point(23, 18);
-            this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(69, 25);
-            this.metroLabel6.TabIndex = 4;
-            this.metroLabel6.Text = "Periode";
-            // 
-            // Kaufteildisposition
-            // 
-            this.Kaufteildisposition.Controls.Add(this.metroPanel4);
-            this.Kaufteildisposition.Location = new System.Drawing.Point(4, 38);
-            this.Kaufteildisposition.Name = "Kaufteildisposition";
-            this.Kaufteildisposition.Size = new System.Drawing.Size(1084, 585);
-            this.Kaufteildisposition.TabIndex = 2;
-            this.Kaufteildisposition.Text = "Kaufteildisposition";
-            // 
-            // metroPanel4
-            // 
-            this.metroPanel4.Controls.Add(this.metroLabel1);
-            this.metroPanel4.HorizontalScrollbarBarColor = true;
-            this.metroPanel4.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel4.HorizontalScrollbarSize = 10;
-            this.metroPanel4.Location = new System.Drawing.Point(26, 22);
-            this.metroPanel4.Name = "metroPanel4";
-            this.metroPanel4.Size = new System.Drawing.Size(1032, 540);
-            this.metroPanel4.TabIndex = 2;
-            this.metroPanel4.VerticalScrollbarBarColor = true;
-            this.metroPanel4.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel4.VerticalScrollbarSize = 10;
-            // 
-            // metroLabel1
-            // 
-            this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel1.Location = new System.Drawing.Point(41, 28);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(129, 29);
-            this.metroLabel1.TabIndex = 2;
-            this.metroLabel1.Text = "metroLabel1";
-            // 
-            // Produktionsplanung
-            // 
-            this.Produktionsplanung.Controls.Add(this.metroPanel5);
-            this.Produktionsplanung.Location = new System.Drawing.Point(4, 38);
-            this.Produktionsplanung.Name = "Produktionsplanung";
-            this.Produktionsplanung.Size = new System.Drawing.Size(1084, 585);
-            this.Produktionsplanung.TabIndex = 3;
-            this.Produktionsplanung.Text = "Produktionsplanung";
-            // 
-            // metroPanel5
-            // 
-            this.metroPanel5.Controls.Add(this.metroLabel2);
-            this.metroPanel5.HorizontalScrollbarBarColor = true;
-            this.metroPanel5.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel5.HorizontalScrollbarSize = 10;
-            this.metroPanel5.Location = new System.Drawing.Point(26, 22);
-            this.metroPanel5.Name = "metroPanel5";
-            this.metroPanel5.Size = new System.Drawing.Size(1032, 540);
-            this.metroPanel5.TabIndex = 2;
-            this.metroPanel5.VerticalScrollbarBarColor = true;
-            this.metroPanel5.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel5.VerticalScrollbarSize = 10;
-            // 
-            // metroLabel2
-            // 
-            this.metroLabel2.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel2.Location = new System.Drawing.Point(41, 28);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(129, 29);
-            this.metroLabel2.TabIndex = 2;
-            this.metroLabel2.Text = "metroLabel1";
-            // 
-            // Kapazitätsplaung
-            // 
-            this.Kapazitätsplaung.Controls.Add(this.metroPanel2);
-            this.Kapazitätsplaung.Location = new System.Drawing.Point(4, 38);
-            this.Kapazitätsplaung.Name = "Kapazitätsplaung";
-            this.Kapazitätsplaung.Size = new System.Drawing.Size(1084, 585);
-            this.Kapazitätsplaung.TabIndex = 4;
-            this.Kapazitätsplaung.Text = "Kapazitätsplaung";
-            // 
-            // metroPanel2
-            // 
-            this.metroPanel2.Controls.Add(this.saveLink2);
-            this.metroPanel2.HorizontalScrollbarBarColor = true;
-            this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel2.HorizontalScrollbarSize = 10;
-            this.metroPanel2.Location = new System.Drawing.Point(23, 17);
-            this.metroPanel2.Name = "metroPanel2";
-            this.metroPanel2.Size = new System.Drawing.Size(1032, 540);
-            this.metroPanel2.TabIndex = 0;
-            this.metroPanel2.VerticalScrollbarBarColor = true;
-            this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel2.VerticalScrollbarSize = 10;
-            // 
-            // saveLink2
-            // 
-            this.saveLink2.Location = new System.Drawing.Point(0, 0);
-            this.saveLink2.Name = "saveLink2";
-            this.saveLink2.Size = new System.Drawing.Size(75, 23);
-            this.saveLink2.TabIndex = 2;
-            this.saveLink2.UseSelectable = true;
-            // 
-            // metroLink1
-            // 
-            this.metroLink1.Location = new System.Drawing.Point(0, 0);
-            this.metroLink1.Name = "metroLink1";
-            this.metroLink1.Size = new System.Drawing.Size(75, 23);
-            this.metroLink1.TabIndex = 0;
-            this.metroLink1.UseSelectable = true;
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 8;
@@ -2295,66 +2148,6 @@
             this.label49.Size = new System.Drawing.Size(29, 20);
             this.label49.TabIndex = 110;
             this.label49.Text = "E7";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label15.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label15.Location = new System.Drawing.Point(849, 0);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(120, 68);
-            this.label15.TabIndex = 18;
-            this.label15.Text = "Produkitonsaufträge für die kommende Periode";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label16.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label16.Location = new System.Drawing.Point(2, 81);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(28, 20);
-            this.label16.TabIndex = 7;
-            this.label16.Text = "P1";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label17.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label17.Location = new System.Drawing.Point(728, 0);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(85, 34);
-            this.label17.TabIndex = 6;
-            this.label17.Text = "Aufträge in Bearbeitung";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label18.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label18.Location = new System.Drawing.Point(607, 0);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(106, 34);
-            this.label18.TabIndex = 5;
-            this.label18.Text = "Aufträge in der Warteschlange";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label19.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label19.Location = new System.Drawing.Point(486, 0);
-            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(110, 34);
-            this.label19.TabIndex = 4;
-            this.label19.Text = "Lagerbestand am ende der VP";
             // 
             // label20
             // 
@@ -2488,6 +2281,75 @@
             this.E18.TabIndex = 112;
             this.E18.Text = "E18";
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label18.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label18.Location = new System.Drawing.Point(607, 0);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(106, 34);
+            this.label18.TabIndex = 5;
+            this.label18.Text = "Aufträge in der Warteschlange";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label19.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label19.Location = new System.Drawing.Point(486, 0);
+            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(110, 34);
+            this.label19.TabIndex = 4;
+            this.label19.Text = "Lagerbestand am ende der VP";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label17.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label17.Location = new System.Drawing.Point(728, 0);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(85, 34);
+            this.label17.TabIndex = 6;
+            this.label17.Text = "Aufträge in Bearbeitung";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label15.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label15.Location = new System.Drawing.Point(849, 0);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(120, 68);
+            this.label15.TabIndex = 18;
+            this.label15.Text = "Produkitonsaufträge für die kommende Periode";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label16.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label16.Location = new System.Drawing.Point(2, 81);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(28, 20);
+            this.label16.TabIndex = 7;
+            this.label16.Text = "P1";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.tableLayoutPanel2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 38);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Size = new System.Drawing.Size(984, 418);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Produkt 2";
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 8;
@@ -2540,42 +2402,6 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.25F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(972, 408);
             this.tableLayoutPanel2.TabIndex = 8;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label30.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label30.Location = new System.Drawing.Point(849, 0);
-            this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(120, 68);
-            this.label30.TabIndex = 18;
-            this.label30.Text = "Produkitonsaufträge für die kommende Periode";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label31.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label31.Location = new System.Drawing.Point(2, 81);
-            this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(28, 20);
-            this.label31.TabIndex = 7;
-            this.label31.Text = "P2";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label32.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label32.Location = new System.Drawing.Point(728, 0);
-            this.label32.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(85, 34);
-            this.label32.TabIndex = 6;
-            this.label32.Text = "Aufträge in Bearbeitung";
             // 
             // label33
             // 
@@ -2757,6 +2583,51 @@
             this.label52.TabIndex = 110;
             this.label52.Text = "E14";
             // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label30.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label30.Location = new System.Drawing.Point(849, 0);
+            this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(120, 68);
+            this.label30.TabIndex = 18;
+            this.label30.Text = "Produkitonsaufträge für die kommende Periode";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label32.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label32.Location = new System.Drawing.Point(728, 0);
+            this.label32.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(85, 34);
+            this.label32.TabIndex = 6;
+            this.label32.Text = "Aufträge in Bearbeitung";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label31.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label31.Location = new System.Drawing.Point(2, 81);
+            this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(28, 20);
+            this.label31.TabIndex = 7;
+            this.label31.Text = "P2";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.tableLayoutPanel3);
+            this.tabPage3.Location = new System.Drawing.Point(4, 38);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(984, 418);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Produkt 3";
+            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 8;
@@ -2810,30 +2681,6 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(972, 408);
             this.tableLayoutPanel3.TabIndex = 8;
             // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label46.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label46.Location = new System.Drawing.Point(849, 0);
-            this.label46.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(120, 68);
-            this.label46.TabIndex = 18;
-            this.label46.Text = "Produkitonsaufträge für die kommende Periode";
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label47.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label47.Location = new System.Drawing.Point(2, 81);
-            this.label47.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(28, 20);
-            this.label47.TabIndex = 7;
-            this.label47.Text = "P3";
-            // 
             // label51
             // 
             this.label51.AutoSize = true;
@@ -2845,42 +2692,6 @@
             this.label51.Size = new System.Drawing.Size(85, 34);
             this.label51.TabIndex = 6;
             this.label51.Text = "Aufträge in Bearbeitung";
-            // 
-            // label53
-            // 
-            this.label53.AutoSize = true;
-            this.label53.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label53.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label53.Location = new System.Drawing.Point(607, 0);
-            this.label53.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(106, 34);
-            this.label53.TabIndex = 5;
-            this.label53.Text = "Aufträge in der Warteschlange";
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label54.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label54.Location = new System.Drawing.Point(486, 0);
-            this.label54.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(110, 34);
-            this.label54.TabIndex = 4;
-            this.label54.Text = "Lagerbestand am ende der VP";
-            // 
-            // label55
-            // 
-            this.label55.AutoSize = true;
-            this.label55.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label55.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label55.Location = new System.Drawing.Point(123, 0);
-            this.label55.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(90, 34);
-            this.label55.TabIndex = 0;
-            this.label55.Text = "Verbindliche Aufträge";
             // 
             // label56
             // 
@@ -3026,11 +2837,214 @@
             this.label67.TabIndex = 110;
             this.label67.Text = "E29";
             // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label53.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label53.Location = new System.Drawing.Point(607, 0);
+            this.label53.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(106, 34);
+            this.label53.TabIndex = 5;
+            this.label53.Text = "Aufträge in der Warteschlange";
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label46.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label46.Location = new System.Drawing.Point(849, 0);
+            this.label46.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(120, 68);
+            this.label46.TabIndex = 18;
+            this.label46.Text = "Produkitonsaufträge für die kommende Periode";
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label55.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label55.Location = new System.Drawing.Point(123, 0);
+            this.label55.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(90, 34);
+            this.label55.TabIndex = 0;
+            this.label55.Text = "Verbindliche Aufträge";
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label54.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label54.Location = new System.Drawing.Point(486, 0);
+            this.label54.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(110, 34);
+            this.label54.TabIndex = 4;
+            this.label54.Text = "Lagerbestand am ende der VP";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label47.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label47.Location = new System.Drawing.Point(2, 81);
+            this.label47.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(28, 20);
+            this.label47.TabIndex = 7;
+            this.label47.Text = "P3";
+            // 
+            // weiterButton3
+            // 
+            this.weiterButton3.Location = new System.Drawing.Point(912, 24);
+            this.weiterButton3.Name = "weiterButton3";
+            this.weiterButton3.Size = new System.Drawing.Size(75, 23);
+            this.weiterButton3.TabIndex = 6;
+            this.weiterButton3.Text = "Weiter";
+            this.weiterButton3.UseSelectable = true;
+            this.weiterButton3.Click += new System.EventHandler(this.weiterButton3_Click_1);
+            // 
+            // periodenLabel3
+            // 
+            this.periodenLabel3.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.periodenLabel3.Location = new System.Drawing.Point(94, 18);
+            this.periodenLabel3.Name = "periodenLabel3";
+            this.periodenLabel3.Size = new System.Drawing.Size(129, 29);
+            this.periodenLabel3.TabIndex = 5;
+            this.periodenLabel3.Text = "metroLabel5";
+            // 
+            // metroLabel6
+            // 
+            this.metroLabel6.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel6.Location = new System.Drawing.Point(23, 18);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(69, 25);
+            this.metroLabel6.TabIndex = 4;
+            this.metroLabel6.Text = "Periode";
+            // 
+            // Kaufteildisposition
+            // 
+            this.Kaufteildisposition.Controls.Add(this.metroPanel4);
+            this.Kaufteildisposition.Location = new System.Drawing.Point(4, 38);
+            this.Kaufteildisposition.Name = "Kaufteildisposition";
+            this.Kaufteildisposition.Size = new System.Drawing.Size(1084, 585);
+            this.Kaufteildisposition.TabIndex = 2;
+            this.Kaufteildisposition.Text = "Kaufteildisposition";
+            // 
+            // metroPanel4
+            // 
+            this.metroPanel4.Controls.Add(this.metroLabel1);
+            this.metroPanel4.HorizontalScrollbarBarColor = true;
+            this.metroPanel4.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel4.HorizontalScrollbarSize = 10;
+            this.metroPanel4.Location = new System.Drawing.Point(26, 22);
+            this.metroPanel4.Name = "metroPanel4";
+            this.metroPanel4.Size = new System.Drawing.Size(1032, 540);
+            this.metroPanel4.TabIndex = 2;
+            this.metroPanel4.VerticalScrollbarBarColor = true;
+            this.metroPanel4.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel4.VerticalScrollbarSize = 10;
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel1.Location = new System.Drawing.Point(41, 28);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(129, 29);
+            this.metroLabel1.TabIndex = 2;
+            this.metroLabel1.Text = "metroLabel1";
+            // 
+            // Produktionsplanung
+            // 
+            this.Produktionsplanung.Controls.Add(this.metroPanel5);
+            this.Produktionsplanung.Location = new System.Drawing.Point(4, 38);
+            this.Produktionsplanung.Name = "Produktionsplanung";
+            this.Produktionsplanung.Size = new System.Drawing.Size(1084, 585);
+            this.Produktionsplanung.TabIndex = 3;
+            this.Produktionsplanung.Text = "Produktionsplanung";
+            // 
+            // metroPanel5
+            // 
+            this.metroPanel5.Controls.Add(this.metroLabel2);
+            this.metroPanel5.HorizontalScrollbarBarColor = true;
+            this.metroPanel5.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel5.HorizontalScrollbarSize = 10;
+            this.metroPanel5.Location = new System.Drawing.Point(26, 22);
+            this.metroPanel5.Name = "metroPanel5";
+            this.metroPanel5.Size = new System.Drawing.Size(1032, 540);
+            this.metroPanel5.TabIndex = 2;
+            this.metroPanel5.VerticalScrollbarBarColor = true;
+            this.metroPanel5.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel5.VerticalScrollbarSize = 10;
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel2.Location = new System.Drawing.Point(41, 28);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(129, 29);
+            this.metroLabel2.TabIndex = 2;
+            this.metroLabel2.Text = "metroLabel1";
+            // 
+            // Kapazitätsplaung
+            // 
+            this.Kapazitätsplaung.Controls.Add(this.metroPanel2);
+            this.Kapazitätsplaung.Location = new System.Drawing.Point(4, 38);
+            this.Kapazitätsplaung.Name = "Kapazitätsplaung";
+            this.Kapazitätsplaung.Size = new System.Drawing.Size(1084, 585);
+            this.Kapazitätsplaung.TabIndex = 4;
+            this.Kapazitätsplaung.Text = "Kapazitätsplaung";
+            // 
+            // metroPanel2
+            // 
+            this.metroPanel2.Controls.Add(this.saveLink2);
+            this.metroPanel2.HorizontalScrollbarBarColor = true;
+            this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.HorizontalScrollbarSize = 10;
+            this.metroPanel2.Location = new System.Drawing.Point(23, 17);
+            this.metroPanel2.Name = "metroPanel2";
+            this.metroPanel2.Size = new System.Drawing.Size(1032, 540);
+            this.metroPanel2.TabIndex = 0;
+            this.metroPanel2.VerticalScrollbarBarColor = true;
+            this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.VerticalScrollbarSize = 10;
+            // 
+            // saveLink2
+            // 
+            this.saveLink2.Location = new System.Drawing.Point(0, 0);
+            this.saveLink2.Name = "saveLink2";
+            this.saveLink2.Size = new System.Drawing.Size(75, 23);
+            this.saveLink2.TabIndex = 2;
+            this.saveLink2.UseSelectable = true;
+            // 
+            // metroLink1
+            // 
+            this.metroLink1.Location = new System.Drawing.Point(0, 0);
+            this.metroLink1.Name = "metroLink1";
+            this.metroLink1.Size = new System.Drawing.Size(75, 23);
+            this.metroLink1.TabIndex = 0;
+            this.metroLink1.UseSelectable = true;
+            // 
+            // rollbackButton
+            // 
+            this.rollbackButton.Image = ((System.Drawing.Image)(resources.GetObject("rollbackButton.Image")));
+            this.rollbackButton.ImageSize = 64;
+            this.rollbackButton.Location = new System.Drawing.Point(988, 23);
+            this.rollbackButton.Name = "rollbackButton";
+            this.rollbackButton.Size = new System.Drawing.Size(94, 72);
+            this.rollbackButton.TabIndex = 2;
+            this.rollbackButton.UseSelectable = true;
+            this.rollbackButton.Click += new System.EventHandler(this.rollbackButton_Click);
+            // 
             // Periodenplanung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1119, 697);
+            this.Controls.Add(this.rollbackButton);
             this.Controls.Add(this.metroLink1);
             this.Controls.Add(this.metroTabControl1);
             this.Name = "Periodenplanung";
@@ -3051,20 +3065,20 @@
             this.metroPanel3.ResumeLayout(false);
             this.metroTabControl2.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.Kaufteildisposition.ResumeLayout(false);
             this.metroPanel4.ResumeLayout(false);
             this.Produktionsplanung.ResumeLayout(false);
             this.metroPanel5.ResumeLayout(false);
             this.Kapazitätsplaung.ResumeLayout(false);
             this.metroPanel2.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3222,5 +3236,6 @@
         private System.Windows.Forms.Label label55;
         private System.Windows.Forms.Label label54;
         private System.Windows.Forms.Label label47;
+        private MetroFramework.Controls.MetroLink rollbackButton;
     }
 }

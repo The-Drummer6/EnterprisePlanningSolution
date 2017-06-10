@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -914,6 +915,27 @@ namespace EnterprisePlanningSolution
                 Console.WriteLine(fe.Message);
                
             }
+        }
+
+        private void rollbackButton_Click(object sender, EventArgs e)
+        {
+            ADODB.Connection cn = new ADODB.Connection();
+            ADODB.Recordset rs = new ADODB.Recordset();
+            ADODB.Recordset rs2 = new ADODB.Recordset();
+            cn.Open(cnStr);
+            rs.Open("Select distinct period from summary ORDER BY period Desc", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+            int aktuellePlanPeriode = Convert.ToInt32(rs.Fields["period"].Value);
+            aktuellePlanPeriode++;
+            
+
+            rs2.Open("Delete from Prognose where planperiod="+aktuellePlanPeriode, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+            rs2.Open("Delete from sellwish where planperiod=" + aktuellePlanPeriode, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+            rs2.Open("Delete from selldirect where period=" + aktuellePlanPeriode, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+            rs2.Open("Delete from productionlist where period=" + aktuellePlanPeriode, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+            cn.Close();
+            DashboardForm dashboardForm = new DashboardForm();
+            dashboardForm.Show();
+            this.Hide();
         }
     }
 }

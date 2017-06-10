@@ -355,6 +355,7 @@ namespace EnterprisePlanningSolution
             rs.Open("Select distinct period From warehousestock_article", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
 
             List<int> Liste = new List<int>();
+            Liste.Add(0);
             while (!rs.EOF)
             {
                 int p = Convert.ToInt32(rs.Fields["period"].Value);
@@ -366,6 +367,7 @@ namespace EnterprisePlanningSolution
 
             metroComboBox1.DataSource = Liste;
         }
+        //Lagerbestand
         private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             ADODB.Connection cn = new ADODB.Connection();
@@ -373,21 +375,43 @@ namespace EnterprisePlanningSolution
             try { 
             cn.Open(cnStr);
             string periode = metroComboBox1.Text;
-            rs.Open("Select * From warehousestock_article where period ='" + periode + "'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
 
-            int i = 0;
-                metroGrid5.Rows.Clear();
-            while (!rs.EOF)
-            {
-                metroGrid5.Rows.Add();
-                metroGrid5.Rows[i].Cells["period"].Value = Convert.ToInt32(rs.Fields["period"].Value);
-                metroGrid5.Rows[i].Cells["id"].Value = Convert.ToInt32(rs.Fields["id"].Value);
-                metroGrid5.Rows[i].Cells["actualStock"].Value = Convert.ToInt32(rs.Fields["amount"].Value);
-                metroGrid5.Rows[i].Cells["actualPrice"].Value = Convert.ToDouble(rs.Fields["price"].Value);
-                metroGrid5.Rows[i].Cells["stockValue"].Value = Convert.ToDouble(rs.Fields["stockValue"].Value);
-                rs.MoveNext();
-                i++;
-            }
+                if (periode == "0")
+                {
+                    rs.Open("Select Startmenge, Artikelnummer, Startpreis From Artikelstammdaten", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+
+                    int i = 0;
+                    metroGrid5.Rows.Clear();
+                    while (!rs.EOF)
+                    {
+                        metroGrid5.Rows.Add();
+                        metroGrid5.Rows[i].Cells["period"].Value = Convert.ToInt32(periode);
+                        metroGrid5.Rows[i].Cells["id"].Value = Convert.ToInt32(rs.Fields["Artikelnummer"].Value);
+                        metroGrid5.Rows[i].Cells["actualStock"].Value = Convert.ToInt32(rs.Fields["Startmenge"].Value);
+                        metroGrid5.Rows[i].Cells["actualPrice"].Value = Convert.ToDouble(rs.Fields["Startpreis"].Value);
+                        //metroGrid5.Rows[i].Cells["stockValue"].Value = ;
+                        rs.MoveNext();
+                        i++;
+                    }
+                }
+                else
+                {
+                    rs.Open("Select * From warehousestock_article where period ='" + periode + "'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+
+                    int i = 0;
+                    metroGrid5.Rows.Clear();
+                    while (!rs.EOF)
+                    {
+                        metroGrid5.Rows.Add();
+                        metroGrid5.Rows[i].Cells["period"].Value = Convert.ToInt32(rs.Fields["period"].Value);
+                        metroGrid5.Rows[i].Cells["id"].Value = Convert.ToInt32(rs.Fields["id"].Value);
+                        metroGrid5.Rows[i].Cells["actualStock"].Value = Convert.ToInt32(rs.Fields["amount"].Value);
+                        metroGrid5.Rows[i].Cells["actualPrice"].Value = Convert.ToDouble(rs.Fields["price"].Value);
+                        metroGrid5.Rows[i].Cells["stockValue"].Value = Convert.ToDouble(rs.Fields["stockValue"].Value);
+                        rs.MoveNext();
+                        i++;
+                    }
+                }
             rs.Close();
         }
             catch (Exception fehler)

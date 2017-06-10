@@ -103,11 +103,13 @@ namespace EnterprisePlanningSolution
             //Recordset
             ADODB.Connection cn = new ADODB.Connection();
             ADODB.Recordset rs0 = new ADODB.Recordset();
+            ADODB.Recordset rs1 = new ADODB.Recordset();
             cn.Open(cnStr);
 
-            rs0.Open("Select distinct period from summary ORDER BY period Desc", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            periodePrognose = Convert.ToInt32(rs0.Fields["period"].Value);
-            if (!(neuPeriode >= periodePrognose + 1) )
+            rs1.Open("Select distinct period from summary ORDER BY period Desc", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+            periodePrognose = Convert.ToInt32(rs1.Fields["period"].Value);
+            rs1.Close();
+            if (!(neuPeriode == periodePrognose + 1) || neuPeriode == 1)
             {
 
 

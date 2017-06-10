@@ -42,7 +42,7 @@
             this.metroTile1.Name = "metroTile1";
             this.metroTile1.Size = new System.Drawing.Size(227, 120);
             this.metroTile1.Style = MetroFramework.MetroColorStyle.Silver;
-            this.metroTile1.TabIndex = 0;
+            this.metroTile1.TabIndex = 1;
             this.metroTile1.Text = "XML Import";
             this.metroTile1.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile1.TileImage")));
             this.metroTile1.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;

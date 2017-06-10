@@ -17,6 +17,7 @@ namespace EnterprisePlanningSolution
         public StammdatenForm()
         {
             InitializeComponent();
+            metroTabControl1.SelectedIndex = 0;
         }
 
         private void metroLink1_Click(object sender, EventArgs e)

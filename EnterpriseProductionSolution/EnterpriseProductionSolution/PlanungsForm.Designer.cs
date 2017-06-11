@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Periodenplanung));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.weiterButtonDispo = new MetroFramework.Controls.MetroTabControl();
             this.Prognose = new System.Windows.Forms.TabPage();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
@@ -175,20 +175,7 @@
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.Kaufteildisposition = new System.Windows.Forms.TabPage();
             this.metroPanel4 = new MetroFramework.Controls.MetroPanel();
-            this.periodenLabelDispo = new MetroFramework.Controls.MetroLabel();
-            this.Produktionsplanung = new System.Windows.Forms.TabPage();
-            this.metroPanel5 = new MetroFramework.Controls.MetroPanel();
-            this.periodenLabelProduktion = new MetroFramework.Controls.MetroLabel();
-            this.Kapazitätsplanung = new System.Windows.Forms.TabPage();
-            this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
-            this.metroLink1 = new MetroFramework.Controls.MetroLink();
-            this.rollbackButton = new MetroFramework.Controls.MetroLink();
-            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
-            this.periodenLabelKapa = new MetroFramework.Controls.MetroLabel();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
+            this.dispoGrid = new MetroFramework.Controls.MetroGrid();
             this.Periode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Kaufteil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Preis = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -203,6 +190,19 @@
             this.Bestand_in_n1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bestand_in_n2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bestand_in_n3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.periodenLabelDispo = new MetroFramework.Controls.MetroLabel();
+            this.Produktionsplanung = new System.Windows.Forms.TabPage();
+            this.metroPanel5 = new MetroFramework.Controls.MetroPanel();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.periodenLabelProduktion = new MetroFramework.Controls.MetroLabel();
+            this.Kapazitätsplanung = new System.Windows.Forms.TabPage();
+            this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.periodenLabelKapa = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
+            this.metroLink1 = new MetroFramework.Controls.MetroLink();
+            this.rollbackButton = new MetroFramework.Controls.MetroLink();
+            this.weiterButton4 = new MetroFramework.Controls.MetroButton();
             this.weiterButtonDispo.SuspendLayout();
             this.Prognose.SuspendLayout();
             this.metroPanel1.SuspendLayout();
@@ -222,11 +222,11 @@
             this.tableLayoutPanel3.SuspendLayout();
             this.Kaufteildisposition.SuspendLayout();
             this.metroPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dispoGrid)).BeginInit();
             this.Produktionsplanung.SuspendLayout();
             this.metroPanel5.SuspendLayout();
             this.Kapazitätsplanung.SuspendLayout();
             this.metroPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
             this.SuspendLayout();
             // 
             // weiterButtonDispo
@@ -239,7 +239,7 @@
             this.weiterButtonDispo.Controls.Add(this.Kapazitätsplanung);
             this.weiterButtonDispo.Location = new System.Drawing.Point(23, 63);
             this.weiterButtonDispo.Name = "weiterButtonDispo";
-            this.weiterButtonDispo.SelectedIndex = 0;
+            this.weiterButtonDispo.SelectedIndex = 3;
             this.weiterButtonDispo.Size = new System.Drawing.Size(1097, 627);
             this.weiterButtonDispo.Style = MetroFramework.MetroColorStyle.Silver;
             this.weiterButtonDispo.TabIndex = 0;
@@ -2961,8 +2961,8 @@
             // 
             // metroPanel4
             // 
-            this.metroPanel4.Controls.Add(this.metroGrid1);
-            this.metroPanel4.Controls.Add(this.metroButton1);
+            this.metroPanel4.Controls.Add(this.weiterButton4);
+            this.metroPanel4.Controls.Add(this.dispoGrid);
             this.metroPanel4.Controls.Add(this.metroLabel5);
             this.metroPanel4.Controls.Add(this.periodenLabelDispo);
             this.metroPanel4.HorizontalScrollbarBarColor = true;
@@ -2976,155 +2976,25 @@
             this.metroPanel4.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel4.VerticalScrollbarSize = 10;
             // 
-            // periodenLabelDispo
+            // dispoGrid
             // 
-            this.periodenLabelDispo.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.periodenLabelDispo.Location = new System.Drawing.Point(94, 18);
-            this.periodenLabelDispo.Name = "periodenLabelDispo";
-            this.periodenLabelDispo.Size = new System.Drawing.Size(129, 29);
-            this.periodenLabelDispo.TabIndex = 2;
-            this.periodenLabelDispo.Text = "metroLabel1";
-            // 
-            // Produktionsplanung
-            // 
-            this.Produktionsplanung.Controls.Add(this.metroPanel5);
-            this.Produktionsplanung.Location = new System.Drawing.Point(4, 38);
-            this.Produktionsplanung.Name = "Produktionsplanung";
-            this.Produktionsplanung.Size = new System.Drawing.Size(1089, 585);
-            this.Produktionsplanung.TabIndex = 3;
-            this.Produktionsplanung.Text = "Produktionsplanung";
-            // 
-            // metroPanel5
-            // 
-            this.metroPanel5.Controls.Add(this.metroLabel7);
-            this.metroPanel5.Controls.Add(this.periodenLabelProduktion);
-            this.metroPanel5.HorizontalScrollbarBarColor = true;
-            this.metroPanel5.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel5.HorizontalScrollbarSize = 10;
-            this.metroPanel5.Location = new System.Drawing.Point(23, 17);
-            this.metroPanel5.Name = "metroPanel5";
-            this.metroPanel5.Size = new System.Drawing.Size(1032, 540);
-            this.metroPanel5.TabIndex = 2;
-            this.metroPanel5.VerticalScrollbarBarColor = true;
-            this.metroPanel5.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel5.VerticalScrollbarSize = 10;
-            // 
-            // periodenLabelProduktion
-            // 
-            this.periodenLabelProduktion.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.periodenLabelProduktion.Location = new System.Drawing.Point(94, 18);
-            this.periodenLabelProduktion.Name = "periodenLabelProduktion";
-            this.periodenLabelProduktion.Size = new System.Drawing.Size(129, 29);
-            this.periodenLabelProduktion.TabIndex = 2;
-            this.periodenLabelProduktion.Text = "metroLabel1";
-            // 
-            // Kapazitätsplanung
-            // 
-            this.Kapazitätsplanung.Controls.Add(this.metroPanel2);
-            this.Kapazitätsplanung.Location = new System.Drawing.Point(4, 38);
-            this.Kapazitätsplanung.Name = "Kapazitätsplanung";
-            this.Kapazitätsplanung.Size = new System.Drawing.Size(1089, 585);
-            this.Kapazitätsplanung.TabIndex = 4;
-            this.Kapazitätsplanung.Text = "Kapazitätsplanung";
-            // 
-            // metroPanel2
-            // 
-            this.metroPanel2.Controls.Add(this.periodenLabelKapa);
-            this.metroPanel2.Controls.Add(this.metroLabel8);
-            this.metroPanel2.HorizontalScrollbarBarColor = true;
-            this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel2.HorizontalScrollbarSize = 10;
-            this.metroPanel2.Location = new System.Drawing.Point(23, 17);
-            this.metroPanel2.Name = "metroPanel2";
-            this.metroPanel2.Size = new System.Drawing.Size(1032, 540);
-            this.metroPanel2.TabIndex = 0;
-            this.metroPanel2.VerticalScrollbarBarColor = true;
-            this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel2.VerticalScrollbarSize = 10;
-            // 
-            // metroLink1
-            // 
-            this.metroLink1.Location = new System.Drawing.Point(0, 0);
-            this.metroLink1.Name = "metroLink1";
-            this.metroLink1.Size = new System.Drawing.Size(75, 23);
-            this.metroLink1.TabIndex = 0;
-            this.metroLink1.UseSelectable = true;
-            // 
-            // rollbackButton
-            // 
-            this.rollbackButton.Image = ((System.Drawing.Image)(resources.GetObject("rollbackButton.Image")));
-            this.rollbackButton.ImageSize = 64;
-            this.rollbackButton.Location = new System.Drawing.Point(988, 23);
-            this.rollbackButton.Name = "rollbackButton";
-            this.rollbackButton.Size = new System.Drawing.Size(94, 72);
-            this.rollbackButton.TabIndex = 2;
-            this.rollbackButton.UseSelectable = true;
-            this.rollbackButton.Click += new System.EventHandler(this.rollbackButton_Click);
-            // 
-            // metroLabel5
-            // 
-            this.metroLabel5.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel5.Location = new System.Drawing.Point(23, 18);
-            this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(69, 25);
-            this.metroLabel5.TabIndex = 5;
-            this.metroLabel5.Text = "Periode";
-            // 
-            // metroLabel7
-            // 
-            this.metroLabel7.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel7.Location = new System.Drawing.Point(23, 18);
-            this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(69, 25);
-            this.metroLabel7.TabIndex = 6;
-            this.metroLabel7.Text = "Periode";
-            // 
-            // metroLabel8
-            // 
-            this.metroLabel8.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel8.Location = new System.Drawing.Point(23, 18);
-            this.metroLabel8.Name = "metroLabel8";
-            this.metroLabel8.Size = new System.Drawing.Size(69, 25);
-            this.metroLabel8.TabIndex = 6;
-            this.metroLabel8.Text = "Periode";
-            // 
-            // periodenLabelKapa
-            // 
-            this.periodenLabelKapa.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.periodenLabelKapa.Location = new System.Drawing.Point(94, 18);
-            this.periodenLabelKapa.Name = "periodenLabelKapa";
-            this.periodenLabelKapa.Size = new System.Drawing.Size(129, 29);
-            this.periodenLabelKapa.TabIndex = 7;
-            this.periodenLabelKapa.Text = "metroLabel9";
-            // 
-            // metroButton1
-            // 
-            this.metroButton1.Location = new System.Drawing.Point(912, 24);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(75, 23);
-            this.metroButton1.TabIndex = 7;
-            this.metroButton1.Text = "Weiter";
-            this.metroButton1.UseSelectable = true;
-            // 
-            // metroGrid1
-            // 
-            this.metroGrid1.AllowUserToResizeRows = false;
-            this.metroGrid1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.metroGrid1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.metroGrid1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGrid1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.metroGrid1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.metroGrid1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.metroGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.metroGrid1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dispoGrid.AllowUserToResizeRows = false;
+            this.dispoGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dispoGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dispoGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dispoGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dispoGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dispoGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dispoGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.dispoGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dispoGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Periode,
             this.Kaufteil,
             this.Preis,
@@ -3139,32 +3009,32 @@
             this.Bestand_in_n1,
             this.Bestand_in_n2,
             this.Bestand_in_n3});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.metroGrid1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.metroGrid1.EnableHeadersVisualStyles = false;
-            this.metroGrid1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.metroGrid1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGrid1.Location = new System.Drawing.Point(23, 53);
-            this.metroGrid1.Name = "metroGrid1";
-            this.metroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid1.Size = new System.Drawing.Size(992, 446);
-            this.metroGrid1.TabIndex = 9;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dispoGrid.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dispoGrid.EnableHeadersVisualStyles = false;
+            this.dispoGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dispoGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dispoGrid.Location = new System.Drawing.Point(23, 53);
+            this.dispoGrid.Name = "dispoGrid";
+            this.dispoGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dispoGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            this.dispoGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dispoGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dispoGrid.Size = new System.Drawing.Size(992, 446);
+            this.dispoGrid.TabIndex = 9;
             // 
             // Periode
             // 
@@ -3211,6 +3081,10 @@
             // Bestellart
             // 
             this.Bestellart.HeaderText = "Bestellart";
+            this.Bestellart.Items.AddRange(new object[] {
+            "",
+            "N",
+            "E"});
             this.Bestellart.Name = "Bestellart";
             this.Bestellart.Width = 59;
             // 
@@ -3262,6 +3136,137 @@
             this.Bestand_in_n3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Bestand_in_n3.Width = 86;
             // 
+            // metroLabel5
+            // 
+            this.metroLabel5.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel5.Location = new System.Drawing.Point(23, 18);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(69, 25);
+            this.metroLabel5.TabIndex = 5;
+            this.metroLabel5.Text = "Periode";
+            // 
+            // periodenLabelDispo
+            // 
+            this.periodenLabelDispo.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.periodenLabelDispo.Location = new System.Drawing.Point(94, 18);
+            this.periodenLabelDispo.Name = "periodenLabelDispo";
+            this.periodenLabelDispo.Size = new System.Drawing.Size(129, 29);
+            this.periodenLabelDispo.TabIndex = 2;
+            this.periodenLabelDispo.Text = "metroLabel1";
+            // 
+            // Produktionsplanung
+            // 
+            this.Produktionsplanung.Controls.Add(this.metroPanel5);
+            this.Produktionsplanung.Location = new System.Drawing.Point(4, 38);
+            this.Produktionsplanung.Name = "Produktionsplanung";
+            this.Produktionsplanung.Size = new System.Drawing.Size(1089, 585);
+            this.Produktionsplanung.TabIndex = 3;
+            this.Produktionsplanung.Text = "Produktionsplanung";
+            // 
+            // metroPanel5
+            // 
+            this.metroPanel5.Controls.Add(this.metroLabel7);
+            this.metroPanel5.Controls.Add(this.periodenLabelProduktion);
+            this.metroPanel5.HorizontalScrollbarBarColor = true;
+            this.metroPanel5.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel5.HorizontalScrollbarSize = 10;
+            this.metroPanel5.Location = new System.Drawing.Point(23, 17);
+            this.metroPanel5.Name = "metroPanel5";
+            this.metroPanel5.Size = new System.Drawing.Size(1032, 540);
+            this.metroPanel5.TabIndex = 2;
+            this.metroPanel5.VerticalScrollbarBarColor = true;
+            this.metroPanel5.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel5.VerticalScrollbarSize = 10;
+            // 
+            // metroLabel7
+            // 
+            this.metroLabel7.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel7.Location = new System.Drawing.Point(23, 18);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(69, 25);
+            this.metroLabel7.TabIndex = 6;
+            this.metroLabel7.Text = "Periode";
+            // 
+            // periodenLabelProduktion
+            // 
+            this.periodenLabelProduktion.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.periodenLabelProduktion.Location = new System.Drawing.Point(94, 18);
+            this.periodenLabelProduktion.Name = "periodenLabelProduktion";
+            this.periodenLabelProduktion.Size = new System.Drawing.Size(129, 29);
+            this.periodenLabelProduktion.TabIndex = 2;
+            this.periodenLabelProduktion.Text = "metroLabel1";
+            // 
+            // Kapazitätsplanung
+            // 
+            this.Kapazitätsplanung.Controls.Add(this.metroPanel2);
+            this.Kapazitätsplanung.Location = new System.Drawing.Point(4, 38);
+            this.Kapazitätsplanung.Name = "Kapazitätsplanung";
+            this.Kapazitätsplanung.Size = new System.Drawing.Size(1089, 585);
+            this.Kapazitätsplanung.TabIndex = 4;
+            this.Kapazitätsplanung.Text = "Kapazitätsplanung";
+            // 
+            // metroPanel2
+            // 
+            this.metroPanel2.Controls.Add(this.periodenLabelKapa);
+            this.metroPanel2.Controls.Add(this.metroLabel8);
+            this.metroPanel2.HorizontalScrollbarBarColor = true;
+            this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.HorizontalScrollbarSize = 10;
+            this.metroPanel2.Location = new System.Drawing.Point(23, 17);
+            this.metroPanel2.Name = "metroPanel2";
+            this.metroPanel2.Size = new System.Drawing.Size(1032, 540);
+            this.metroPanel2.TabIndex = 0;
+            this.metroPanel2.VerticalScrollbarBarColor = true;
+            this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.VerticalScrollbarSize = 10;
+            // 
+            // periodenLabelKapa
+            // 
+            this.periodenLabelKapa.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.periodenLabelKapa.Location = new System.Drawing.Point(94, 18);
+            this.periodenLabelKapa.Name = "periodenLabelKapa";
+            this.periodenLabelKapa.Size = new System.Drawing.Size(129, 29);
+            this.periodenLabelKapa.TabIndex = 7;
+            this.periodenLabelKapa.Text = "metroLabel9";
+            // 
+            // metroLabel8
+            // 
+            this.metroLabel8.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel8.Location = new System.Drawing.Point(23, 18);
+            this.metroLabel8.Name = "metroLabel8";
+            this.metroLabel8.Size = new System.Drawing.Size(69, 25);
+            this.metroLabel8.TabIndex = 6;
+            this.metroLabel8.Text = "Periode";
+            // 
+            // metroLink1
+            // 
+            this.metroLink1.Location = new System.Drawing.Point(0, 0);
+            this.metroLink1.Name = "metroLink1";
+            this.metroLink1.Size = new System.Drawing.Size(75, 23);
+            this.metroLink1.TabIndex = 0;
+            this.metroLink1.UseSelectable = true;
+            // 
+            // rollbackButton
+            // 
+            this.rollbackButton.Image = ((System.Drawing.Image)(resources.GetObject("rollbackButton.Image")));
+            this.rollbackButton.ImageSize = 64;
+            this.rollbackButton.Location = new System.Drawing.Point(988, 23);
+            this.rollbackButton.Name = "rollbackButton";
+            this.rollbackButton.Size = new System.Drawing.Size(94, 72);
+            this.rollbackButton.TabIndex = 2;
+            this.rollbackButton.UseSelectable = true;
+            this.rollbackButton.Click += new System.EventHandler(this.rollbackButton_Click);
+            // 
+            // weiterButton4
+            // 
+            this.weiterButton4.Location = new System.Drawing.Point(912, 24);
+            this.weiterButton4.Name = "weiterButton4";
+            this.weiterButton4.Size = new System.Drawing.Size(75, 23);
+            this.weiterButton4.TabIndex = 10;
+            this.weiterButton4.Text = "Weiter";
+            this.weiterButton4.UseSelectable = true;
+            this.weiterButton4.Click += new System.EventHandler(this.weiterButton4_Click);
+            // 
             // Periodenplanung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3299,11 +3304,11 @@
             this.tableLayoutPanel3.PerformLayout();
             this.Kaufteildisposition.ResumeLayout(false);
             this.metroPanel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dispoGrid)).EndInit();
             this.Produktionsplanung.ResumeLayout(false);
             this.metroPanel5.ResumeLayout(false);
             this.Kapazitätsplanung.ResumeLayout(false);
             this.metroPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3465,8 +3470,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel7;
         private MetroFramework.Controls.MetroLabel periodenLabelKapa;
         private MetroFramework.Controls.MetroLabel metroLabel8;
-        private MetroFramework.Controls.MetroButton metroButton1;
-        private MetroFramework.Controls.MetroGrid metroGrid1;
+        private MetroFramework.Controls.MetroGrid dispoGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn Periode;
         private System.Windows.Forms.DataGridViewTextBoxColumn Kaufteil;
         private System.Windows.Forms.DataGridViewTextBoxColumn Preis;
@@ -3481,5 +3485,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Bestand_in_n1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bestand_in_n2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bestand_in_n3;
+        private MetroFramework.Controls.MetroButton weiterButton4;
     }
 }

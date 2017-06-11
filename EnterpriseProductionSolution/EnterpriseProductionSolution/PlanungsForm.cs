@@ -91,6 +91,11 @@ namespace EnterprisePlanningSolution
             initializeTextboxes();
             initalizeNumbers(aktuellePeriode);
             fillTextboxes();
+
+            /// <summary>
+            /// Initialisierung Kaufteildispo
+            /// </summary>
+            //Datagrid_leeren_befüllen();
         }
 
         private void bearbeiten()
@@ -596,6 +601,7 @@ namespace EnterprisePlanningSolution
             }
             cn.Close();
 
+            Datagrid_leeren_befüllen();
             weiterButtonDispo.SelectedIndex = 3;
         }
         private void initializeTextboxes()
@@ -960,6 +966,291 @@ namespace EnterprisePlanningSolution
             DashboardForm dashboardForm = new DashboardForm();
             dashboardForm.Show();
             this.Hide();
+        }
+        
+        /// <summary>
+        /// DispositionsGrid befüllen
+        /// </summary>
+        public void Datagrid_leeren_befüllen()
+        {
+            //######################## Datagridview
+            ADODB.Connection cn = new ADODB.Connection();
+            ADODB.Recordset rs = new ADODB.Recordset();
+            ADODB.Recordset rsLieferungen = new ADODB.Recordset();
+            ADODB.Recordset rs2 = new ADODB.Recordset();
+
+            //Connection öffnen
+            cn.Open(cnStr);
+
+
+
+            rs.Open("Select * From abf_Summe_Kaufteile_Gesamt WHERE planperiod =" + (aktuellePeriode), cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+            rsLieferungen.Open("Select * From abf_Lieferzeitpunkt_bestellte_ware_Kreuztabelle WHERE period ='" + (aktuellePeriode - 1) + "'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+
+            int i = 0;
+
+            
+            dispoGrid.Rows.Clear();
+            dispoGrid.Columns["Bestand_in_n"].HeaderText = "Bestand_in_" + (aktuellePeriode);
+            dispoGrid.Columns["Bestand_in_n1"].HeaderText = "Bestand_in_" + (aktuellePeriode + 1);
+            dispoGrid.Columns["Bestand_in_n2"].HeaderText = "Bestand_in_" + (aktuellePeriode + 2);
+            dispoGrid.Columns["Bestand_in_n3"].HeaderText = "Bestand_in_" + (aktuellePeriode + 3);
+
+            //dispoGrid.Columns["KommendeBestellung_n"].HeaderText = "KB_" + (aktuellePeriode);
+            //dispoGrid.Columns["KommendeBestellung_n1"].HeaderText = "KB_" + (aktuellePeriode + 1);
+            //dispoGrid.Columns["KommendeBestellung_n2"].HeaderText = "KB_" + (aktuellePeriode + 2);
+            //dispoGrid.Columns["KommendeBestellung_n3"].HeaderText = "KB_" + (aktuellePeriode + 3);
+            int anfangsBestand = 0;
+            int bestand1 = 0;
+            int bestand2 = 0;
+            int bestand3 = 0;
+            int bestand4 = 0;
+            int bedarf1 = 0;
+            int bedarf2 = 0;
+            int bedarf3 = 0;
+            int bedarf4 = 0;
+            int lieferung1 = 0;
+            int lieferung2 = 0;
+            int lieferung3 = 0;
+            int lieferung4 = 0;
+
+            while (!rs.EOF)
+            {
+                
+
+                dispoGrid.Rows.Add();
+                dispoGrid.Rows[i].Cells["Periode"].Value = Convert.ToInt32(rs.Fields["planPeriod"].Value);
+                dispoGrid.Rows[i].Cells["Kaufteil"].Value = rs.Fields["Artikel"].Value;
+                dispoGrid.Rows[i].Cells["Lieferfrist"].Value = rs.Fields["Lieferzeit"].Value;
+                dispoGrid.Rows[i].Cells["Abweichung"].Value = rs.Fields["Lieferzeitabweichung"].Value;
+                dispoGrid.Rows[i].Cells["Diskontmenge"].Value = rs.Fields["Diskontmenge"].Value;
+                dispoGrid.Rows[i].Cells["Anfangsbestand_n"].Value = rs.Fields["amount"].Value;
+                anfangsBestand = rs.Fields["amount"].Value;
+                dispoGrid.Rows[i].Cells["Preis"].Value = rs.Fields["price"].Value;
+                //dispoGrid.Rows[i].Cells["Bruttobedarf_n"].Value 
+                bedarf1 = rs.Fields["AktuellePeriode"].Value;
+                //dispoGrid.Rows[i].Cells["Bruttobedarf_n1"].Value 
+                bedarf2 = rs.Fields[Convert.ToString(aktuellePeriode - 1 + 1)].Value;
+                //dispoGrid.Rows[i].Cells["Bruttobedarf_n2"].Value 
+                bedarf3 = rs.Fields[Convert.ToString(aktuellePeriode - 1 + 2)].Value;
+                //dispoGrid.Rows[i].Cells["Bruttobedarf_n3"].Value 
+                bedarf4 = rs.Fields[Convert.ToString(aktuellePeriode - 1 + 3)].Value;
+                dispoGrid.Rows[i].Cells["Bestellkosten"].Value = rs.Fields["Lieferkosten"].Value;
+                //long myBruttebedarf_summe = Convert.ToInt32(dispoGrid.Rows[i].Cells["Bruttobedarf_n"].Value) + Convert.ToInt32(dispoGrid.Rows[i].Cells["Bruttobedarf_n1"].Value)
+                  //  + Convert.ToInt32(dispoGrid.Rows[i].Cells["Bruttobedarf_n2"].Value) + Convert.ToInt32(dispoGrid.Rows[i].Cells["Bruttobedarf_n3"].Value);
+                //long myJahresbaedarf = (myBruttebedarf_summe / 4) * 52;
+                
+                //Bestellvorschlag
+                //dispoGrid.Rows[i].Cells["Bestellmenge"].Value = Math.Round(Math.Sqrt((200 * myJahresbaedarf * Convert.ToInt32(dispoGrid.Rows[i].Cells["Bestellkosten"].Value)) / (Convert.ToInt32(textBox1.Text) * Convert.ToDouble(dispoGrid.Rows[i].Cells["Preis"].Value))));
+
+
+
+                double myPufferzeit = 1.3 + Convert.ToDouble(dispoGrid.Rows[i].Cells["Lieferfrist"].Value) + Convert.ToDouble(dispoGrid.Rows[i].Cells["Abweichung"].Value = rs.Fields["Lieferzeitabweichung"].Value);
+                double myGanzePerioden = Math.Round(Math.Floor(myPufferzeit));
+                double myZehntelPerioden = Math.Round((myPufferzeit - myGanzePerioden) * 10);
+                int j = 0;
+                double myPufferbedarf = 0;
+
+                // Artikel in Der Tabelle Lieferzeitpunkt bestellte ware suchen
+                rsLieferungen.MoveFirst();
+                while (!rsLieferungen.EOF)
+                {
+                    if (rsLieferungen.Fields["article"].Value.Equals(Convert.ToInt32(rs.Fields["Artikel"].Value)))
+                    { break; }
+                    rsLieferungen.MoveNext();
+                }
+
+                if (!rsLieferungen.EOF)
+                {
+                    try { //dispoGrid.Rows[i].Cells["KommendeBestellung_n"].Value 
+                        lieferung1 = rsLieferungen.Fields[aktuellePeriode - 1 + 0].Value; }
+                    catch (System.Runtime.InteropServices.COMException) { }
+                    try { //dispoGrid.Rows[i].Cells["KommendeBestellung_n1"].Value 
+                        lieferung2 = rsLieferungen.Fields[aktuellePeriode - 1 + 1].Value; }
+                    catch (System.Runtime.InteropServices.COMException) { }
+                    try { //dispoGrid.Rows[i].Cells["KommendeBestellung_n2"].Value 
+                        lieferung3 = rsLieferungen.Fields[aktuellePeriode - 1 + 2].Value; }
+                    catch (System.Runtime.InteropServices.COMException) { }
+                    try { //dispoGrid.Rows[i].Cells["KommendeBestellung_n3"].Value 
+                        lieferung4 = rsLieferungen.Fields[Convert.ToString(aktuellePeriode - 1 + 3)].Value; }
+                    catch (System.Runtime.InteropServices.COMException) { }
+                }
+
+                /// <summary>
+                /// Bedarf wird mit Beständen und Lieferungen verrechnet
+                /// </summary>
+                bestand1 = anfangsBestand - bedarf1 + lieferung1;
+                bestand2 = bestand1 - bedarf2 + lieferung2;
+                bestand3 = bestand2 - bedarf3 + lieferung3;
+                bestand4 = bestand3 - bedarf4 + lieferung4;
+
+                dispoGrid.Rows[i].Cells["Bestand_in_n"].Value = bestand1;
+                dispoGrid.Rows[i].Cells["Bestand_in_n1"].Value = bestand2;
+                dispoGrid.Rows[i].Cells["Bestand_in_n2"].Value = bestand3;
+                dispoGrid.Rows[i].Cells["Bestand_in_n3"].Value = bestand4;
+
+                //Überprüfen ob bestellt werden muss
+                /*
+                while (j < myGanzePerioden)
+                {
+                    if (j > 4) { myPufferbedarf = myPufferbedarf + myBruttebedarf_summe / 4; }
+                    else
+                    {
+                        if (j == 0) myPufferbedarf = myPufferbedarf + Convert.ToDouble(rs.Fields["AktuellePeriode"].Value);
+                        else myPufferbedarf = myPufferbedarf + Convert.ToDouble(rs.Fields[Convert.ToString(aktuellePeriode - 1 + j)].Value);
+                        try
+                        {
+                            if (!DBNull.Value.Equals(rsLieferungen.Fields[Convert.ToString(aktuellePeriode - 1 + j)].Value))
+                                if (!rsLieferungen.EOF) myPufferbedarf = myPufferbedarf - rsLieferungen.Fields[Convert.ToString(aktuellePeriode - 1 + j)].Value;
+                        }
+                        catch (System.Runtime.InteropServices.COMException) { }
+                    }
+                    if (myPufferbedarf > Convert.ToInt32(dispoGrid.Rows[i].Cells["Anfangsbestand_n"].Value))
+                    {
+                        dispoGrid.Rows[i].Cells["Bestellart"].Value = "N";
+                        dispoGrid.Rows[i].Cells["Kaufteil"].Style.BackColor = Color.Red;
+                        if (j < 5) dispoGrid[12 + j, i].Style.BackColor = Color.Red;
+                    }
+                    else if (j < 5)
+                    {
+                        dispoGrid[12 + j, i].Style.BackColor = Color.Green;
+                    }
+
+
+
+
+                    ++j;
+                }
+
+                if (j > 3) { myPufferbedarf = myPufferbedarf + ((myBruttebedarf_summe / 4) / 10) * myZehntelPerioden; }
+                else myPufferbedarf = myPufferbedarf + Convert.ToDouble(rs.Fields[Convert.ToString(aktuellePeriode - 1 + j)].Value / 10) * myZehntelPerioden;
+
+                if (myPufferbedarf > Convert.ToInt32(dispoGrid.Rows[i].Cells["Anfangsbestand_n"].Value))
+                {
+                    dispoGrid.Rows[i].Cells["Bestellart"].Value = "N";
+                    if (dispoGrid.Rows[i].Cells["Kaufteil"].Style.BackColor != Color.Red)
+                        dispoGrid.Rows[i].Cells["Kaufteil"].Style.BackColor = Color.Yellow;
+                    if (j < 4) dispoGrid[12 + j, i].Style.BackColor = Color.Red;
+
+                   
+                }
+                else if (j < 4) dispoGrid[12 + j, i].Style.BackColor = Color.Green;
+
+    */
+                rs2.Open("SELECT * FROM myOrderlist WHERE period = '" + aktuellePeriode + "';", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                if (!rs2.EOF)
+                {
+                    bool gefunden = false;
+                    while (!rs2.EOF)
+                    {
+                        if (dispoGrid.Rows[i].Cells["Kaufteil"].Value.Equals(Convert.ToInt32(rs2.Fields["article"].Value)))
+                        {
+                            string mymodus = "";
+                            if (Convert.ToInt32(rs2.Fields["modus"].Value) == 5) mymodus = "N";
+                            if (Convert.ToInt32(rs2.Fields["modus"].Value) == 4) mymodus = "E";
+                            dispoGrid.Rows[i].Cells["Bestellart"].Value = mymodus;
+                            dispoGrid.Rows[i].Cells["Menge"].Value = rs2.Fields["quantity"].Value;
+                            gefunden = true;
+                        }
+                        rs2.MoveNext();
+                    }
+                    if (!gefunden)
+                    {
+                        dispoGrid.Rows[i].Cells["Bestellart"].Value = "";
+                        dispoGrid.Rows[i].Cells["Menge"].Value = "";
+                    }
+                }
+                rs2.Close();
+
+
+                rs.MoveNext();
+                ++i;
+            }
+
+            rs.Close();
+            rsLieferungen.Close();
+            cn.Close();
+        }
+
+        private void weiterButton4_Click(object sender, EventArgs e)
+        {/*
+            if (myperiod == myperiodsave)
+            {
+                for (int j = 0; j < my_Datagrid_Kaufteile.RowCount; ++j)
+                {
+                    if (my_Datagrid_Kaufteile["Bestellart", j].Value != null)
+                    {
+                        if (my_Datagrid_Kaufteile["Menge", j].Value == null)
+                        {
+                            MessageBox.Show("Bitte für jede Bestellung eine Menge angeben!");
+                            return;
+                        }
+                    }
+                }
+
+
+
+                //Recordset
+                ADODB.Connection cn = new ADODB.Connection();
+                ADODB.Recordset rs = new ADODB.Recordset();
+                ADODB.Recordset rsLieferungen = new ADODB.Recordset();
+                string cnStr;
+
+                //Connection string.
+                cnStr = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source= PPS-Datenbank_2.mdb";
+                cn.Open(cnStr);
+
+                rs.Open("DELETE * FROM myOrderlist WHERE period = '" + myperiodsave + "';", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+
+                rs.Open("SELECT Max([period]) AS maxPeriod FROM myOrderlist;", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                if (Convert.ToInt32(rs.Fields["maxPeriod"].Value) == myperiod) { MessageBox.Show("Diese Periode ist bereits geplant!"); }
+                else
+                {
+                    rs.Close();
+                    rs.Open("SELECT * FROM myOrderlist;", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                    for (int i = 0; i < my_Datagrid_Kaufteile.RowCount; ++i)
+                    {
+                        if (my_Datagrid_Kaufteile["Bestellart", i].Value != null)
+                        {
+                            if (my_Datagrid_Kaufteile["Bestellart", i].Value.Equals("N"))
+                            {
+                                rs.AddNew();
+                                rs.Fields["period"].Value = myperiod;
+                                rs.Fields["article"].Value = my_Datagrid_Kaufteile["Kaufteil", i].Value;
+                                rs.Fields["quantity"].Value = my_Datagrid_Kaufteile["Menge", i].Value;
+                                rs.Fields["modus"].Value = "5";
+                            }
+
+                            else if (my_Datagrid_Kaufteile["Bestellart", i].Value.Equals("E"))
+                            {
+                                rs.AddNew();
+                                rs.Fields["period"].Value = myperiod;
+                                rs.Fields["article"].Value = my_Datagrid_Kaufteile["Kaufteil", i].Value;
+                                rs.Fields["quantity"].Value = my_Datagrid_Kaufteile["Menge", i].Value;
+                                rs.Fields["modus"].Value = "4";
+                            }
+                        }
+                    }
+                    rs.Update();
+                }
+                rs.Close();
+                cn.Close();
+
+
+            }
+            else MessageBox.Show("Es kann nur die aktuelle Periode geplant werden!");
+
+            if (prod == null)
+            {
+                prod = new Produktionsprogramm();
+                prod.MdiParent = Form1.ActiveForm;
+                prod.FormClosed += prod_FormClosed;
+                prod.Show();
+                this.Close();
+            }
+            else
+                prod.Activate();
+        */
         }
     }
 }

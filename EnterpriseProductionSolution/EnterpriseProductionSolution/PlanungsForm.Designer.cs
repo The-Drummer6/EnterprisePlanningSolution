@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Periodenplanung));
-            this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
+            this.weiterButtonDispo = new MetroFramework.Controls.MetroTabControl();
             this.Prognose = new System.Windows.Forms.TabPage();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
@@ -184,7 +184,8 @@
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.periodenLabelKapa = new MetroFramework.Controls.MetroLabel();
-            this.metroTabControl1.SuspendLayout();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.weiterButtonDispo.SuspendLayout();
             this.Prognose.SuspendLayout();
             this.metroPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -209,20 +210,20 @@
             this.metroPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // metroTabControl1
+            // weiterButtonDispo
             // 
-            this.metroTabControl1.Controls.Add(this.Prognose);
-            this.metroTabControl1.Controls.Add(this.direktbezug);
-            this.metroTabControl1.Controls.Add(this.Bedarfsplanung);
-            this.metroTabControl1.Controls.Add(this.Kaufteildisposition);
-            this.metroTabControl1.Controls.Add(this.Produktionsplanung);
-            this.metroTabControl1.Controls.Add(this.Kapazitätsplaung);
-            this.metroTabControl1.Location = new System.Drawing.Point(23, 63);
-            this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 5;
-            this.metroTabControl1.Size = new System.Drawing.Size(1092, 627);
-            this.metroTabControl1.TabIndex = 0;
-            this.metroTabControl1.UseSelectable = true;
+            this.weiterButtonDispo.Controls.Add(this.Prognose);
+            this.weiterButtonDispo.Controls.Add(this.direktbezug);
+            this.weiterButtonDispo.Controls.Add(this.Bedarfsplanung);
+            this.weiterButtonDispo.Controls.Add(this.Kaufteildisposition);
+            this.weiterButtonDispo.Controls.Add(this.Produktionsplanung);
+            this.weiterButtonDispo.Controls.Add(this.Kapazitätsplaung);
+            this.weiterButtonDispo.Location = new System.Drawing.Point(23, 63);
+            this.weiterButtonDispo.Name = "weiterButtonDispo";
+            this.weiterButtonDispo.SelectedIndex = 3;
+            this.weiterButtonDispo.Size = new System.Drawing.Size(1092, 627);
+            this.weiterButtonDispo.TabIndex = 0;
+            this.weiterButtonDispo.UseSelectable = true;
             // 
             // Prognose
             // 
@@ -2939,6 +2940,7 @@
             // 
             // metroPanel4
             // 
+            this.metroPanel4.Controls.Add(this.metroButton1);
             this.metroPanel4.Controls.Add(this.metroLabel5);
             this.metroPanel4.Controls.Add(this.periodenLabelDispo);
             this.metroPanel4.HorizontalScrollbarBarColor = true;
@@ -3073,6 +3075,15 @@
             this.periodenLabelKapa.TabIndex = 7;
             this.periodenLabelKapa.Text = "metroLabel9";
             // 
+            // metroButton1
+            // 
+            this.metroButton1.Location = new System.Drawing.Point(912, 24);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(75, 23);
+            this.metroButton1.TabIndex = 7;
+            this.metroButton1.Text = "Weiter";
+            this.metroButton1.UseSelectable = true;
+            // 
             // Periodenplanung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3080,11 +3091,11 @@
             this.ClientSize = new System.Drawing.Size(1119, 697);
             this.Controls.Add(this.rollbackButton);
             this.Controls.Add(this.metroLink1);
-            this.Controls.Add(this.metroTabControl1);
+            this.Controls.Add(this.weiterButtonDispo);
             this.Name = "Periodenplanung";
             this.Style = MetroFramework.MetroColorStyle.Silver;
             this.Text = "Periodenplanung";
-            this.metroTabControl1.ResumeLayout(false);
+            this.weiterButtonDispo.ResumeLayout(false);
             this.Prognose.ResumeLayout(false);
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
@@ -3120,7 +3131,7 @@
 
         #endregion
 
-        private MetroFramework.Controls.MetroTabControl metroTabControl1;
+        private MetroFramework.Controls.MetroTabControl weiterButtonDispo;
         private System.Windows.Forms.TabPage Prognose;
         private System.Windows.Forms.TabPage Bedarfsplanung;
         private System.Windows.Forms.TabPage Kaufteildisposition;
@@ -3275,5 +3286,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel7;
         private MetroFramework.Controls.MetroLabel periodenLabelKapa;
         private MetroFramework.Controls.MetroLabel metroLabel8;
+        private MetroFramework.Controls.MetroButton metroButton1;
     }
 }

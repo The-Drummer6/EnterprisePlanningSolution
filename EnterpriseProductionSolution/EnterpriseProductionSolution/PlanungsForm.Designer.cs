@@ -3059,6 +3059,7 @@
             this.Controls.Add(this.metroLink1);
             this.Controls.Add(this.metroTabControl1);
             this.Name = "Periodenplanung";
+            this.Style = MetroFramework.MetroColorStyle.Silver;
             this.Text = "Periodenplanung";
             this.metroTabControl1.ResumeLayout(false);
             this.Prognose.ResumeLayout(false);

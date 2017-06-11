@@ -985,7 +985,7 @@ namespace EnterprisePlanningSolution
 
 
             rs.Open("Select * From abf_Summe_Kaufteile_Gesamt WHERE planperiod =" + (aktuellePeriode), cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rsLieferungen.Open("Select * From abf_Lieferzeitpunkt_bestellte_ware_Kreuztabelle WHERE period ='" + (aktuellePeriode - 1) + "'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+            rsLieferungen.Open("Select * From abf_Lieferzeitpunkt_bestellte_ware_Kreuztabelle WHERE period ='" + (aktuellePeriode) + "'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
 
             int i = 0;
 
@@ -1000,19 +1000,19 @@ namespace EnterprisePlanningSolution
             //dispoGrid.Columns["KommendeBestellung_n1"].HeaderText = "KB_" + (aktuellePeriode + 1);
             //dispoGrid.Columns["KommendeBestellung_n2"].HeaderText = "KB_" + (aktuellePeriode + 2);
             //dispoGrid.Columns["KommendeBestellung_n3"].HeaderText = "KB_" + (aktuellePeriode + 3);
-            int anfangsBestand = 0;
-            int bestand1 = 0;
-            int bestand2 = 0;
-            int bestand3 = 0;
-            int bestand4 = 0;
-            int bedarf1 = 0;
-            int bedarf2 = 0;
-            int bedarf3 = 0;
-            int bedarf4 = 0;
-            int lieferung1 = 0;
-            int lieferung2 = 0;
-            int lieferung3 = 0;
-            int lieferung4 = 0;
+            double anfangsBestand = 0;
+            double bestand1 = 0;
+            double bestand2 = 0;
+            double bestand3 = 0;
+            double bestand4 = 0;
+            double bedarf1 = 0;
+            double bedarf2 = 0;
+            double bedarf3 = 0;
+            double bedarf4 = 0;
+            double lieferung1 = 0;
+            double lieferung2 = 0;
+            double lieferung3 = 0;
+            double lieferung4 = 0;
 
             while (!rs.EOF)
             {
@@ -1025,7 +1025,7 @@ namespace EnterprisePlanningSolution
                 dispoGrid.Rows[i].Cells["Abweichung"].Value = rs.Fields["Lieferzeitabweichung"].Value;
                 dispoGrid.Rows[i].Cells["Diskontmenge"].Value = rs.Fields["Diskontmenge"].Value;
                 dispoGrid.Rows[i].Cells["Anfangsbestand_n"].Value = rs.Fields["amount"].Value;
-                anfangsBestand = rs.Fields["amount"].Value;
+                anfangsBestand =Convert.ToInt32(rs.Fields["amount"].Value);
                 dispoGrid.Rows[i].Cells["Preis"].Value = rs.Fields["price"].Value;
                 //dispoGrid.Rows[i].Cells["Bruttobedarf_n"].Value 
                 bedarf1 = rs.Fields["AktuellePeriode"].Value;
@@ -1036,9 +1036,9 @@ namespace EnterprisePlanningSolution
                 //dispoGrid.Rows[i].Cells["Bruttobedarf_n3"].Value 
                 bedarf4 = rs.Fields[Convert.ToString(aktuellePeriode - 1 + 3)].Value;
                 dispoGrid.Rows[i].Cells["Bestellkosten"].Value = rs.Fields["Lieferkosten"].Value;
-                //long myBruttebedarf_summe = Convert.ToInt32(dispoGrid.Rows[i].Cells["Bruttobedarf_n"].Value) + Convert.ToInt32(dispoGrid.Rows[i].Cells["Bruttobedarf_n1"].Value)
-                  //  + Convert.ToInt32(dispoGrid.Rows[i].Cells["Bruttobedarf_n2"].Value) + Convert.ToInt32(dispoGrid.Rows[i].Cells["Bruttobedarf_n3"].Value);
-                //long myJahresbaedarf = (myBruttebedarf_summe / 4) * 52;
+                /*long myBruttebedarf_summe = Convert.ToInt32(dispoGrid.Rows[i].Cells["Bruttobedarf_n"].Value) + Convert.ToInt32(dispoGrid.Rows[i].Cells["Bruttobedarf_n1"].Value)
+                    + Convert.ToInt32(dispoGrid.Rows[i].Cells["Bruttobedarf_n2"].Value) + Convert.ToInt32(dispoGrid.Rows[i].Cells["Bruttobedarf_n3"].Value);
+                long myJahresbaedarf = (myBruttebedarf_summe / 4) * 52;*/
                 
                 //Bestellvorschlag
                 //dispoGrid.Rows[i].Cells["Bestellmenge"].Value = Math.Round(Math.Sqrt((200 * myJahresbaedarf * Convert.ToInt32(dispoGrid.Rows[i].Cells["Bestellkosten"].Value)) / (Convert.ToInt32(textBox1.Text) * Convert.ToDouble(dispoGrid.Rows[i].Cells["Preis"].Value))));
@@ -1052,30 +1052,42 @@ namespace EnterprisePlanningSolution
                 double myPufferbedarf = 0;
 
                 // Artikel in Der Tabelle Lieferzeitpunkt bestellte ware suchen
-                rsLieferungen.MoveFirst();
-                while (!rsLieferungen.EOF)
-                {
-                    if (rsLieferungen.Fields["article"].Value.Equals(Convert.ToInt32(rs.Fields["Artikel"].Value)))
-                    { break; }
-                    rsLieferungen.MoveNext();
-                }
 
-                if (!rsLieferungen.EOF)
+                if (aktuellePeriode != 1  )
                 {
-                    try { //dispoGrid.Rows[i].Cells["KommendeBestellung_n"].Value 
-                        lieferung1 = rsLieferungen.Fields[aktuellePeriode - 1 + 0].Value; }
-                    catch (System.Runtime.InteropServices.COMException) { }
-                    try { //dispoGrid.Rows[i].Cells["KommendeBestellung_n1"].Value 
-                        lieferung2 = rsLieferungen.Fields[aktuellePeriode - 1 + 1].Value; }
-                    catch (System.Runtime.InteropServices.COMException) { }
-                    try { //dispoGrid.Rows[i].Cells["KommendeBestellung_n2"].Value 
-                        lieferung3 = rsLieferungen.Fields[aktuellePeriode - 1 + 2].Value; }
-                    catch (System.Runtime.InteropServices.COMException) { }
-                    try { //dispoGrid.Rows[i].Cells["KommendeBestellung_n3"].Value 
-                        lieferung4 = rsLieferungen.Fields[Convert.ToString(aktuellePeriode - 1 + 3)].Value; }
-                    catch (System.Runtime.InteropServices.COMException) { }
-                }
+                    rsLieferungen.MoveFirst();
+                    while (!rsLieferungen.EOF)
+                    {
+                        if (rsLieferungen.Fields["article"].Value.Equals(Convert.ToInt32(rs.Fields["Artikel"].Value)))
+                        { break; }
+                        rsLieferungen.MoveNext();
+                    }
 
+                    if (!rsLieferungen.EOF)
+                    {
+                        try
+                        { //dispoGrid.Rows[i].Cells["KommendeBestellung_n"].Value 
+                            lieferung1 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode - 1 + 0].Value);
+                        }
+                        catch (System.Runtime.InteropServices.COMException) { }
+                        try
+                        { //dispoGrid.Rows[i].Cells["KommendeBestellung_n1"].Value 
+                            lieferung2 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode - 1 + 1].Value);
+                        }
+                        catch (System.Runtime.InteropServices.COMException) { }
+                        try
+                        { //dispoGrid.Rows[i].Cells["KommendeBestellung_n2"].Value 
+                            lieferung3 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode - 1 + 2].Value);
+                        }
+                        catch (System.Runtime.InteropServices.COMException) { }
+                        try
+                        { //dispoGrid.Rows[i].Cells["KommendeBestellung_n3"].Value 
+                            lieferung4 = Convert.ToInt32(rsLieferungen.Fields[Convert.ToString(aktuellePeriode - 1 + 3)].Value);
+                        }
+                        catch (System.Runtime.InteropServices.COMException) { }
+                    }
+                }
+               
                 /// <summary>
                 /// Bedarf wird mit Beständen und Lieferungen verrechnet
                 /// </summary>

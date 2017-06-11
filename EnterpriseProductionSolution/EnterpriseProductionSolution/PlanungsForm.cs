@@ -113,6 +113,7 @@ namespace EnterprisePlanningSolution
             this.tBPP3N2.ReadOnly = false;
             this.tBPP3N3.ReadOnly = false;
         }
+        //aktuelle Planperiode erhalten
         private int getNewPeriod()
         {
             //Recordset
@@ -133,6 +134,7 @@ namespace EnterprisePlanningSolution
             return Liste.Count + 1;
         }
 
+        //Neue Planperiode in DB erstellen
         private void addNewPeriod()
         {
 
@@ -246,7 +248,7 @@ namespace EnterprisePlanningSolution
             cn.Close();
 
         }
-
+        //Eingaben aus Prognose in DB schreiben
         private void weiterButton1_Click(object sender, EventArgs e)
         {
             if (tBPP1N0.Text == "" || tBPP1N1.Text == "" || tBPP1N2.Text == "" || tBPP1N3.Text == "" || tBPP2N0.Text == "" || tBPP2N1.Text == "" || tBPP2N2.Text == "" || tBPP2N3.Text == "" || tBPP3N0.Text == "" || tBPP3N1.Text == "" || tBPP3N2.Text == "" || tBPP3N3.Text == "" || tBGP1N0.Text == "" || tBGP1N1.Text == "" || tBGP1N2.Text == "" || tBGP1N3.Text == "" || tBGP2N0.Text == "" || tBGP2N1.Text == "" || tBGP2N2.Text == "" || tBGP2N3.Text == "" || tBGP3N0.Text == "" || tBGP3N1.Text == "" || tBGP3N2.Text == "" || tBGP3N3.Text == "")
@@ -398,6 +400,7 @@ namespace EnterprisePlanningSolution
 
         }
 
+        //Eingaben aus Direktbezug Tab in DB schreiben
         private void mweiterButton2_Click(object sender, EventArgs e)
         {
             if (tBP1.Text == "" || tBP1P.Text == "" || tBP1S.Text == "" || tBP2.Text == "" || tBP2P.Text == "" || tBP2S.Text == "" || tBP3.Text == "" || tBP3P.Text == "" || tBP3S.Text == "")
@@ -470,7 +473,7 @@ namespace EnterprisePlanningSolution
         }
 
 
-
+        //Eingaben aus Bedarfsplanung Tab in DB schreiben
         private void weiterButton3_Click_1(object sender, EventArgs e)
         {
             //Recordset
@@ -619,6 +622,7 @@ namespace EnterprisePlanningSolution
             }
             return TBListe;
         }
+        //Inhalt der Textboxen aktualisieren
         private void anyTextboxChanged(object sender, EventArgs e)
         {
             refillTextboxes();
@@ -917,6 +921,7 @@ namespace EnterprisePlanningSolution
             }
         }
 
+        //Rollback Button für Abbruch der Planung
         private void rollbackButton_Click(object sender, EventArgs e)
         {
             ADODB.Connection cn = new ADODB.Connection();

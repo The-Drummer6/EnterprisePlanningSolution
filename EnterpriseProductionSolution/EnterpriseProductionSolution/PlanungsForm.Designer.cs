@@ -172,10 +172,10 @@
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.Kaufteildisposition = new System.Windows.Forms.TabPage();
             this.metroPanel4 = new MetroFramework.Controls.MetroPanel();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.periodenLabelDispo = new MetroFramework.Controls.MetroLabel();
             this.Produktionsplanung = new System.Windows.Forms.TabPage();
             this.metroPanel5 = new MetroFramework.Controls.MetroPanel();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.periodenLabelProduktion = new MetroFramework.Controls.MetroLabel();
             this.Kapazitätsplaung = new System.Windows.Forms.TabPage();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.metroLink1 = new MetroFramework.Controls.MetroLink();
@@ -183,7 +183,7 @@
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
+            this.periodenLabelKapa = new MetroFramework.Controls.MetroLabel();
             this.metroTabControl1.SuspendLayout();
             this.Prognose.SuspendLayout();
             this.metroPanel1.SuspendLayout();
@@ -2940,7 +2940,7 @@
             // metroPanel4
             // 
             this.metroPanel4.Controls.Add(this.metroLabel5);
-            this.metroPanel4.Controls.Add(this.metroLabel1);
+            this.metroPanel4.Controls.Add(this.periodenLabelDispo);
             this.metroPanel4.HorizontalScrollbarBarColor = true;
             this.metroPanel4.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel4.HorizontalScrollbarSize = 10;
@@ -2952,14 +2952,14 @@
             this.metroPanel4.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel4.VerticalScrollbarSize = 10;
             // 
-            // metroLabel1
+            // periodenLabelDispo
             // 
-            this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel1.Location = new System.Drawing.Point(94, 18);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(129, 29);
-            this.metroLabel1.TabIndex = 2;
-            this.metroLabel1.Text = "metroLabel1";
+            this.periodenLabelDispo.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.periodenLabelDispo.Location = new System.Drawing.Point(94, 18);
+            this.periodenLabelDispo.Name = "periodenLabelDispo";
+            this.periodenLabelDispo.Size = new System.Drawing.Size(129, 29);
+            this.periodenLabelDispo.TabIndex = 2;
+            this.periodenLabelDispo.Text = "metroLabel1";
             // 
             // Produktionsplanung
             // 
@@ -2973,7 +2973,7 @@
             // metroPanel5
             // 
             this.metroPanel5.Controls.Add(this.metroLabel7);
-            this.metroPanel5.Controls.Add(this.metroLabel2);
+            this.metroPanel5.Controls.Add(this.periodenLabelProduktion);
             this.metroPanel5.HorizontalScrollbarBarColor = true;
             this.metroPanel5.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel5.HorizontalScrollbarSize = 10;
@@ -2985,14 +2985,14 @@
             this.metroPanel5.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel5.VerticalScrollbarSize = 10;
             // 
-            // metroLabel2
+            // periodenLabelProduktion
             // 
-            this.metroLabel2.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel2.Location = new System.Drawing.Point(94, 18);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(129, 29);
-            this.metroLabel2.TabIndex = 2;
-            this.metroLabel2.Text = "metroLabel1";
+            this.periodenLabelProduktion.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.periodenLabelProduktion.Location = new System.Drawing.Point(94, 18);
+            this.periodenLabelProduktion.Name = "periodenLabelProduktion";
+            this.periodenLabelProduktion.Size = new System.Drawing.Size(129, 29);
+            this.periodenLabelProduktion.TabIndex = 2;
+            this.periodenLabelProduktion.Text = "metroLabel1";
             // 
             // Kapazitätsplaung
             // 
@@ -3005,7 +3005,7 @@
             // 
             // metroPanel2
             // 
-            this.metroPanel2.Controls.Add(this.metroLabel9);
+            this.metroPanel2.Controls.Add(this.periodenLabelKapa);
             this.metroPanel2.Controls.Add(this.metroLabel8);
             this.metroPanel2.HorizontalScrollbarBarColor = true;
             this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
@@ -3064,14 +3064,14 @@
             this.metroLabel8.TabIndex = 6;
             this.metroLabel8.Text = "Periode";
             // 
-            // metroLabel9
+            // periodenLabelKapa
             // 
-            this.metroLabel9.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel9.Location = new System.Drawing.Point(94, 18);
-            this.metroLabel9.Name = "metroLabel9";
-            this.metroLabel9.Size = new System.Drawing.Size(129, 29);
-            this.metroLabel9.TabIndex = 7;
-            this.metroLabel9.Text = "metroLabel9";
+            this.periodenLabelKapa.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.periodenLabelKapa.Location = new System.Drawing.Point(94, 18);
+            this.periodenLabelKapa.Name = "periodenLabelKapa";
+            this.periodenLabelKapa.Size = new System.Drawing.Size(129, 29);
+            this.periodenLabelKapa.TabIndex = 7;
+            this.periodenLabelKapa.Text = "metroLabel9";
             // 
             // Periodenplanung
             // 
@@ -3131,9 +3131,9 @@
         private MetroFramework.Controls.MetroLabel periodenLabel1;
         private MetroFramework.Controls.MetroPanel metroPanel2;
         private MetroFramework.Controls.MetroPanel metroPanel4;
-        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroLabel periodenLabelDispo;
         private MetroFramework.Controls.MetroPanel metroPanel5;
-        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroLabel periodenLabelProduktion;
         private System.Windows.Forms.TabPage direktbezug;
         private System.Windows.Forms.GroupBox groupBox2;
         private MetroFramework.Controls.MetroLabel label2;
@@ -3273,7 +3273,7 @@
         private MetroFramework.Controls.MetroLink rollbackButton;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroLabel metroLabel7;
-        private MetroFramework.Controls.MetroLabel metroLabel9;
+        private MetroFramework.Controls.MetroLabel periodenLabelKapa;
         private MetroFramework.Controls.MetroLabel metroLabel8;
     }
 }

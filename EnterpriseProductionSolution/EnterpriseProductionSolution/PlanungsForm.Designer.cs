@@ -181,6 +181,7 @@
             this.saveLink2 = new MetroFramework.Controls.MetroLink();
             this.metroLink1 = new MetroFramework.Controls.MetroLink();
             this.rollbackButton = new MetroFramework.Controls.MetroLink();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroTabControl1.SuspendLayout();
             this.Prognose.SuspendLayout();
             this.metroPanel1.SuspendLayout();
@@ -216,7 +217,7 @@
             this.metroTabControl1.Controls.Add(this.Kapazitätsplaung);
             this.metroTabControl1.Location = new System.Drawing.Point(23, 63);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 4;
             this.metroTabControl1.Size = new System.Drawing.Size(1092, 627);
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.UseSelectable = true;
@@ -252,7 +253,7 @@
             // 
             this.metroLabel3.AutoSize = true;
             this.metroLabel3.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel3.Location = new System.Drawing.Point(52, 34);
+            this.metroLabel3.Location = new System.Drawing.Point(23, 18);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(69, 25);
             this.metroLabel3.TabIndex = 53;
@@ -1535,7 +1536,7 @@
             // periodenLabel1
             // 
             this.periodenLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.periodenLabel1.Location = new System.Drawing.Point(123, 34);
+            this.periodenLabel1.Location = new System.Drawing.Point(94, 18);
             this.periodenLabel1.Name = "periodenLabel1";
             this.periodenLabel1.Size = new System.Drawing.Size(129, 29);
             this.periodenLabel1.TabIndex = 2;
@@ -2009,7 +2010,7 @@
             // periodenLabel2
             // 
             this.periodenLabel2.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.periodenLabel2.Location = new System.Drawing.Point(123, 34);
+            this.periodenLabel2.Location = new System.Drawing.Point(94, 18);
             this.periodenLabel2.Name = "periodenLabel2";
             this.periodenLabel2.Size = new System.Drawing.Size(129, 29);
             this.periodenLabel2.TabIndex = 3;
@@ -2018,7 +2019,7 @@
             // metroLabel4
             // 
             this.metroLabel4.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel4.Location = new System.Drawing.Point(52, 34);
+            this.metroLabel4.Location = new System.Drawing.Point(23, 18);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(69, 25);
             this.metroLabel4.TabIndex = 2;
@@ -2043,7 +2044,7 @@
             this.metroPanel3.HorizontalScrollbarBarColor = true;
             this.metroPanel3.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel3.HorizontalScrollbarSize = 10;
-            this.metroPanel3.Location = new System.Drawing.Point(26, 22);
+            this.metroPanel3.Location = new System.Drawing.Point(23, 17);
             this.metroPanel3.Name = "metroPanel3";
             this.metroPanel3.Size = new System.Drawing.Size(1032, 540);
             this.metroPanel3.TabIndex = 3;
@@ -2936,11 +2937,12 @@
             // 
             // metroPanel4
             // 
+            this.metroPanel4.Controls.Add(this.metroLabel5);
             this.metroPanel4.Controls.Add(this.metroLabel1);
             this.metroPanel4.HorizontalScrollbarBarColor = true;
             this.metroPanel4.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel4.HorizontalScrollbarSize = 10;
-            this.metroPanel4.Location = new System.Drawing.Point(26, 22);
+            this.metroPanel4.Location = new System.Drawing.Point(23, 17);
             this.metroPanel4.Name = "metroPanel4";
             this.metroPanel4.Size = new System.Drawing.Size(1032, 540);
             this.metroPanel4.TabIndex = 2;
@@ -2951,7 +2953,7 @@
             // metroLabel1
             // 
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel1.Location = new System.Drawing.Point(41, 28);
+            this.metroLabel1.Location = new System.Drawing.Point(94, 18);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(129, 29);
             this.metroLabel1.TabIndex = 2;
@@ -2972,7 +2974,7 @@
             this.metroPanel5.HorizontalScrollbarBarColor = true;
             this.metroPanel5.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel5.HorizontalScrollbarSize = 10;
-            this.metroPanel5.Location = new System.Drawing.Point(26, 22);
+            this.metroPanel5.Location = new System.Drawing.Point(23, 17);
             this.metroPanel5.Name = "metroPanel5";
             this.metroPanel5.Size = new System.Drawing.Size(1032, 540);
             this.metroPanel5.TabIndex = 2;
@@ -3038,6 +3040,15 @@
             this.rollbackButton.TabIndex = 2;
             this.rollbackButton.UseSelectable = true;
             this.rollbackButton.Click += new System.EventHandler(this.rollbackButton_Click);
+            // 
+            // metroLabel5
+            // 
+            this.metroLabel5.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel5.Location = new System.Drawing.Point(23, 18);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(69, 25);
+            this.metroLabel5.TabIndex = 5;
+            this.metroLabel5.Text = "Periode";
             // 
             // Periodenplanung
             // 
@@ -3237,5 +3248,6 @@
         private System.Windows.Forms.Label label54;
         private System.Windows.Forms.Label label47;
         private MetroFramework.Controls.MetroLink rollbackButton;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
     }
 }

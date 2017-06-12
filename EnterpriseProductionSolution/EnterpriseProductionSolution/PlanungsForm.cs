@@ -1029,6 +1029,11 @@ namespace EnterprisePlanningSolution
 
                 if(clear)
                     dispoGrid.Rows.Add();
+                if(initial)
+                {
+                    dispoGrid.Rows[i].Cells["Menge"].Value = 0;
+                    dispoGrid.Rows[i].Cells["Bestellart"].Value = "N";
+                }
 
                 dispoGrid.Rows[i].Cells["Periode"].Value = Convert.ToInt32(rs.Fields["planPeriod"].Value);
                 dispoGrid.Rows[i].Cells["Kaufteil"].Value = rs.Fields["Artikel"].Value;
@@ -1081,28 +1086,28 @@ namespace EnterprisePlanningSolution
                         int aktuellePeriode3 = aktuellePeriode + 3;
                         try
                         { //dispoGrid.Rows[i].Cells["KommendeBestellung_n"].Value 
-                            if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode]))
+                           // if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode]))
                                 lieferung1 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode].Value);
                         }
-                        catch (System.Runtime.InteropServices.COMException ) { }
+                        catch (Exception ) { }
                         try
                         { //dispoGrid.Rows[i].Cells["KommendeBestellung_n1"].Value 
-                            if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode1]))
+                          // if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode1]))
                                 lieferung2 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode1].Value);
                         }
-                        catch (System.Runtime.InteropServices.COMException ) {  }
+                        catch (Exception ) {  }
                         try
                         { //dispoGrid.Rows[i].Cells["KommendeBestellung_n2"].Value 
-                            if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode2]))
+                          //if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode2]))
                                 lieferung3 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode2].Value);
                         }
-                        catch (System.Runtime.InteropServices.COMException) { }
+                        catch (Exception) { }
                         try
                         { //dispoGrid.Rows[i].Cells["KommendeBestellung_n3"].Value 
-                            if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode3]))
+                           // if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode3]))
                                 lieferung4 = Convert.ToInt32(rsLieferungen.Fields[Convert.ToString(aktuellePeriode3)].Value);
                         }
-                        catch (System.Runtime.InteropServices.COMException) { }
+                        catch (Exception) { }
                     }
                 }
 
@@ -1273,7 +1278,7 @@ namespace EnterprisePlanningSolution
             //Recordset
             ADODB.Connection cn = new ADODB.Connection();
             ADODB.Recordset rs = new ADODB.Recordset();
-            ADODB.Recordset rsLieferungen = new ADODB.Recordset();
+
 
             cn.Open(cnStr);
 
@@ -1317,40 +1322,44 @@ namespace EnterprisePlanningSolution
 
         }
 
-        private void dispoGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dispoGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+           
+            //if (Convert.ToString(dispoGrid["Bestellart", e.RowIndex].Value) == "N" || Convert.ToString(dispoGrid["Bestellart", e.RowIndex].Value) == "E")
+            //{
 
-            //Recordset
-            ADODB.Connection cn = new ADODB.Connection();
-            ADODB.Recordset rs = new ADODB.Recordset();
+                //Recordset
+                ADODB.Connection cn = new ADODB.Connection();
+                ADODB.Recordset rs = new ADODB.Recordset();
 
 
-            cn.Open(cnStr);
-            rs.Open("DELETE * FROM futureinwardstockmovement WHERE period = '" + aktuellePeriode + "';", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs.Open("SELECT * FROM futureinwardstockmovement;", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            for (int i = 0; i < dispoGrid.RowCount; ++i)
-            {
-                if (Convert.ToString(dispoGrid["Bestellart", i].Value) != "")
+                cn.Open(cnStr);
+                rs.Open("DELETE * FROM futureinwardstockmovement WHERE period = '" + aktuellePeriode + "';", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs.Open("SELECT * FROM futureinwardstockmovement;", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                for (int i = 0; i < dispoGrid.RowCount; ++i)
                 {
-                    rs.AddNew();
-                    rs.Fields["id"].Value = Convert.ToString(i);
-                    rs.Fields["period"].Value = aktuellePeriode;
-                    rs.Fields["orderperiod"].Value = aktuellePeriode;
-                    rs.Fields["article"].Value = dispoGrid["Kaufteil", i].Value;
-                    rs.Fields["amount"].Value = dispoGrid["Menge", i].Value;
-                    rs.Fields["mode"].Value = dispoGrid["Bestellart", i].Value; ;
-                }
-                
+                    if (Convert.ToString(dispoGrid["Bestellart", i].Value) != "")
+                    {
+                        rs.AddNew();
+                        rs.Fields["id"].Value = Convert.ToString(i);
+                        rs.Fields["period"].Value = aktuellePeriode;
+                        rs.Fields["orderperiod"].Value = aktuellePeriode;
+                        rs.Fields["article"].Value = dispoGrid["Kaufteil", i].Value;
+                        rs.Fields["amount"].Value = dispoGrid["Menge", i].Value;
+                        rs.Fields["mode"].Value = dispoGrid["Bestellart", i].Value; ;
+                    }
 
+
+
+                }
+                rs.Update();
+
+                rs.Close();
+                cn.Close();
+                Datagrid_leeren_befüllen(false, false);
 
             }
-            rs.Update();
-
-            rs.Close();
-            cn.Close();
-            Datagrid_leeren_befüllen(false, false);
-
-        }
+        //}
     }
 
 

@@ -3045,8 +3045,7 @@
             this.dispoGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dispoGrid.Size = new System.Drawing.Size(992, 446);
             this.dispoGrid.TabIndex = 9;
-            this.dispoGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dispoGrid_CellContentClick);
-           
+            this.dispoGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dispoGrid_CellEndEdit);
             // 
             // Periode
             // 

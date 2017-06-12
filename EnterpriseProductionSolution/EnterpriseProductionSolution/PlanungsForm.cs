@@ -1081,25 +1081,25 @@ namespace EnterprisePlanningSolution
                         int aktuellePeriode3 = aktuellePeriode + 3;
                         try
                         { //dispoGrid.Rows[i].Cells["KommendeBestellung_n"].Value 
-                          //  if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode]))
+                            if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode]))
                                 lieferung1 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode].Value);
                         }
                         catch (System.Runtime.InteropServices.COMException ) { }
                         try
                         { //dispoGrid.Rows[i].Cells["KommendeBestellung_n1"].Value 
-                           // if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode1]))
+                            if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode1]))
                                 lieferung2 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode1].Value);
                         }
                         catch (System.Runtime.InteropServices.COMException ) {  }
                         try
                         { //dispoGrid.Rows[i].Cells["KommendeBestellung_n2"].Value 
-                           // if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode2]))
+                            if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode2]))
                                 lieferung3 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode2].Value);
                         }
                         catch (System.Runtime.InteropServices.COMException) { }
                         try
                         { //dispoGrid.Rows[i].Cells["KommendeBestellung_n3"].Value 
-                           // if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode3]))
+                            if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode3]))
                                 lieferung4 = Convert.ToInt32(rsLieferungen.Fields[Convert.ToString(aktuellePeriode3)].Value);
                         }
                         catch (System.Runtime.InteropServices.COMException) { }

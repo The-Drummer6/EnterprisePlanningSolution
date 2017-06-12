@@ -1188,14 +1188,13 @@ namespace EnterprisePlanningSolution
         }
 
         private void weiterButton4_Click(object sender, EventArgs e)
-        {/*
-            if (myperiod == myperiodsave)
-            {
-                for (int j = 0; j < my_Datagrid_Kaufteile.RowCount; ++j)
+        {
+            
+                for (int j = 0; j < dispoGrid.RowCount; ++j)
                 {
-                    if (my_Datagrid_Kaufteile["Bestellart", j].Value != null)
+                    if (dispoGrid["Bestellart", j].Value != null)
                     {
-                        if (my_Datagrid_Kaufteile["Menge", j].Value == null)
+                        if (dispoGrid["Menge", j].Value == null)
                         {
                             MessageBox.Show("Bitte für jede Bestellung eine Menge angeben!");
                             return;
@@ -1209,39 +1208,36 @@ namespace EnterprisePlanningSolution
                 ADODB.Connection cn = new ADODB.Connection();
                 ADODB.Recordset rs = new ADODB.Recordset();
                 ADODB.Recordset rsLieferungen = new ADODB.Recordset();
-                string cnStr;
-
-                //Connection string.
-                cnStr = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source= PPS-Datenbank_2.mdb";
+                
                 cn.Open(cnStr);
 
-                rs.Open("DELETE * FROM myOrderlist WHERE period = '" + myperiodsave + "';", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs.Open("DELETE * FROM myOrderlist WHERE period = '" + aktuellePeriode + "';", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
 
                 rs.Open("SELECT Max([period]) AS maxPeriod FROM myOrderlist;", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-                if (Convert.ToInt32(rs.Fields["maxPeriod"].Value) == myperiod) { MessageBox.Show("Diese Periode ist bereits geplant!"); }
+                if (Convert.ToInt32(rs.Fields["maxPeriod"].Value) == aktuellePeriode) { MessageBox.Show("Diese Periode ist bereits geplant!"); }
                 else
                 {
                     rs.Close();
                     rs.Open("SELECT * FROM myOrderlist;", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-                    for (int i = 0; i < my_Datagrid_Kaufteile.RowCount; ++i)
+                    for (int i = 0; i < dispoGrid.RowCount; ++i)
                     {
-                        if (my_Datagrid_Kaufteile["Bestellart", i].Value != null)
+                        if (dispoGrid["Bestellart", i].Value != null)
                         {
-                            if (my_Datagrid_Kaufteile["Bestellart", i].Value.Equals("N"))
+                            if (dispoGrid["Bestellart", i].Value.Equals("N"))
                             {
                                 rs.AddNew();
-                                rs.Fields["period"].Value = myperiod;
-                                rs.Fields["article"].Value = my_Datagrid_Kaufteile["Kaufteil", i].Value;
-                                rs.Fields["quantity"].Value = my_Datagrid_Kaufteile["Menge", i].Value;
+                                rs.Fields["period"].Value =aktuellePeriode;
+                                rs.Fields["article"].Value = dispoGrid["Kaufteil", i].Value;
+                                rs.Fields["quantity"].Value = dispoGrid["Menge", i].Value;
                                 rs.Fields["modus"].Value = "5";
                             }
 
-                            else if (my_Datagrid_Kaufteile["Bestellart", i].Value.Equals("E"))
+                            else if (dispoGrid["Bestellart", i].Value.Equals("E"))
                             {
                                 rs.AddNew();
-                                rs.Fields["period"].Value = myperiod;
-                                rs.Fields["article"].Value = my_Datagrid_Kaufteile["Kaufteil", i].Value;
-                                rs.Fields["quantity"].Value = my_Datagrid_Kaufteile["Menge", i].Value;
+                                rs.Fields["period"].Value = aktuellePeriode;
+                                rs.Fields["article"].Value = dispoGrid["Kaufteil", i].Value;
+                                rs.Fields["quantity"].Value = dispoGrid["Menge", i].Value;
                                 rs.Fields["modus"].Value = "4";
                             }
                         }
@@ -1250,22 +1246,9 @@ namespace EnterprisePlanningSolution
                 }
                 rs.Close();
                 cn.Close();
+            weiterButtonDispo.SelectedIndex = 4;
 
 
-            }
-            else MessageBox.Show("Es kann nur die aktuelle Periode geplant werden!");
-
-            if (prod == null)
-            {
-                prod = new Produktionsprogramm();
-                prod.MdiParent = Form1.ActiveForm;
-                prod.FormClosed += prod_FormClosed;
-                prod.Show();
-                this.Close();
-            }
-            else
-                prod.Activate();
-        */
         }
     }
 }

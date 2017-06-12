@@ -89,8 +89,8 @@ namespace EnterprisePlanningSolution
             aktuellePeriode = Convert.ToInt32(periodenLabel1.Text);
            // übersetzeStrings = Thread.CurrentThread.CurrentUICulture.Name == "de" ? deutsch : englisch;
             initializeTextboxes();
-            initalizeNumbers(aktuellePeriode);
-            fillTextboxes();
+           // initalizeNumbers(aktuellePeriode);
+            
 
             /// <summary>
             /// Initialisierung Kaufteildispo
@@ -488,7 +488,9 @@ namespace EnterprisePlanningSolution
                 rs3.Close();
                 cn.Close();
             }
-
+           
+            initalizeNumbers(aktuellePeriode);
+            fillTextboxes();
             weiterButtonDispo.SelectedIndex = 2;
         }
 
@@ -656,6 +658,12 @@ namespace EnterprisePlanningSolution
             fillOneTextboxList(P1TextBoxes, sellwishList[0, 0], P1LagerstandVP, P1LagerstandAP, P1Warteschlange, P1WarteschlangeArbeitsplatz, P1Bearbeitung, P1GeplanterBedarfVP, false);
             fillOneTextboxList(P2TextBoxes, sellwishList[0, 1], P2LagerstandVP, P2LagerstandAP, P2Warteschlange, P2WarteschlangeArbeitsplatz, P2Bearbeitung, P2GeplanterBedarfVP, false);
             fillOneTextboxList(P3TextBoxes, sellwishList[0, 2], P3LagerstandVP, P3LagerstandAP, P3Warteschlange, P3WarteschlangeArbeitsplatz, P3Bearbeitung, P3GeplanterBedarfVP, false);
+        }
+        private void fillTextboxes()
+        {
+            fillOneTextboxList(P1TextBoxes, sellwishList[0, 0], P1LagerstandVP, P1LagerstandAP, P1Warteschlange, P1WarteschlangeArbeitsplatz, P1Bearbeitung, P1GeplanterBedarfVP, true);
+            fillOneTextboxList(P2TextBoxes, sellwishList[0, 1], P2LagerstandVP, P2LagerstandAP, P2Warteschlange, P2WarteschlangeArbeitsplatz, P2Bearbeitung, P2GeplanterBedarfVP, true);
+            fillOneTextboxList(P3TextBoxes, sellwishList[0, 2], P3LagerstandVP, P3LagerstandAP, P3Warteschlange, P3WarteschlangeArbeitsplatz, P3Bearbeitung, P3GeplanterBedarfVP, true);
         }
         private void initalizeNumbers(int currentPeriod)
         {
@@ -849,12 +857,7 @@ namespace EnterprisePlanningSolution
                     p3Liste[stelle] += amount;
             }
         }
-        private void fillTextboxes()
-        {
-            fillOneTextboxList(P1TextBoxes, sellwishList[0, 0], P1LagerstandVP, P1LagerstandAP, P1Warteschlange, P1WarteschlangeArbeitsplatz, P1Bearbeitung, P1GeplanterBedarfVP, true);
-            fillOneTextboxList(P2TextBoxes, sellwishList[0, 1], P2LagerstandVP, P2LagerstandAP, P2Warteschlange, P2WarteschlangeArbeitsplatz, P2Bearbeitung, P2GeplanterBedarfVP, true);
-            fillOneTextboxList(P3TextBoxes, sellwishList[0, 2], P3LagerstandVP, P3LagerstandAP, P3Warteschlange, P3WarteschlangeArbeitsplatz, P3Bearbeitung, P3GeplanterBedarfVP, true);
-        }
+       
 
         private void fillOneTextboxList(TextBox[,] textBox, int firstValue, int?[] lagerList, int?[] lagerListAp, int?[] warteschlange, int?[] warteschlangeArbeitsplatz, int?[] bearbeitung, int?[] geplanterBedarf, bool firstCall)
         {

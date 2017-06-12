@@ -604,9 +604,9 @@ namespace EnterprisePlanningSolution
             cn.Close();
 
             if(aktuellePeriode == 1)
-            Datagrid_leeren_befüllen(true, false);
-            else
             Datagrid_leeren_befüllen(true, true);
+            else
+            Datagrid_leeren_befüllen(true, false);
 
             weiterButtonDispo.SelectedIndex = 3;
         }
@@ -981,6 +981,8 @@ namespace EnterprisePlanningSolution
         public void Datagrid_leeren_befüllen(bool clear, bool initial)
         {
             //######################## Datagridview
+            bool bestellungNotwendig = false;
+
             ADODB.Connection cn = new ADODB.Connection();
             ADODB.Recordset rs = new ADODB.Recordset();
             ADODB.Recordset rsLieferungen = new ADODB.Recordset();
@@ -992,7 +994,7 @@ namespace EnterprisePlanningSolution
 
 
             rs.Open("Select * From abf_Summe_Kaufteile_Gesamt WHERE planperiod =" + (aktuellePeriode), cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rsLieferungen.Open("Select * From abf_Lieferzeitpunkt_bestellte_ware_Kreuztabelle WHERE period ='" + (aktuellePeriode - 1) + "'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+            rsLieferungen.Open("Select * From abf_Lieferzeitpunkt_bestellte_ware_Kreuztabelle WHERE period ='" + (aktuellePeriode) + "'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
 
             int i = 0;
 
@@ -1025,8 +1027,9 @@ namespace EnterprisePlanningSolution
             while (!rs.EOF)
             {
 
+                if(clear)
+                    dispoGrid.Rows.Add();
 
-                dispoGrid.Rows.Add();
                 dispoGrid.Rows[i].Cells["Periode"].Value = Convert.ToInt32(rs.Fields["planPeriod"].Value);
                 dispoGrid.Rows[i].Cells["Kaufteil"].Value = rs.Fields["Artikel"].Value;
                 dispoGrid.Rows[i].Cells["Lieferfrist"].Value = rs.Fields["Lieferzeit"].Value;
@@ -1073,28 +1076,31 @@ namespace EnterprisePlanningSolution
 
                     if (!rsLieferungen.EOF)
                     {
+                        int aktuellePeriode1 = aktuellePeriode + 1;
+                        int aktuellePeriode2 = aktuellePeriode + 2;
+                        int aktuellePeriode3 = aktuellePeriode + 3;
                         try
                         { //dispoGrid.Rows[i].Cells["KommendeBestellung_n"].Value 
-                            if (rsLieferungen.Fields[aktuellePeriode + 0].Value != null)
-                                lieferung1 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode + 0].Value);
+                          //  if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode]))
+                                lieferung1 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode].Value);
                         }
-                        catch (System.Runtime.InteropServices.COMException) { }
+                        catch (System.Runtime.InteropServices.COMException ) { }
                         try
                         { //dispoGrid.Rows[i].Cells["KommendeBestellung_n1"].Value 
-                            if (rsLieferungen.Fields[aktuellePeriode + 1].Value != null)
-                                lieferung2 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode + 1].Value);
+                           // if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode1]))
+                                lieferung2 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode1].Value);
                         }
-                        catch (System.Runtime.InteropServices.COMException) { }
+                        catch (System.Runtime.InteropServices.COMException ) {  }
                         try
                         { //dispoGrid.Rows[i].Cells["KommendeBestellung_n2"].Value 
-                            if (rsLieferungen.Fields[aktuellePeriode + 2].Value != null)
-                                lieferung3 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode + 2].Value);
+                           // if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode2]))
+                                lieferung3 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode2].Value);
                         }
                         catch (System.Runtime.InteropServices.COMException) { }
                         try
                         { //dispoGrid.Rows[i].Cells["KommendeBestellung_n3"].Value 
-                            if (rsLieferungen.Fields[aktuellePeriode + 3].Value != null)
-                                lieferung4 = Convert.ToInt32(rsLieferungen.Fields[Convert.ToString(aktuellePeriode + 3)].Value);
+                           // if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode3]))
+                                lieferung4 = Convert.ToInt32(rsLieferungen.Fields[Convert.ToString(aktuellePeriode3)].Value);
                         }
                         catch (System.Runtime.InteropServices.COMException) { }
                     }
@@ -1113,6 +1119,11 @@ namespace EnterprisePlanningSolution
                 dispoGrid.Rows[i].Cells["Bestand_in_n2"].Value = bestand3;
                 dispoGrid.Rows[i].Cells["Bestand_in_n3"].Value = bestand4;
 
+               
+                lieferung1 = 0;
+                lieferung2 = 0;
+                lieferung3 = 0;
+                lieferung4 = 0;
                 //Überprüfen ob bestellt werden muss
                 /*
                 while (j < myGanzePerioden)

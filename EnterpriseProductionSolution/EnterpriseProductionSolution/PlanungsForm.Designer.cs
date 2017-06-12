@@ -2991,7 +2991,7 @@
             this.dispoGrid.AllowUserToResizeRows = false;
             this.dispoGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dispoGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dispoGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dispoGrid.BackgroundColor = System.Drawing.Color.White;
             this.dispoGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dispoGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dispoGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -3046,6 +3046,7 @@
             this.dispoGrid.Size = new System.Drawing.Size(992, 446);
             this.dispoGrid.TabIndex = 9;
             this.dispoGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dispoGrid_CellContentClick);
+           
             // 
             // Periode
             // 

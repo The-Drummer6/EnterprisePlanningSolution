@@ -1119,7 +1119,53 @@ namespace EnterprisePlanningSolution
                 dispoGrid.Rows[i].Cells["Bestand_in_n2"].Value = bestand3;
                 dispoGrid.Rows[i].Cells["Bestand_in_n3"].Value = bestand4;
 
-               
+                ADODB.Recordset rsBedarf = new ADODB.Recordset();
+                string artikelNummer = Convert.ToString(dispoGrid.Rows[i].Cells["Kaufteil"].Value);
+                int period;
+                int lieferperiode;
+                int lieferzeit;
+                rsBedarf.Open("Select period, Lieferperiode From abf_Lieferzeitpunkt_bestellte_ware WHERE article =" + artikelNummer, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                try
+                {
+                    if (rsBedarf.Fields["period"].Value == null)
+                        period = aktuellePeriode;
+                    else
+                        period =Convert.ToInt32(rsBedarf.Fields["period"].Value);
+                    if (rsBedarf.Fields["Lieferperiode"].Value == null)
+                        lieferperiode = aktuellePeriode;
+                    else
+                         lieferperiode = Convert.ToInt32(rsBedarf.Fields["Lieferperiode"].Value);
+
+                    lieferzeit = lieferperiode - period;
+                    if(lieferzeit == 0  && bestand1 < 0)
+                    {
+                        bestellungNotwendig = true;
+                    }
+                    if (lieferzeit == 1 && (bestand2 < 0 || bestand1  < 0))
+                    {
+                        bestellungNotwendig = true;
+                    }
+                    if (lieferzeit == 2 && (bestand2 < 0 || bestand1 < 0 || bestand3 < 0))
+                    {
+                        bestellungNotwendig = true;
+                    }
+                    if (lieferzeit == 3 && (bestand2 < 0 || bestand1 < 0 || bestand3 < 0 || bestand4 < 0))
+                    {
+                        bestellungNotwendig = true;
+                    }
+                }
+                catch (Exception) { }
+                if(bestellungNotwendig)
+                {
+                    dispoGrid.Rows[i].Cells["Menge"].Style.BackColor = Color.Red;
+                }
+                else
+                {
+                    dispoGrid.Rows[i].Cells["Menge"].Style.BackColor = Color.Silver;
+                }
+                bestellungNotwendig = false;
+                rsBedarf.Close();
+
                 lieferung1 = 0;
                 lieferung2 = 0;
                 lieferung3 = 0;

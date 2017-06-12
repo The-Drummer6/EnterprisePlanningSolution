@@ -177,18 +177,6 @@
             this.metroPanel4 = new MetroFramework.Controls.MetroPanel();
             this.weiterButton4 = new MetroFramework.Controls.MetroButton();
             this.dispoGrid = new MetroFramework.Controls.MetroGrid();
-            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.periodenLabelDispo = new MetroFramework.Controls.MetroLabel();
-            this.Produktionsplanung = new System.Windows.Forms.TabPage();
-            this.metroPanel5 = new MetroFramework.Controls.MetroPanel();
-            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            this.periodenLabelProduktion = new MetroFramework.Controls.MetroLabel();
-            this.Kapazitätsplanung = new System.Windows.Forms.TabPage();
-            this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
-            this.periodenLabelKapa = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
-            this.metroLink1 = new MetroFramework.Controls.MetroLink();
-            this.rollbackButton = new MetroFramework.Controls.MetroLink();
             this.Periode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Kaufteil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Preis = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -203,6 +191,18 @@
             this.Bestand_in_n1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bestand_in_n2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bestand_in_n3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.periodenLabelDispo = new MetroFramework.Controls.MetroLabel();
+            this.Produktionsplanung = new System.Windows.Forms.TabPage();
+            this.metroPanel5 = new MetroFramework.Controls.MetroPanel();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.periodenLabelProduktion = new MetroFramework.Controls.MetroLabel();
+            this.Kapazitätsplanung = new System.Windows.Forms.TabPage();
+            this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.periodenLabelKapa = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
+            this.metroLink1 = new MetroFramework.Controls.MetroLink();
+            this.rollbackButton = new MetroFramework.Controls.MetroLink();
             this.weiterButtonDispo.SuspendLayout();
             this.Prognose.SuspendLayout();
             this.metroPanel1.SuspendLayout();
@@ -3045,6 +3045,119 @@
             this.dispoGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dispoGrid.Size = new System.Drawing.Size(992, 446);
             this.dispoGrid.TabIndex = 9;
+            this.dispoGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dispoGrid_CellContentClick);
+            // 
+            // Periode
+            // 
+            this.Periode.HeaderText = "Periode";
+            this.Periode.Name = "Periode";
+            this.Periode.ReadOnly = true;
+            this.Periode.Width = 69;
+            // 
+            // Kaufteil
+            // 
+            this.Kaufteil.HeaderText = "Kaufteile Nr.";
+            this.Kaufteil.Name = "Kaufteil";
+            this.Kaufteil.ReadOnly = true;
+            this.Kaufteil.Width = 93;
+            // 
+            // Preis
+            // 
+            this.Preis.HeaderText = "Preis";
+            this.Preis.Name = "Preis";
+            this.Preis.ReadOnly = true;
+            this.Preis.Width = 54;
+            // 
+            // Bestellkosten
+            // 
+            this.Bestellkosten.HeaderText = "Bestellkosten";
+            this.Bestellkosten.Name = "Bestellkosten";
+            this.Bestellkosten.ReadOnly = true;
+            this.Bestellkosten.Width = 99;
+            // 
+            // Lieferfrist
+            // 
+            this.Lieferfrist.HeaderText = "Lieferfrist";
+            this.Lieferfrist.Name = "Lieferfrist";
+            this.Lieferfrist.ReadOnly = true;
+            this.Lieferfrist.Width = 78;
+            // 
+            // Abweichung
+            // 
+            this.Abweichung.HeaderText = "Abweichung";
+            this.Abweichung.Name = "Abweichung";
+            this.Abweichung.ReadOnly = true;
+            this.Abweichung.Width = 95;
+            // 
+            // Diskontmenge
+            // 
+            this.Diskontmenge.HeaderText = "Diskontmenge";
+            this.Diskontmenge.Name = "Diskontmenge";
+            this.Diskontmenge.ReadOnly = true;
+            this.Diskontmenge.Width = 105;
+            // 
+            // Bestellart
+            // 
+            this.Bestellart.HeaderText = "Bestellart";
+            this.Bestellart.Items.AddRange(new object[] {
+            "",
+            "N",
+            "E"});
+            this.Bestellart.Name = "Bestellart";
+            this.Bestellart.Width = 59;
+            // 
+            // Menge
+            // 
+            this.Menge.HeaderText = "Menge";
+            this.Menge.Name = "Menge";
+            this.Menge.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Menge.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Menge.Width = 47;
+            // 
+            // Anfangsbestand_n
+            // 
+            this.Anfangsbestand_n.HeaderText = "Anfangsbestand";
+            this.Anfangsbestand_n.Name = "Anfangsbestand_n";
+            this.Anfangsbestand_n.ReadOnly = true;
+            this.Anfangsbestand_n.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Anfangsbestand_n.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Anfangsbestand_n.Width = 96;
+            // 
+            // Bestand_in_n
+            // 
+            this.Bestand_in_n.HeaderText = "Bestand_in_n";
+            this.Bestand_in_n.Name = "Bestand_in_n";
+            this.Bestand_in_n.ReadOnly = true;
+            this.Bestand_in_n.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Bestand_in_n.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Bestand_in_n.Width = 80;
+            // 
+            // Bestand_in_n1
+            // 
+            this.Bestand_in_n1.HeaderText = "Bestand_in_n1";
+            this.Bestand_in_n1.Name = "Bestand_in_n1";
+            this.Bestand_in_n1.ReadOnly = true;
+            this.Bestand_in_n1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Bestand_in_n1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Bestand_in_n1.Width = 86;
+            // 
+            // Bestand_in_n2
+            // 
+            this.Bestand_in_n2.HeaderText = "Bestand_in_n2";
+            this.Bestand_in_n2.Name = "Bestand_in_n2";
+            this.Bestand_in_n2.ReadOnly = true;
+            this.Bestand_in_n2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Bestand_in_n2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Bestand_in_n2.Width = 86;
+            // 
+            // Bestand_in_n3
+            // 
+            this.Bestand_in_n3.HeaderText = "Bestand_in_n3";
+            this.Bestand_in_n3.Name = "Bestand_in_n3";
+            this.Bestand_in_n3.ReadOnly = true;
+            this.Bestand_in_n3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Bestand_in_n3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Bestand_in_n3.Width = 86;
             // 
             // metroLabel5
             // 
@@ -3166,118 +3279,6 @@
             this.rollbackButton.TabIndex = 2;
             this.rollbackButton.UseSelectable = true;
             this.rollbackButton.Click += new System.EventHandler(this.rollbackButton_Click);
-            // 
-            // Periode
-            // 
-            this.Periode.HeaderText = "Periode";
-            this.Periode.Name = "Periode";
-            this.Periode.ReadOnly = true;
-            this.Periode.Width = 69;
-            // 
-            // Kaufteil
-            // 
-            this.Kaufteil.HeaderText = "Kaufteile Nr.";
-            this.Kaufteil.Name = "Kaufteil";
-            this.Kaufteil.ReadOnly = true;
-            this.Kaufteil.Width = 93;
-            // 
-            // Preis
-            // 
-            this.Preis.HeaderText = "Preis";
-            this.Preis.Name = "Preis";
-            this.Preis.ReadOnly = true;
-            this.Preis.Width = 54;
-            // 
-            // Bestellkosten
-            // 
-            this.Bestellkosten.HeaderText = "Bestellkosten";
-            this.Bestellkosten.Name = "Bestellkosten";
-            this.Bestellkosten.ReadOnly = true;
-            this.Bestellkosten.Width = 99;
-            // 
-            // Lieferfrist
-            // 
-            this.Lieferfrist.HeaderText = "Lieferfrist";
-            this.Lieferfrist.Name = "Lieferfrist";
-            this.Lieferfrist.ReadOnly = true;
-            this.Lieferfrist.Width = 78;
-            // 
-            // Abweichung
-            // 
-            this.Abweichung.HeaderText = "Abweichung";
-            this.Abweichung.Name = "Abweichung";
-            this.Abweichung.ReadOnly = true;
-            this.Abweichung.Width = 95;
-            // 
-            // Diskontmenge
-            // 
-            this.Diskontmenge.HeaderText = "Diskontmenge";
-            this.Diskontmenge.Name = "Diskontmenge";
-            this.Diskontmenge.ReadOnly = true;
-            this.Diskontmenge.Width = 105;
-            // 
-            // Bestellart
-            // 
-            this.Bestellart.HeaderText = "Bestellart";
-            this.Bestellart.Items.AddRange(new object[] {
-            "",
-            "N",
-            "E"});
-            this.Bestellart.Name = "Bestellart";
-            this.Bestellart.Width = 59;
-            // 
-            // Menge
-            // 
-            this.Menge.HeaderText = "Menge";
-            this.Menge.Name = "Menge";
-            this.Menge.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Menge.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Menge.Width = 47;
-            // 
-            // Anfangsbestand_n
-            // 
-            this.Anfangsbestand_n.HeaderText = "Anfangsbestand";
-            this.Anfangsbestand_n.Name = "Anfangsbestand_n";
-            this.Anfangsbestand_n.ReadOnly = true;
-            this.Anfangsbestand_n.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Anfangsbestand_n.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Anfangsbestand_n.Width = 96;
-            // 
-            // Bestand_in_n
-            // 
-            this.Bestand_in_n.HeaderText = "Bestand_in_n";
-            this.Bestand_in_n.Name = "Bestand_in_n";
-            this.Bestand_in_n.ReadOnly = true;
-            this.Bestand_in_n.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Bestand_in_n.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Bestand_in_n.Width = 80;
-            // 
-            // Bestand_in_n1
-            // 
-            this.Bestand_in_n1.HeaderText = "Bestand_in_n1";
-            this.Bestand_in_n1.Name = "Bestand_in_n1";
-            this.Bestand_in_n1.ReadOnly = true;
-            this.Bestand_in_n1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Bestand_in_n1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Bestand_in_n1.Width = 86;
-            // 
-            // Bestand_in_n2
-            // 
-            this.Bestand_in_n2.HeaderText = "Bestand_in_n2";
-            this.Bestand_in_n2.Name = "Bestand_in_n2";
-            this.Bestand_in_n2.ReadOnly = true;
-            this.Bestand_in_n2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Bestand_in_n2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Bestand_in_n2.Width = 86;
-            // 
-            // Bestand_in_n3
-            // 
-            this.Bestand_in_n3.HeaderText = "Bestand_in_n3";
-            this.Bestand_in_n3.Name = "Bestand_in_n3";
-            this.Bestand_in_n3.ReadOnly = true;
-            this.Bestand_in_n3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Bestand_in_n3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Bestand_in_n3.Width = 86;
             // 
             // Periodenplanung
             // 

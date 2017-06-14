@@ -66,6 +66,14 @@ namespace EnterprisePlanningSolution
         int SPEICHER_EXCEPTION = 3;
         int NEGATIVE_PLANUNG = 4;
 
+        //Boolean Wert für die Sichtbarkeit des SaveButton
+        bool readyPrognose = false;
+        bool readyDirektbezug = false;
+        bool readyBedarf = false;
+        bool readyDispo = false;
+        bool readyProduktion = true;
+        bool readyKapa = true;
+
 
         public Periodenplanung()
         {
@@ -91,11 +99,8 @@ namespace EnterprisePlanningSolution
             initializeTextboxes();
             // initalizeNumbers(aktuellePeriode);
 
-
-            /// <summary>
-            /// Initialisierung Kaufteildispo
-            /// </summary>
-            //Datagrid_leeren_befüllen();
+            //SaveButton unsichtbar stellen
+            saveButton.Visible = false;
         }
 
         private void bearbeiten()
@@ -270,6 +275,9 @@ namespace EnterprisePlanningSolution
         /// </summary>
         private void weiterButton1_Click(object sender, EventArgs e)
         {
+            readyPrognose = true;
+            saveButtonVisible();
+
             if (tBPP1N0.Text == "" || tBPP1N1.Text == "" || tBPP1N2.Text == "" || tBPP1N3.Text == "" || tBPP2N0.Text == "" || tBPP2N1.Text == "" || tBPP2N2.Text == "" || tBPP2N3.Text == "" || tBPP3N0.Text == "" || tBPP3N1.Text == "" || tBPP3N2.Text == "" || tBPP3N3.Text == "" || tBGP1N0.Text == "" || tBGP1N1.Text == "" || tBGP1N2.Text == "" || tBGP1N3.Text == "" || tBGP2N0.Text == "" || tBGP2N1.Text == "" || tBGP2N2.Text == "" || tBGP2N3.Text == "" || tBGP3N0.Text == "" || tBGP3N1.Text == "" || tBGP3N2.Text == "" || tBGP3N3.Text == "")
             {
                 string LadeError = Thread.CurrentThread.CurrentUICulture.Name == "de" ? "Felder dürfen nicht leer sein!" : "Fields must not be empty!";
@@ -423,6 +431,9 @@ namespace EnterprisePlanningSolution
         /// </summary>
         private void mweiterButton2_Click(object sender, EventArgs e)
         {
+            readyDirektbezug = true;
+            saveButtonVisible();
+
             if (tBP1.Text == "" || tBP1P.Text == "" || tBP1S.Text == "" || tBP2.Text == "" || tBP2P.Text == "" || tBP2S.Text == "" || tBP3.Text == "" || tBP3P.Text == "" || tBP3S.Text == "")
             {
                 string LadeError = Thread.CurrentThread.CurrentUICulture.Name == "de" ? "Felder dürfen nicht leer sein!" : "Fields must not be empty!";
@@ -499,6 +510,9 @@ namespace EnterprisePlanningSolution
         /// </summary>
         private void weiterButton3_Click_1(object sender, EventArgs e)
         {
+            readyBedarf = true;
+            saveButtonVisible();
+
             //Recordset
             ADODB.Connection cn = new ADODB.Connection();
             ADODB.Recordset rs = new ADODB.Recordset();
@@ -969,6 +983,7 @@ namespace EnterprisePlanningSolution
             rs2.Open("Delete from sellwish where planperiod=" + aktuellePlanPeriode, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
             rs2.Open("Delete from selldirect where period=" + aktuellePlanPeriode, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
             rs2.Open("Delete from productionlist where period=" + aktuellePlanPeriode, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+            rs2.Open("Delete from myOrderlist where period=" + "'"+aktuellePlanPeriode+"'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
             cn.Close();
             DashboardForm dashboardForm = new DashboardForm();
             dashboardForm.Show();
@@ -1260,6 +1275,8 @@ namespace EnterprisePlanningSolution
 
         private void weiterButton4_Click(object sender, EventArgs e)
         {
+            readyDispo = true;
+            saveButtonVisible();
 
             for (int j = 0; j < dispoGrid.RowCount; ++j)
             {
@@ -1360,6 +1377,22 @@ namespace EnterprisePlanningSolution
 
             }
         //}
+
+        public void saveButtonVisible()
+        {
+            bool saveVisible = false;
+            if (readyBedarf && readyDirektbezug && readyDispo && readyKapa && readyProduktion && readyPrognose)
+            {
+                saveVisible = true;
+            }
+            if (saveVisible)
+            {
+                saveButton.Visible = true;
+            }
+            else {
+                saveButton.Visible = false;
+            }
+        }
     }
 
 

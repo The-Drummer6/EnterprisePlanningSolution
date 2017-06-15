@@ -74,6 +74,8 @@ namespace EnterprisePlanningSolution
         bool readyProduktion = true;
         bool readyKapa = true;
 
+        bool prüfung = true;
+
 
         public Periodenplanung()
         {
@@ -1278,6 +1280,8 @@ namespace EnterprisePlanningSolution
             readyDispo = true;
             saveButtonVisible();
 
+
+
             for (int j = 0; j < dispoGrid.RowCount; ++j)
             {
                 if (dispoGrid["Bestellart", j].Value != null)
@@ -1332,8 +1336,12 @@ namespace EnterprisePlanningSolution
                 }
                 rs.Update();
             }
+
+
+
             rs.Close();
             cn.Close();
+            LoadProdPlan();
             weiterButtonDispo.SelectedIndex = 4;
 
 
@@ -1369,6 +1377,7 @@ namespace EnterprisePlanningSolution
 
 
                 }
+
                 rs.Update();
 
                 rs.Close();
@@ -1393,7 +1402,212 @@ namespace EnterprisePlanningSolution
                 saveButton.Visible = false;
             }
         }
+
+
+        //Prod Planung
+        private void LoadProdPlan()
+        {
+            metroGrid1.Rows.Clear();
+            //Recordset
+            ADODB.Connection cn = new ADODB.Connection();
+            ADODB.Recordset rs = new ADODB.Recordset();
+           
+            cn.Open(cnStr);
+            int cB = aktuellePeriode;
+            rs.Open("Select * From productionlist where period =" + cB, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+
+            int i = 0;
+
+            while (!rs.EOF)
+            {
+                metroGrid1.Rows.Add();
+                metroGrid1.Rows[i].Cells["article"].Value = rs.Fields["article"].Value;
+                metroGrid1.Rows[i].Cells["quantity"].Value = rs.Fields["quantity"].Value;
+                rs.MoveNext();
+                ++i;
+            }
+            rs.Close();
+            cn.Close();
+            SaveProdPlan(false);
+        }
+        private void SaveProdPlan(bool pruefen)
+        {
+                //Recordset
+                ADODB.Connection cn = new ADODB.Connection();
+                ADODB.Recordset rs = new ADODB.Recordset();
+                ADODB.Recordset rs1 = new ADODB.Recordset();
+                ADODB.Recordset rs2 = new ADODB.Recordset();
+             
+                cn.Open(cnStr);
+            int cB = aktuellePeriode;
+                try
+                {
+                    rs.Open("Delete * From productionlist where period =" + cB, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+
+                    foreach (DataGridViewRow row in metroGrid1.Rows)
+                    {
+                        int a = Convert.ToInt32(row.Cells["article"].Value);
+                        int b = Convert.ToInt32(row.Cells["quantity"].Value);
+                        rs1.Open("Insert into productionlist (article, quantity, period) values (" + a + "," + b + "," + cB + ")", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+
+                    }
+                    rs2.Open("Delete * From productionlist where period =" + cB + " and article = 0", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                }
+                catch (Exception test)
+                {
+                    string LadeError = Thread.CurrentThread.CurrentUICulture.Name == "de" ? "Fehler bei der Verarbeitung" : "Error processing";
+                    MessageBox.Show(LadeError);
+
+                }
+                finally
+                {
+                    cn.Close();
+                }
+                 if(!pruefen)
+                  Pruefen1();
+           
+
+        }
+        //dispoGrid.Rows[i].Cells["Menge"].Style.BackColor = Color.Red;
+        public void Pruefen1()
+        {
+           
+            ADODB.Connection cn = new ADODB.Connection();
+            ADODB.Recordset rs = new ADODB.Recordset();
+            ADODB.Recordset rs2 = new ADODB.Recordset();
+            ADODB.Recordset rs3 = new ADODB.Recordset();
+            
+            cn.Open(cnStr);
+            int cB = aktuellePeriode;
+            rs.Open("Select * From Produktionsprogramm where period =" + cB + " and Ausdr1 <> 0", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+            rs2.Open("Select * From Produktionsprogramm2 where period =" + cB, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+            rs3.Open("Select * From Produktionsprogramm3 where period =" + cB, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+            int i = 0;
+
+            while (!rs3.EOF)
+            {
+                metroGrid1.Rows.Add();
+                metroGrid1.Rows[i].Cells["article"].Style.BackColor = Color.Red;
+                metroGrid1.Rows[i].Cells["quantity"].Style.BackColor = Color.Red;
+                ++i;
+                rs3.MoveNext();
+            }
+            while (!rs2.EOF)
+            {
+                metroGrid1.Rows.Add();
+                metroGrid1.Rows[i].Cells["article"].Style.BackColor = Color.Red;
+                metroGrid1.Rows[i].Cells["quantity"].Style.BackColor = Color.Red;
+                ++i;
+                rs2.MoveNext();
+            }
+
+            while (!rs.EOF)
+            {
+                metroGrid1.Rows.Add();
+                metroGrid1.Rows[i].Cells["article"].Style.BackColor = Color.Red;
+                metroGrid1.Rows[i].Cells["quantity"].Style.BackColor = Color.Red;
+                ++i;
+                if (rs.Fields["Ausdr1"].Value == 0) { rs.MoveNext(); }
+                else
+                {
+                    prüfung = false;
+                    rs.MoveNext();
+                }
+            }
+            rs.Close();
+            rs2.Close();
+            rs3.Close();
+            cn.Close();
+            
+        }
+
+        public void Pruefen2()
+        {
+            ADODB.Connection cn = new ADODB.Connection();
+            ADODB.Recordset rs2 = new ADODB.Recordset();
+           
+            cn.Open(cnStr);
+
+            int cB = aktuellePeriode;
+        rs2.Open("Select * From GeplanterBedarf where period =" + cB, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+            int kkk = 0;
+            while (!rs2.EOF)
+            {
+                metroGrid1.Rows.Add();
+                metroGrid1.Rows[kkk].Cells["article"].Style.BackColor = Color.Red;
+                metroGrid1.Rows[kkk].Cells["quantity"].Style.BackColor = Color.Red;
+                rs2.MoveNext();
+                kkk++;
+            }
+
+        }
+
+        public void StartProdPlanung()
+        {
+           metroGrid1.Rows.Clear();
+            //Recordset
+            ADODB.Connection cn = new ADODB.Connection();
+            ADODB.Recordset rs = new ADODB.Recordset();
+            string cnStr;
+
+            //Connection string.
+            cnStr = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source= PPS-Datenbank_2.mdb";
+            cn.Open(cnStr);
+            int cB = aktuellePeriode;
+            rs.Open("Select * From GeplanterBedarf where period =" + cB, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+
+            int i = 0;
+
+            while (!rs.EOF)
+            {
+               metroGrid1.Rows.Add();
+               metroGrid1.Rows[i].Cells["article"].Value = rs.Fields["item"].Value;
+               metroGrid1.Rows[i].Cells["qunatity"].Value = rs.Fields["productionPlan"].Value;
+                rs.MoveNext();
+                ++i;
+            }
+            rs.Close();
+            cn.Close();
+        }
+
+        private void planButton_Click(object sender, EventArgs e)
+        {
+
+            SaveProdPlan(true);
+            //Recordset
+            ADODB.Connection cn = new ADODB.Connection();
+            ADODB.Recordset rs = new ADODB.Recordset();
+          
+            cn.Open(cnStr);
+            int cB = aktuellePeriode;
+            rs.Open("Select * From GeplanterBedarf where period =" + cB, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+
+            int i = 0;
+
+            while (!rs.EOF)
+            {
+               metroGrid1.Rows.Add();
+               metroGrid1.Rows[i].Cells["article"].Value = rs.Fields["item"].Value;
+               metroGrid1.Rows[i].Cells["quantity"].Value = rs.Fields["productionPlan"].Value;
+                rs.MoveNext();
+                ++i;
+            }
+            rs.Close();
+            cn.Close();
+        }
+
+        private void metroGrid1_SelectionChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void weiterButton5_Click(object sender, EventArgs e)
+        {
+            SaveProdPlan(false);
+            weiterButtonDispo.SelectedIndex = 5;
+        }
     }
+
+   
 
 
 

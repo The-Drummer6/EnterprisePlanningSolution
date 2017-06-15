@@ -60,23 +60,25 @@
             this.Lagerzugang = new System.Windows.Forms.TabPage();
             this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
             this.metroGrid3 = new MetroFramework.Controls.MetroGrid();
-            this.PeriodeZugangCombo = new MetroFramework.Controls.MetroComboBox();
+            this.metroComboBox3 = new MetroFramework.Controls.MetroComboBox();
             this.PeriodeZugang = new MetroFramework.Controls.MetroLabel();
             this.Kennzahlen = new System.Windows.Forms.TabPage();
             this.metroPanel4 = new MetroFramework.Controls.MetroPanel();
             this.metroGrid4 = new MetroFramework.Controls.MetroGrid();
-            this.PeriodeKennCombo = new MetroFramework.Controls.MetroComboBox();
-            this.PeriodeKenn = new MetroFramework.Controls.MetroLabel();
             this.Gewinn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GewinnDurchschnitt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GewinnGesamt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Artikelnummer_Zugang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Menge_Zugang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Preis_Zugang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.metroComboBox4 = new MetroFramework.Controls.MetroComboBox();
+            this.PeriodeKenn = new MetroFramework.Controls.MetroLabel();
             this.Artikelnummer_Bestellung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Menge_Bestellung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KostenGesamt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Kosten_Bestellung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Bestellart_Bestellung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Artikelnummer_Zugang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Bestellperiode_Zugang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Modus_Zugang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lieferzeit_Zugang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Menge_Zugang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Preis_Zugang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabControl1.SuspendLayout();
             this.Lagerbestand.SuspendLayout();
             this.metroPanel1.SuspendLayout();
@@ -100,7 +102,7 @@
             this.metroTabControl1.Controls.Add(this.Kennzahlen);
             this.metroTabControl1.Location = new System.Drawing.Point(24, 64);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 3;
             this.metroTabControl1.Size = new System.Drawing.Size(853, 429);
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.UseSelectable = true;
@@ -272,8 +274,7 @@
             this.metroGrid2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Artikelnummer_Bestellung,
             this.Menge_Bestellung,
-            this.KostenGesamt,
-            this.Kosten_Bestellung});
+            this.Bestellart_Bestellung});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -300,7 +301,6 @@
             this.metroGrid2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.metroGrid2.Size = new System.Drawing.Size(500, 206);
             this.metroGrid2.TabIndex = 9;
-            this.metroGrid2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid2_CellContentClick);
             // 
             // PeriodeBest
             // 
@@ -309,7 +309,6 @@
             this.PeriodeBest.Size = new System.Drawing.Size(85, 29);
             this.PeriodeBest.TabIndex = 8;
             this.PeriodeBest.Text = "Periode";
-            this.PeriodeBest.Click += new System.EventHandler(this.metroLabel1_Click);
             // 
             // metroComboBox2
             // 
@@ -334,7 +333,7 @@
             // metroPanel3
             // 
             this.metroPanel3.Controls.Add(this.metroGrid3);
-            this.metroPanel3.Controls.Add(this.PeriodeZugangCombo);
+            this.metroPanel3.Controls.Add(this.metroComboBox3);
             this.metroPanel3.Controls.Add(this.PeriodeZugang);
             this.metroPanel3.HorizontalScrollbarBarColor = true;
             this.metroPanel3.HorizontalScrollbarHighlightOnWheel = false;
@@ -365,6 +364,9 @@
             this.metroGrid3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.metroGrid3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Artikelnummer_Zugang,
+            this.Bestellperiode_Zugang,
+            this.Modus_Zugang,
+            this.Lieferzeit_Zugang,
             this.Menge_Zugang,
             this.Preis_Zugang});
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -391,18 +393,18 @@
             this.metroGrid3.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.metroGrid3.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid3.Size = new System.Drawing.Size(433, 206);
+            this.metroGrid3.Size = new System.Drawing.Size(664, 206);
             this.metroGrid3.TabIndex = 4;
             // 
-            // PeriodeZugangCombo
+            // metroComboBox3
             // 
-            this.PeriodeZugangCombo.FormattingEnabled = true;
-            this.PeriodeZugangCombo.ItemHeight = 23;
-            this.PeriodeZugangCombo.Location = new System.Drawing.Point(121, 26);
-            this.PeriodeZugangCombo.Name = "PeriodeZugangCombo";
-            this.PeriodeZugangCombo.Size = new System.Drawing.Size(121, 29);
-            this.PeriodeZugangCombo.TabIndex = 3;
-            this.PeriodeZugangCombo.UseSelectable = true;
+            this.metroComboBox3.FormattingEnabled = true;
+            this.metroComboBox3.ItemHeight = 23;
+            this.metroComboBox3.Location = new System.Drawing.Point(121, 26);
+            this.metroComboBox3.Name = "metroComboBox3";
+            this.metroComboBox3.Size = new System.Drawing.Size(121, 29);
+            this.metroComboBox3.TabIndex = 3;
+            this.metroComboBox3.UseSelectable = true;
             // 
             // PeriodeZugang
             // 
@@ -425,7 +427,7 @@
             // metroPanel4
             // 
             this.metroPanel4.Controls.Add(this.metroGrid4);
-            this.metroPanel4.Controls.Add(this.PeriodeKennCombo);
+            this.metroPanel4.Controls.Add(this.metroComboBox4);
             this.metroPanel4.Controls.Add(this.PeriodeKenn);
             this.metroPanel4.HorizontalScrollbarBarColor = true;
             this.metroPanel4.HorizontalScrollbarHighlightOnWheel = false;
@@ -485,25 +487,6 @@
             this.metroGrid4.Size = new System.Drawing.Size(433, 206);
             this.metroGrid4.TabIndex = 4;
             // 
-            // PeriodeKennCombo
-            // 
-            this.PeriodeKennCombo.FormattingEnabled = true;
-            this.PeriodeKennCombo.ItemHeight = 23;
-            this.PeriodeKennCombo.Location = new System.Drawing.Point(121, 29);
-            this.PeriodeKennCombo.Name = "PeriodeKennCombo";
-            this.PeriodeKennCombo.Size = new System.Drawing.Size(121, 29);
-            this.PeriodeKennCombo.TabIndex = 3;
-            this.PeriodeKennCombo.UseSelectable = true;
-            // 
-            // PeriodeKenn
-            // 
-            this.PeriodeKenn.AutoSize = true;
-            this.PeriodeKenn.Location = new System.Drawing.Point(30, 26);
-            this.PeriodeKenn.Name = "PeriodeKenn";
-            this.PeriodeKenn.Size = new System.Drawing.Size(54, 19);
-            this.PeriodeKenn.TabIndex = 2;
-            this.PeriodeKenn.Text = "Periode";
-            // 
             // Gewinn
             // 
             this.Gewinn.HeaderText = "Gewinn Aktuell";
@@ -519,20 +502,24 @@
             this.GewinnGesamt.HeaderText = "Gesamter Gewinn";
             this.GewinnGesamt.Name = "GewinnGesamt";
             // 
-            // Artikelnummer_Zugang
+            // metroComboBox4
             // 
-            this.Artikelnummer_Zugang.HeaderText = "Artikelnummer";
-            this.Artikelnummer_Zugang.Name = "Artikelnummer_Zugang";
+            this.metroComboBox4.FormattingEnabled = true;
+            this.metroComboBox4.ItemHeight = 23;
+            this.metroComboBox4.Location = new System.Drawing.Point(121, 29);
+            this.metroComboBox4.Name = "metroComboBox4";
+            this.metroComboBox4.Size = new System.Drawing.Size(121, 29);
+            this.metroComboBox4.TabIndex = 3;
+            this.metroComboBox4.UseSelectable = true;
             // 
-            // Menge_Zugang
+            // PeriodeKenn
             // 
-            this.Menge_Zugang.HeaderText = "Menge";
-            this.Menge_Zugang.Name = "Menge_Zugang";
-            // 
-            // Preis_Zugang
-            // 
-            this.Preis_Zugang.HeaderText = "Preis Pro Stück";
-            this.Preis_Zugang.Name = "Preis_Zugang";
+            this.PeriodeKenn.AutoSize = true;
+            this.PeriodeKenn.Location = new System.Drawing.Point(30, 26);
+            this.PeriodeKenn.Name = "PeriodeKenn";
+            this.PeriodeKenn.Size = new System.Drawing.Size(54, 19);
+            this.PeriodeKenn.TabIndex = 2;
+            this.PeriodeKenn.Text = "Periode";
             // 
             // Artikelnummer_Bestellung
             // 
@@ -544,15 +531,40 @@
             this.Menge_Bestellung.HeaderText = "Menge";
             this.Menge_Bestellung.Name = "Menge_Bestellung";
             // 
-            // KostenGesamt
+            // Bestellart_Bestellung
             // 
-            this.KostenGesamt.HeaderText = "Gesamt Kosten";
-            this.KostenGesamt.Name = "KostenGesamt";
+            this.Bestellart_Bestellung.HeaderText = "Bestellart";
+            this.Bestellart_Bestellung.Name = "Bestellart_Bestellung";
             // 
-            // Kosten_Bestellung
+            // Artikelnummer_Zugang
             // 
-            this.Kosten_Bestellung.HeaderText = "Kosten pro Stück";
-            this.Kosten_Bestellung.Name = "Kosten_Bestellung";
+            this.Artikelnummer_Zugang.HeaderText = "Artikelnummer";
+            this.Artikelnummer_Zugang.Name = "Artikelnummer_Zugang";
+            // 
+            // Bestellperiode_Zugang
+            // 
+            this.Bestellperiode_Zugang.HeaderText = "Bestellperiode";
+            this.Bestellperiode_Zugang.Name = "Bestellperiode_Zugang";
+            // 
+            // Modus_Zugang
+            // 
+            this.Modus_Zugang.HeaderText = "Bestellart";
+            this.Modus_Zugang.Name = "Modus_Zugang";
+            // 
+            // Lieferzeit_Zugang
+            // 
+            this.Lieferzeit_Zugang.HeaderText = "Lieferzeit";
+            this.Lieferzeit_Zugang.Name = "Lieferzeit_Zugang";
+            // 
+            // Menge_Zugang
+            // 
+            this.Menge_Zugang.HeaderText = "Menge";
+            this.Menge_Zugang.Name = "Menge_Zugang";
+            // 
+            // Preis_Zugang
+            // 
+            this.Preis_Zugang.HeaderText = "Preis Pro Stück";
+            this.Preis_Zugang.Name = "Preis_Zugang";
             // 
             // ErgebnisseForm
             // 
@@ -600,10 +612,10 @@
         private MetroFramework.Controls.MetroPanel metroPanel3;
         private MetroFramework.Controls.MetroPanel metroPanel4;
         private MetroFramework.Controls.MetroGrid metroGrid3;
-        private MetroFramework.Controls.MetroComboBox PeriodeZugangCombo;
+        private MetroFramework.Controls.MetroComboBox metroComboBox3;
         private MetroFramework.Controls.MetroLabel PeriodeZugang;
         private MetroFramework.Controls.MetroGrid metroGrid4;
-        private MetroFramework.Controls.MetroComboBox PeriodeKennCombo;
+        private MetroFramework.Controls.MetroComboBox metroComboBox4;
         private MetroFramework.Controls.MetroLabel PeriodeKenn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Artikelnummer_Bestand;
         private System.Windows.Forms.DataGridViewTextBoxColumn Startmenge_Bestand;
@@ -611,15 +623,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Prozentmenge_Bestand;
         private System.Windows.Forms.DataGridViewTextBoxColumn Preis_Bestand;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lagerwert_Bestand;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Artikelnummer_Bestellung;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Menge_Bestellung;
-        private System.Windows.Forms.DataGridViewTextBoxColumn KostenGesamt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Kosten_Bestellung;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Artikelnummer_Zugang;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Menge_Zugang;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Preis_Zugang;
         private System.Windows.Forms.DataGridViewTextBoxColumn Gewinn;
         private System.Windows.Forms.DataGridViewTextBoxColumn GewinnDurchschnitt;
         private System.Windows.Forms.DataGridViewTextBoxColumn GewinnGesamt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Artikelnummer_Bestellung;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Menge_Bestellung;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Bestellart_Bestellung;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Artikelnummer_Zugang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Bestellperiode_Zugang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Modus_Zugang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Lieferzeit_Zugang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Menge_Zugang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Preis_Zugang;
     }
 }

@@ -13,6 +13,8 @@ namespace EnterprisePlanningSolution
 {
     class DBHandler
     {
+        
+        /// <param name="file"></param>
         public static void WriteData(string file)
         {
             //Objekt aus XML-File erstellenaa
@@ -22,6 +24,7 @@ namespace EnterprisePlanningSolution
             //Recordset
             ADODB.Connection cn = new ADODB.Connection();
             ADODB.Recordset rs = new ADODB.Recordset();
+            ADODB.Recordset rsDelete = new ADODB.Recordset();
             string cnStr;
 
             //Connection string.
@@ -571,7 +574,43 @@ namespace EnterprisePlanningSolution
             {
                 rs.Close();
             }
-
+            /// <summary>
+            /// Überflüssige Werte aus der DB löschen, wenn Initialer Stand hochgeladen wird
+            /// </summary>
+            
+            try
+            {
+                rs.Open("Select distinct period from warehousestock_article ORDER BY period Desc", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                int periode = Convert.ToInt32(rs.Fields["period"].Value);
+                if (periode == 0)
+                {
+                    rsDelete.Open("Delete From inwardstockmovement", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                    rsDelete.Open("Delete From futureinwardstockmovement Where period = '0'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                    //rsDelete.Open("Delete From idletimecosts", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                    rsDelete.Open("Delete From idletimecosts_workplace where period ='0'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                    rsDelete.Open("Delete From idletimecosts_sum where period = '0'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                    rsDelete.Open("Delete From waitinglistworkstations where period = '0'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                    rsDelete.Open("Delete From waitingliststock where period = 0", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                    rsDelete.Open("Delete From ordersinwork where period = '0'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                    rsDelete.Open("Delete From completedorders where period = '0'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                    rsDelete.Open("Delete From cycletimes where period = '0'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                    rsDelete.Open("Delete From cycletimes_order where period = '0'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                    rsDelete.Open("Delete From tbl_general where period = '0'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                    rsDelete.Open("Delete From normalsale where period = '0'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                    rsDelete.Open("Delete From directsale where period = '0'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                    rsDelete.Open("Delete From marketplacesale where period = '0'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                    rsDelete.Open("Delete From summary where period = '0'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                }
+            }
+            catch (Exception test)
+            {
+                MessageBox.Show(test.Message);
+            }
+            finally
+            {
+                rs.Close();
+            }
+            
             MessageBox.Show("XML-File importiert");
 
             cn.Close();

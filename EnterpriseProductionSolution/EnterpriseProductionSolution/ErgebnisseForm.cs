@@ -453,5 +453,12 @@ namespace EnterprisePlanningSolution
 
             metroComboBox1.DataSource = Liste;
         }
+
+        private void metroLink1_Click(object sender, EventArgs e)
+        {
+            DashboardForm dashboardForm = new DashboardForm();
+            dashboardForm.Show();
+            this.Hide();
+        }
     }
 }

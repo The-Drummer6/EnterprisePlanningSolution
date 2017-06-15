@@ -14,6 +14,7 @@ namespace EnterprisePlanningSolution
     {
         private StammdatenForm stammdatenForm;
         private Periodenplanung planungsForm;
+        private ErgebnisseForm ergebnissform;
 
         public DashboardForm()
         {
@@ -43,6 +44,13 @@ namespace EnterprisePlanningSolution
         {
             planungsForm = new Periodenplanung();
             planungsForm.Show();
+            this.Hide();
+        }
+
+        private void metroTile4_Click(object sender, EventArgs e)
+        {
+            ergebnissform = new ErgebnisseForm();
+            ergebnissform.Show();
             this.Hide();
         }
     }

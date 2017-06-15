@@ -12,6 +12,7 @@ namespace EnterprisePlanningSolution
 {
     public partial class ErgebnisseForm : MetroFramework.Forms.MetroForm
     {
+        public int maxLagerwert = 250000;
         public String cnStr = @"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = PPS-Datenbank.mdb";
 
         public ErgebnisseForm()
@@ -57,30 +58,12 @@ namespace EnterprisePlanningSolution
             cn.Close();
 
 
-            //refreshComboBox1();
+            refreshComboBox1();
 
         }
         private void ErgebnisseForm_LoadBestand(ADODB.Connection cn, ADODB.Recordset rs)
         {
-            rs.Open("Select * From warehousestock_article", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-
-            int i = 0;
-
-            while (!rs.EOF)
-            {
-                metroGrid1.Rows.Add();
-                metroGrid1.Rows[i].Cells["Artikelnummer_Bestand"].Value = rs.Fields["id"].Value; // ist schon int auf DB
-                metroGrid1.Rows[i].Cells["Startmenge_Bestand"].Value = rs.Fields["startamount"].Value;
-                metroGrid1.Rows[i].Cells["Menge_Bestand"].Value = rs.Fields["amount"].Value;
-                metroGrid1.Rows[i].Cells["Prozentmenge_Bestand"].Value = rs.Fields["pct"].Value;
-                metroGrid1.Rows[i].Cells["Preis_Bestand"].Value = rs.Fields["price"].Value;
-                metroGrid1.Rows[i].Cells["Lagerwert_Bestand"].Value = rs.Fields["stockvalue"].Value;
-                rs.MoveNext();
-                ++i;
-            }
-            i = 0;
-            rs.Close();
-            //cn.Close();
+            
 
         }
 
@@ -91,16 +74,16 @@ namespace EnterprisePlanningSolution
 
             while (!rs.EOF)
             {
-                metroGrid1.Rows.Add();
-                metroGrid1.Rows[i].Cells["Artikelnummer_Bestellung"].Value = rs.Fields["article"].Value;
-                metroGrid1.Rows[i].Cells["Menge_Bestellung"].Value = rs.Fields["quantity"].Value;
+                metroGrid2.Rows.Add();
+                metroGrid2.Rows[i].Cells["Artikelnummer_Bestellung"].Value = rs.Fields["article"].Value;
+                metroGrid2.Rows[i].Cells["Menge_Bestellung"].Value = rs.Fields["quantity"].Value;
                 // Überprüfung auf Eil oder Normalbestellung
                 if (Convert.ToInt32(rs.Fields["modus"].Value)== 4)
                 {
-                    metroGrid1.Rows[i].Cells["Bestellart_Bestellung"].Value = "Eil";
+                    metroGrid2.Rows[i].Cells["Bestellart_Bestellung"].Value = "Eil";
                 } else if(Convert.ToInt32(rs.Fields["modus"].Value) == 5)
                 {
-                    metroGrid1.Rows[i].Cells["Bestellart_Bestellung"].Value = "Normal";
+                    metroGrid2.Rows[i].Cells["Bestellart_Bestellung"].Value = "Normal";
                 }
                 rs.MoveNext();
                 ++i;
@@ -116,21 +99,21 @@ namespace EnterprisePlanningSolution
 
             while (!rs.EOF)
             {
-                metroGrid1.Rows.Add();
-                metroGrid1.Rows[i].Cells["Artikelnummer_Zugang"].Value = rs.Fields["article"].Value;
-                metroGrid1.Rows[i].Cells["Bestellperiode_Zugang"].Value = rs.Fields["orderperiod"].Value;
+                metroGrid3.Rows.Add();
+                metroGrid3.Rows[i].Cells["Artikelnummer_Zugang"].Value = rs.Fields["article"].Value;
+                metroGrid3.Rows[i].Cells["Bestellperiode_Zugang"].Value = rs.Fields["orderperiod"].Value;
                 // Überprüfung auf Eil oder Normalbestellung
-                if (Convert.ToInt32(rs.Fields["modus"].Value) == 4)
+                if (Convert.ToInt32(rs.Fields["mode"].Value) == 4)
                 {
-                    metroGrid1.Rows[i].Cells["Modus_Zugang"].Value = "Eil";
+                    metroGrid3.Rows[i].Cells["Modus_Zugang"].Value = "Eil";
                 }
-                else if (Convert.ToInt32(rs.Fields["modus"].Value) == 5)
+                else if (Convert.ToInt32(rs.Fields["mode"].Value) == 5)
                 {
-                    metroGrid1.Rows[i].Cells["Modus_Zugang"].Value = "Normal";
+                    metroGrid3.Rows[i].Cells["Modus_Zugang"].Value = "Normal";
                 }
-                metroGrid1.Rows[i].Cells["Lieferzeit_Zugang"].Value = rs.Fields["Lieferzeit"].Value;
-                metroGrid1.Rows[i].Cells["Menge_Zugang"].Value = rs.Fields["amount"].Value;
-                metroGrid1.Rows[i].Cells["Preis_Zugang"].Value = rs.Fields["price"].Value;
+                metroGrid3.Rows[i].Cells["Lieferzeit_Zugang"].Value = rs.Fields["Lieferzeit"].Value;
+                metroGrid3.Rows[i].Cells["Menge_Zugang"].Value = rs.Fields["amount"].Value;
+                metroGrid3.Rows[i].Cells["Preis_Zugang"].Value = rs.Fields["price"].Value;
                 rs.MoveNext();
                 ++i;
             }
@@ -145,10 +128,10 @@ namespace EnterprisePlanningSolution
 
             while (!rs.EOF)
             {
-                metroGrid1.Rows.Add();
-                metroGrid1.Rows[i].Cells["Gewinn"].Value = rs.Fields["profit_current"].Value;
-                metroGrid1.Rows[i].Cells["GewinnDurchschnitt"].Value = rs.Fields["profit_average"].Value;
-                metroGrid1.Rows[i].Cells["GewinnGesamt"].Value = rs.Fields["profit_all"].Value;
+                metroGrid4.Rows.Add();
+                metroGrid4.Rows[i].Cells["Gewinn"].Value = rs.Fields["profit_current"].Value;
+                metroGrid4.Rows[i].Cells["GewinnDurchschnitt"].Value = rs.Fields["profit_average"].Value;
+                metroGrid4.Rows[i].Cells["GewinnGesamt"].Value = rs.Fields["profit_all"].Value;
                 rs.MoveNext();
                 ++i;
             }
@@ -161,59 +144,17 @@ namespace EnterprisePlanningSolution
         {
             ADODB.Connection cn = new ADODB.Connection();
             ADODB.Recordset rs = new ADODB.Recordset();
+            double warehouseValue=0;
+            double freeSpace=250000;
             try
             {
                 cn.Open(cnStr);
                 string periode = metroComboBox1.Text;
+                
 
-                if (periode == "0")
-                {
-                    rs.Open("Select * From warehousestock_article", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-
-                    int i = 0;
-                    metroGrid1.Rows.Clear();
-                    while (!rs.EOF)
-                    {
-                        metroGrid1.Rows.Add();
-                        metroGrid1.Rows[i].Cells["Artikelnummer_Bestand"].Value = Convert.ToInt32(rs.Fields["id"].Value);
-                        metroGrid1.Rows[i].Cells["Startmenge_Bestand"].Value = rs.Fields["startamount"].Value;
-                        metroGrid1.Rows[i].Cells["Menge_Bestand"].Value = rs.Fields["amount"].Value;
-                        metroGrid1.Rows[i].Cells["Prozentmenge_Bestand"].Value = rs.Fields["pct"].Value;
-                        metroGrid1.Rows[i].Cells["Preis_Bestand"].Value = rs.Fields["price"].Value;
-                        metroGrid1.Rows[i].Cells["Lagerwert_Bestand"].Value = rs.Fields["stockvalue"].Value;
-                        rs.MoveNext();
-                        ++i;
-                    }
-                }
-                else
-                {
-                    rs.Open("Select * From warehousestock_article where period ='" + periode + "'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-
-                    int i = 0;
-                    metroGrid1.Rows.Clear();
-                    while (!rs.EOF)
-                    {
-                        metroGrid1.Rows.Add();
-                        metroGrid1.Rows[i].Cells["Artikelnummer_Bestand"].Value = Convert.ToInt32(rs.Fields["id"].Value);
-                        metroGrid1.Rows[i].Cells["Startmenge_Bestand"].Value = Convert.ToInt32(rs.Fields["startamount"].Value);
-                        metroGrid1.Rows[i].Cells["Menge_Bestand"].Value = Convert.ToInt32(rs.Fields["amount"].Value);
-                        metroGrid1.Rows[i].Cells["Prozentmenge_Bestand"].Value = rs.Fields["pct"].Value;
-                        metroGrid1.Rows[i].Cells["Preis_Bestand"].Value = Convert.ToDouble(rs.Fields["price"].Value);
-                        metroGrid1.Rows[i].Cells["Lagerwert_Bestand"].Value = Convert.ToDouble(rs.Fields["stockvalue"].Value);
-                        rs.MoveNext();
-                        ++i;
-                        /*
-                        metroGrid1.Rows.Add();
-                        metroGrid1.Rows[i].Cells["period"].Value = Convert.ToInt32(rs.Fields["period"].Value);
-                        metroGrid1.Rows[i].Cells["id"].Value = Convert.ToInt32(rs.Fields["id"].Value);
-                        metroGrid1.Rows[i].Cells["actualStock"].Value = Convert.ToInt32(rs.Fields["amount"].Value);
-                        metroGrid1.Rows[i].Cells["actualPrice"].Value = Convert.ToDouble(rs.Fields["price"].Value);
-                        metroGrid1.Rows[i].Cells["stockValue"].Value = Convert.ToDouble(rs.Fields["stockValue"].Value);
-                        rs.MoveNext();
-                        i++;
-                        */
-                    }
-                }
+                rs.Open("Select stockvalue From warehousestock_totalvalue where period='" + periode +"'" , cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                warehouseValue = Convert.ToDouble(rs.Fields["stockvalue"].Value);
+                freeSpace = maxLagerwert - warehouseValue;
                 rs.Close();
             }
             catch (Exception fehler)
@@ -225,7 +166,16 @@ namespace EnterprisePlanningSolution
                 cn.Close();
             }
 
+            lagerTortendiagramm.Series["Series1"].Points.Clear();
+            lagerTortendiagramm.Series["Series1"].Points.Add(warehouseValue);
+            lagerTortendiagramm.Series["Series1"].Points[0].LegendText = "Lagerwert";
+            lagerTortendiagramm.Series["Series1"].Points[0].Color = Color.Red;
+            lagerTortendiagramm.Series["Series1"].Points.Add(freeSpace);
+            lagerTortendiagramm.Series["Series1"].Points[1].LegendText = "freier Lagerplatz";
+            lagerTortendiagramm.Series["Series1"].Points[1].Color = Color.Green;
         }
+
+    
 
         private void metroComboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -244,17 +194,17 @@ namespace EnterprisePlanningSolution
 
                     while (!rs.EOF)
                     {
-                        metroGrid1.Rows.Add();
-                        metroGrid1.Rows[i].Cells["Artikelnummer_Bestellung"].Value = rs.Fields["article"].Value;
-                        metroGrid1.Rows[i].Cells["Menge_Bestellung"].Value = rs.Fields["quantity"].Value;
+                        metroGrid2.Rows.Add();
+                        metroGrid2.Rows[i].Cells["Artikelnummer_Bestellung"].Value = rs.Fields["article"].Value;
+                        metroGrid2.Rows[i].Cells["Menge_Bestellung"].Value = rs.Fields["quantity"].Value;
                         // Überprüfung auf Eil oder Normalbestellung
                         if (Convert.ToInt32(rs.Fields["modus"].Value) == 4)
                         {
-                            metroGrid1.Rows[i].Cells["Bestellart_Bestellung"].Value = "Eil";
+                            metroGrid2.Rows[i].Cells["Bestellart_Bestellung"].Value = "Eil";
                         }
                         else if (Convert.ToInt32(rs.Fields["modus"].Value) == 5)
                         {
-                            metroGrid1.Rows[i].Cells["Bestellart_Bestellung"].Value = "Normal";
+                            metroGrid2.Rows[i].Cells["Bestellart_Bestellung"].Value = "Normal";
                         }
                         rs.MoveNext();
                         ++i;
@@ -269,17 +219,17 @@ namespace EnterprisePlanningSolution
 
                     while (!rs.EOF)
                     {
-                        metroGrid1.Rows.Add();
-                        metroGrid1.Rows[i].Cells["Artikelnummer_Bestellung"].Value = rs.Fields["article"].Value;
-                        metroGrid1.Rows[i].Cells["Menge_Bestellung"].Value = rs.Fields["quantity"].Value;
+                        metroGrid2.Rows.Add();
+                        metroGrid2.Rows[i].Cells["Artikelnummer_Bestellung"].Value = rs.Fields["article"].Value;
+                        metroGrid2.Rows[i].Cells["Menge_Bestellung"].Value = rs.Fields["quantity"].Value;
                         // Überprüfung auf Eil oder Normalbestellung
                         if (Convert.ToInt32(rs.Fields["modus"].Value) == 4)
                         {
-                            metroGrid1.Rows[i].Cells["Bestellart_Bestellung"].Value = "Eil";
+                            metroGrid2.Rows[i].Cells["Bestellart_Bestellung"].Value = "Eil";
                         }
                         else if (Convert.ToInt32(rs.Fields["modus"].Value) == 5)
                         {
-                            metroGrid1.Rows[i].Cells["Bestellart_Bestellung"].Value = "Normal";
+                            metroGrid2.Rows[i].Cells["Bestellart_Bestellung"].Value = "Normal";
                         }
                         rs.MoveNext();
                         ++i;
@@ -315,21 +265,21 @@ namespace EnterprisePlanningSolution
 
                     while (!rs.EOF)
                     {
-                        metroGrid1.Rows.Add();
-                        metroGrid1.Rows[i].Cells["Artikelnummer_Zugang"].Value = rs.Fields["article"].Value;
-                        metroGrid1.Rows[i].Cells["Bestellperiode_Zugang"].Value = rs.Fields["orderperiod"].Value;
+                        metroGrid3.Rows.Add();
+                        metroGrid3.Rows[i].Cells["Artikelnummer_Zugang"].Value = rs.Fields["article"].Value;
+                        metroGrid3.Rows[i].Cells["Bestellperiode_Zugang"].Value = rs.Fields["orderperiod"].Value;
                         // Überprüfung auf Eil oder Normalbestellung
-                        if (Convert.ToInt32(rs.Fields["modus"].Value) == 4)
+                        if (Convert.ToInt32(rs.Fields["mode"].Value) == 4)
                         {
-                            metroGrid1.Rows[i].Cells["Modus_Zugang"].Value = "Eil";
+                            metroGrid3.Rows[i].Cells["Modus_Zugang"].Value = "Eil";
                         }
-                        else if (Convert.ToInt32(rs.Fields["modus"].Value) == 5)
+                        else if (Convert.ToInt32(rs.Fields["mode"].Value) == 5)
                         {
-                            metroGrid1.Rows[i].Cells["Modus_Zugang"].Value = "Normal";
+                            metroGrid3.Rows[i].Cells["Modus_Zugang"].Value = "Normal";
                         }
-                        metroGrid1.Rows[i].Cells["Lieferzeit_Zugang"].Value = rs.Fields["Lieferzeit"].Value;
-                        metroGrid1.Rows[i].Cells["Menge_Zugang"].Value = rs.Fields["amount"].Value;
-                        metroGrid1.Rows[i].Cells["Preis_Zugang"].Value = rs.Fields["price"].Value;
+                        metroGrid3.Rows[i].Cells["Lieferzeit_Zugang"].Value = rs.Fields["Lieferzeit"].Value;
+                        metroGrid3.Rows[i].Cells["Menge_Zugang"].Value = rs.Fields["amount"].Value;
+                        metroGrid3.Rows[i].Cells["Preis_Zugang"].Value = rs.Fields["price"].Value;
                         rs.MoveNext();
                         ++i;
                     }
@@ -344,21 +294,21 @@ namespace EnterprisePlanningSolution
 
                     while (!rs.EOF)
                     {
-                        metroGrid1.Rows.Add();
-                        metroGrid1.Rows[i].Cells["Artikelnummer_Zugang"].Value = rs.Fields["article"].Value;
-                        metroGrid1.Rows[i].Cells["Bestellperiode_Zugang"].Value = rs.Fields["orderperiod"].Value;
+                        metroGrid3.Rows.Add();
+                        metroGrid3.Rows[i].Cells["Artikelnummer_Zugang"].Value = rs.Fields["article"].Value;
+                        metroGrid3.Rows[i].Cells["Bestellperiode_Zugang"].Value = rs.Fields["orderperiod"].Value;
                         // Überprüfung auf Eil oder Normalbestellung
-                        if (Convert.ToInt32(rs.Fields["modus"].Value) == 4)
+                        if (Convert.ToInt32(rs.Fields["mode"].Value) == 4)
                         {
-                            metroGrid1.Rows[i].Cells["Modus_Zugang"].Value = "Eil";
+                            metroGrid3.Rows[i].Cells["Modus_Zugang"].Value = "Eil";
                         }
-                        else if (Convert.ToInt32(rs.Fields["modus"].Value) == 5)
+                        else if (Convert.ToInt32(rs.Fields["mode"].Value) == 5)
                         {
-                            metroGrid1.Rows[i].Cells["Modus_Zugang"].Value = "Normal";
+                            metroGrid3.Rows[i].Cells["Modus_Zugang"].Value = "Normal";
                         }
-                        metroGrid1.Rows[i].Cells["Lieferzeit_Zugang"].Value = rs.Fields["Lieferzeit"].Value;
-                        metroGrid1.Rows[i].Cells["Menge_Zugang"].Value = rs.Fields["amount"].Value;
-                        metroGrid1.Rows[i].Cells["Preis_Zugang"].Value = rs.Fields["price"].Value;
+                        metroGrid3.Rows[i].Cells["Lieferzeit_Zugang"].Value = rs.Fields["Lieferzeit"].Value;
+                        metroGrid3.Rows[i].Cells["Menge_Zugang"].Value = rs.Fields["amount"].Value;
+                        metroGrid3.Rows[i].Cells["Preis_Zugang"].Value = rs.Fields["price"].Value;
                         rs.MoveNext();
                         ++i;
                     }
@@ -392,10 +342,10 @@ namespace EnterprisePlanningSolution
 
                     while (!rs.EOF)
                     {
-                        metroGrid1.Rows.Add();
-                        metroGrid1.Rows[i].Cells["Gewinn"].Value = rs.Fields["profit_current"].Value;
-                        metroGrid1.Rows[i].Cells["GewinnDurchschnitt"].Value = rs.Fields["profit_average"].Value;
-                        metroGrid1.Rows[i].Cells["GewinnGesamt"].Value = rs.Fields["profit_all"].Value;
+                        metroGrid4.Rows.Add();
+                        metroGrid4.Rows[i].Cells["Gewinn"].Value = rs.Fields["profit_current"].Value;
+                        metroGrid4.Rows[i].Cells["GewinnDurchschnitt"].Value = rs.Fields["profit_average"].Value;
+                        metroGrid4.Rows[i].Cells["GewinnGesamt"].Value = rs.Fields["profit_all"].Value;
                         rs.MoveNext();
                         ++i;
                     }
@@ -409,10 +359,10 @@ namespace EnterprisePlanningSolution
 
                     while (!rs.EOF)
                     {
-                        metroGrid1.Rows.Add();
-                        metroGrid1.Rows[i].Cells["Gewinn"].Value = rs.Fields["profit_current"].Value;
-                        metroGrid1.Rows[i].Cells["GewinnDurchschnitt"].Value = rs.Fields["profit_average"].Value;
-                        metroGrid1.Rows[i].Cells["GewinnGesamt"].Value = rs.Fields["profit_all"].Value;
+                        metroGrid4.Rows.Add();
+                        metroGrid4.Rows[i].Cells["Gewinn"].Value = rs.Fields["profit_current"].Value;
+                        metroGrid4.Rows[i].Cells["GewinnDurchschnitt"].Value = rs.Fields["profit_average"].Value;
+                        metroGrid4.Rows[i].Cells["GewinnGesamt"].Value = rs.Fields["profit_all"].Value;
                         rs.MoveNext();
                         ++i;
                     }
@@ -459,6 +409,11 @@ namespace EnterprisePlanningSolution
             DashboardForm dashboardForm = new DashboardForm();
             dashboardForm.Show();
             this.Hide();
+        }
+
+        private void lagerTortendiagramm_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

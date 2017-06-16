@@ -34,6 +34,7 @@
             this.metroTile3 = new MetroFramework.Controls.MetroTile();
             this.metroTile4 = new MetroFramework.Controls.MetroTile();
             this.resetButton = new MetroFramework.Controls.MetroLink();
+            this.beendenButton = new MetroFramework.Controls.MetroLink();
             this.SuspendLayout();
             // 
             // metroTile1
@@ -100,7 +101,7 @@
             // 
             this.resetButton.FontSize = MetroFramework.MetroLinkSize.Tall;
             this.resetButton.ImageSize = 64;
-            this.resetButton.Location = new System.Drawing.Point(620, 138);
+            this.resetButton.Location = new System.Drawing.Point(391, 23);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(94, 72);
             this.resetButton.TabIndex = 4;
@@ -108,11 +109,24 @@
             this.resetButton.UseSelectable = true;
             this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
+            // beendenButton
+            // 
+            this.beendenButton.FontSize = MetroFramework.MetroLinkSize.Tall;
+            this.beendenButton.ImageSize = 64;
+            this.beendenButton.Location = new System.Drawing.Point(1019, 23);
+            this.beendenButton.Name = "beendenButton";
+            this.beendenButton.Size = new System.Drawing.Size(94, 72);
+            this.beendenButton.TabIndex = 5;
+            this.beendenButton.Text = "Beenden";
+            this.beendenButton.UseSelectable = true;
+            this.beendenButton.Click += new System.EventHandler(this.beendenButton_Click);
+            // 
             // DashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1162, 684);
+            this.Controls.Add(this.beendenButton);
             this.Controls.Add(this.resetButton);
             this.Controls.Add(this.metroTile4);
             this.Controls.Add(this.metroTile3);
@@ -132,5 +146,6 @@
         private MetroFramework.Controls.MetroTile metroTile3;
         private MetroFramework.Controls.MetroTile metroTile4;
         private MetroFramework.Controls.MetroLink resetButton;
+        private MetroFramework.Controls.MetroLink beendenButton;
     }
 }

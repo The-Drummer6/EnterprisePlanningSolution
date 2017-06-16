@@ -1000,24 +1000,35 @@ namespace EnterprisePlanningSolution
         /// </summary>
         private void rollbackButton_Click(object sender, EventArgs e)
         {
+            rollback();
+            MessageBox.Show("Bisherige Planung wurde erfolgreich zurückgesetzt!");
+            DashboardForm dashboardForm = new DashboardForm();
+            dashboardForm.Show();
+            this.Hide();
+        }
+
+        private void rollback()
+        {
             ADODB.Connection cn = new ADODB.Connection();
             ADODB.Recordset rs = new ADODB.Recordset();
             ADODB.Recordset rs2 = new ADODB.Recordset();
             cn.Open(cnStr);
-            rs.Open("Select distinct period from summary ORDER BY period Desc", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            int aktuellePlanPeriode = Convert.ToInt32(rs.Fields["period"].Value);
-            aktuellePlanPeriode++;
+            try
+            {
+                rs.Open("Select distinct period from summary ORDER BY period Desc", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                int aktuellePlanPeriode = Convert.ToInt32(rs.Fields["period"].Value);
+                aktuellePlanPeriode++;
 
 
-            rs2.Open("Delete from Prognose where planperiod=" + aktuellePlanPeriode, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs2.Open("Delete from sellwish where planperiod=" + aktuellePlanPeriode, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs2.Open("Delete from selldirect where period=" + aktuellePlanPeriode, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs2.Open("Delete from productionlist where period=" + aktuellePlanPeriode, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs2.Open("Delete from myOrderlist where period=" + "'"+aktuellePlanPeriode+"'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            cn.Close();
-            DashboardForm dashboardForm = new DashboardForm();
-            dashboardForm.Show();
-            this.Hide();
+                rs2.Open("Delete from Prognose where planperiod=" + aktuellePlanPeriode, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs2.Open("Delete from sellwish where planperiod=" + aktuellePlanPeriode, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs2.Open("Delete from selldirect where period=" + aktuellePlanPeriode, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs2.Open("Delete from productionlist where period=" + aktuellePlanPeriode, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs2.Open("Delete from myOrderlist where period=" + "'" + aktuellePlanPeriode + "'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+            }
+            catch (Exception){ }
+
+                cn.Close();
         }
 
         /// <summary>
@@ -1632,6 +1643,12 @@ namespace EnterprisePlanningSolution
         {
             SaveProdPlan(false);
             weiterButtonDispo.SelectedIndex = 5;
+        }
+
+        private void beendenButton_Click(object sender, EventArgs e)
+        {
+            rollback();
+            Close();
         }
     }
 

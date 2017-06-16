@@ -98,5 +98,10 @@ namespace EnterprisePlanningSolution
                 cn.Close();
             }
         }
+
+        private void beendenButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

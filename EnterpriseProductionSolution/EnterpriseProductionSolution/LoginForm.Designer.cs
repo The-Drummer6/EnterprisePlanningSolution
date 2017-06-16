@@ -34,6 +34,7 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.passwordTextBox = new MetroFramework.Controls.MetroTextBox();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.epsLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -135,11 +136,24 @@
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
+            // epsLabel1
+            // 
+            this.epsLabel1.AutoSize = true;
+            this.epsLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.epsLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.epsLabel1.Location = new System.Drawing.Point(209, 60);
+            this.epsLabel1.Name = "epsLabel1";
+            this.epsLabel1.Size = new System.Drawing.Size(254, 25);
+            this.epsLabel1.Style = MetroFramework.MetroColorStyle.Silver;
+            this.epsLabel1.TabIndex = 4;
+            this.epsLabel1.Text = "Enterprise Planning Solution";
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(675, 457);
+            this.Controls.Add(this.epsLabel1);
             this.Controls.Add(this.metroPanel1);
             this.Name = "LoginForm";
             this.Style = MetroFramework.MetroColorStyle.Silver;
@@ -147,6 +161,7 @@
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.metroPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -157,6 +172,7 @@
         private MetroFramework.Controls.MetroTextBox passwordTextBox;
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroTextBox usernameTextBox;
+        private MetroFramework.Controls.MetroLabel epsLabel1;
     }
 }
 

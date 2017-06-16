@@ -1389,8 +1389,7 @@ namespace EnterprisePlanningSolution
         private void dispoGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
 
-            //if (Convert.ToString(dispoGrid["Bestellart", e.RowIndex].Value) == "N" || Convert.ToString(dispoGrid["Bestellart", e.RowIndex].Value) == "E")
-            //{
+
 
             //Recordset
             ADODB.Connection cn = new ADODB.Connection();
@@ -1415,7 +1414,7 @@ namespace EnterprisePlanningSolution
                 rs.Fields["amount"].Value = dispoGrid["Menge", rowIndex].Value;
                 rs.Fields["mode"].Value = dispoGrid["Bestellart", rowIndex].Value; ;
 
-                
+
                 rs.Update();
 
                 rs.Close();
@@ -1423,7 +1422,7 @@ namespace EnterprisePlanningSolution
                 Datagrid_leeren_befüllen(false, false);
             }
         }
-        //}
+
 
         public void saveButtonVisible()
         {

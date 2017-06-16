@@ -518,7 +518,7 @@ namespace EnterprisePlanningSolution
 
             for (int row = 0; row < P1TextBoxes.GetLength(1); row++)
             {
-                if(P1TextBoxes[2, row].Text == null ||Convert.ToInt32(P1TextBoxes[2,row].Text) < 0)
+                if (P1TextBoxes[2, row].Text == null || Convert.ToInt32(P1TextBoxes[2, row].Text) < 0)
                 {
 
                     string LadeError = Thread.CurrentThread.CurrentUICulture.Name == "de" ? "Falsche Eingabe!" : "False input!";
@@ -540,7 +540,7 @@ namespace EnterprisePlanningSolution
                 }
             }
 
-                readyBedarf = true;
+            readyBedarf = true;
             saveButtonVisible();
 
             //Recordset
@@ -647,10 +647,10 @@ namespace EnterprisePlanningSolution
             }
             cn.Close();
 
-            if(aktuellePeriode == 1)
-            Datagrid_leeren_befüllen(true, true);
+            if (aktuellePeriode == 1)
+                Datagrid_leeren_befüllen(true, true);
             else
-            Datagrid_leeren_befüllen(true, false);
+                Datagrid_leeren_befüllen(true, false);
 
             weiterButtonDispo.SelectedIndex = 3;
         }
@@ -1026,9 +1026,9 @@ namespace EnterprisePlanningSolution
                 rs2.Open("Delete from productionlist where period=" + aktuellePlanPeriode, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
                 rs2.Open("Delete from myOrderlist where period=" + "'" + aktuellePlanPeriode + "'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
             }
-            catch (Exception){ }
+            catch (Exception) { }
 
-                cn.Close();
+            cn.Close();
         }
 
         /// <summary>
@@ -1054,8 +1054,8 @@ namespace EnterprisePlanningSolution
 
             int i = 0;
 
-            if(clear)
-               dispoGrid.Rows.Clear();
+            if (clear)
+                dispoGrid.Rows.Clear();
 
             dispoGrid.Columns["Bestand_in_n"].HeaderText = "Bestand_in_" + (aktuellePeriode);
             dispoGrid.Columns["Bestand_in_n1"].HeaderText = "Bestand_in_" + (aktuellePeriode + 1);
@@ -1083,9 +1083,9 @@ namespace EnterprisePlanningSolution
             while (!rs.EOF)
             {
 
-                if(clear)
+                if (clear)
                     dispoGrid.Rows.Add();
-                if(initial)
+                if (initial)
                 {
                     dispoGrid.Rows[i].Cells["Menge"].Value = 0;
                     dispoGrid.Rows[i].Cells["Bestellart"].Value = "N";
@@ -1142,26 +1142,26 @@ namespace EnterprisePlanningSolution
                         int aktuellePeriode3 = aktuellePeriode + 3;
                         try
                         { //dispoGrid.Rows[i].Cells["KommendeBestellung_n"].Value 
-                           // if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode]))
-                                lieferung1 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode].Value);
+                          // if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode]))
+                            lieferung1 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode].Value);
                         }
-                        catch (Exception ) { }
+                        catch (Exception) { }
                         try
                         { //dispoGrid.Rows[i].Cells["KommendeBestellung_n1"].Value 
                           // if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode1]))
-                                lieferung2 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode1].Value);
+                            lieferung2 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode1].Value);
                         }
-                        catch (Exception ) {  }
+                        catch (Exception) { }
                         try
                         { //dispoGrid.Rows[i].Cells["KommendeBestellung_n2"].Value 
                           //if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode2]))
-                                lieferung3 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode2].Value);
+                            lieferung3 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode2].Value);
                         }
                         catch (Exception) { }
                         try
                         { //dispoGrid.Rows[i].Cells["KommendeBestellung_n3"].Value 
-                           // if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode3]))
-                                lieferung4 = Convert.ToInt32(rsLieferungen.Fields[Convert.ToString(aktuellePeriode3)].Value);
+                          // if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode3]))
+                            lieferung4 = Convert.ToInt32(rsLieferungen.Fields[Convert.ToString(aktuellePeriode3)].Value);
                         }
                         catch (Exception) { }
                     }
@@ -1191,18 +1191,18 @@ namespace EnterprisePlanningSolution
                     if (rsBedarf.Fields["period"].Value == null)
                         period = aktuellePeriode;
                     else
-                        period =Convert.ToInt32(rsBedarf.Fields["period"].Value);
+                        period = Convert.ToInt32(rsBedarf.Fields["period"].Value);
                     if (rsBedarf.Fields["Lieferperiode"].Value == null)
                         lieferperiode = aktuellePeriode;
                     else
-                         lieferperiode = Convert.ToInt32(rsBedarf.Fields["Lieferperiode"].Value);
+                        lieferperiode = Convert.ToInt32(rsBedarf.Fields["Lieferperiode"].Value);
 
                     lieferzeit = lieferperiode - period;
-                    if(lieferzeit == 0  && bestand1 < 0)
+                    if (lieferzeit == 0 && bestand1 < 0)
                     {
                         bestellungNotwendig = true;
                     }
-                    if (lieferzeit == 1 && (bestand2 < 0 || bestand1  < 0))
+                    if (lieferzeit == 1 && (bestand2 < 0 || bestand1 < 0))
                     {
                         bestellungNotwendig = true;
                     }
@@ -1216,7 +1216,7 @@ namespace EnterprisePlanningSolution
                     }
                 }
                 catch (Exception) { }
-                if(bestellungNotwendig)
+                if (bestellungNotwendig)
                 {
                     dispoGrid.Rows[i].Cells["Menge"].Style.BackColor = Color.Red;
                 }
@@ -1388,42 +1388,41 @@ namespace EnterprisePlanningSolution
 
         private void dispoGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-           
+
             //if (Convert.ToString(dispoGrid["Bestellart", e.RowIndex].Value) == "N" || Convert.ToString(dispoGrid["Bestellart", e.RowIndex].Value) == "E")
             //{
 
-                //Recordset
-                ADODB.Connection cn = new ADODB.Connection();
-                ADODB.Recordset rs = new ADODB.Recordset();
+            //Recordset
+            ADODB.Connection cn = new ADODB.Connection();
+            ADODB.Recordset rs = new ADODB.Recordset();
+            int rowIndex = e.RowIndex;
+            int artikel = Convert.ToInt32(dispoGrid["Kaufteil", rowIndex].Value);
 
 
+            if (Convert.ToString(dispoGrid["Bestellart", rowIndex].Value) != "")
+            {
                 cn.Open(cnStr);
-                rs.Open("DELETE * FROM futureinwardstockmovement WHERE period = '" + aktuellePeriode + "';", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-                rs.Open("SELECT * FROM futureinwardstockmovement;", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-                for (int i = 0; i < dispoGrid.RowCount; ++i)
-                {
-                    if (Convert.ToString(dispoGrid["Bestellart", i].Value) != "")
-                    {
-                        rs.AddNew();
-                        rs.Fields["id"].Value = Convert.ToString(i);
-                        rs.Fields["period"].Value = aktuellePeriode;
-                        rs.Fields["orderperiod"].Value = aktuellePeriode;
-                        rs.Fields["article"].Value = dispoGrid["Kaufteil", i].Value;
-                        rs.Fields["amount"].Value = dispoGrid["Menge", i].Value;
-                        rs.Fields["mode"].Value = dispoGrid["Bestellart", i].Value; ;
-                    }
+                rs.Open("DELETE * FROM futureinwardstockmovement WHERE period = '" + aktuellePeriode + "' and article =" + artikel + ";", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs.Open("SELECT * FROM futureinwardstockmovement WHERE period = '" + aktuellePeriode + "' and article =" + artikel + ";", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
 
 
 
-                }
+                rs.AddNew();
+                rs.Fields["id"].Value = Convert.ToString(rowIndex);
+                rs.Fields["period"].Value = aktuellePeriode;
+                rs.Fields["orderperiod"].Value = aktuellePeriode;
+                rs.Fields["article"].Value = dispoGrid["Kaufteil", rowIndex].Value;
+                rs.Fields["amount"].Value = dispoGrid["Menge", rowIndex].Value;
+                rs.Fields["mode"].Value = dispoGrid["Bestellart", rowIndex].Value; ;
 
+                
                 rs.Update();
 
                 rs.Close();
                 cn.Close();
                 Datagrid_leeren_befüllen(false, false);
-
             }
+        }
         //}
 
         public void saveButtonVisible()
@@ -1437,7 +1436,8 @@ namespace EnterprisePlanningSolution
             {
                 saveButton.Visible = true;
             }
-            else {
+            else
+            {
                 saveButton.Visible = false;
             }
         }
@@ -1450,7 +1450,7 @@ namespace EnterprisePlanningSolution
             //Recordset
             ADODB.Connection cn = new ADODB.Connection();
             ADODB.Recordset rs = new ADODB.Recordset();
-           
+
             cn.Open(cnStr);
             int cB = aktuellePeriode;
             rs.Open("Select * From productionlist where period =" + cB, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
@@ -1471,51 +1471,51 @@ namespace EnterprisePlanningSolution
         }
         private void SaveProdPlan(bool pruefen)
         {
-                //Recordset
-                ADODB.Connection cn = new ADODB.Connection();
-                ADODB.Recordset rs = new ADODB.Recordset();
-                ADODB.Recordset rs1 = new ADODB.Recordset();
-                ADODB.Recordset rs2 = new ADODB.Recordset();
-             
-                cn.Open(cnStr);
+            //Recordset
+            ADODB.Connection cn = new ADODB.Connection();
+            ADODB.Recordset rs = new ADODB.Recordset();
+            ADODB.Recordset rs1 = new ADODB.Recordset();
+            ADODB.Recordset rs2 = new ADODB.Recordset();
+
+            cn.Open(cnStr);
             int cB = aktuellePeriode;
-                try
-                {
-                    rs.Open("Delete * From productionlist where period =" + cB, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+            try
+            {
+                rs.Open("Delete * From productionlist where period =" + cB, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
 
-                    foreach (DataGridViewRow row in metroGrid1.Rows)
-                    {
-                        int a = Convert.ToInt32(row.Cells["article"].Value);
-                        int b = Convert.ToInt32(row.Cells["quantity"].Value);
-                        rs1.Open("Insert into productionlist (article, quantity, period) values (" + a + "," + b + "," + cB + ")", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-
-                    }
-                    rs2.Open("Delete * From productionlist where period =" + cB + " and article = 0", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-                }
-                catch (Exception test)
+                foreach (DataGridViewRow row in metroGrid1.Rows)
                 {
-                    string LadeError = Thread.CurrentThread.CurrentUICulture.Name == "de" ? "Fehler bei der Verarbeitung" : "Error processing";
-                    MessageBox.Show(LadeError);
+                    int a = Convert.ToInt32(row.Cells["article"].Value);
+                    int b = Convert.ToInt32(row.Cells["quantity"].Value);
+                    rs1.Open("Insert into productionlist (article, quantity, period) values (" + a + "," + b + "," + cB + ")", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
 
                 }
-                finally
-                {
-                    cn.Close();
-                }
-                 if(!pruefen)
-                  Pruefen1();
-           
+                rs2.Open("Delete * From productionlist where period =" + cB + " and article = 0", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+            }
+            catch (Exception test)
+            {
+                string LadeError = Thread.CurrentThread.CurrentUICulture.Name == "de" ? "Fehler bei der Verarbeitung" : "Error processing";
+                MessageBox.Show(LadeError);
+
+            }
+            finally
+            {
+                cn.Close();
+            }
+            if (!pruefen)
+                Pruefen1();
+
 
         }
         //dispoGrid.Rows[i].Cells["Menge"].Style.BackColor = Color.Red;
         public void Pruefen1()
         {
-           
+
             ADODB.Connection cn = new ADODB.Connection();
             ADODB.Recordset rs = new ADODB.Recordset();
             ADODB.Recordset rs2 = new ADODB.Recordset();
             ADODB.Recordset rs3 = new ADODB.Recordset();
-            
+
             cn.Open(cnStr);
             int cB = aktuellePeriode;
             rs.Open("Select * From Produktionsprogramm where period =" + cB + " and Ausdr1 <> 0", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
@@ -1557,18 +1557,18 @@ namespace EnterprisePlanningSolution
             rs2.Close();
             rs3.Close();
             cn.Close();
-            
+
         }
 
         public void Pruefen2()
         {
             ADODB.Connection cn = new ADODB.Connection();
             ADODB.Recordset rs2 = new ADODB.Recordset();
-           
+
             cn.Open(cnStr);
 
             int cB = aktuellePeriode;
-        rs2.Open("Select * From GeplanterBedarf where period =" + cB, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+            rs2.Open("Select * From GeplanterBedarf where period =" + cB, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
             int kkk = 0;
             while (!rs2.EOF)
             {
@@ -1583,7 +1583,7 @@ namespace EnterprisePlanningSolution
 
         public void StartProdPlanung()
         {
-           metroGrid1.Rows.Clear();
+            metroGrid1.Rows.Clear();
             //Recordset
             ADODB.Connection cn = new ADODB.Connection();
             ADODB.Recordset rs = new ADODB.Recordset();
@@ -1599,9 +1599,9 @@ namespace EnterprisePlanningSolution
 
             while (!rs.EOF)
             {
-               metroGrid1.Rows.Add();
-               metroGrid1.Rows[i].Cells["article"].Value = rs.Fields["item"].Value;
-               metroGrid1.Rows[i].Cells["qunatity"].Value = rs.Fields["productionPlan"].Value;
+                metroGrid1.Rows.Add();
+                metroGrid1.Rows[i].Cells["article"].Value = rs.Fields["item"].Value;
+                metroGrid1.Rows[i].Cells["qunatity"].Value = rs.Fields["productionPlan"].Value;
                 rs.MoveNext();
                 ++i;
             }
@@ -1616,7 +1616,7 @@ namespace EnterprisePlanningSolution
             //Recordset
             ADODB.Connection cn = new ADODB.Connection();
             ADODB.Recordset rs = new ADODB.Recordset();
-          
+
             cn.Open(cnStr);
             int cB = aktuellePeriode;
             rs.Open("Select * From GeplanterBedarf where period =" + cB, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
@@ -1625,9 +1625,9 @@ namespace EnterprisePlanningSolution
 
             while (!rs.EOF)
             {
-               metroGrid1.Rows.Add();
-               metroGrid1.Rows[i].Cells["article"].Value = rs.Fields["item"].Value;
-               metroGrid1.Rows[i].Cells["quantity"].Value = rs.Fields["productionPlan"].Value;
+                metroGrid1.Rows.Add();
+                metroGrid1.Rows[i].Cells["article"].Value = rs.Fields["item"].Value;
+                metroGrid1.Rows[i].Cells["quantity"].Value = rs.Fields["productionPlan"].Value;
                 rs.MoveNext();
                 ++i;
             }
@@ -1652,7 +1652,7 @@ namespace EnterprisePlanningSolution
         }
     }
 
-   
+
 
 
 

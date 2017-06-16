@@ -33,6 +33,7 @@
             this.metroTile2 = new MetroFramework.Controls.MetroTile();
             this.metroTile3 = new MetroFramework.Controls.MetroTile();
             this.metroTile4 = new MetroFramework.Controls.MetroTile();
+            this.resetButton = new MetroFramework.Controls.MetroLink();
             this.SuspendLayout();
             // 
             // metroTile1
@@ -95,11 +96,24 @@
             this.metroTile4.UseTileImage = true;
             this.metroTile4.Click += new System.EventHandler(this.metroTile4_Click);
             // 
+            // resetButton
+            // 
+            this.resetButton.FontSize = MetroFramework.MetroLinkSize.Tall;
+            this.resetButton.ImageSize = 64;
+            this.resetButton.Location = new System.Drawing.Point(620, 138);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(94, 72);
+            this.resetButton.TabIndex = 4;
+            this.resetButton.Text = "Reset";
+            this.resetButton.UseSelectable = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
+            // 
             // DashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1162, 684);
+            this.Controls.Add(this.resetButton);
             this.Controls.Add(this.metroTile4);
             this.Controls.Add(this.metroTile3);
             this.Controls.Add(this.metroTile2);
@@ -117,5 +131,6 @@
         private MetroFramework.Controls.MetroTile metroTile2;
         private MetroFramework.Controls.MetroTile metroTile3;
         private MetroFramework.Controls.MetroTile metroTile4;
+        private MetroFramework.Controls.MetroLink resetButton;
     }
 }

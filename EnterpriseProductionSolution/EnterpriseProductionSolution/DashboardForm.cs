@@ -61,32 +61,42 @@ namespace EnterprisePlanningSolution
             ADODB.Connection cn = new ADODB.Connection();
             ADODB.Recordset rs = new ADODB.Recordset();
             cn.Open(cnStr);
-            
-            rs.Open("DELETE FROM completedorders", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs.Open("DELETE FROM cycletimes", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs.Open("DELETE * FROM cycletimes_order", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs.Open("DELETE * FROM directsale", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs.Open("DELETE * FROM futureinwardstockmovement", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs.Open("DELETE * FROM idletimecosts_sum", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs.Open("DELETE * FROM idletimecosts_workplace", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs.Open("DELETE * FROM inwardstockmovement", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs.Open("DELETE * FROM marketplacesale", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs.Open("DELETE * FROM normalsale", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs.Open("DELETE * FROM ordersinwork", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs.Open("DELETE * FROM summary", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs.Open("DELETE * FROM tbl_general", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs.Open("DELETE * FROM waitingliststock", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs.Open("DELETE * FROM waitinglistworkstations", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs.Open("DELETE * FROM warehousestock_article", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs.Open("DELETE * FROM warehousestock_totalvalue", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs.Open("DELETE * FROM GeplanterBedarf", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs.Open("DELETE * FROM productionlist", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs.Open("DELETE * FROM myOrderlist WHERE period <> '0'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs.Open("DELETE * FROM Kapazitaetsplanung", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs.Open("DELETE * FROM Prognose", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs.Open("DELETE * FROM selldirect", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs.Open("DELETE * FROM sellwish", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            cn.Close();
+
+            try
+            {
+                rs.Open("DELETE FROM completedorders", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs.Open("DELETE FROM cycletimes", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs.Open("DELETE * FROM cycletimes_order", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs.Open("DELETE * FROM directsale", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs.Open("DELETE * FROM futureinwardstockmovement", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs.Open("DELETE * FROM idletimecosts_sum", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs.Open("DELETE * FROM idletimecosts_workplace", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs.Open("DELETE * FROM inwardstockmovement", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs.Open("DELETE * FROM marketplacesale", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs.Open("DELETE * FROM normalsale", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs.Open("DELETE * FROM ordersinwork", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs.Open("DELETE * FROM summary", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs.Open("DELETE * FROM tbl_general", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs.Open("DELETE * FROM waitingliststock", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs.Open("DELETE * FROM waitinglistworkstations", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs.Open("DELETE * FROM warehousestock_article", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs.Open("DELETE * FROM warehousestock_totalvalue", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs.Open("DELETE * FROM GeplanterBedarf", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs.Open("DELETE * FROM productionlist", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs.Open("DELETE * FROM myOrderlist WHERE period <> '0'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs.Open("DELETE * FROM Kapazitaetsplanung", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs.Open("DELETE * FROM Prognose", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs.Open("DELETE * FROM selldirect", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs.Open("DELETE * FROM sellwish", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                
+                MessageBox.Show("Datenbanktabellen wurden erfolgreich gelöscht!");
+            }
+            catch(Exception test) {
+                MessageBox.Show(test.Message); }
+            finally
+            {
+                cn.Close();
+            }
         }
     }
 }

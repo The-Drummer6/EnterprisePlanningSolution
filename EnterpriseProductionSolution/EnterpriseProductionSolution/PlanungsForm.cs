@@ -291,7 +291,7 @@ namespace EnterprisePlanningSolution
         /// Eingaben aus Bedarfsplanung Tab in DB schreiben
         /// </summary>
         private void weiterButton3_Click_1(object sender, EventArgs e)
-        {         
+        {
             weiterButtonDispo.SelectedIndex = 3;
         }
         private void initializeTextboxes()
@@ -702,10 +702,6 @@ namespace EnterprisePlanningSolution
             dispoGrid.Columns["Bestand_in_n2"].HeaderText = "Bestand_in_" + (aktuellePeriode + 2);
             dispoGrid.Columns["Bestand_in_n3"].HeaderText = "Bestand_in_" + (aktuellePeriode + 3);
 
-            //dispoGrid.Columns["KommendeBestellung_n"].HeaderText = "KB_" + (aktuellePeriode);
-            //dispoGrid.Columns["KommendeBestellung_n1"].HeaderText = "KB_" + (aktuellePeriode + 1);
-            //dispoGrid.Columns["KommendeBestellung_n2"].HeaderText = "KB_" + (aktuellePeriode + 2);
-            //dispoGrid.Columns["KommendeBestellung_n3"].HeaderText = "KB_" + (aktuellePeriode + 3);
             double anfangsBestand = 0;
             double bestand1 = 0;
             double bestand2 = 0;
@@ -737,24 +733,14 @@ namespace EnterprisePlanningSolution
                 dispoGrid.Rows[i].Cells["Abweichung"].Value = rs.Fields["Lieferzeitabweichung"].Value;
                 dispoGrid.Rows[i].Cells["Diskontmenge"].Value = rs.Fields["Diskontmenge"].Value;
                 dispoGrid.Rows[i].Cells["Anfangsbestand_n"].Value = rs.Fields["amount"].Value;
+
                 anfangsBestand = Convert.ToInt32(rs.Fields["amount"].Value);
                 dispoGrid.Rows[i].Cells["Preis"].Value = rs.Fields["price"].Value;
-                //dispoGrid.Rows[i].Cells["Bruttobedarf_n"].Value 
                 bedarf1 = rs.Fields["AktuellePeriode"].Value;
-                //dispoGrid.Rows[i].Cells["Bruttobedarf_n1"].Value 
                 bedarf2 = rs.Fields[Convert.ToString(aktuellePeriode - 1 + 1)].Value;
-                //dispoGrid.Rows[i].Cells["Bruttobedarf_n2"].Value 
                 bedarf3 = rs.Fields[Convert.ToString(aktuellePeriode - 1 + 2)].Value;
-                //dispoGrid.Rows[i].Cells["Bruttobedarf_n3"].Value 
                 bedarf4 = rs.Fields[Convert.ToString(aktuellePeriode - 1 + 3)].Value;
                 dispoGrid.Rows[i].Cells["Bestellkosten"].Value = rs.Fields["Lieferkosten"].Value;
-                /* long myBruttebedarf_summe = Convert.ToInt32(dispoGrid.Rows[i].Cells["Bestand_in_n"].Value) + Convert.ToInt32(dispoGrid.Rows[i].Cells["Bestand_in_n1"].Value)
-                     + Convert.ToInt32(dispoGrid.Rows[i].Cells["Bestand_in_n2"].Value) + Convert.ToInt32(dispoGrid.Rows[i].Cells["Bestand_in_n3"].Value);
-                 long myJahresbaedarf = (myBruttebedarf_summe / 4) * 52;*/
-
-                //Bestellvorschlag
-                //dispoGrid.Rows[i].Cells["Bestellmenge"].Value = Math.Round(Math.Sqrt((200 * myJahresbaedarf * Convert.ToInt32(dispoGrid.Rows[i].Cells["Bestellkosten"].Value)) / (Convert.ToInt32(textBox1.Text) * Convert.ToDouble(dispoGrid.Rows[i].Cells["Preis"].Value))));
-
 
 
                 double myPufferzeit = 1.3 + Convert.ToDouble(dispoGrid.Rows[i].Cells["Lieferfrist"].Value) + Convert.ToDouble(dispoGrid.Rows[i].Cells["Abweichung"].Value = rs.Fields["Lieferzeitabweichung"].Value);
@@ -767,6 +753,7 @@ namespace EnterprisePlanningSolution
 
                 if (!initial)
                 {
+                    
                     rsLieferungen.MoveFirst();
                     while (!rsLieferungen.EOF)
                     {
@@ -781,32 +768,28 @@ namespace EnterprisePlanningSolution
                         int aktuellePeriode2 = aktuellePeriode + 2;
                         int aktuellePeriode3 = aktuellePeriode + 3;
                         try
-                        { //dispoGrid.Rows[i].Cells["KommendeBestellung_n"].Value 
-                          // if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode]))
+                        { 
                             lieferung1 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode].Value);
                         }
                         catch (Exception) { }
                         try
-                        { //dispoGrid.Rows[i].Cells["KommendeBestellung_n1"].Value 
-                          // if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode1]))
+                        { 
                             lieferung2 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode1].Value);
                         }
                         catch (Exception) { }
                         try
-                        { //dispoGrid.Rows[i].Cells["KommendeBestellung_n2"].Value 
-                          //if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode2]))
+                        { 
                             lieferung3 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode2].Value);
                         }
                         catch (Exception) { }
                         try
-                        { //dispoGrid.Rows[i].Cells["KommendeBestellung_n3"].Value 
-                          // if (DBNull.Value.Equals(rsLieferungen.Fields[aktuellePeriode3]))
+                        { 
                             lieferung4 = Convert.ToInt32(rsLieferungen.Fields[Convert.ToString(aktuellePeriode3)].Value);
                         }
                         catch (Exception) { }
+                        rsLieferungen.Update();
                     }
                 }
-
                 /// <summary>
                 /// Bedarf wird mit Beständen und Lieferungen verrechnet
                 /// </summary>
@@ -955,7 +938,7 @@ namespace EnterprisePlanningSolution
         }
 
         private void weiterButton4_Click(object sender, EventArgs e)
-        {           
+        {
             LoadProdPlan();
             weiterButtonDispo.SelectedIndex = 4;
         }
@@ -1213,7 +1196,7 @@ namespace EnterprisePlanningSolution
         }
 
         private void weiterButton5_Click(object sender, EventArgs e)
-        {            
+        {
             weiterButtonDispo.SelectedIndex = 5;
         }
 
@@ -1664,9 +1647,4 @@ namespace EnterprisePlanningSolution
             SaveProdPlan(false);
         }
     }
-
-
-
-
-
 }

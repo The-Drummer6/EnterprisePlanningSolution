@@ -70,12 +70,15 @@
             this.Kennzahlen = new System.Windows.Forms.TabPage();
             this.metroPanel4 = new MetroFramework.Controls.MetroPanel();
             this.metroGrid4 = new MetroFramework.Controls.MetroGrid();
-            this.Gewinn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GewinnDurchschnitt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GewinnGesamt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroComboBox4 = new MetroFramework.Controls.MetroComboBox();
             this.PeriodeKenn = new MetroFramework.Controls.MetroLabel();
             this.metroLink1 = new MetroFramework.Controls.MetroLink();
+            this.Gewinn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GewinnDurchschnitt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GewinnGesamt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lagerwert_Kenn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lagerkosten_Kenn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AnzahlLager_Kenn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabControl1.SuspendLayout();
             this.Lagerbestand.SuspendLayout();
             this.metroPanel1.SuspendLayout();
@@ -99,7 +102,7 @@
             this.metroTabControl1.Controls.Add(this.Kennzahlen);
             this.metroTabControl1.Location = new System.Drawing.Point(24, 64);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 3;
             this.metroTabControl1.Size = new System.Drawing.Size(1097, 627);
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.UseSelectable = true;
@@ -443,7 +446,10 @@
             this.metroGrid4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Gewinn,
             this.GewinnDurchschnitt,
-            this.GewinnGesamt});
+            this.GewinnGesamt,
+            this.Lagerwert_Kenn,
+            this.Lagerkosten_Kenn,
+            this.AnzahlLager_Kenn});
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -468,23 +474,8 @@
             this.metroGrid4.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.metroGrid4.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid4.Size = new System.Drawing.Size(433, 206);
+            this.metroGrid4.Size = new System.Drawing.Size(671, 206);
             this.metroGrid4.TabIndex = 4;
-            // 
-            // Gewinn
-            // 
-            this.Gewinn.HeaderText = "Gewinn Aktuell";
-            this.Gewinn.Name = "Gewinn";
-            // 
-            // GewinnDurchschnitt
-            // 
-            this.GewinnDurchschnitt.HeaderText = "Durchschnittlicher Gewinn";
-            this.GewinnDurchschnitt.Name = "GewinnDurchschnitt";
-            // 
-            // GewinnGesamt
-            // 
-            this.GewinnGesamt.HeaderText = "Gesamter Gewinn";
-            this.GewinnGesamt.Name = "GewinnGesamt";
             // 
             // metroComboBox4
             // 
@@ -515,6 +506,36 @@
             this.metroLink1.TabIndex = 2;
             this.metroLink1.UseSelectable = true;
             this.metroLink1.Click += new System.EventHandler(this.metroLink1_Click);
+            // 
+            // Gewinn
+            // 
+            this.Gewinn.HeaderText = "Gewinn Aktuell";
+            this.Gewinn.Name = "Gewinn";
+            // 
+            // GewinnDurchschnitt
+            // 
+            this.GewinnDurchschnitt.HeaderText = "Durchschnittlicher Gewinn";
+            this.GewinnDurchschnitt.Name = "GewinnDurchschnitt";
+            // 
+            // GewinnGesamt
+            // 
+            this.GewinnGesamt.HeaderText = "Gesamter Gewinn";
+            this.GewinnGesamt.Name = "GewinnGesamt";
+            // 
+            // Lagerwert_Kenn
+            // 
+            this.Lagerwert_Kenn.HeaderText = "Lagerwert";
+            this.Lagerwert_Kenn.Name = "Lagerwert_Kenn";
+            // 
+            // Lagerkosten_Kenn
+            // 
+            this.Lagerkosten_Kenn.HeaderText = "Lagerkosten";
+            this.Lagerkosten_Kenn.Name = "Lagerkosten_Kenn";
+            // 
+            // AnzahlLager_Kenn
+            // 
+            this.AnzahlLager_Kenn.HeaderText = "Anzahl Lager";
+            this.AnzahlLager_Kenn.Name = "AnzahlLager_Kenn";
             // 
             // ErgebnisseForm
             // 
@@ -567,9 +588,6 @@
         private MetroFramework.Controls.MetroGrid metroGrid4;
         private MetroFramework.Controls.MetroComboBox metroComboBox4;
         private MetroFramework.Controls.MetroLabel PeriodeKenn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Gewinn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GewinnDurchschnitt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GewinnGesamt;
         private System.Windows.Forms.DataGridViewTextBoxColumn Artikelnummer_Bestellung;
         private System.Windows.Forms.DataGridViewTextBoxColumn Menge_Bestellung;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bestellart_Bestellung;
@@ -581,5 +599,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Preis_Zugang;
         private MetroFramework.Controls.MetroLink metroLink1;
         private System.Windows.Forms.DataVisualization.Charting.Chart lagerTortendiagramm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gewinn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GewinnDurchschnitt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GewinnGesamt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Lagerwert_Kenn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Lagerkosten_Kenn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AnzahlLager_Kenn;
     }
 }

@@ -123,15 +123,38 @@ namespace EnterprisePlanningSolution
 
         private void ErgebnisseForm_LoadKennzahl(ADODB.Connection cn, ADODB.Recordset rs)
         {
+            
             rs.Open("Select * From summary", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+            ADODB.Recordset rs2 = new ADODB.Recordset();
+            rs2.Open("Select * From warehousestock_totalvalue", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+            double lagerwert;
+            double lagerkosten;
             int i = 0;
 
             while (!rs.EOF)
             {
+                lagerwert = Convert.ToDouble(rs.Fields["stockvalue"].Value);
                 metroGrid4.Rows.Add();
                 metroGrid4.Rows[i].Cells["Gewinn"].Value = rs.Fields["profit_current"].Value;
                 metroGrid4.Rows[i].Cells["GewinnDurchschnitt"].Value = rs.Fields["profit_average"].Value;
                 metroGrid4.Rows[i].Cells["GewinnGesamt"].Value = rs.Fields["profit_all"].Value;
+                metroGrid4.Rows[i].Cells["Lagerwert_Kenn"].Value = rs2.Fields["stockvalue"].Value;
+                if (lagerwert <= 25000.00)
+                {
+                    lagerkosten = Math.Round(lagerwert * 0.006,2); //TODO: Durchschnittliche Lagerkosten
+                    metroGrid4.Rows[i].Cells["Lagerkosten_Kenn"].Value = lagerkosten;
+                    metroGrid4.Rows[i].Cells["AnzahlLager_Kenn"].Value = "1";
+
+                }
+                else
+                {
+                    lagerkosten = Math.Round(250000 * 0.006, 2); //1.500 für das erste Lager
+                    lagerkosten += 5300.00;
+                    lagerkosten += Math.Round((lagerwert - 250000) * 0.016, 2);
+                    metroGrid4.Rows[i].Cells["Lagerkosten_Kenn"].Value = lagerkosten;
+                    metroGrid4.Rows[i].Cells["AnzahlLager_Kenn"].Value = "2"; //TODO: Alle Fälle abdecken bei multiplen von 250.000?
+                }
+
                 rs.MoveNext();
                 ++i;
             }
@@ -330,6 +353,9 @@ namespace EnterprisePlanningSolution
         {
             ADODB.Connection cn = new ADODB.Connection();
             ADODB.Recordset rs = new ADODB.Recordset();
+            ADODB.Recordset rs2 = new ADODB.Recordset();
+            double lagerwert;
+            double lagerkosten;
             try
             {
                 cn.Open(cnStr);
@@ -337,15 +363,33 @@ namespace EnterprisePlanningSolution
                 if (periode == "0")
                 {
                     rs.Open("Select * From summary", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                    rs2.Open("Select * From warehousestock_totalvalue", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
                     metroGrid4.Rows.Clear();
                     int i = 0;
 
                     while (!rs.EOF)
                     {
                         metroGrid4.Rows.Add();
+                        lagerwert = Convert.ToDouble(rs.Fields["stockvalue"].Value);
                         metroGrid4.Rows[i].Cells["Gewinn"].Value = rs.Fields["profit_current"].Value;
                         metroGrid4.Rows[i].Cells["GewinnDurchschnitt"].Value = rs.Fields["profit_average"].Value;
                         metroGrid4.Rows[i].Cells["GewinnGesamt"].Value = rs.Fields["profit_all"].Value;
+                        metroGrid4.Rows[i].Cells["Lagerwert_Kenn"].Value = rs2.Fields["stockvalue"].Value;
+                        if (lagerwert <= 25000.00)
+                        {
+                            lagerkosten = Math.Round(lagerwert * 0.006, 2); //TODO: Durchschnittliche Lagerkosten
+                            metroGrid4.Rows[i].Cells["Lagerkosten_Kenn"].Value = lagerkosten;
+                            metroGrid4.Rows[i].Cells["AnzahlLager_Kenn"].Value = "1";
+
+                        }
+                        else
+                        {
+                            lagerkosten = Math.Round(250000 * 0.006, 2); //1.500 für das erste Lager
+                            lagerkosten += 5300.00;
+                            lagerkosten += Math.Round((lagerwert - 250000) * 0.016, 2);
+                            metroGrid4.Rows[i].Cells["Lagerkosten_Kenn"].Value = lagerkosten;
+                            metroGrid4.Rows[i].Cells["AnzahlLager_Kenn"].Value = "2"; //TODO: Alle Fälle abdecken bei multiplen von 250.000?
+                        }
                         rs.MoveNext();
                         ++i;
                     }
@@ -354,15 +398,33 @@ namespace EnterprisePlanningSolution
                 else
                 {
                     rs.Open("Select * From summary", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                    rs2.Open("Select * From warehousestock_totalvalue", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
                     metroGrid4.Rows.Clear();
                     int i = 0;
 
                     while (!rs.EOF)
                     {
                         metroGrid4.Rows.Add();
+                        lagerwert = Convert.ToDouble(rs.Fields["stockvalue"].Value);
                         metroGrid4.Rows[i].Cells["Gewinn"].Value = rs.Fields["profit_current"].Value;
                         metroGrid4.Rows[i].Cells["GewinnDurchschnitt"].Value = rs.Fields["profit_average"].Value;
                         metroGrid4.Rows[i].Cells["GewinnGesamt"].Value = rs.Fields["profit_all"].Value;
+                        metroGrid4.Rows[i].Cells["Lagerwert_Kenn"].Value = rs2.Fields["stockvalue"].Value;
+                        if (lagerwert <= 25000.00)
+                        {
+                            lagerkosten = Math.Round(lagerwert * 0.006, 2); //TODO: Durchschnittliche Lagerkosten
+                            metroGrid4.Rows[i].Cells["Lagerkosten_Kenn"].Value = lagerkosten;
+                            metroGrid4.Rows[i].Cells["AnzahlLager_Kenn"].Value = "1";
+
+                        }
+                        else
+                        {
+                            lagerkosten = Math.Round(250000 * 0.006, 2); //1.500 für das erste Lager
+                            lagerkosten += 5300.00;
+                            lagerkosten += Math.Round((lagerwert - 250000) * 0.016, 2);
+                            metroGrid4.Rows[i].Cells["Lagerkosten_Kenn"].Value = lagerkosten;
+                            metroGrid4.Rows[i].Cells["AnzahlLager_Kenn"].Value = "2"; //TODO: Alle Fälle abdecken bei multiplen von 250.000?
+                        }
                         rs.MoveNext();
                         ++i;
                     }

@@ -280,11 +280,12 @@ namespace EnterprisePlanningSolution
             readyPrognose = true;
             saveButtonVisible();
 
-            if (tBPP1N0.Text == "" || tBPP1N1.Text == "" || tBPP1N2.Text == "" || tBPP1N3.Text == "" || tBPP2N0.Text == "" || tBPP2N1.Text == "" || tBPP2N2.Text == "" || tBPP2N3.Text == "" || tBPP3N0.Text == "" || tBPP3N1.Text == "" || tBPP3N2.Text == "" || tBPP3N3.Text == "" || tBGP1N0.Text == "" || tBGP1N1.Text == "" || tBGP1N2.Text == "" || tBGP1N3.Text == "" || tBGP2N0.Text == "" || tBGP2N1.Text == "" || tBGP2N2.Text == "" || tBGP2N3.Text == "" || tBGP3N0.Text == "" || tBGP3N1.Text == "" || tBGP3N2.Text == "" || tBGP3N3.Text == "")
+            if (tBPP1N0.Text == "" || tBPP1N1.Text == "" || tBPP1N2.Text == "" || tBPP1N3.Text == "" || tBPP2N0.Text == "" || tBPP2N1.Text == "" || tBPP2N2.Text == "" || tBPP2N3.Text == "" || tBPP3N0.Text == "" || tBPP3N1.Text == "" || tBPP3N2.Text == "" || tBPP3N3.Text == "" || tBGP1N0.Text == "" || tBGP1N1.Text == "" || tBGP1N2.Text == "" || tBGP1N3.Text == "" || tBGP2N0.Text == "" || tBGP2N1.Text == "" || tBGP2N2.Text == "" || tBGP2N3.Text == "" || tBGP3N0.Text == "" || tBGP3N1.Text == "" || tBGP3N2.Text == "" || tBGP3N3.Text == ""
+                || (Convert.ToInt16(tBPP1N0.Text) < 0 || Convert.ToInt16(tBPP1N1.Text) < 0 || Convert.ToInt16(tBPP1N2.Text) < 0 || Convert.ToInt16(tBPP1N3.Text) < 0 || Convert.ToInt16(tBPP2N0.Text) < 0 || Convert.ToInt16(tBPP2N1.Text) < 0 || Convert.ToInt16(tBPP2N2.Text) < 0 || Convert.ToInt16(tBPP2N3.Text) < 0 || Convert.ToInt16(tBPP3N0.Text) < 0 || Convert.ToInt16(tBPP3N1.Text) < 0 || Convert.ToInt16(tBPP3N2.Text) < 0 || Convert.ToInt16(tBPP3N3.Text) < 0 || Convert.ToInt16(tBGP1N0.Text) < 0 || Convert.ToInt16(tBGP1N1.Text) < 0 || Convert.ToInt16(tBGP1N2.Text) < 0 || Convert.ToInt16(tBGP1N3.Text) < 0 || Convert.ToInt16(tBGP2N0.Text) < 0 || Convert.ToInt16(tBGP2N1.Text) < 0 || Convert.ToInt16(tBGP2N2.Text) < 0 || Convert.ToInt16(tBGP2N3.Text) < 0 || Convert.ToInt16(tBGP3N0.Text) < 0 || Convert.ToInt16(tBGP3N1.Text) < 0 || Convert.ToInt16(tBGP3N2.Text) < 0 || Convert.ToInt16(tBGP3N3.Text) < 0))
             {
-                string LadeError = Thread.CurrentThread.CurrentUICulture.Name == "de" ? "Felder dürfen nicht leer sein!" : "Fields must not be empty!";
+                string LadeError = Thread.CurrentThread.CurrentUICulture.Name == "de" ? "Falsche Eingabe!" : "False input!";
                 MessageBox.Show(LadeError);
-
+                return;
             }
 
             int cB = Convert.ToInt32(periodenLabel1.Text);
@@ -436,10 +437,12 @@ namespace EnterprisePlanningSolution
             readyDirektbezug = true;
             saveButtonVisible();
 
-            if (tBP1.Text == "" || tBP1P.Text == "" || tBP1S.Text == "" || tBP2.Text == "" || tBP2P.Text == "" || tBP2S.Text == "" || tBP3.Text == "" || tBP3P.Text == "" || tBP3S.Text == "")
+            if (tBP1.Text == "" || tBP1P.Text == "" || tBP1S.Text == "" || tBP2.Text == "" || tBP2P.Text == "" || tBP2S.Text == "" || tBP3.Text == "" || tBP3P.Text == "" || tBP3S.Text == ""
+                || (Convert.ToInt32(tBP1.Text) < 0 || Convert.ToInt32(tBP1P.Text) < 0 || Convert.ToInt32(tBP1S.Text) < 0 || Convert.ToInt32(tBP2.Text) < 0 || Convert.ToInt32(tBP2P.Text) < 0 || Convert.ToInt32(tBP2S.Text) < 0 || Convert.ToInt32(tBP3.Text) < 0 || Convert.ToInt32(tBP3P.Text) < 0 || Convert.ToInt32(tBP3S.Text) < 0))
             {
-                string LadeError = Thread.CurrentThread.CurrentUICulture.Name == "de" ? "Felder dürfen nicht leer sein!" : "Fields must not be empty!";
+                string LadeError = Thread.CurrentThread.CurrentUICulture.Name == "de" ? "Falsche Eingabe!" : "False input!";
                 MessageBox.Show(LadeError);
+                return;
 
             }
 
@@ -512,7 +515,32 @@ namespace EnterprisePlanningSolution
         /// </summary>
         private void weiterButton3_Click_1(object sender, EventArgs e)
         {
-            readyBedarf = true;
+
+            for (int row = 0; row < P1TextBoxes.GetLength(1); row++)
+            {
+                if(P1TextBoxes[2, row].Text == null ||Convert.ToInt32(P1TextBoxes[2,row].Text) < 0)
+                {
+
+                    string LadeError = Thread.CurrentThread.CurrentUICulture.Name == "de" ? "Falsche Eingabe!" : "False input!";
+                    MessageBox.Show(LadeError);
+                    return;
+                }
+                if (P2TextBoxes[2, row].Text == null || Convert.ToInt32(P2TextBoxes[2, row].Text) < 0)
+                {
+
+                    string LadeError = Thread.CurrentThread.CurrentUICulture.Name == "de" ? "Falsche Eingabe!" : "False input!";
+                    MessageBox.Show(LadeError);
+                    return;
+                }
+                if (P3TextBoxes[2, row].Text == null || Convert.ToInt32(P3TextBoxes[2, row].Text) < 0)
+                {
+                    string LadeError = Thread.CurrentThread.CurrentUICulture.Name == "de" ? "Falsche Eingabe!" : "False input!";
+                    MessageBox.Show(LadeError);
+                    return;
+                }
+            }
+
+                readyBedarf = true;
             saveButtonVisible();
 
             //Recordset
@@ -1286,9 +1314,9 @@ namespace EnterprisePlanningSolution
             {
                 if (dispoGrid["Bestellart", j].Value != null)
                 {
-                    if (dispoGrid["Menge", j].Value == null)
+                    if (dispoGrid["Menge", j].Value == null || Convert.ToInt32(dispoGrid["Menge", j].Value) < 0)
                     {
-                        MessageBox.Show("Bitte für jede Bestellung eine Menge angeben!");
+                        MessageBox.Show("Falsche eingegeben!");
                         return;
                     }
                 }

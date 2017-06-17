@@ -1328,9 +1328,10 @@ namespace EnterprisePlanningSolution
                 rs.Fields["orderperiod"].Value = aktuellePeriode;
                 rs.Fields["article"].Value = dispoGrid["Kaufteil", rowIndex].Value;
                 rs.Fields["amount"].Value = dispoGrid["Menge", rowIndex].Value;
-                rs.Fields["mode"].Value = dispoGrid["Bestellart", rowIndex].Value; ;
-
-
+                if (dispoGrid["Bestellart", rowIndex].Value.Equals("N"))
+                    rs.Fields["mode"].Value = "5";
+                else if (dispoGrid["Bestellart", rowIndex].Value.Equals("E"))
+                    rs.Fields["mode"].Value = "4";
                 rs.Update();
 
                 rs.Close();

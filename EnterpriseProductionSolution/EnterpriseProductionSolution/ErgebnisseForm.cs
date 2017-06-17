@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace EnterprisePlanningSolution
 {
@@ -136,16 +137,18 @@ namespace EnterprisePlanningSolution
                 int i = 0;
                 double gewinn = 0;
                 gewinnDiagramm.Series.Clear();
+                Series S1 = new Series();
+                gewinnDiagramm.Series.Add(S1);
+                gewinnDiagramm.Series[0].Name = "Gewinn";
                 while (!rss.EOF)
                 {
                     gewinn = Convert.ToDouble(rss.Fields["profit_current"].Value);
-                    string serienName = Convert.ToString(i);
-                    gewinnDiagramm.Series.Add(serienName);
-                    gewinnDiagramm.Series[serienName].Points.Clear();
-                    gewinnDiagramm.Series[serienName].Points.AddXY("Periode '"+i+"'", gewinn);
+                    S1.Points.AddXY("Periode " + (i+1), gewinn);
+                    gewinnDiagramm.Series[0].Points[i].AxisLabel = "Periode " + (i+1) ;
                     rss.MoveNext();
                     i++;
                 }
+                
                 rss.Close();
                 cnn.Close();
             }

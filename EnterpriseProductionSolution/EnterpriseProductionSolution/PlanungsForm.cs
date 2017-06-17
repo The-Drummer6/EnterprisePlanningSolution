@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace EnterprisePlanningSolution
 {
@@ -65,7 +66,7 @@ namespace EnterprisePlanningSolution
         int FORMAT_EXCEPTION = 2;
         int SPEICHER_EXCEPTION = 3;
         int NEGATIVE_PLANUNG = 4;
-
+        
         //Boolean Wert für die Sichtbarkeit des SaveButton
         bool readyPrognose = false;
         bool readyDirektbezug = false;
@@ -75,6 +76,13 @@ namespace EnterprisePlanningSolution
         bool readyKapa = true;
 
         bool prüfung = true;
+        //KapPlanung
+        List<TextBox> TBListe;
+        List<TextBox> sortierteTBListe;
+        String[,] Daten;
+        int[] KapazitaetArray;
+        int[] variableRuestzeitanpassung = new int[15] { 5, 5, 5, 8, 0, 5, 23, 25, 21, 5, 25, 0, 0, 0, 15 };
+        TextBox[,] sortiertesGeschachteltesTBArray;
 
 
         public Periodenplanung()
@@ -1574,7 +1582,177 @@ namespace EnterprisePlanningSolution
         private void weiterButton5_Click(object sender, EventArgs e)
         {
             SaveProdPlan(false);
-            weiterButtonDispo.SelectedIndex = 5;
+            LoadKapPlanung();
+            
+        weiterButtonDispo.SelectedIndex = 5;
+        }
+        private void LoadKapPlanung()
+        {
+            ADODB.Connection cn = new ADODB.Connection();
+            ADODB.Recordset rs0, rs1, rs2;
+            rs0 = new ADODB.Recordset();
+            rs1 = new ADODB.Recordset();
+            rs2 = new ADODB.Recordset();
+            int cB = aktuellePeriode;
+           
+            cn.Open(cnStr);
+
+            Daten = new String[15, 8];
+            KapazitaetArray = new int[15];
+            List<String> ausschliessen = new List<String> { "period", "Artikelnummer", "productionPlan" };
+            rs0.Open("Select * From Bearbeitungszeit where period =" + cB + " order by Artikelnummer", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+            while (!rs0.EOF)
+            {
+                for (int i = 0; i < rs0.Fields.Count; ++i)
+                {
+
+                    if (!ausschliessen.Contains(rs0.Fields[i].Name) && !DBNull.Value.Equals(rs0.Fields[i].Value))
+                    {
+                        int z = Convert.ToInt32(rs0.Fields[i].Name.Substring(16, rs0.Fields[i].Name.Count() - 16));
+                        KapazitaetArray[z - 1] += Convert.ToInt32(rs0.Fields[i].Value) * Convert.ToInt32(rs0.Fields["productionPlan"].Value);
+                    }
+                }
+                rs0.MoveNext();
+            }
+            rs0.Close();
+            for (int j = 1; j < 16; ++j)
+            {
+
+                rs1.Open("select timeneed From ordersinwork where period = '" + cB + "' and id = '" + j + "'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                while (!rs1.EOF)
+                {
+                    if (!DBNull.Value.Equals(rs1.Fields["timeneed"].Value))
+                        Daten[j - 1, 3] = (Convert.ToInt32(Daten[j - 1, 3]) + Convert.ToInt32(rs1.Fields["timeneed"].Value)).ToString();
+                    rs1.MoveNext();
+                }
+                rs1.Close();
+                rs2.Open("select timeneed From waitinglistworkstations where period = '" + cB + "' and id = '" + j + "'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                while (!rs2.EOF)
+                {
+                    if (!DBNull.Value.Equals(rs2.Fields["timeneed"].Value))
+                        Daten[j - 1, 3] = (Convert.ToInt32(Daten[j - 1, 3]) + Convert.ToInt32(rs2.Fields["timeneed"].Value)).ToString();
+                    rs2.MoveNext();
+                }
+                rs2.Close();
+                if (String.IsNullOrEmpty(Daten[j - 1, 3]))
+                    Daten[j - 1, 3] = "0";
+
+            }
+            cn.Close();
+            for (int i = 0; i < KapazitaetArray.Count(); ++i)
+            {
+                Daten[i, 0] = KapazitaetArray[i].ToString();
+                Daten[i, 1] = variableRuestzeitanpassung[i].ToString();
+                Daten[i, 2] = ((Convert.ToInt32(Daten[i, 0]) * Convert.ToInt32(Daten[i, 1])) / 100).ToString();
+                try
+                {
+                    if (!(Convert.ToInt32(Daten[i, 3]) > 0))
+                        i = i + 0;
+                }
+                catch (Exception)
+                {
+                    Daten[i, 3] = "0";
+                }
+                Daten[i, 4] = ((Convert.ToInt32(Daten[i, 1]) * Convert.ToInt32(Daten[i, 3])) / 100).ToString();
+                Daten[i, 5] = (Convert.ToInt32(Daten[i, 0]) + Convert.ToInt32(Daten[i, 2]) + Convert.ToInt32(Daten[i, 3]) + Convert.ToInt32(Daten[i, 4])).ToString();
+                if (Convert.ToInt32(Daten[i, 5]) == 0)
+                    Daten[i, 6] = "0";
+                else if (Convert.ToInt32(Daten[i, 5]) < 3600)
+                    Daten[i, 6] = "1";
+                else if (Convert.ToInt32(Daten[i, 5]) < 6000)
+                    Daten[i, 6] = "2";
+                else
+                {
+                    Daten[i, 6] = "3";
+                }
+                if (Daten[i, 6] == "0")
+                    Daten[i, 7] = "0";
+                else if (Daten[i, 6] == "1" && Convert.ToInt32(Daten[i, 5]) < 2400)
+                    Daten[i, 7] = "0";
+                else if (Daten[i, 6] == "1" && Convert.ToInt32(Daten[i, 5]) >= 2400)
+                    Daten[i, 7] = ((Convert.ToInt32(Daten[i, 5]) - 2400) / 5).ToString();
+                else if (Daten[i, 6] == "2" && Convert.ToInt32(Daten[i, 5]) < 4800)
+                    Daten[i, 7] = "0";
+                else if (Daten[i, 6] == "2" && Convert.ToInt32(Daten[i, 5]) >= 4800 && Convert.ToInt32(Daten[i, 5]) <= 6000)
+                    Daten[i, 7] = ((Convert.ToInt32(Daten[i, 5]) - 4800) / 5).ToString();
+                else
+                {
+                    Daten[i, 7] = "0";
+                }
+            }
+
+            // Liste aller Textboxen des Formulars erstellen, um nicht jede der 120 Textboxen separat ansprechen zu müssen
+            // Leider unsortiert, da die foreach(Control) Schleife anscheinend nicht Textboxen gemäß Formularposition durchläuft
+            TBListe = new List<TextBox>();
+            foreach (TabPage t in metroTabControl1.TabPages)
+            {
+                foreach (Control c in t.Controls)
+                {
+                    if (c is TableLayoutPanel)
+                    {
+                        foreach (Control c2 in c.Controls)
+                        {
+                            if (c2 is TextBox)
+                            {
+                                TBListe.Add((TextBox)c2);
+                            }
+                        }
+                    }
+                }
+            }
+            TBListe.Count();
+            // Textboxen sind nach Schema "textBoxAA" bzw. "textBoxAAA" benannt, also im 2- und 3-stelligen Bereich durchnummeriert
+            // Dementsprechend wird ein Array mit Platz für alle Textboxen angelegt, und die Nummer aus dem Textboxnamen abgegriffen
+            // So landet z.B. textBox11 im neuen Array an der Stelle 11 -> das Array ist somit sortiert, enthält aber noch
+            // null-Einträge, da die Nummerierung der Textboxen erst bei 11 startet und manche Zahlen nicht belegt sind 
+            int temp = 0;
+            TextBox[] sortiertesTBArray = new TextBox[160];
+            foreach (TextBox t in TBListe)
+            {
+                if (t.Name.Length == 9)
+                {
+                    temp = Convert.ToInt32("" + t.Name[7] + t.Name[8]);
+                }
+                else if (t.Name.Length == 10)
+                {
+                    temp = Convert.ToInt32("" + t.Name[7] + t.Name[8] + t.Name[9]);
+                }
+                sortiertesTBArray[temp] = t;
+                ++temp;
+            }
+
+            // Deshalb wird nun eine finale Textbox-Liste angelegt, in die nacheinander die TextBoxen eingefügt werden.
+            // Nun sind die TextBoxen aufsteigend sortiert und können mit den passenden Daten befüllt werden
+            sortierteTBListe = new List<TextBox>();
+            foreach (TextBox t2 in sortiertesTBArray)
+            {
+                if (t2 != null)
+                    sortierteTBListe.Add(t2);
+
+            }
+            //Da die sortierte Textboxliste nur eindimensional ist und ein Zugriff pro Arbeitsplatz (sprich vertikal aus UI-Sicht) nötig ist
+            //wird nun ein 2-dimensionales Array erstellt
+            sortiertesGeschachteltesTBArray = new TextBox[15, 8];
+            for (int i = 0; i < 15; ++i)
+            {
+                for (int j = 0; j < 8; ++j)
+                {
+                    int index = i * 8 + j;
+                    if (sortiertesGeschachteltesTBArray[i, j] == null)
+                        sortiertesGeschachteltesTBArray[i, j] = sortierteTBListe[index];
+                }
+            }
+
+            int y = 0;
+            for (int i = 0; i < 15; ++i)
+            {
+                for (int j = 0; j < 8; ++j)
+                {
+                    sortierteTBListe[y].Text = Daten[i, j];
+                    ++y;
+                }
+            }
+
         }
 
         private void beendenButton_Click(object sender, EventArgs e)
@@ -2021,6 +2199,7 @@ namespace EnterprisePlanningSolution
 
         private void speichernButtonProduktion_Click(object sender, EventArgs e)
         {
+            saveButtonVisible();
             SaveProdPlan(false);
         }
 
@@ -2068,6 +2247,167 @@ namespace EnterprisePlanningSolution
                     metroGrid1.Rows[idx + 1].Cells[col].Selected = true;
                 }
             }
+        }
+
+      
+        private void speichernButtonKapPlanung_Click(object sender, EventArgs e)
+        {
+            // Button speichert variable Rüstzeitanpassung in Datenbank für späteren Zugriff
+            // Tabelle VariableRuestzeitanpassung
+
+            //Recordset
+            ADODB.Connection cn = new ADODB.Connection();
+            ADODB.Recordset rs0 = new ADODB.Recordset();
+
+            cn.Open(cnStr);
+
+            string SQLBefehl;
+            int per = aktuellePeriode;
+            rs0.Open("Delete from Kapazitaetsplanung where Periode = " + per, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+            for (int k = 0; k < 15; ++k)
+            {
+                int l = k + 1;
+                if (k == 4)
+                    continue;
+                else
+                {
+                    SQLBefehl = "Insert into Kapazitaetsplanung (Periode, Arbeitsplatz, Kapazitaetsbedarf, variableRuestzeitanpassung, RuestzeitNeu, KapazitaetsbedarfVorperiode, RuestzeitVorperiode, Gesamtkapazitaet, AnzahlSchichten, Ueberstunden)" +
+                        " values (" + aktuellePeriode + ", " + l + ", " + sortiertesGeschachteltesTBArray[k, 0].Text + ", " + sortiertesGeschachteltesTBArray[k, 1].Text + ", " + sortiertesGeschachteltesTBArray[k, 2].Text + ", " + sortiertesGeschachteltesTBArray[k, 3].Text + ", " + sortiertesGeschachteltesTBArray[k, 4].Text + ", " + sortiertesGeschachteltesTBArray[k, 5].Text + ", " + sortiertesGeschachteltesTBArray[k, 6].Text + ", " + sortiertesGeschachteltesTBArray[k, 7].Text + ")";
+                }
+                rs0.Open(SQLBefehl, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+            }
+            string SpeicherErfolg = Thread.CurrentThread.CurrentUICulture.Name == "de" ? "Erfolgreich gespeichert!" : "Saved successfully";
+            MessageBox.Show(SpeicherErfolg);
+            cn.Close();
+
+        }
+
+      
+   
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            string xmlPeriode = Convert.ToString(aktuellePeriode);
+
+
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.DefaultExt = "*.xml";
+            dlg.Filter = "(*.xml) | *.xml";
+            dlg.Title = "XML - Speichern";
+            dlg.FileName = "ExportPeriode" + xmlPeriode;
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+
+                string fileName;
+                fileName = dlg.FileName;
+                XmlWriterSettings settings = new XmlWriterSettings();
+                settings.Indent = true;
+                settings.NewLineOnAttributes = false;
+                XmlWriter xmlWriter = XmlWriter.Create(fileName, settings);
+
+                try
+                {
+
+
+                    xmlWriter.WriteStartDocument();
+                    xmlWriter.WriteStartElement("input");
+
+                    xmlWriter.WriteStartElement("qualitycontrol");
+                    xmlWriter.WriteAttributeString("type", "no");
+                    xmlWriter.WriteAttributeString("losequantity", "0");
+                    xmlWriter.WriteAttributeString("delay", "0");
+                    xmlWriter.WriteEndElement();
+
+                    ADODB.Connection cn = new ADODB.Connection();
+                    ADODB.Recordset rs = new ADODB.Recordset();
+                  
+                    cn.Open(cnStr);
+                    int cB = aktuellePeriode;
+                    rs.Open("Select * From sellwish where planPeriod =" + cB + "and period =" + cB, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+
+                    xmlWriter.WriteStartElement("sellwish");
+                    while (!rs.EOF)
+                    {
+                        xmlWriter.WriteStartElement("item");
+                        xmlWriter.WriteAttributeString("article", Convert.ToString(rs.Fields["article"].Value));
+                        xmlWriter.WriteAttributeString("quantity", Convert.ToString(rs.Fields["quantity"].Value));
+                        xmlWriter.WriteEndElement();
+                        rs.MoveNext();
+                    }
+                    xmlWriter.WriteEndElement();
+                    rs.Close();
+
+                    rs.Open("Select * From selldirect where period =" + cB, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                    xmlWriter.WriteStartElement("selldirect");
+                    while (!rs.EOF)
+                    {
+                        xmlWriter.WriteStartElement("item");
+                        xmlWriter.WriteAttributeString("article", Convert.ToString(rs.Fields["article"].Value));
+                        xmlWriter.WriteAttributeString("quantity", Convert.ToString(rs.Fields["quantity"].Value));
+                        xmlWriter.WriteAttributeString("price", Convert.ToString(rs.Fields["price"].Value));
+                        xmlWriter.WriteAttributeString("penalty", Convert.ToString(rs.Fields["penalty"].Value));
+                        xmlWriter.WriteEndElement();
+                        rs.MoveNext();
+                    }
+                    xmlWriter.WriteEndElement();
+                    rs.Close();
+
+                    rs.Open("Select * From myOrderlist where period ='" + cB + "'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                    xmlWriter.WriteStartElement("orderlist");
+                    while (!rs.EOF)
+                    {
+                        xmlWriter.WriteStartElement("order");
+                        xmlWriter.WriteAttributeString("article", Convert.ToString(rs.Fields["article"].Value));
+                        xmlWriter.WriteAttributeString("quantity", Convert.ToString(rs.Fields["quantity"].Value));
+                        xmlWriter.WriteAttributeString("modus", Convert.ToString(rs.Fields["modus"].Value));
+                        xmlWriter.WriteEndElement();
+                        rs.MoveNext();
+                    }
+                    xmlWriter.WriteEndElement();
+                    rs.Close();
+                    ////für jede Zeile in orderlist mach das ..
+
+                    rs.Open("Select * From productionlist where period =" + cB, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                    xmlWriter.WriteStartElement("productionlist");
+                    while (!rs.EOF)
+                    {
+                        xmlWriter.WriteStartElement("production");
+                        xmlWriter.WriteAttributeString("article", Convert.ToString(rs.Fields["article"].Value));
+                        xmlWriter.WriteAttributeString("quantity", Convert.ToString(rs.Fields["quantity"].Value));
+                        xmlWriter.WriteEndElement();
+                        rs.MoveNext();
+                    }
+                    xmlWriter.WriteEndElement();
+                    rs.Close();
+
+                    rs.Open("Select * From Kapazitaetsplanung where Periode =" + cB, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                    xmlWriter.WriteStartElement("workingtimelist");
+                    while (!rs.EOF)
+                    {
+                        xmlWriter.WriteStartElement("workingtime");
+                        xmlWriter.WriteAttributeString("station", Convert.ToString(rs.Fields["Arbeitsplatz"].Value));
+                        xmlWriter.WriteAttributeString("shift", Convert.ToString(rs.Fields["AnzahlSchichten"].Value));
+                        xmlWriter.WriteAttributeString("overtime", Convert.ToString(rs.Fields["Ueberstunden"].Value));
+                        xmlWriter.WriteEndElement();
+                        rs.MoveNext();
+                    }
+                    xmlWriter.WriteEndElement();
+                    rs.Close();
+
+                    xmlWriter.WriteEndDocument();
+                    MessageBox.Show("Erfolgreich exportiert.");
+
+                }
+                catch (Exception fehler)
+                {
+                    MessageBox.Show("Ein Fehler ist aufgetreten!" + fehler);
+                }
+                finally
+                {
+                    xmlWriter.Close();
+                }
+            }
+
         }
     }
 }

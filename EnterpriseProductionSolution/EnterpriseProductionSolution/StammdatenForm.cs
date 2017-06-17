@@ -14,10 +14,18 @@ namespace EnterprisePlanningSolution
     {
 
         public String cnStr = @"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = PPS-Datenbank.mdb";
-        public StammdatenForm()
+        public StammdatenForm(string language)
         {
             InitializeComponent();
             metroTabControl1.SelectedIndex = 0;
+            if(language == "English")
+            {
+                doLanguageEnglish();
+            }
+            else
+            {
+                doLanguageDeutsch();
+            }
         }
 
         private void metroLink1_Click(object sender, EventArgs e)
@@ -422,6 +430,90 @@ namespace EnterprisePlanningSolution
             {
                 cn.Close();
             }
+        }
+
+
+        private void doLanguageDeutsch()
+        {
+
+            Artikelstamm.Text = "Artikelstamm";
+            Artikelnummer.HeaderText = "Artikelnummer";
+            Bezeichnung.HeaderText = "Bezeichnung";
+            Verwendung.HeaderText = "Verwendung";
+            Lieferkosten.HeaderText = "Lieferkosten";
+            Lieferzeit.HeaderText = "Lieferzeit";
+            Lieferzeitabweichung.HeaderText = "Lieferzeitabweichung";
+            Strukturstückliste.Text = "Strukturstückliste";
+            product1_Button.Text = "Produkt 1";
+            product2_Button.Text = "Produkt 2";
+            product3_Button.Text = "Produkt 3";
+            productAll_Button.Text = "Alle Produkte";
+            Endprodukt.HeaderText = "Endprodukt";
+            Ebene.HeaderText = "Ebene";
+            Artikel.HeaderText = "Artikel";
+            Anzahl.HeaderText = "Anzahl";
+            Vorstufe.HeaderText = "Vorstufe";
+            Mengenstückliste.Text = "Mengenstückliste";
+            menge_Produkt1_Button.Text = "Produkt 1";
+            menge_Produkt2_Button.Text = "Produkt 2";
+            menge_Produkt3_Button.Text = "Produkt 3";
+            Artikel_Mengen.HeaderText = "Artikel";
+            Anzahl_Menge.HeaderText = "Anzahl";
+            Kosten.Text = "Kosten";
+            Arbeitsplatz.HeaderText = "Arbeitsplatz";
+            Lohn1.HeaderText = "Lohn1";
+            Lohn2.HeaderText = "Lohn2";
+            Lohn3.HeaderText = "Lohn3";
+            ÜLohn.HeaderText = "ÜLohn";
+            varKosten.HeaderText = "varKosten";
+            fixeKosten.HeaderText = "fixeKosten";
+            Lager.Text = "Lager";
+            period.HeaderText = "Periode";
+            actualStock.HeaderText = "aktueller Bestand";
+            actualPrice.HeaderText = "aktueller Wert [€]";
+            stockValue.HeaderText = "Summe [€]";
+            Periode.Text = "Periode";
+        }
+        private void doLanguageEnglish()
+        {
+            Artikelstamm.Text = "Article master data";
+            Artikelnummer.HeaderText = "Article number";
+            Bezeichnung.HeaderText = "Description";
+            Verwendung.HeaderText = "Use";
+            Lieferkosten.HeaderText = "Delivery cost";
+            Lieferzeit.HeaderText = "Delivery time";
+            Lieferzeitabweichung.HeaderText = "Delivery time deviation";
+            Strukturstückliste.Text = "Bill of materials";
+            product1_Button.Text = "Product 1";
+            product2_Button.Text = "Product 2";
+            product3_Button.Text = "Product 3";
+            productAll_Button.Text = "All Products";
+            Endprodukt.HeaderText = "Final product";
+            Ebene.HeaderText = "Level";
+            Artikel.HeaderText = "Article";
+            Anzahl.HeaderText = "Quantity";
+            Vorstufe.HeaderText = "Pre-stage";
+            Mengenstückliste.Text = "Bill of quantity";
+            menge_Produkt1_Button.Text = "Product 1";
+            menge_Produkt2_Button.Text = "Product 2";
+            menge_Produkt3_Button.Text = "Product 3";
+            Artikel_Mengen.HeaderText = "Article";
+            Anzahl_Menge.HeaderText = "Quantity";
+            Kosten.Text = "Cost";
+            Arbeitsplatz.HeaderText = "Work station";
+            Lohn1.HeaderText = "Pay1";
+            Lohn2.HeaderText = "Pay2";
+            Lohn3.HeaderText = "Pay3";
+            ÜLohn.HeaderText = "Overtime pay";
+            varKosten.HeaderText = "Variable costs";
+            fixeKosten.HeaderText = "Fixed costs";
+            Lager.Text = "Storage";
+            period.HeaderText = "Period";
+            actualStock.HeaderText = "current Stock";
+            actualPrice.HeaderText = "current Value [€]";
+            stockValue.HeaderText = "Sum [€]";
+            Periode.Text = "Period";
+
         }
     }
 }

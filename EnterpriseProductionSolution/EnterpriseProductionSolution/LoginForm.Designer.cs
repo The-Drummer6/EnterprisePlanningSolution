@@ -35,6 +35,7 @@
             this.passwordTextBox = new MetroFramework.Controls.MetroTextBox();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.epsLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.SpracheComboLogin = new MetroFramework.Controls.MetroComboBox();
             this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -148,11 +149,26 @@
             this.epsLabel1.TabIndex = 4;
             this.epsLabel1.Text = "Enterprise Planning Solution";
             // 
+            // SpracheComboLogin
+            // 
+            this.SpracheComboLogin.FormattingEnabled = true;
+            this.SpracheComboLogin.ItemHeight = 23;
+            this.SpracheComboLogin.Items.AddRange(new object[] {
+            "Deutsch",
+            "English"});
+            this.SpracheComboLogin.Location = new System.Drawing.Point(488, 64);
+            this.SpracheComboLogin.Name = "SpracheComboLogin";
+            this.SpracheComboLogin.Size = new System.Drawing.Size(121, 29);
+            this.SpracheComboLogin.TabIndex = 5;
+            this.SpracheComboLogin.UseSelectable = true;
+            this.SpracheComboLogin.SelectedIndexChanged += new System.EventHandler(this.SpracheComboLogin_SelectedIndexChanged);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(675, 457);
+            this.Controls.Add(this.SpracheComboLogin);
             this.Controls.Add(this.epsLabel1);
             this.Controls.Add(this.metroPanel1);
             this.Name = "LoginForm";
@@ -173,6 +189,7 @@
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroTextBox usernameTextBox;
         private MetroFramework.Controls.MetroLabel epsLabel1;
+        private MetroFramework.Controls.MetroComboBox SpracheComboLogin;
     }
 }
 

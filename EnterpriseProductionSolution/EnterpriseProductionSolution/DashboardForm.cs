@@ -88,11 +88,13 @@ namespace EnterprisePlanningSolution
                 rs.Open("DELETE * FROM Prognose", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
                 rs.Open("DELETE * FROM selldirect", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
                 rs.Open("DELETE * FROM sellwish", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-                
+
                 MessageBox.Show("Datenbanktabellen wurden erfolgreich gelöscht!");
             }
-            catch(Exception test) {
-                MessageBox.Show(test.Message); }
+            catch (Exception test)
+            {
+                MessageBox.Show(test.Message);
+            }
             finally
             {
                 cn.Close();
@@ -102,6 +104,35 @@ namespace EnterprisePlanningSolution
         private void beendenButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void SpracheComboDashboard_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (Convert.ToString(SpracheComboDashboard.Text) == "English")
+            {
+                doLanguageEnglish();
+            }
+            else
+            {
+                doLanguageDeutsch();
+            }
+        }
+
+        private void doLanguageDeutsch()
+        {
+            metroTile3.Text = "Stammdaten";
+            metroTile2.Text = "Periodenplanung";
+            metroTile1.Text = "XML-Import";
+            metroTile4.Text = "Planungsergebnisse";
+        }
+        private void doLanguageEnglish()
+        {
+            metroTile3.Text = "Master data";
+            metroTile2.Text = "Period planning";
+            metroTile1.Text = "XML-Import";
+            metroTile4.Text = "Planning results";
+
         }
     }
 }

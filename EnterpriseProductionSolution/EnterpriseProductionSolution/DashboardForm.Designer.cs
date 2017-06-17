@@ -35,6 +35,7 @@
             this.metroTile4 = new MetroFramework.Controls.MetroTile();
             this.resetButton = new MetroFramework.Controls.MetroLink();
             this.beendenButton = new MetroFramework.Controls.MetroLink();
+            this.SpracheComboDashboard = new MetroFramework.Controls.MetroComboBox();
             this.SuspendLayout();
             // 
             // metroTile1
@@ -121,11 +122,26 @@
             this.beendenButton.UseSelectable = true;
             this.beendenButton.Click += new System.EventHandler(this.beendenButton_Click);
             // 
+            // SpracheComboDashboard
+            // 
+            this.SpracheComboDashboard.FormattingEnabled = true;
+            this.SpracheComboDashboard.ItemHeight = 23;
+            this.SpracheComboDashboard.Items.AddRange(new object[] {
+            "Deutsch",
+            "English"});
+            this.SpracheComboDashboard.Location = new System.Drawing.Point(501, 46);
+            this.SpracheComboDashboard.Name = "SpracheComboDashboard";
+            this.SpracheComboDashboard.Size = new System.Drawing.Size(121, 29);
+            this.SpracheComboDashboard.TabIndex = 6;
+            this.SpracheComboDashboard.UseSelectable = true;
+            this.SpracheComboDashboard.SelectedIndexChanged += new System.EventHandler(this.SpracheComboDashboard_SelectedIndexChanged);
+            // 
             // DashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1162, 684);
+            this.Controls.Add(this.SpracheComboDashboard);
             this.Controls.Add(this.beendenButton);
             this.Controls.Add(this.resetButton);
             this.Controls.Add(this.metroTile4);
@@ -147,5 +163,6 @@
         private MetroFramework.Controls.MetroTile metroTile4;
         private MetroFramework.Controls.MetroLink resetButton;
         private MetroFramework.Controls.MetroLink beendenButton;
+        private MetroFramework.Controls.MetroComboBox SpracheComboDashboard;
     }
 }

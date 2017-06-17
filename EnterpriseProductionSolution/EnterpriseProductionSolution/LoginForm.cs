@@ -83,5 +83,28 @@ namespace EnterprisePlanningSolution
                 return builder.ToString();
             }
         }
+        private void SpracheComboLogin_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if(Convert.ToString(SpracheComboLogin.Text) == "English")
+            {
+                doLanguageEnglish();
+            }else
+            {
+                doLanguageDeutsch();
+            }
+        }
+
+        private void doLanguageDeutsch()
+        {
+            usernameTextBox.WaterMark = "Benutzername";
+            passwordTextBox.WaterMark = "Passwort";
+        }
+
+        private void doLanguageEnglish()
+        {
+            usernameTextBox.WaterMark = "Username";
+            passwordTextBox.WaterMark = "Password";
+        }
     }
 }

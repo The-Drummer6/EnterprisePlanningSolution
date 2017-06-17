@@ -173,6 +173,7 @@ namespace EnterprisePlanningSolution
             ADODB.Recordset rs = new ADODB.Recordset();
             double warehouseValue = 0;
             double freeSpace = 250000;
+            double anzahl = 1;
             try
             {
                 cn.Open(cnStr);
@@ -182,6 +183,10 @@ namespace EnterprisePlanningSolution
                 rs.Open("Select stockvalue From warehousestock_totalvalue where period='" + periode + "'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
                 warehouseValue = Convert.ToDouble(rs.Fields["stockvalue"].Value);
                 freeSpace = maxLagerwert - warehouseValue;
+                if(warehouseValue > 250000)
+                {
+                    anzahl = Math.Floor(250000 / warehouseValue);
+                }
                 rs.Close();
             }
             catch (Exception fehler)
@@ -192,7 +197,9 @@ namespace EnterprisePlanningSolution
             {
                 cn.Close();
             }
-
+            lagerwertLabel.Text = Convert.ToString(warehouseValue);
+            anzahlLagerLabel.Text = Convert.ToString(anzahl);
+            lagerTortendiagramm.Titles["Title1"].Text = Convert.ToString(anzahl)+". Lager";
             lagerTortendiagramm.Series["Series1"].Points.Clear();
             lagerTortendiagramm.Series["Series1"].Points.Add(warehouseValue);
             lagerTortendiagramm.Series["Series1"].Points[0].LegendText = "Lagerwert";

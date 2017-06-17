@@ -214,12 +214,199 @@
             this.periodenLabelProduktion = new MetroFramework.Controls.MetroLabel();
             this.Kapazitätsplanung = new System.Windows.Forms.TabPage();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.speichernButtonKapPlanung = new MetroFramework.Controls.MetroButton();
             this.periodenLabelKapa = new MetroFramework.Controls.MetroLabel();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.metroLink1 = new MetroFramework.Controls.MetroLink();
             this.rollbackButton = new MetroFramework.Controls.MetroLink();
             this.saveButton = new MetroFramework.Controls.MetroLink();
             this.beendenButton = new MetroFramework.Controls.MetroLink();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.label107 = new System.Windows.Forms.Label();
+            this.textBox155 = new System.Windows.Forms.TextBox();
+            this.textBox143 = new System.Windows.Forms.TextBox();
+            this.textBox133 = new System.Windows.Forms.TextBox();
+            this.textBox153 = new System.Windows.Forms.TextBox();
+            this.label106 = new System.Windows.Forms.Label();
+            this.textBox134 = new System.Windows.Forms.TextBox();
+            this.label105 = new System.Windows.Forms.Label();
+            this.textBox144 = new System.Windows.Forms.TextBox();
+            this.label104 = new System.Windows.Forms.Label();
+            this.textBox154 = new System.Windows.Forms.TextBox();
+            this.label103 = new System.Windows.Forms.Label();
+            this.textBox135 = new System.Windows.Forms.TextBox();
+            this.label102 = new System.Windows.Forms.Label();
+            this.textBox145 = new System.Windows.Forms.TextBox();
+            this.textBox152 = new System.Windows.Forms.TextBox();
+            this.textBox142 = new System.Windows.Forms.TextBox();
+            this.textBox136 = new System.Windows.Forms.TextBox();
+            this.textBox132 = new System.Windows.Forms.TextBox();
+            this.textBox146 = new System.Windows.Forms.TextBox();
+            this.label101 = new System.Windows.Forms.Label();
+            this.textBox156 = new System.Windows.Forms.TextBox();
+            this.textBox137 = new System.Windows.Forms.TextBox();
+            this.textBox131 = new System.Windows.Forms.TextBox();
+            this.textBox147 = new System.Windows.Forms.TextBox();
+            this.textBox141 = new System.Windows.Forms.TextBox();
+            this.textBox157 = new System.Windows.Forms.TextBox();
+            this.label100 = new System.Windows.Forms.Label();
+            this.textBox151 = new System.Windows.Forms.TextBox();
+            this.textBox138 = new System.Windows.Forms.TextBox();
+            this.textBox148 = new System.Windows.Forms.TextBox();
+            this.textBox158 = new System.Windows.Forms.TextBox();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.label99 = new System.Windows.Forms.Label();
+            this.textBox125 = new System.Windows.Forms.TextBox();
+            this.textBox113 = new System.Windows.Forms.TextBox();
+            this.textBox103 = new System.Windows.Forms.TextBox();
+            this.textBox123 = new System.Windows.Forms.TextBox();
+            this.label98 = new System.Windows.Forms.Label();
+            this.textBox104 = new System.Windows.Forms.TextBox();
+            this.label97 = new System.Windows.Forms.Label();
+            this.textBox114 = new System.Windows.Forms.TextBox();
+            this.label96 = new System.Windows.Forms.Label();
+            this.textBox124 = new System.Windows.Forms.TextBox();
+            this.label95 = new System.Windows.Forms.Label();
+            this.textBox105 = new System.Windows.Forms.TextBox();
+            this.label94 = new System.Windows.Forms.Label();
+            this.textBox115 = new System.Windows.Forms.TextBox();
+            this.textBox122 = new System.Windows.Forms.TextBox();
+            this.textBox112 = new System.Windows.Forms.TextBox();
+            this.textBox106 = new System.Windows.Forms.TextBox();
+            this.textBox102 = new System.Windows.Forms.TextBox();
+            this.textBox116 = new System.Windows.Forms.TextBox();
+            this.label93 = new System.Windows.Forms.Label();
+            this.textBox126 = new System.Windows.Forms.TextBox();
+            this.textBox107 = new System.Windows.Forms.TextBox();
+            this.textBox101 = new System.Windows.Forms.TextBox();
+            this.textBox117 = new System.Windows.Forms.TextBox();
+            this.textBox111 = new System.Windows.Forms.TextBox();
+            this.textBox127 = new System.Windows.Forms.TextBox();
+            this.label92 = new System.Windows.Forms.Label();
+            this.textBox121 = new System.Windows.Forms.TextBox();
+            this.textBox108 = new System.Windows.Forms.TextBox();
+            this.textBox118 = new System.Windows.Forms.TextBox();
+            this.textBox128 = new System.Windows.Forms.TextBox();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.label91 = new System.Windows.Forms.Label();
+            this.textBox95 = new System.Windows.Forms.TextBox();
+            this.textBox83 = new System.Windows.Forms.TextBox();
+            this.textBox73 = new System.Windows.Forms.TextBox();
+            this.textBox93 = new System.Windows.Forms.TextBox();
+            this.label90 = new System.Windows.Forms.Label();
+            this.textBox74 = new System.Windows.Forms.TextBox();
+            this.label89 = new System.Windows.Forms.Label();
+            this.textBox84 = new System.Windows.Forms.TextBox();
+            this.label88 = new System.Windows.Forms.Label();
+            this.textBox94 = new System.Windows.Forms.TextBox();
+            this.label87 = new System.Windows.Forms.Label();
+            this.textBox75 = new System.Windows.Forms.TextBox();
+            this.label86 = new System.Windows.Forms.Label();
+            this.textBox85 = new System.Windows.Forms.TextBox();
+            this.textBox92 = new System.Windows.Forms.TextBox();
+            this.textBox82 = new System.Windows.Forms.TextBox();
+            this.textBox76 = new System.Windows.Forms.TextBox();
+            this.textBox72 = new System.Windows.Forms.TextBox();
+            this.textBox86 = new System.Windows.Forms.TextBox();
+            this.label85 = new System.Windows.Forms.Label();
+            this.textBox96 = new System.Windows.Forms.TextBox();
+            this.textBox77 = new System.Windows.Forms.TextBox();
+            this.textBox71 = new System.Windows.Forms.TextBox();
+            this.textBox87 = new System.Windows.Forms.TextBox();
+            this.textBox81 = new System.Windows.Forms.TextBox();
+            this.textBox97 = new System.Windows.Forms.TextBox();
+            this.label84 = new System.Windows.Forms.Label();
+            this.textBox91 = new System.Windows.Forms.TextBox();
+            this.textBox78 = new System.Windows.Forms.TextBox();
+            this.textBox88 = new System.Windows.Forms.TextBox();
+            this.textBox98 = new System.Windows.Forms.TextBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.label83 = new System.Windows.Forms.Label();
+            this.textBox65 = new System.Windows.Forms.TextBox();
+            this.textBox53 = new System.Windows.Forms.TextBox();
+            this.textBox43 = new System.Windows.Forms.TextBox();
+            this.textBox63 = new System.Windows.Forms.TextBox();
+            this.label82 = new System.Windows.Forms.Label();
+            this.textBox44 = new System.Windows.Forms.TextBox();
+            this.label81 = new System.Windows.Forms.Label();
+            this.textBox54 = new System.Windows.Forms.TextBox();
+            this.label80 = new System.Windows.Forms.Label();
+            this.textBox64 = new System.Windows.Forms.TextBox();
+            this.label79 = new System.Windows.Forms.Label();
+            this.textBox45 = new System.Windows.Forms.TextBox();
+            this.label78 = new System.Windows.Forms.Label();
+            this.textBox55 = new System.Windows.Forms.TextBox();
+            this.textBox62 = new System.Windows.Forms.TextBox();
+            this.textBox52 = new System.Windows.Forms.TextBox();
+            this.textBox46 = new System.Windows.Forms.TextBox();
+            this.textBox42 = new System.Windows.Forms.TextBox();
+            this.textBox56 = new System.Windows.Forms.TextBox();
+            this.label77 = new System.Windows.Forms.Label();
+            this.textBox66 = new System.Windows.Forms.TextBox();
+            this.textBox47 = new System.Windows.Forms.TextBox();
+            this.textBox41 = new System.Windows.Forms.TextBox();
+            this.textBox57 = new System.Windows.Forms.TextBox();
+            this.textBox51 = new System.Windows.Forms.TextBox();
+            this.textBox67 = new System.Windows.Forms.TextBox();
+            this.label76 = new System.Windows.Forms.Label();
+            this.textBox61 = new System.Windows.Forms.TextBox();
+            this.textBox48 = new System.Windows.Forms.TextBox();
+            this.textBox58 = new System.Windows.Forms.TextBox();
+            this.textBox68 = new System.Windows.Forms.TextBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.textBox28 = new System.Windows.Forms.TextBox();
+            this.label75 = new System.Windows.Forms.Label();
+            this.label74 = new System.Windows.Forms.Label();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBox38 = new System.Windows.Forms.TextBox();
+            this.label73 = new System.Windows.Forms.Label();
+            this.textBox35 = new System.Windows.Forms.TextBox();
+            this.textBox23 = new System.Windows.Forms.TextBox();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.textBox33 = new System.Windows.Forms.TextBox();
+            this.label72 = new System.Windows.Forms.Label();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.textBox24 = new System.Windows.Forms.TextBox();
+            this.textBox34 = new System.Windows.Forms.TextBox();
+            this.label71 = new System.Windows.Forms.Label();
+            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.label70 = new System.Windows.Forms.Label();
+            this.textBox25 = new System.Windows.Forms.TextBox();
+            this.textBox32 = new System.Windows.Forms.TextBox();
+            this.textBox22 = new System.Windows.Forms.TextBox();
+            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox26 = new System.Windows.Forms.TextBox();
+            this.label69 = new System.Windows.Forms.Label();
+            this.textBox36 = new System.Windows.Forms.TextBox();
+            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.textBox27 = new System.Windows.Forms.TextBox();
+            this.textBox21 = new System.Windows.Forms.TextBox();
+            this.textBox37 = new System.Windows.Forms.TextBox();
+            this.label68 = new System.Windows.Forms.Label();
+            this.textBox31 = new System.Windows.Forms.TextBox();
+            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
+            this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
+            this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel18 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel17 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel16 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel21 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel20 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel19 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
             this.weiterButtonDispo.SuspendLayout();
             this.Prognose.SuspendLayout();
             this.metroPanel1.SuspendLayout();
@@ -245,6 +432,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
             this.Kapazitätsplanung.SuspendLayout();
             this.metroPanel2.SuspendLayout();
+            this.tabPage8.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
+            this.tabPage7.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
+            this.tabPage6.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.metroTabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // weiterButtonDispo
@@ -257,7 +455,7 @@
             this.weiterButtonDispo.Controls.Add(this.Kapazitätsplanung);
             this.weiterButtonDispo.Location = new System.Drawing.Point(23, 63);
             this.weiterButtonDispo.Name = "weiterButtonDispo";
-            this.weiterButtonDispo.SelectedIndex = 4;
+            this.weiterButtonDispo.SelectedIndex = 5;
             this.weiterButtonDispo.Size = new System.Drawing.Size(1097, 627);
             this.weiterButtonDispo.Style = MetroFramework.MetroColorStyle.Silver;
             this.weiterButtonDispo.TabIndex = 0;
@@ -3418,6 +3616,8 @@
             // 
             // metroPanel2
             // 
+            this.metroPanel2.Controls.Add(this.metroTabControl1);
+            this.metroPanel2.Controls.Add(this.speichernButtonKapPlanung);
             this.metroPanel2.Controls.Add(this.periodenLabelKapa);
             this.metroPanel2.Controls.Add(this.metroLabel8);
             this.metroPanel2.HorizontalScrollbarBarColor = true;
@@ -3430,6 +3630,16 @@
             this.metroPanel2.VerticalScrollbarBarColor = true;
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel2.VerticalScrollbarSize = 10;
+            // 
+            // speichernButtonKapPlanung
+            // 
+            this.speichernButtonKapPlanung.Location = new System.Drawing.Point(878, 24);
+            this.speichernButtonKapPlanung.Name = "speichernButtonKapPlanung";
+            this.speichernButtonKapPlanung.Size = new System.Drawing.Size(75, 23);
+            this.speichernButtonKapPlanung.TabIndex = 56;
+            this.speichernButtonKapPlanung.Text = "Speichern";
+            this.speichernButtonKapPlanung.UseSelectable = true;
+            this.speichernButtonKapPlanung.Click += new System.EventHandler(this.speichernButtonKapPlanung_Click);
             // 
             // periodenLabelKapa
             // 
@@ -3479,6 +3689,7 @@
             this.saveButton.TabIndex = 3;
             this.saveButton.Text = "Export";
             this.saveButton.UseSelectable = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // beendenButton
             // 
@@ -3491,6 +3702,1880 @@
             this.beendenButton.Text = "Beenden";
             this.beendenButton.UseSelectable = true;
             this.beendenButton.Click += new System.EventHandler(this.beendenButton_Click);
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.Controls.Add(this.tableLayoutPanel8);
+            this.tabPage8.Controls.Add(this.metroLabel21);
+            this.tabPage8.Controls.Add(this.metroLabel20);
+            this.tabPage8.Controls.Add(this.metroLabel19);
+            this.tabPage8.Location = new System.Drawing.Point(4, 38);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Size = new System.Drawing.Size(968, 394);
+            this.tabPage8.TabIndex = 4;
+            this.tabPage8.Text = "Arbeitsplatz 13-15";
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 4;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel8.Controls.Add(this.textBox158, 3, 7);
+            this.tableLayoutPanel8.Controls.Add(this.textBox148, 2, 7);
+            this.tableLayoutPanel8.Controls.Add(this.textBox138, 1, 7);
+            this.tableLayoutPanel8.Controls.Add(this.textBox151, 3, 0);
+            this.tableLayoutPanel8.Controls.Add(this.label100, 0, 7);
+            this.tableLayoutPanel8.Controls.Add(this.textBox157, 3, 6);
+            this.tableLayoutPanel8.Controls.Add(this.textBox141, 2, 0);
+            this.tableLayoutPanel8.Controls.Add(this.textBox147, 2, 6);
+            this.tableLayoutPanel8.Controls.Add(this.textBox131, 1, 0);
+            this.tableLayoutPanel8.Controls.Add(this.textBox137, 1, 6);
+            this.tableLayoutPanel8.Controls.Add(this.textBox156, 3, 5);
+            this.tableLayoutPanel8.Controls.Add(this.label101, 0, 1);
+            this.tableLayoutPanel8.Controls.Add(this.textBox146, 2, 5);
+            this.tableLayoutPanel8.Controls.Add(this.textBox132, 1, 1);
+            this.tableLayoutPanel8.Controls.Add(this.textBox136, 1, 5);
+            this.tableLayoutPanel8.Controls.Add(this.textBox142, 2, 1);
+            this.tableLayoutPanel8.Controls.Add(this.textBox152, 3, 1);
+            this.tableLayoutPanel8.Controls.Add(this.textBox145, 2, 4);
+            this.tableLayoutPanel8.Controls.Add(this.label102, 0, 2);
+            this.tableLayoutPanel8.Controls.Add(this.textBox135, 1, 4);
+            this.tableLayoutPanel8.Controls.Add(this.label103, 0, 3);
+            this.tableLayoutPanel8.Controls.Add(this.textBox154, 3, 3);
+            this.tableLayoutPanel8.Controls.Add(this.label104, 0, 4);
+            this.tableLayoutPanel8.Controls.Add(this.textBox144, 2, 3);
+            this.tableLayoutPanel8.Controls.Add(this.label105, 0, 5);
+            this.tableLayoutPanel8.Controls.Add(this.textBox134, 1, 3);
+            this.tableLayoutPanel8.Controls.Add(this.label106, 0, 6);
+            this.tableLayoutPanel8.Controls.Add(this.textBox153, 3, 2);
+            this.tableLayoutPanel8.Controls.Add(this.textBox133, 1, 2);
+            this.tableLayoutPanel8.Controls.Add(this.textBox143, 2, 2);
+            this.tableLayoutPanel8.Controls.Add(this.textBox155, 3, 4);
+            this.tableLayoutPanel8.Controls.Add(this.label107, 0, 0);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(50, 65);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 8;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(990, 383);
+            this.tableLayoutPanel8.TabIndex = 39;
+            // 
+            // label107
+            // 
+            this.label107.AutoSize = true;
+            this.label107.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label107.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label107.Location = new System.Drawing.Point(3, 0);
+            this.label107.Name = "label107";
+            this.label107.Size = new System.Drawing.Size(118, 18);
+            this.label107.TabIndex = 0;
+            this.label107.Text = "Kapazitätsbedarf";
+            // 
+            // textBox155
+            // 
+            this.textBox155.Location = new System.Drawing.Point(744, 207);
+            this.textBox155.Name = "textBox155";
+            this.textBox155.ReadOnly = true;
+            this.textBox155.Size = new System.Drawing.Size(145, 20);
+            this.textBox155.TabIndex = 22;
+            // 
+            // textBox143
+            // 
+            this.textBox143.Location = new System.Drawing.Point(497, 105);
+            this.textBox143.Name = "textBox143";
+            this.textBox143.ReadOnly = true;
+            this.textBox143.Size = new System.Drawing.Size(145, 20);
+            this.textBox143.TabIndex = 15;
+            // 
+            // textBox133
+            // 
+            this.textBox133.Location = new System.Drawing.Point(250, 105);
+            this.textBox133.Name = "textBox133";
+            this.textBox133.ReadOnly = true;
+            this.textBox133.Size = new System.Drawing.Size(145, 20);
+            this.textBox133.TabIndex = 14;
+            // 
+            // textBox153
+            // 
+            this.textBox153.Location = new System.Drawing.Point(744, 105);
+            this.textBox153.Name = "textBox153";
+            this.textBox153.ReadOnly = true;
+            this.textBox153.Size = new System.Drawing.Size(145, 20);
+            this.textBox153.TabIndex = 16;
+            // 
+            // label106
+            // 
+            this.label106.AutoSize = true;
+            this.label106.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label106.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label106.Location = new System.Drawing.Point(3, 306);
+            this.label106.Name = "label106";
+            this.label106.Size = new System.Drawing.Size(121, 18);
+            this.label106.TabIndex = 6;
+            this.label106.Text = "Anzahl Schichten";
+            // 
+            // textBox134
+            // 
+            this.textBox134.Location = new System.Drawing.Point(250, 156);
+            this.textBox134.Name = "textBox134";
+            this.textBox134.ReadOnly = true;
+            this.textBox134.Size = new System.Drawing.Size(145, 20);
+            this.textBox134.TabIndex = 17;
+            // 
+            // label105
+            // 
+            this.label105.AutoSize = true;
+            this.label105.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label105.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label105.Location = new System.Drawing.Point(3, 255);
+            this.label105.Name = "label105";
+            this.label105.Size = new System.Drawing.Size(169, 18);
+            this.label105.TabIndex = 4;
+            this.label105.Text = "Gesamtkapazitätsbedarf";
+            // 
+            // textBox144
+            // 
+            this.textBox144.Location = new System.Drawing.Point(497, 156);
+            this.textBox144.Name = "textBox144";
+            this.textBox144.ReadOnly = true;
+            this.textBox144.Size = new System.Drawing.Size(145, 20);
+            this.textBox144.TabIndex = 18;
+            // 
+            // label104
+            // 
+            this.label104.AutoSize = true;
+            this.label104.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label104.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label104.Location = new System.Drawing.Point(3, 204);
+            this.label104.Name = "label104";
+            this.label104.Size = new System.Drawing.Size(138, 18);
+            this.label104.TabIndex = 5;
+            this.label104.Text = "Rüstzeit Vorperiode";
+            // 
+            // textBox154
+            // 
+            this.textBox154.Location = new System.Drawing.Point(744, 156);
+            this.textBox154.Name = "textBox154";
+            this.textBox154.ReadOnly = true;
+            this.textBox154.Size = new System.Drawing.Size(145, 20);
+            this.textBox154.TabIndex = 19;
+            // 
+            // label103
+            // 
+            this.label103.AutoSize = true;
+            this.label103.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label103.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label103.Location = new System.Drawing.Point(3, 153);
+            this.label103.Name = "label103";
+            this.label103.Size = new System.Drawing.Size(194, 18);
+            this.label103.TabIndex = 3;
+            this.label103.Text = "Kapazitätsbedarf Vorperiode";
+            // 
+            // textBox135
+            // 
+            this.textBox135.Location = new System.Drawing.Point(250, 207);
+            this.textBox135.Name = "textBox135";
+            this.textBox135.ReadOnly = true;
+            this.textBox135.Size = new System.Drawing.Size(145, 20);
+            this.textBox135.TabIndex = 20;
+            // 
+            // label102
+            // 
+            this.label102.AutoSize = true;
+            this.label102.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label102.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label102.Location = new System.Drawing.Point(3, 102);
+            this.label102.Name = "label102";
+            this.label102.Size = new System.Drawing.Size(100, 18);
+            this.label102.TabIndex = 2;
+            this.label102.Text = "Rüstzeit (neu)";
+            // 
+            // textBox145
+            // 
+            this.textBox145.Location = new System.Drawing.Point(497, 207);
+            this.textBox145.Name = "textBox145";
+            this.textBox145.ReadOnly = true;
+            this.textBox145.Size = new System.Drawing.Size(145, 20);
+            this.textBox145.TabIndex = 21;
+            // 
+            // textBox152
+            // 
+            this.textBox152.Location = new System.Drawing.Point(744, 54);
+            this.textBox152.Name = "textBox152";
+            this.textBox152.ReadOnly = true;
+            this.textBox152.Size = new System.Drawing.Size(145, 20);
+            this.textBox152.TabIndex = 13;
+            // 
+            // textBox142
+            // 
+            this.textBox142.Location = new System.Drawing.Point(497, 54);
+            this.textBox142.Name = "textBox142";
+            this.textBox142.ReadOnly = true;
+            this.textBox142.Size = new System.Drawing.Size(145, 20);
+            this.textBox142.TabIndex = 12;
+            // 
+            // textBox136
+            // 
+            this.textBox136.Location = new System.Drawing.Point(250, 258);
+            this.textBox136.Name = "textBox136";
+            this.textBox136.ReadOnly = true;
+            this.textBox136.Size = new System.Drawing.Size(145, 20);
+            this.textBox136.TabIndex = 23;
+            // 
+            // textBox132
+            // 
+            this.textBox132.Location = new System.Drawing.Point(250, 54);
+            this.textBox132.Name = "textBox132";
+            this.textBox132.ReadOnly = true;
+            this.textBox132.Size = new System.Drawing.Size(145, 20);
+            this.textBox132.TabIndex = 11;
+            // 
+            // textBox146
+            // 
+            this.textBox146.Location = new System.Drawing.Point(497, 258);
+            this.textBox146.Name = "textBox146";
+            this.textBox146.ReadOnly = true;
+            this.textBox146.Size = new System.Drawing.Size(145, 20);
+            this.textBox146.TabIndex = 24;
+            // 
+            // label101
+            // 
+            this.label101.AutoSize = true;
+            this.label101.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label101.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label101.Location = new System.Drawing.Point(3, 51);
+            this.label101.Name = "label101";
+            this.label101.Size = new System.Drawing.Size(188, 18);
+            this.label101.TabIndex = 1;
+            this.label101.Text = "variable Rüstzeitanpassung";
+            // 
+            // textBox156
+            // 
+            this.textBox156.Location = new System.Drawing.Point(744, 258);
+            this.textBox156.Name = "textBox156";
+            this.textBox156.ReadOnly = true;
+            this.textBox156.Size = new System.Drawing.Size(145, 20);
+            this.textBox156.TabIndex = 25;
+            // 
+            // textBox137
+            // 
+            this.textBox137.Location = new System.Drawing.Point(250, 309);
+            this.textBox137.Name = "textBox137";
+            this.textBox137.ReadOnly = true;
+            this.textBox137.Size = new System.Drawing.Size(145, 20);
+            this.textBox137.TabIndex = 26;
+            // 
+            // textBox131
+            // 
+            this.textBox131.Location = new System.Drawing.Point(250, 3);
+            this.textBox131.Name = "textBox131";
+            this.textBox131.ReadOnly = true;
+            this.textBox131.Size = new System.Drawing.Size(145, 20);
+            this.textBox131.TabIndex = 8;
+            // 
+            // textBox147
+            // 
+            this.textBox147.Location = new System.Drawing.Point(497, 309);
+            this.textBox147.Name = "textBox147";
+            this.textBox147.ReadOnly = true;
+            this.textBox147.Size = new System.Drawing.Size(145, 20);
+            this.textBox147.TabIndex = 27;
+            // 
+            // textBox141
+            // 
+            this.textBox141.Location = new System.Drawing.Point(497, 3);
+            this.textBox141.Name = "textBox141";
+            this.textBox141.ReadOnly = true;
+            this.textBox141.Size = new System.Drawing.Size(145, 20);
+            this.textBox141.TabIndex = 9;
+            // 
+            // textBox157
+            // 
+            this.textBox157.Location = new System.Drawing.Point(744, 309);
+            this.textBox157.Name = "textBox157";
+            this.textBox157.ReadOnly = true;
+            this.textBox157.Size = new System.Drawing.Size(145, 20);
+            this.textBox157.TabIndex = 28;
+            // 
+            // label100
+            // 
+            this.label100.AutoSize = true;
+            this.label100.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label100.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label100.Location = new System.Drawing.Point(3, 357);
+            this.label100.Name = "label100";
+            this.label100.Size = new System.Drawing.Size(92, 18);
+            this.label100.TabIndex = 7;
+            this.label100.Text = "Überstunden";
+            // 
+            // textBox151
+            // 
+            this.textBox151.Location = new System.Drawing.Point(744, 3);
+            this.textBox151.Name = "textBox151";
+            this.textBox151.ReadOnly = true;
+            this.textBox151.Size = new System.Drawing.Size(145, 20);
+            this.textBox151.TabIndex = 10;
+            // 
+            // textBox138
+            // 
+            this.textBox138.Location = new System.Drawing.Point(250, 360);
+            this.textBox138.Name = "textBox138";
+            this.textBox138.ReadOnly = true;
+            this.textBox138.Size = new System.Drawing.Size(145, 20);
+            this.textBox138.TabIndex = 29;
+            // 
+            // textBox148
+            // 
+            this.textBox148.Location = new System.Drawing.Point(497, 360);
+            this.textBox148.Name = "textBox148";
+            this.textBox148.ReadOnly = true;
+            this.textBox148.Size = new System.Drawing.Size(145, 20);
+            this.textBox148.TabIndex = 30;
+            // 
+            // textBox158
+            // 
+            this.textBox158.Location = new System.Drawing.Point(744, 360);
+            this.textBox158.Name = "textBox158";
+            this.textBox158.ReadOnly = true;
+            this.textBox158.Size = new System.Drawing.Size(145, 20);
+            this.textBox158.TabIndex = 31;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.tableLayoutPanel7);
+            this.tabPage7.Controls.Add(this.metroLabel18);
+            this.tabPage7.Controls.Add(this.metroLabel17);
+            this.tabPage7.Controls.Add(this.metroLabel16);
+            this.tabPage7.Location = new System.Drawing.Point(4, 38);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(968, 394);
+            this.tabPage7.TabIndex = 3;
+            this.tabPage7.Text = "Arbeitsplatz 10-12";
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 4;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel7.Controls.Add(this.textBox128, 3, 7);
+            this.tableLayoutPanel7.Controls.Add(this.textBox118, 2, 7);
+            this.tableLayoutPanel7.Controls.Add(this.textBox108, 1, 7);
+            this.tableLayoutPanel7.Controls.Add(this.textBox121, 3, 0);
+            this.tableLayoutPanel7.Controls.Add(this.label92, 0, 7);
+            this.tableLayoutPanel7.Controls.Add(this.textBox127, 3, 6);
+            this.tableLayoutPanel7.Controls.Add(this.textBox111, 2, 0);
+            this.tableLayoutPanel7.Controls.Add(this.textBox117, 2, 6);
+            this.tableLayoutPanel7.Controls.Add(this.textBox101, 1, 0);
+            this.tableLayoutPanel7.Controls.Add(this.textBox107, 1, 6);
+            this.tableLayoutPanel7.Controls.Add(this.textBox126, 3, 5);
+            this.tableLayoutPanel7.Controls.Add(this.label93, 0, 1);
+            this.tableLayoutPanel7.Controls.Add(this.textBox116, 2, 5);
+            this.tableLayoutPanel7.Controls.Add(this.textBox102, 1, 1);
+            this.tableLayoutPanel7.Controls.Add(this.textBox106, 1, 5);
+            this.tableLayoutPanel7.Controls.Add(this.textBox112, 2, 1);
+            this.tableLayoutPanel7.Controls.Add(this.textBox122, 3, 1);
+            this.tableLayoutPanel7.Controls.Add(this.textBox115, 2, 4);
+            this.tableLayoutPanel7.Controls.Add(this.label94, 0, 2);
+            this.tableLayoutPanel7.Controls.Add(this.textBox105, 1, 4);
+            this.tableLayoutPanel7.Controls.Add(this.label95, 0, 3);
+            this.tableLayoutPanel7.Controls.Add(this.textBox124, 3, 3);
+            this.tableLayoutPanel7.Controls.Add(this.label96, 0, 4);
+            this.tableLayoutPanel7.Controls.Add(this.textBox114, 2, 3);
+            this.tableLayoutPanel7.Controls.Add(this.label97, 0, 5);
+            this.tableLayoutPanel7.Controls.Add(this.textBox104, 1, 3);
+            this.tableLayoutPanel7.Controls.Add(this.label98, 0, 6);
+            this.tableLayoutPanel7.Controls.Add(this.textBox123, 3, 2);
+            this.tableLayoutPanel7.Controls.Add(this.textBox103, 1, 2);
+            this.tableLayoutPanel7.Controls.Add(this.textBox113, 2, 2);
+            this.tableLayoutPanel7.Controls.Add(this.textBox125, 3, 4);
+            this.tableLayoutPanel7.Controls.Add(this.label99, 0, 0);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(50, 65);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 8;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(990, 383);
+            this.tableLayoutPanel7.TabIndex = 39;
+            // 
+            // label99
+            // 
+            this.label99.AutoSize = true;
+            this.label99.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label99.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label99.Location = new System.Drawing.Point(3, 0);
+            this.label99.Name = "label99";
+            this.label99.Size = new System.Drawing.Size(118, 18);
+            this.label99.TabIndex = 0;
+            this.label99.Text = "Kapazitätsbedarf";
+            // 
+            // textBox125
+            // 
+            this.textBox125.Location = new System.Drawing.Point(744, 207);
+            this.textBox125.Name = "textBox125";
+            this.textBox125.ReadOnly = true;
+            this.textBox125.Size = new System.Drawing.Size(145, 20);
+            this.textBox125.TabIndex = 22;
+            // 
+            // textBox113
+            // 
+            this.textBox113.Location = new System.Drawing.Point(497, 105);
+            this.textBox113.Name = "textBox113";
+            this.textBox113.ReadOnly = true;
+            this.textBox113.Size = new System.Drawing.Size(145, 20);
+            this.textBox113.TabIndex = 15;
+            // 
+            // textBox103
+            // 
+            this.textBox103.Location = new System.Drawing.Point(250, 105);
+            this.textBox103.Name = "textBox103";
+            this.textBox103.ReadOnly = true;
+            this.textBox103.Size = new System.Drawing.Size(145, 20);
+            this.textBox103.TabIndex = 14;
+            // 
+            // textBox123
+            // 
+            this.textBox123.Location = new System.Drawing.Point(744, 105);
+            this.textBox123.Name = "textBox123";
+            this.textBox123.ReadOnly = true;
+            this.textBox123.Size = new System.Drawing.Size(145, 20);
+            this.textBox123.TabIndex = 16;
+            // 
+            // label98
+            // 
+            this.label98.AutoSize = true;
+            this.label98.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label98.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label98.Location = new System.Drawing.Point(3, 306);
+            this.label98.Name = "label98";
+            this.label98.Size = new System.Drawing.Size(121, 18);
+            this.label98.TabIndex = 6;
+            this.label98.Text = "Anzahl Schichten";
+            // 
+            // textBox104
+            // 
+            this.textBox104.Location = new System.Drawing.Point(250, 156);
+            this.textBox104.Name = "textBox104";
+            this.textBox104.ReadOnly = true;
+            this.textBox104.Size = new System.Drawing.Size(145, 20);
+            this.textBox104.TabIndex = 17;
+            // 
+            // label97
+            // 
+            this.label97.AutoSize = true;
+            this.label97.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label97.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label97.Location = new System.Drawing.Point(3, 255);
+            this.label97.Name = "label97";
+            this.label97.Size = new System.Drawing.Size(169, 18);
+            this.label97.TabIndex = 4;
+            this.label97.Text = "Gesamtkapazitätsbedarf";
+            // 
+            // textBox114
+            // 
+            this.textBox114.Location = new System.Drawing.Point(497, 156);
+            this.textBox114.Name = "textBox114";
+            this.textBox114.ReadOnly = true;
+            this.textBox114.Size = new System.Drawing.Size(145, 20);
+            this.textBox114.TabIndex = 18;
+            // 
+            // label96
+            // 
+            this.label96.AutoSize = true;
+            this.label96.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label96.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label96.Location = new System.Drawing.Point(3, 204);
+            this.label96.Name = "label96";
+            this.label96.Size = new System.Drawing.Size(138, 18);
+            this.label96.TabIndex = 5;
+            this.label96.Text = "Rüstzeit Vorperiode";
+            // 
+            // textBox124
+            // 
+            this.textBox124.Location = new System.Drawing.Point(744, 156);
+            this.textBox124.Name = "textBox124";
+            this.textBox124.ReadOnly = true;
+            this.textBox124.Size = new System.Drawing.Size(145, 20);
+            this.textBox124.TabIndex = 19;
+            // 
+            // label95
+            // 
+            this.label95.AutoSize = true;
+            this.label95.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label95.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label95.Location = new System.Drawing.Point(3, 153);
+            this.label95.Name = "label95";
+            this.label95.Size = new System.Drawing.Size(194, 18);
+            this.label95.TabIndex = 3;
+            this.label95.Text = "Kapazitätsbedarf Vorperiode";
+            // 
+            // textBox105
+            // 
+            this.textBox105.Location = new System.Drawing.Point(250, 207);
+            this.textBox105.Name = "textBox105";
+            this.textBox105.ReadOnly = true;
+            this.textBox105.Size = new System.Drawing.Size(145, 20);
+            this.textBox105.TabIndex = 20;
+            // 
+            // label94
+            // 
+            this.label94.AutoSize = true;
+            this.label94.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label94.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label94.Location = new System.Drawing.Point(3, 102);
+            this.label94.Name = "label94";
+            this.label94.Size = new System.Drawing.Size(100, 18);
+            this.label94.TabIndex = 2;
+            this.label94.Text = "Rüstzeit (neu)";
+            // 
+            // textBox115
+            // 
+            this.textBox115.Location = new System.Drawing.Point(497, 207);
+            this.textBox115.Name = "textBox115";
+            this.textBox115.ReadOnly = true;
+            this.textBox115.Size = new System.Drawing.Size(145, 20);
+            this.textBox115.TabIndex = 21;
+            // 
+            // textBox122
+            // 
+            this.textBox122.Location = new System.Drawing.Point(744, 54);
+            this.textBox122.Name = "textBox122";
+            this.textBox122.ReadOnly = true;
+            this.textBox122.Size = new System.Drawing.Size(145, 20);
+            this.textBox122.TabIndex = 13;
+            // 
+            // textBox112
+            // 
+            this.textBox112.Location = new System.Drawing.Point(497, 54);
+            this.textBox112.Name = "textBox112";
+            this.textBox112.ReadOnly = true;
+            this.textBox112.Size = new System.Drawing.Size(145, 20);
+            this.textBox112.TabIndex = 12;
+            // 
+            // textBox106
+            // 
+            this.textBox106.Location = new System.Drawing.Point(250, 258);
+            this.textBox106.Name = "textBox106";
+            this.textBox106.ReadOnly = true;
+            this.textBox106.Size = new System.Drawing.Size(145, 20);
+            this.textBox106.TabIndex = 23;
+            // 
+            // textBox102
+            // 
+            this.textBox102.Location = new System.Drawing.Point(250, 54);
+            this.textBox102.Name = "textBox102";
+            this.textBox102.ReadOnly = true;
+            this.textBox102.Size = new System.Drawing.Size(145, 20);
+            this.textBox102.TabIndex = 11;
+            // 
+            // textBox116
+            // 
+            this.textBox116.Location = new System.Drawing.Point(497, 258);
+            this.textBox116.Name = "textBox116";
+            this.textBox116.ReadOnly = true;
+            this.textBox116.Size = new System.Drawing.Size(145, 20);
+            this.textBox116.TabIndex = 24;
+            // 
+            // label93
+            // 
+            this.label93.AutoSize = true;
+            this.label93.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label93.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label93.Location = new System.Drawing.Point(3, 51);
+            this.label93.Name = "label93";
+            this.label93.Size = new System.Drawing.Size(188, 18);
+            this.label93.TabIndex = 1;
+            this.label93.Text = "variable Rüstzeitanpassung";
+            // 
+            // textBox126
+            // 
+            this.textBox126.Location = new System.Drawing.Point(744, 258);
+            this.textBox126.Name = "textBox126";
+            this.textBox126.ReadOnly = true;
+            this.textBox126.Size = new System.Drawing.Size(145, 20);
+            this.textBox126.TabIndex = 25;
+            // 
+            // textBox107
+            // 
+            this.textBox107.Location = new System.Drawing.Point(250, 309);
+            this.textBox107.Name = "textBox107";
+            this.textBox107.ReadOnly = true;
+            this.textBox107.Size = new System.Drawing.Size(145, 20);
+            this.textBox107.TabIndex = 26;
+            // 
+            // textBox101
+            // 
+            this.textBox101.Location = new System.Drawing.Point(250, 3);
+            this.textBox101.Name = "textBox101";
+            this.textBox101.ReadOnly = true;
+            this.textBox101.Size = new System.Drawing.Size(145, 20);
+            this.textBox101.TabIndex = 8;
+            // 
+            // textBox117
+            // 
+            this.textBox117.Location = new System.Drawing.Point(497, 309);
+            this.textBox117.Name = "textBox117";
+            this.textBox117.ReadOnly = true;
+            this.textBox117.Size = new System.Drawing.Size(145, 20);
+            this.textBox117.TabIndex = 27;
+            // 
+            // textBox111
+            // 
+            this.textBox111.Location = new System.Drawing.Point(497, 3);
+            this.textBox111.Name = "textBox111";
+            this.textBox111.ReadOnly = true;
+            this.textBox111.Size = new System.Drawing.Size(145, 20);
+            this.textBox111.TabIndex = 9;
+            // 
+            // textBox127
+            // 
+            this.textBox127.Location = new System.Drawing.Point(744, 309);
+            this.textBox127.Name = "textBox127";
+            this.textBox127.ReadOnly = true;
+            this.textBox127.Size = new System.Drawing.Size(145, 20);
+            this.textBox127.TabIndex = 28;
+            // 
+            // label92
+            // 
+            this.label92.AutoSize = true;
+            this.label92.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label92.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label92.Location = new System.Drawing.Point(3, 357);
+            this.label92.Name = "label92";
+            this.label92.Size = new System.Drawing.Size(92, 18);
+            this.label92.TabIndex = 7;
+            this.label92.Text = "Überstunden";
+            // 
+            // textBox121
+            // 
+            this.textBox121.Location = new System.Drawing.Point(744, 3);
+            this.textBox121.Name = "textBox121";
+            this.textBox121.ReadOnly = true;
+            this.textBox121.Size = new System.Drawing.Size(145, 20);
+            this.textBox121.TabIndex = 10;
+            // 
+            // textBox108
+            // 
+            this.textBox108.Location = new System.Drawing.Point(250, 360);
+            this.textBox108.Name = "textBox108";
+            this.textBox108.ReadOnly = true;
+            this.textBox108.Size = new System.Drawing.Size(145, 20);
+            this.textBox108.TabIndex = 29;
+            // 
+            // textBox118
+            // 
+            this.textBox118.Location = new System.Drawing.Point(497, 360);
+            this.textBox118.Name = "textBox118";
+            this.textBox118.ReadOnly = true;
+            this.textBox118.Size = new System.Drawing.Size(145, 20);
+            this.textBox118.TabIndex = 30;
+            // 
+            // textBox128
+            // 
+            this.textBox128.Location = new System.Drawing.Point(744, 360);
+            this.textBox128.Name = "textBox128";
+            this.textBox128.ReadOnly = true;
+            this.textBox128.Size = new System.Drawing.Size(145, 20);
+            this.textBox128.TabIndex = 31;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.tableLayoutPanel6);
+            this.tabPage6.Controls.Add(this.metroLabel15);
+            this.tabPage6.Controls.Add(this.metroLabel14);
+            this.tabPage6.Controls.Add(this.metroLabel13);
+            this.tabPage6.Location = new System.Drawing.Point(4, 38);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(968, 394);
+            this.tabPage6.TabIndex = 2;
+            this.tabPage6.Text = "Arbeitsplatz 7-9";
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 4;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.54545F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.55556F));
+            this.tableLayoutPanel6.Controls.Add(this.textBox98, 3, 7);
+            this.tableLayoutPanel6.Controls.Add(this.textBox88, 2, 7);
+            this.tableLayoutPanel6.Controls.Add(this.textBox78, 1, 7);
+            this.tableLayoutPanel6.Controls.Add(this.textBox91, 3, 0);
+            this.tableLayoutPanel6.Controls.Add(this.label84, 0, 7);
+            this.tableLayoutPanel6.Controls.Add(this.textBox97, 3, 6);
+            this.tableLayoutPanel6.Controls.Add(this.textBox81, 2, 0);
+            this.tableLayoutPanel6.Controls.Add(this.textBox87, 2, 6);
+            this.tableLayoutPanel6.Controls.Add(this.textBox71, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.textBox77, 1, 6);
+            this.tableLayoutPanel6.Controls.Add(this.textBox96, 3, 5);
+            this.tableLayoutPanel6.Controls.Add(this.label85, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(this.textBox86, 2, 5);
+            this.tableLayoutPanel6.Controls.Add(this.textBox72, 1, 1);
+            this.tableLayoutPanel6.Controls.Add(this.textBox76, 1, 5);
+            this.tableLayoutPanel6.Controls.Add(this.textBox82, 2, 1);
+            this.tableLayoutPanel6.Controls.Add(this.textBox92, 3, 1);
+            this.tableLayoutPanel6.Controls.Add(this.textBox85, 2, 4);
+            this.tableLayoutPanel6.Controls.Add(this.label86, 0, 2);
+            this.tableLayoutPanel6.Controls.Add(this.textBox75, 1, 4);
+            this.tableLayoutPanel6.Controls.Add(this.label87, 0, 3);
+            this.tableLayoutPanel6.Controls.Add(this.textBox94, 3, 3);
+            this.tableLayoutPanel6.Controls.Add(this.label88, 0, 4);
+            this.tableLayoutPanel6.Controls.Add(this.textBox84, 2, 3);
+            this.tableLayoutPanel6.Controls.Add(this.label89, 0, 5);
+            this.tableLayoutPanel6.Controls.Add(this.textBox74, 1, 3);
+            this.tableLayoutPanel6.Controls.Add(this.label90, 0, 6);
+            this.tableLayoutPanel6.Controls.Add(this.textBox93, 3, 2);
+            this.tableLayoutPanel6.Controls.Add(this.textBox73, 1, 2);
+            this.tableLayoutPanel6.Controls.Add(this.textBox83, 2, 2);
+            this.tableLayoutPanel6.Controls.Add(this.textBox95, 3, 4);
+            this.tableLayoutPanel6.Controls.Add(this.label91, 0, 0);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(50, 65);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 8;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(990, 383);
+            this.tableLayoutPanel6.TabIndex = 39;
+            // 
+            // label91
+            // 
+            this.label91.AutoSize = true;
+            this.label91.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label91.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label91.Location = new System.Drawing.Point(3, 0);
+            this.label91.Name = "label91";
+            this.label91.Size = new System.Drawing.Size(118, 18);
+            this.label91.TabIndex = 0;
+            this.label91.Text = "Kapazitätsbedarf";
+            // 
+            // textBox95
+            // 
+            this.textBox95.Location = new System.Drawing.Point(739, 207);
+            this.textBox95.Name = "textBox95";
+            this.textBox95.ReadOnly = true;
+            this.textBox95.Size = new System.Drawing.Size(145, 20);
+            this.textBox95.TabIndex = 22;
+            // 
+            // textBox83
+            // 
+            this.textBox83.Location = new System.Drawing.Point(497, 105);
+            this.textBox83.Name = "textBox83";
+            this.textBox83.ReadOnly = true;
+            this.textBox83.Size = new System.Drawing.Size(145, 20);
+            this.textBox83.TabIndex = 15;
+            // 
+            // textBox73
+            // 
+            this.textBox73.Location = new System.Drawing.Point(250, 105);
+            this.textBox73.Name = "textBox73";
+            this.textBox73.ReadOnly = true;
+            this.textBox73.Size = new System.Drawing.Size(145, 20);
+            this.textBox73.TabIndex = 14;
+            // 
+            // textBox93
+            // 
+            this.textBox93.Location = new System.Drawing.Point(739, 105);
+            this.textBox93.Name = "textBox93";
+            this.textBox93.ReadOnly = true;
+            this.textBox93.Size = new System.Drawing.Size(145, 20);
+            this.textBox93.TabIndex = 16;
+            // 
+            // label90
+            // 
+            this.label90.AutoSize = true;
+            this.label90.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label90.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label90.Location = new System.Drawing.Point(3, 306);
+            this.label90.Name = "label90";
+            this.label90.Size = new System.Drawing.Size(121, 18);
+            this.label90.TabIndex = 6;
+            this.label90.Text = "Anzahl Schichten";
+            // 
+            // textBox74
+            // 
+            this.textBox74.Location = new System.Drawing.Point(250, 156);
+            this.textBox74.Name = "textBox74";
+            this.textBox74.ReadOnly = true;
+            this.textBox74.Size = new System.Drawing.Size(145, 20);
+            this.textBox74.TabIndex = 17;
+            // 
+            // label89
+            // 
+            this.label89.AutoSize = true;
+            this.label89.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label89.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label89.Location = new System.Drawing.Point(3, 255);
+            this.label89.Name = "label89";
+            this.label89.Size = new System.Drawing.Size(169, 18);
+            this.label89.TabIndex = 4;
+            this.label89.Text = "Gesamtkapazitätsbedarf";
+            // 
+            // textBox84
+            // 
+            this.textBox84.Location = new System.Drawing.Point(497, 156);
+            this.textBox84.Name = "textBox84";
+            this.textBox84.ReadOnly = true;
+            this.textBox84.Size = new System.Drawing.Size(145, 20);
+            this.textBox84.TabIndex = 18;
+            // 
+            // label88
+            // 
+            this.label88.AutoSize = true;
+            this.label88.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label88.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label88.Location = new System.Drawing.Point(3, 204);
+            this.label88.Name = "label88";
+            this.label88.Size = new System.Drawing.Size(138, 18);
+            this.label88.TabIndex = 5;
+            this.label88.Text = "Rüstzeit Vorperiode";
+            // 
+            // textBox94
+            // 
+            this.textBox94.Location = new System.Drawing.Point(739, 156);
+            this.textBox94.Name = "textBox94";
+            this.textBox94.ReadOnly = true;
+            this.textBox94.Size = new System.Drawing.Size(145, 20);
+            this.textBox94.TabIndex = 19;
+            // 
+            // label87
+            // 
+            this.label87.AutoSize = true;
+            this.label87.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label87.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label87.Location = new System.Drawing.Point(3, 153);
+            this.label87.Name = "label87";
+            this.label87.Size = new System.Drawing.Size(194, 18);
+            this.label87.TabIndex = 3;
+            this.label87.Text = "Kapazitätsbedarf Vorperiode";
+            // 
+            // textBox75
+            // 
+            this.textBox75.Location = new System.Drawing.Point(250, 207);
+            this.textBox75.Name = "textBox75";
+            this.textBox75.ReadOnly = true;
+            this.textBox75.Size = new System.Drawing.Size(145, 20);
+            this.textBox75.TabIndex = 20;
+            // 
+            // label86
+            // 
+            this.label86.AutoSize = true;
+            this.label86.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label86.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label86.Location = new System.Drawing.Point(3, 102);
+            this.label86.Name = "label86";
+            this.label86.Size = new System.Drawing.Size(100, 18);
+            this.label86.TabIndex = 2;
+            this.label86.Text = "Rüstzeit (neu)";
+            // 
+            // textBox85
+            // 
+            this.textBox85.Location = new System.Drawing.Point(497, 207);
+            this.textBox85.Name = "textBox85";
+            this.textBox85.ReadOnly = true;
+            this.textBox85.Size = new System.Drawing.Size(145, 20);
+            this.textBox85.TabIndex = 21;
+            // 
+            // textBox92
+            // 
+            this.textBox92.Location = new System.Drawing.Point(739, 54);
+            this.textBox92.Name = "textBox92";
+            this.textBox92.ReadOnly = true;
+            this.textBox92.Size = new System.Drawing.Size(145, 20);
+            this.textBox92.TabIndex = 13;
+            // 
+            // textBox82
+            // 
+            this.textBox82.Location = new System.Drawing.Point(497, 54);
+            this.textBox82.Name = "textBox82";
+            this.textBox82.ReadOnly = true;
+            this.textBox82.Size = new System.Drawing.Size(145, 20);
+            this.textBox82.TabIndex = 12;
+            // 
+            // textBox76
+            // 
+            this.textBox76.Location = new System.Drawing.Point(250, 258);
+            this.textBox76.Name = "textBox76";
+            this.textBox76.ReadOnly = true;
+            this.textBox76.Size = new System.Drawing.Size(145, 20);
+            this.textBox76.TabIndex = 23;
+            // 
+            // textBox72
+            // 
+            this.textBox72.Location = new System.Drawing.Point(250, 54);
+            this.textBox72.Name = "textBox72";
+            this.textBox72.ReadOnly = true;
+            this.textBox72.Size = new System.Drawing.Size(145, 20);
+            this.textBox72.TabIndex = 11;
+            // 
+            // textBox86
+            // 
+            this.textBox86.Location = new System.Drawing.Point(497, 258);
+            this.textBox86.Name = "textBox86";
+            this.textBox86.ReadOnly = true;
+            this.textBox86.Size = new System.Drawing.Size(145, 20);
+            this.textBox86.TabIndex = 24;
+            // 
+            // label85
+            // 
+            this.label85.AutoSize = true;
+            this.label85.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label85.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label85.Location = new System.Drawing.Point(3, 51);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(188, 18);
+            this.label85.TabIndex = 1;
+            this.label85.Text = "variable Rüstzeitanpassung";
+            // 
+            // textBox96
+            // 
+            this.textBox96.Location = new System.Drawing.Point(739, 258);
+            this.textBox96.Name = "textBox96";
+            this.textBox96.ReadOnly = true;
+            this.textBox96.Size = new System.Drawing.Size(145, 20);
+            this.textBox96.TabIndex = 25;
+            // 
+            // textBox77
+            // 
+            this.textBox77.Location = new System.Drawing.Point(250, 309);
+            this.textBox77.Name = "textBox77";
+            this.textBox77.ReadOnly = true;
+            this.textBox77.Size = new System.Drawing.Size(145, 20);
+            this.textBox77.TabIndex = 26;
+            // 
+            // textBox71
+            // 
+            this.textBox71.Location = new System.Drawing.Point(250, 3);
+            this.textBox71.Name = "textBox71";
+            this.textBox71.ReadOnly = true;
+            this.textBox71.Size = new System.Drawing.Size(145, 20);
+            this.textBox71.TabIndex = 8;
+            // 
+            // textBox87
+            // 
+            this.textBox87.Location = new System.Drawing.Point(497, 309);
+            this.textBox87.Name = "textBox87";
+            this.textBox87.ReadOnly = true;
+            this.textBox87.Size = new System.Drawing.Size(145, 20);
+            this.textBox87.TabIndex = 27;
+            // 
+            // textBox81
+            // 
+            this.textBox81.Location = new System.Drawing.Point(497, 3);
+            this.textBox81.Name = "textBox81";
+            this.textBox81.ReadOnly = true;
+            this.textBox81.Size = new System.Drawing.Size(145, 20);
+            this.textBox81.TabIndex = 9;
+            // 
+            // textBox97
+            // 
+            this.textBox97.Location = new System.Drawing.Point(739, 309);
+            this.textBox97.Name = "textBox97";
+            this.textBox97.ReadOnly = true;
+            this.textBox97.Size = new System.Drawing.Size(145, 20);
+            this.textBox97.TabIndex = 28;
+            // 
+            // label84
+            // 
+            this.label84.AutoSize = true;
+            this.label84.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label84.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label84.Location = new System.Drawing.Point(3, 357);
+            this.label84.Name = "label84";
+            this.label84.Size = new System.Drawing.Size(92, 18);
+            this.label84.TabIndex = 7;
+            this.label84.Text = "Überstunden";
+            // 
+            // textBox91
+            // 
+            this.textBox91.Location = new System.Drawing.Point(739, 3);
+            this.textBox91.Name = "textBox91";
+            this.textBox91.ReadOnly = true;
+            this.textBox91.Size = new System.Drawing.Size(145, 20);
+            this.textBox91.TabIndex = 10;
+            // 
+            // textBox78
+            // 
+            this.textBox78.Location = new System.Drawing.Point(250, 360);
+            this.textBox78.Name = "textBox78";
+            this.textBox78.ReadOnly = true;
+            this.textBox78.Size = new System.Drawing.Size(145, 20);
+            this.textBox78.TabIndex = 29;
+            // 
+            // textBox88
+            // 
+            this.textBox88.Location = new System.Drawing.Point(497, 360);
+            this.textBox88.Name = "textBox88";
+            this.textBox88.ReadOnly = true;
+            this.textBox88.Size = new System.Drawing.Size(145, 20);
+            this.textBox88.TabIndex = 30;
+            // 
+            // textBox98
+            // 
+            this.textBox98.Location = new System.Drawing.Point(739, 360);
+            this.textBox98.Name = "textBox98";
+            this.textBox98.ReadOnly = true;
+            this.textBox98.Size = new System.Drawing.Size(145, 20);
+            this.textBox98.TabIndex = 31;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.tableLayoutPanel5);
+            this.tabPage5.Controls.Add(this.metroLabel10);
+            this.tabPage5.Controls.Add(this.metroLabel12);
+            this.tabPage5.Controls.Add(this.metroLabel11);
+            this.tabPage5.Location = new System.Drawing.Point(4, 38);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(968, 394);
+            this.tabPage5.TabIndex = 1;
+            this.tabPage5.Text = "Arbeitsplatz 4-6";
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 4;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.Controls.Add(this.textBox68, 3, 7);
+            this.tableLayoutPanel5.Controls.Add(this.textBox58, 2, 7);
+            this.tableLayoutPanel5.Controls.Add(this.textBox48, 1, 7);
+            this.tableLayoutPanel5.Controls.Add(this.textBox61, 3, 0);
+            this.tableLayoutPanel5.Controls.Add(this.label76, 0, 7);
+            this.tableLayoutPanel5.Controls.Add(this.textBox67, 3, 6);
+            this.tableLayoutPanel5.Controls.Add(this.textBox51, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.textBox57, 2, 6);
+            this.tableLayoutPanel5.Controls.Add(this.textBox41, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.textBox47, 1, 6);
+            this.tableLayoutPanel5.Controls.Add(this.textBox66, 3, 5);
+            this.tableLayoutPanel5.Controls.Add(this.label77, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.textBox56, 2, 5);
+            this.tableLayoutPanel5.Controls.Add(this.textBox42, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.textBox46, 1, 5);
+            this.tableLayoutPanel5.Controls.Add(this.textBox52, 2, 1);
+            this.tableLayoutPanel5.Controls.Add(this.textBox62, 3, 1);
+            this.tableLayoutPanel5.Controls.Add(this.textBox55, 2, 4);
+            this.tableLayoutPanel5.Controls.Add(this.label78, 0, 2);
+            this.tableLayoutPanel5.Controls.Add(this.textBox45, 1, 4);
+            this.tableLayoutPanel5.Controls.Add(this.label79, 0, 3);
+            this.tableLayoutPanel5.Controls.Add(this.textBox64, 3, 3);
+            this.tableLayoutPanel5.Controls.Add(this.label80, 0, 4);
+            this.tableLayoutPanel5.Controls.Add(this.textBox54, 2, 3);
+            this.tableLayoutPanel5.Controls.Add(this.label81, 0, 5);
+            this.tableLayoutPanel5.Controls.Add(this.textBox44, 1, 3);
+            this.tableLayoutPanel5.Controls.Add(this.label82, 0, 6);
+            this.tableLayoutPanel5.Controls.Add(this.textBox63, 3, 2);
+            this.tableLayoutPanel5.Controls.Add(this.textBox43, 1, 2);
+            this.tableLayoutPanel5.Controls.Add(this.textBox53, 2, 2);
+            this.tableLayoutPanel5.Controls.Add(this.textBox65, 3, 4);
+            this.tableLayoutPanel5.Controls.Add(this.label83, 0, 0);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(50, 65);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 8;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(990, 383);
+            this.tableLayoutPanel5.TabIndex = 36;
+            // 
+            // label83
+            // 
+            this.label83.AutoSize = true;
+            this.label83.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label83.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label83.Location = new System.Drawing.Point(3, 0);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(118, 18);
+            this.label83.TabIndex = 0;
+            this.label83.Text = "Kapazitätsbedarf";
+            // 
+            // textBox65
+            // 
+            this.textBox65.Location = new System.Drawing.Point(744, 207);
+            this.textBox65.Name = "textBox65";
+            this.textBox65.ReadOnly = true;
+            this.textBox65.Size = new System.Drawing.Size(145, 20);
+            this.textBox65.TabIndex = 22;
+            // 
+            // textBox53
+            // 
+            this.textBox53.Location = new System.Drawing.Point(497, 105);
+            this.textBox53.Name = "textBox53";
+            this.textBox53.ReadOnly = true;
+            this.textBox53.Size = new System.Drawing.Size(145, 20);
+            this.textBox53.TabIndex = 15;
+            // 
+            // textBox43
+            // 
+            this.textBox43.Location = new System.Drawing.Point(250, 105);
+            this.textBox43.Name = "textBox43";
+            this.textBox43.ReadOnly = true;
+            this.textBox43.Size = new System.Drawing.Size(145, 20);
+            this.textBox43.TabIndex = 14;
+            // 
+            // textBox63
+            // 
+            this.textBox63.Location = new System.Drawing.Point(744, 105);
+            this.textBox63.Name = "textBox63";
+            this.textBox63.ReadOnly = true;
+            this.textBox63.Size = new System.Drawing.Size(145, 20);
+            this.textBox63.TabIndex = 16;
+            // 
+            // label82
+            // 
+            this.label82.AutoSize = true;
+            this.label82.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label82.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label82.Location = new System.Drawing.Point(3, 306);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(121, 18);
+            this.label82.TabIndex = 6;
+            this.label82.Text = "Anzahl Schichten";
+            // 
+            // textBox44
+            // 
+            this.textBox44.Location = new System.Drawing.Point(250, 156);
+            this.textBox44.Name = "textBox44";
+            this.textBox44.ReadOnly = true;
+            this.textBox44.Size = new System.Drawing.Size(145, 20);
+            this.textBox44.TabIndex = 17;
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label81.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label81.Location = new System.Drawing.Point(3, 255);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(169, 18);
+            this.label81.TabIndex = 4;
+            this.label81.Text = "Gesamtkapazitätsbedarf";
+            // 
+            // textBox54
+            // 
+            this.textBox54.Location = new System.Drawing.Point(497, 156);
+            this.textBox54.Name = "textBox54";
+            this.textBox54.ReadOnly = true;
+            this.textBox54.Size = new System.Drawing.Size(145, 20);
+            this.textBox54.TabIndex = 18;
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label80.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label80.Location = new System.Drawing.Point(3, 204);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(138, 18);
+            this.label80.TabIndex = 5;
+            this.label80.Text = "Rüstzeit Vorperiode";
+            // 
+            // textBox64
+            // 
+            this.textBox64.Location = new System.Drawing.Point(744, 156);
+            this.textBox64.Name = "textBox64";
+            this.textBox64.ReadOnly = true;
+            this.textBox64.Size = new System.Drawing.Size(145, 20);
+            this.textBox64.TabIndex = 19;
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label79.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label79.Location = new System.Drawing.Point(3, 153);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(194, 18);
+            this.label79.TabIndex = 3;
+            this.label79.Text = "Kapazitätsbedarf Vorperiode";
+            // 
+            // textBox45
+            // 
+            this.textBox45.Location = new System.Drawing.Point(250, 207);
+            this.textBox45.Name = "textBox45";
+            this.textBox45.ReadOnly = true;
+            this.textBox45.Size = new System.Drawing.Size(145, 20);
+            this.textBox45.TabIndex = 20;
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label78.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label78.Location = new System.Drawing.Point(3, 102);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(100, 18);
+            this.label78.TabIndex = 2;
+            this.label78.Text = "Rüstzeit (neu)";
+            // 
+            // textBox55
+            // 
+            this.textBox55.Location = new System.Drawing.Point(497, 207);
+            this.textBox55.Name = "textBox55";
+            this.textBox55.ReadOnly = true;
+            this.textBox55.Size = new System.Drawing.Size(145, 20);
+            this.textBox55.TabIndex = 21;
+            // 
+            // textBox62
+            // 
+            this.textBox62.Location = new System.Drawing.Point(744, 54);
+            this.textBox62.Name = "textBox62";
+            this.textBox62.ReadOnly = true;
+            this.textBox62.Size = new System.Drawing.Size(145, 20);
+            this.textBox62.TabIndex = 13;
+            // 
+            // textBox52
+            // 
+            this.textBox52.Location = new System.Drawing.Point(497, 54);
+            this.textBox52.Name = "textBox52";
+            this.textBox52.ReadOnly = true;
+            this.textBox52.Size = new System.Drawing.Size(145, 20);
+            this.textBox52.TabIndex = 12;
+            // 
+            // textBox46
+            // 
+            this.textBox46.Location = new System.Drawing.Point(250, 258);
+            this.textBox46.Name = "textBox46";
+            this.textBox46.ReadOnly = true;
+            this.textBox46.Size = new System.Drawing.Size(145, 20);
+            this.textBox46.TabIndex = 23;
+            // 
+            // textBox42
+            // 
+            this.textBox42.Location = new System.Drawing.Point(250, 54);
+            this.textBox42.Name = "textBox42";
+            this.textBox42.ReadOnly = true;
+            this.textBox42.Size = new System.Drawing.Size(145, 20);
+            this.textBox42.TabIndex = 11;
+            // 
+            // textBox56
+            // 
+            this.textBox56.Location = new System.Drawing.Point(497, 258);
+            this.textBox56.Name = "textBox56";
+            this.textBox56.ReadOnly = true;
+            this.textBox56.Size = new System.Drawing.Size(145, 20);
+            this.textBox56.TabIndex = 24;
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label77.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label77.Location = new System.Drawing.Point(3, 51);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(188, 18);
+            this.label77.TabIndex = 1;
+            this.label77.Text = "variable Rüstzeitanpassung";
+            // 
+            // textBox66
+            // 
+            this.textBox66.Location = new System.Drawing.Point(744, 258);
+            this.textBox66.Name = "textBox66";
+            this.textBox66.ReadOnly = true;
+            this.textBox66.Size = new System.Drawing.Size(145, 20);
+            this.textBox66.TabIndex = 25;
+            // 
+            // textBox47
+            // 
+            this.textBox47.Location = new System.Drawing.Point(250, 309);
+            this.textBox47.Name = "textBox47";
+            this.textBox47.ReadOnly = true;
+            this.textBox47.Size = new System.Drawing.Size(145, 20);
+            this.textBox47.TabIndex = 26;
+            // 
+            // textBox41
+            // 
+            this.textBox41.Location = new System.Drawing.Point(250, 3);
+            this.textBox41.Name = "textBox41";
+            this.textBox41.ReadOnly = true;
+            this.textBox41.Size = new System.Drawing.Size(145, 20);
+            this.textBox41.TabIndex = 8;
+            // 
+            // textBox57
+            // 
+            this.textBox57.Location = new System.Drawing.Point(497, 309);
+            this.textBox57.Name = "textBox57";
+            this.textBox57.ReadOnly = true;
+            this.textBox57.Size = new System.Drawing.Size(145, 20);
+            this.textBox57.TabIndex = 27;
+            // 
+            // textBox51
+            // 
+            this.textBox51.Location = new System.Drawing.Point(497, 3);
+            this.textBox51.Name = "textBox51";
+            this.textBox51.ReadOnly = true;
+            this.textBox51.Size = new System.Drawing.Size(145, 20);
+            this.textBox51.TabIndex = 9;
+            // 
+            // textBox67
+            // 
+            this.textBox67.Location = new System.Drawing.Point(744, 309);
+            this.textBox67.Name = "textBox67";
+            this.textBox67.ReadOnly = true;
+            this.textBox67.Size = new System.Drawing.Size(145, 20);
+            this.textBox67.TabIndex = 28;
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label76.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label76.Location = new System.Drawing.Point(3, 357);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(92, 18);
+            this.label76.TabIndex = 7;
+            this.label76.Text = "Überstunden";
+            // 
+            // textBox61
+            // 
+            this.textBox61.Location = new System.Drawing.Point(744, 3);
+            this.textBox61.Name = "textBox61";
+            this.textBox61.ReadOnly = true;
+            this.textBox61.Size = new System.Drawing.Size(145, 20);
+            this.textBox61.TabIndex = 10;
+            // 
+            // textBox48
+            // 
+            this.textBox48.Location = new System.Drawing.Point(250, 360);
+            this.textBox48.Name = "textBox48";
+            this.textBox48.ReadOnly = true;
+            this.textBox48.Size = new System.Drawing.Size(145, 20);
+            this.textBox48.TabIndex = 29;
+            // 
+            // textBox58
+            // 
+            this.textBox58.Location = new System.Drawing.Point(497, 360);
+            this.textBox58.Name = "textBox58";
+            this.textBox58.ReadOnly = true;
+            this.textBox58.Size = new System.Drawing.Size(145, 20);
+            this.textBox58.TabIndex = 30;
+            // 
+            // textBox68
+            // 
+            this.textBox68.Location = new System.Drawing.Point(744, 360);
+            this.textBox68.Name = "textBox68";
+            this.textBox68.ReadOnly = true;
+            this.textBox68.Size = new System.Drawing.Size(145, 20);
+            this.textBox68.TabIndex = 31;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.metroLabel9);
+            this.tabPage4.Controls.Add(this.metroLabel2);
+            this.tabPage4.Controls.Add(this.metroLabel1);
+            this.tabPage4.Controls.Add(this.tableLayoutPanel4);
+            this.tabPage4.Location = new System.Drawing.Point(4, 38);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(968, 394);
+            this.tabPage4.TabIndex = 0;
+            this.tabPage4.Text = "Arbeitsplatz 1-3";
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 4;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.Controls.Add(this.textBox18, 1, 7);
+            this.tableLayoutPanel4.Controls.Add(this.textBox31, 3, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label68, 0, 7);
+            this.tableLayoutPanel4.Controls.Add(this.textBox37, 3, 6);
+            this.tableLayoutPanel4.Controls.Add(this.textBox21, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.textBox27, 2, 6);
+            this.tableLayoutPanel4.Controls.Add(this.textBox17, 1, 6);
+            this.tableLayoutPanel4.Controls.Add(this.textBox36, 3, 5);
+            this.tableLayoutPanel4.Controls.Add(this.label69, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.textBox26, 2, 5);
+            this.tableLayoutPanel4.Controls.Add(this.textBox12, 1, 1);
+            this.tableLayoutPanel4.Controls.Add(this.textBox16, 1, 5);
+            this.tableLayoutPanel4.Controls.Add(this.textBox22, 2, 1);
+            this.tableLayoutPanel4.Controls.Add(this.textBox32, 3, 1);
+            this.tableLayoutPanel4.Controls.Add(this.textBox25, 2, 4);
+            this.tableLayoutPanel4.Controls.Add(this.label70, 0, 2);
+            this.tableLayoutPanel4.Controls.Add(this.textBox15, 1, 4);
+            this.tableLayoutPanel4.Controls.Add(this.label71, 0, 3);
+            this.tableLayoutPanel4.Controls.Add(this.textBox34, 3, 3);
+            this.tableLayoutPanel4.Controls.Add(this.textBox24, 2, 3);
+            this.tableLayoutPanel4.Controls.Add(this.textBox14, 1, 3);
+            this.tableLayoutPanel4.Controls.Add(this.label72, 0, 6);
+            this.tableLayoutPanel4.Controls.Add(this.textBox33, 3, 2);
+            this.tableLayoutPanel4.Controls.Add(this.textBox13, 1, 2);
+            this.tableLayoutPanel4.Controls.Add(this.textBox23, 2, 2);
+            this.tableLayoutPanel4.Controls.Add(this.textBox35, 3, 4);
+            this.tableLayoutPanel4.Controls.Add(this.label73, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.textBox38, 3, 7);
+            this.tableLayoutPanel4.Controls.Add(this.textBox11, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label74, 0, 4);
+            this.tableLayoutPanel4.Controls.Add(this.label75, 0, 5);
+            this.tableLayoutPanel4.Controls.Add(this.textBox28, 2, 7);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(50, 65);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 8;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(873, 325);
+            this.tableLayoutPanel4.TabIndex = 30;
+            // 
+            // textBox28
+            // 
+            this.textBox28.Location = new System.Drawing.Point(439, 304);
+            this.textBox28.Name = "textBox28";
+            this.textBox28.ReadOnly = true;
+            this.textBox28.Size = new System.Drawing.Size(145, 20);
+            this.textBox28.TabIndex = 30;
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label75.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label75.Location = new System.Drawing.Point(3, 215);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(169, 18);
+            this.label75.TabIndex = 5;
+            this.label75.Text = "Gesamtkapazitätsbedarf";
+            // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label74.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label74.Location = new System.Drawing.Point(3, 172);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(138, 18);
+            this.label74.TabIndex = 4;
+            this.label74.Text = "Rüstzeit Vorperiode";
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(221, 3);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.ReadOnly = true;
+            this.textBox11.Size = new System.Drawing.Size(145, 20);
+            this.textBox11.TabIndex = 8;
+            // 
+            // textBox38
+            // 
+            this.textBox38.Location = new System.Drawing.Point(657, 304);
+            this.textBox38.Name = "textBox38";
+            this.textBox38.ReadOnly = true;
+            this.textBox38.Size = new System.Drawing.Size(145, 20);
+            this.textBox38.TabIndex = 31;
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label73.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label73.Location = new System.Drawing.Point(3, 0);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(118, 18);
+            this.label73.TabIndex = 0;
+            this.label73.Text = "Kapazitätsbedarf";
+            // 
+            // textBox35
+            // 
+            this.textBox35.Location = new System.Drawing.Point(657, 175);
+            this.textBox35.Name = "textBox35";
+            this.textBox35.ReadOnly = true;
+            this.textBox35.Size = new System.Drawing.Size(145, 20);
+            this.textBox35.TabIndex = 22;
+            // 
+            // textBox23
+            // 
+            this.textBox23.Location = new System.Drawing.Point(439, 89);
+            this.textBox23.Name = "textBox23";
+            this.textBox23.ReadOnly = true;
+            this.textBox23.Size = new System.Drawing.Size(145, 20);
+            this.textBox23.TabIndex = 15;
+            // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(221, 89);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.ReadOnly = true;
+            this.textBox13.Size = new System.Drawing.Size(145, 20);
+            this.textBox13.TabIndex = 14;
+            // 
+            // textBox33
+            // 
+            this.textBox33.Location = new System.Drawing.Point(657, 89);
+            this.textBox33.Name = "textBox33";
+            this.textBox33.ReadOnly = true;
+            this.textBox33.Size = new System.Drawing.Size(145, 20);
+            this.textBox33.TabIndex = 16;
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label72.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label72.Location = new System.Drawing.Point(3, 258);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(121, 18);
+            this.label72.TabIndex = 6;
+            this.label72.Text = "Anzahl Schichten";
+            // 
+            // textBox14
+            // 
+            this.textBox14.Location = new System.Drawing.Point(221, 132);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.ReadOnly = true;
+            this.textBox14.Size = new System.Drawing.Size(145, 20);
+            this.textBox14.TabIndex = 17;
+            // 
+            // textBox24
+            // 
+            this.textBox24.Location = new System.Drawing.Point(439, 132);
+            this.textBox24.Name = "textBox24";
+            this.textBox24.ReadOnly = true;
+            this.textBox24.Size = new System.Drawing.Size(145, 20);
+            this.textBox24.TabIndex = 18;
+            // 
+            // textBox34
+            // 
+            this.textBox34.Location = new System.Drawing.Point(657, 132);
+            this.textBox34.Name = "textBox34";
+            this.textBox34.ReadOnly = true;
+            this.textBox34.Size = new System.Drawing.Size(145, 20);
+            this.textBox34.TabIndex = 19;
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label71.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label71.Location = new System.Drawing.Point(3, 129);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(194, 18);
+            this.label71.TabIndex = 3;
+            this.label71.Text = "Kapazitätsbedarf Vorperiode";
+            // 
+            // textBox15
+            // 
+            this.textBox15.Location = new System.Drawing.Point(221, 175);
+            this.textBox15.Name = "textBox15";
+            this.textBox15.ReadOnly = true;
+            this.textBox15.Size = new System.Drawing.Size(145, 20);
+            this.textBox15.TabIndex = 20;
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label70.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label70.Location = new System.Drawing.Point(3, 86);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(100, 18);
+            this.label70.TabIndex = 2;
+            this.label70.Text = "Rüstzeit (neu)";
+            // 
+            // textBox25
+            // 
+            this.textBox25.Location = new System.Drawing.Point(439, 175);
+            this.textBox25.Name = "textBox25";
+            this.textBox25.ReadOnly = true;
+            this.textBox25.Size = new System.Drawing.Size(145, 20);
+            this.textBox25.TabIndex = 21;
+            // 
+            // textBox32
+            // 
+            this.textBox32.Location = new System.Drawing.Point(657, 46);
+            this.textBox32.Name = "textBox32";
+            this.textBox32.ReadOnly = true;
+            this.textBox32.Size = new System.Drawing.Size(145, 20);
+            this.textBox32.TabIndex = 13;
+            // 
+            // textBox22
+            // 
+            this.textBox22.Location = new System.Drawing.Point(439, 46);
+            this.textBox22.Name = "textBox22";
+            this.textBox22.ReadOnly = true;
+            this.textBox22.Size = new System.Drawing.Size(145, 20);
+            this.textBox22.TabIndex = 12;
+            // 
+            // textBox16
+            // 
+            this.textBox16.Location = new System.Drawing.Point(221, 218);
+            this.textBox16.Name = "textBox16";
+            this.textBox16.ReadOnly = true;
+            this.textBox16.Size = new System.Drawing.Size(145, 20);
+            this.textBox16.TabIndex = 23;
+            // 
+            // textBox12
+            // 
+            this.textBox12.Location = new System.Drawing.Point(221, 46);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.ReadOnly = true;
+            this.textBox12.Size = new System.Drawing.Size(145, 20);
+            this.textBox12.TabIndex = 11;
+            // 
+            // textBox26
+            // 
+            this.textBox26.Location = new System.Drawing.Point(439, 218);
+            this.textBox26.Name = "textBox26";
+            this.textBox26.ReadOnly = true;
+            this.textBox26.Size = new System.Drawing.Size(145, 20);
+            this.textBox26.TabIndex = 24;
+            // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label69.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label69.Location = new System.Drawing.Point(3, 43);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(188, 18);
+            this.label69.TabIndex = 1;
+            this.label69.Text = "variable Rüstzeitanpassung";
+            // 
+            // textBox36
+            // 
+            this.textBox36.Location = new System.Drawing.Point(657, 218);
+            this.textBox36.Name = "textBox36";
+            this.textBox36.ReadOnly = true;
+            this.textBox36.Size = new System.Drawing.Size(145, 20);
+            this.textBox36.TabIndex = 25;
+            // 
+            // textBox17
+            // 
+            this.textBox17.Location = new System.Drawing.Point(221, 261);
+            this.textBox17.Name = "textBox17";
+            this.textBox17.ReadOnly = true;
+            this.textBox17.Size = new System.Drawing.Size(145, 20);
+            this.textBox17.TabIndex = 26;
+            // 
+            // textBox27
+            // 
+            this.textBox27.Location = new System.Drawing.Point(439, 261);
+            this.textBox27.Name = "textBox27";
+            this.textBox27.ReadOnly = true;
+            this.textBox27.Size = new System.Drawing.Size(145, 20);
+            this.textBox27.TabIndex = 27;
+            // 
+            // textBox21
+            // 
+            this.textBox21.Location = new System.Drawing.Point(439, 3);
+            this.textBox21.Name = "textBox21";
+            this.textBox21.ReadOnly = true;
+            this.textBox21.Size = new System.Drawing.Size(145, 20);
+            this.textBox21.TabIndex = 9;
+            // 
+            // textBox37
+            // 
+            this.textBox37.Location = new System.Drawing.Point(657, 261);
+            this.textBox37.Name = "textBox37";
+            this.textBox37.ReadOnly = true;
+            this.textBox37.Size = new System.Drawing.Size(145, 20);
+            this.textBox37.TabIndex = 28;
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label68.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label68.Location = new System.Drawing.Point(3, 301);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(92, 18);
+            this.label68.TabIndex = 7;
+            this.label68.Text = "Überstunden";
+            // 
+            // textBox31
+            // 
+            this.textBox31.Location = new System.Drawing.Point(657, 3);
+            this.textBox31.Name = "textBox31";
+            this.textBox31.ReadOnly = true;
+            this.textBox31.Size = new System.Drawing.Size(145, 20);
+            this.textBox31.TabIndex = 10;
+            // 
+            // textBox18
+            // 
+            this.textBox18.Location = new System.Drawing.Point(221, 304);
+            this.textBox18.Name = "textBox18";
+            this.textBox18.ReadOnly = true;
+            this.textBox18.Size = new System.Drawing.Size(145, 20);
+            this.textBox18.TabIndex = 29;
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(285, 37);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(87, 19);
+            this.metroLabel1.TabIndex = 31;
+            this.metroLabel1.Text = "Arbeitsplatz 1";
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(498, 36);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(89, 19);
+            this.metroLabel2.TabIndex = 32;
+            this.metroLabel2.Text = "Arbeitsplatz 2";
+            // 
+            // metroLabel9
+            // 
+            this.metroLabel9.AutoSize = true;
+            this.metroLabel9.Location = new System.Drawing.Point(714, 38);
+            this.metroLabel9.Name = "metroLabel9";
+            this.metroLabel9.Size = new System.Drawing.Size(89, 19);
+            this.metroLabel9.TabIndex = 33;
+            this.metroLabel9.Text = "Arbeitsplatz 3";
+            // 
+            // metroTabControl1
+            // 
+            this.metroTabControl1.Controls.Add(this.tabPage4);
+            this.metroTabControl1.Controls.Add(this.tabPage5);
+            this.metroTabControl1.Controls.Add(this.tabPage6);
+            this.metroTabControl1.Controls.Add(this.tabPage7);
+            this.metroTabControl1.Controls.Add(this.tabPage8);
+            this.metroTabControl1.Location = new System.Drawing.Point(50, 65);
+            this.metroTabControl1.Name = "metroTabControl1";
+            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.Size = new System.Drawing.Size(976, 436);
+            this.metroTabControl1.TabIndex = 57;
+            this.metroTabControl1.UseSelectable = true;
+            // 
+            // metroLabel12
+            // 
+            this.metroLabel12.AutoSize = true;
+            this.metroLabel12.Location = new System.Drawing.Point(707, 38);
+            this.metroLabel12.Name = "metroLabel12";
+            this.metroLabel12.Size = new System.Drawing.Size(89, 19);
+            this.metroLabel12.TabIndex = 34;
+            this.metroLabel12.Text = "Arbeitsplatz 3";
+            // 
+            // metroLabel11
+            // 
+            this.metroLabel11.AutoSize = true;
+            this.metroLabel11.Location = new System.Drawing.Point(488, 37);
+            this.metroLabel11.Name = "metroLabel11";
+            this.metroLabel11.Size = new System.Drawing.Size(89, 19);
+            this.metroLabel11.TabIndex = 33;
+            this.metroLabel11.Text = "Arbeitsplatz 2";
+            // 
+            // metroLabel10
+            // 
+            this.metroLabel10.AutoSize = true;
+            this.metroLabel10.Location = new System.Drawing.Point(271, 39);
+            this.metroLabel10.Name = "metroLabel10";
+            this.metroLabel10.Size = new System.Drawing.Size(87, 19);
+            this.metroLabel10.TabIndex = 35;
+            this.metroLabel10.Text = "Arbeitsplatz 1";
+            // 
+            // metroLabel15
+            // 
+            this.metroLabel15.AutoSize = true;
+            this.metroLabel15.Location = new System.Drawing.Point(701, 41);
+            this.metroLabel15.Name = "metroLabel15";
+            this.metroLabel15.Size = new System.Drawing.Size(89, 19);
+            this.metroLabel15.TabIndex = 35;
+            this.metroLabel15.Text = "Arbeitsplatz 3";
+            // 
+            // metroLabel14
+            // 
+            this.metroLabel14.AutoSize = true;
+            this.metroLabel14.Location = new System.Drawing.Point(488, 38);
+            this.metroLabel14.Name = "metroLabel14";
+            this.metroLabel14.Size = new System.Drawing.Size(89, 19);
+            this.metroLabel14.TabIndex = 34;
+            this.metroLabel14.Text = "Arbeitsplatz 2";
+            // 
+            // metroLabel18
+            // 
+            this.metroLabel18.AutoSize = true;
+            this.metroLabel18.Location = new System.Drawing.Point(704, 36);
+            this.metroLabel18.Name = "metroLabel18";
+            this.metroLabel18.Size = new System.Drawing.Size(89, 19);
+            this.metroLabel18.TabIndex = 35;
+            this.metroLabel18.Text = "Arbeitsplatz 3";
+            // 
+            // metroLabel17
+            // 
+            this.metroLabel17.AutoSize = true;
+            this.metroLabel17.Location = new System.Drawing.Point(486, 34);
+            this.metroLabel17.Name = "metroLabel17";
+            this.metroLabel17.Size = new System.Drawing.Size(89, 19);
+            this.metroLabel17.TabIndex = 34;
+            this.metroLabel17.Text = "Arbeitsplatz 2";
+            // 
+            // metroLabel16
+            // 
+            this.metroLabel16.AutoSize = true;
+            this.metroLabel16.Location = new System.Drawing.Point(268, 33);
+            this.metroLabel16.Name = "metroLabel16";
+            this.metroLabel16.Size = new System.Drawing.Size(87, 19);
+            this.metroLabel16.TabIndex = 33;
+            this.metroLabel16.Text = "Arbeitsplatz 1";
+            // 
+            // metroLabel21
+            // 
+            this.metroLabel21.AutoSize = true;
+            this.metroLabel21.Location = new System.Drawing.Point(706, 33);
+            this.metroLabel21.Name = "metroLabel21";
+            this.metroLabel21.Size = new System.Drawing.Size(89, 19);
+            this.metroLabel21.TabIndex = 35;
+            this.metroLabel21.Text = "Arbeitsplatz 3";
+            // 
+            // metroLabel20
+            // 
+            this.metroLabel20.AutoSize = true;
+            this.metroLabel20.Location = new System.Drawing.Point(491, 37);
+            this.metroLabel20.Name = "metroLabel20";
+            this.metroLabel20.Size = new System.Drawing.Size(89, 19);
+            this.metroLabel20.TabIndex = 34;
+            this.metroLabel20.Text = "Arbeitsplatz 2";
+            // 
+            // metroLabel19
+            // 
+            this.metroLabel19.AutoSize = true;
+            this.metroLabel19.Location = new System.Drawing.Point(269, 32);
+            this.metroLabel19.Name = "metroLabel19";
+            this.metroLabel19.Size = new System.Drawing.Size(87, 19);
+            this.metroLabel19.TabIndex = 33;
+            this.metroLabel19.Text = "Arbeitsplatz 1";
+            // 
+            // metroLabel13
+            // 
+            this.metroLabel13.AutoSize = true;
+            this.metroLabel13.Location = new System.Drawing.Point(274, 36);
+            this.metroLabel13.Name = "metroLabel13";
+            this.metroLabel13.Size = new System.Drawing.Size(87, 19);
+            this.metroLabel13.TabIndex = 33;
+            this.metroLabel13.Text = "Arbeitsplatz 1";
             // 
             // Periodenplanung
             // 
@@ -3542,6 +5627,27 @@
             this.Kapazitätsplanung.ResumeLayout(false);
             this.metroPanel2.ResumeLayout(false);
             this.metroPanel2.PerformLayout();
+            this.tabPage8.ResumeLayout(false);
+            this.tabPage8.PerformLayout();
+            this.tableLayoutPanel8.ResumeLayout(false);
+            this.tableLayoutPanel8.PerformLayout();
+            this.tabPage7.ResumeLayout(false);
+            this.tabPage7.PerformLayout();
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel7.PerformLayout();
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel6.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
+            this.metroTabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -3733,5 +5839,192 @@
         private MetroFramework.Controls.MetroButton speichernButtonProduktion;
         private MetroFramework.Controls.MetroLink downLInk;
         private MetroFramework.Controls.MetroLink upLink;
+        private MetroFramework.Controls.MetroButton speichernButtonKapPlanung;
+        private MetroFramework.Controls.MetroTabControl metroTabControl1;
+        private System.Windows.Forms.TabPage tabPage4;
+        private MetroFramework.Controls.MetroLabel metroLabel9;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.TextBox textBox18;
+        private System.Windows.Forms.TextBox textBox31;
+        private System.Windows.Forms.Label label68;
+        private System.Windows.Forms.TextBox textBox37;
+        private System.Windows.Forms.TextBox textBox21;
+        private System.Windows.Forms.TextBox textBox27;
+        private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.TextBox textBox36;
+        private System.Windows.Forms.Label label69;
+        private System.Windows.Forms.TextBox textBox26;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.TextBox textBox22;
+        private System.Windows.Forms.TextBox textBox32;
+        private System.Windows.Forms.TextBox textBox25;
+        private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.TextBox textBox34;
+        private System.Windows.Forms.TextBox textBox24;
+        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.Label label72;
+        private System.Windows.Forms.TextBox textBox33;
+        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox textBox23;
+        private System.Windows.Forms.TextBox textBox35;
+        private System.Windows.Forms.Label label73;
+        private System.Windows.Forms.TextBox textBox38;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.Label label74;
+        private System.Windows.Forms.Label label75;
+        private System.Windows.Forms.TextBox textBox28;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.TextBox textBox68;
+        private System.Windows.Forms.TextBox textBox58;
+        private System.Windows.Forms.TextBox textBox48;
+        private System.Windows.Forms.TextBox textBox61;
+        private System.Windows.Forms.Label label76;
+        private System.Windows.Forms.TextBox textBox67;
+        private System.Windows.Forms.TextBox textBox51;
+        private System.Windows.Forms.TextBox textBox57;
+        private System.Windows.Forms.TextBox textBox41;
+        private System.Windows.Forms.TextBox textBox47;
+        private System.Windows.Forms.TextBox textBox66;
+        private System.Windows.Forms.Label label77;
+        private System.Windows.Forms.TextBox textBox56;
+        private System.Windows.Forms.TextBox textBox42;
+        private System.Windows.Forms.TextBox textBox46;
+        private System.Windows.Forms.TextBox textBox52;
+        private System.Windows.Forms.TextBox textBox62;
+        private System.Windows.Forms.TextBox textBox55;
+        private System.Windows.Forms.Label label78;
+        private System.Windows.Forms.TextBox textBox45;
+        private System.Windows.Forms.Label label79;
+        private System.Windows.Forms.TextBox textBox64;
+        private System.Windows.Forms.Label label80;
+        private System.Windows.Forms.TextBox textBox54;
+        private System.Windows.Forms.Label label81;
+        private System.Windows.Forms.TextBox textBox44;
+        private System.Windows.Forms.Label label82;
+        private System.Windows.Forms.TextBox textBox63;
+        private System.Windows.Forms.TextBox textBox43;
+        private System.Windows.Forms.TextBox textBox53;
+        private System.Windows.Forms.TextBox textBox65;
+        private System.Windows.Forms.Label label83;
+        private MetroFramework.Controls.MetroLabel metroLabel10;
+        private MetroFramework.Controls.MetroLabel metroLabel12;
+        private MetroFramework.Controls.MetroLabel metroLabel11;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.TextBox textBox98;
+        private System.Windows.Forms.TextBox textBox88;
+        private System.Windows.Forms.TextBox textBox78;
+        private System.Windows.Forms.TextBox textBox91;
+        private System.Windows.Forms.Label label84;
+        private System.Windows.Forms.TextBox textBox97;
+        private System.Windows.Forms.TextBox textBox81;
+        private System.Windows.Forms.TextBox textBox87;
+        private System.Windows.Forms.TextBox textBox71;
+        private System.Windows.Forms.TextBox textBox77;
+        private System.Windows.Forms.TextBox textBox96;
+        private System.Windows.Forms.Label label85;
+        private System.Windows.Forms.TextBox textBox86;
+        private System.Windows.Forms.TextBox textBox72;
+        private System.Windows.Forms.TextBox textBox76;
+        private System.Windows.Forms.TextBox textBox82;
+        private System.Windows.Forms.TextBox textBox92;
+        private System.Windows.Forms.TextBox textBox85;
+        private System.Windows.Forms.Label label86;
+        private System.Windows.Forms.TextBox textBox75;
+        private System.Windows.Forms.Label label87;
+        private System.Windows.Forms.TextBox textBox94;
+        private System.Windows.Forms.Label label88;
+        private System.Windows.Forms.TextBox textBox84;
+        private System.Windows.Forms.Label label89;
+        private System.Windows.Forms.TextBox textBox74;
+        private System.Windows.Forms.Label label90;
+        private System.Windows.Forms.TextBox textBox93;
+        private System.Windows.Forms.TextBox textBox73;
+        private System.Windows.Forms.TextBox textBox83;
+        private System.Windows.Forms.TextBox textBox95;
+        private System.Windows.Forms.Label label91;
+        private MetroFramework.Controls.MetroLabel metroLabel15;
+        private MetroFramework.Controls.MetroLabel metroLabel14;
+        private MetroFramework.Controls.MetroLabel metroLabel13;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.TextBox textBox128;
+        private System.Windows.Forms.TextBox textBox118;
+        private System.Windows.Forms.TextBox textBox108;
+        private System.Windows.Forms.TextBox textBox121;
+        private System.Windows.Forms.Label label92;
+        private System.Windows.Forms.TextBox textBox127;
+        private System.Windows.Forms.TextBox textBox111;
+        private System.Windows.Forms.TextBox textBox117;
+        private System.Windows.Forms.TextBox textBox101;
+        private System.Windows.Forms.TextBox textBox107;
+        private System.Windows.Forms.TextBox textBox126;
+        private System.Windows.Forms.Label label93;
+        private System.Windows.Forms.TextBox textBox116;
+        private System.Windows.Forms.TextBox textBox102;
+        private System.Windows.Forms.TextBox textBox106;
+        private System.Windows.Forms.TextBox textBox112;
+        private System.Windows.Forms.TextBox textBox122;
+        private System.Windows.Forms.TextBox textBox115;
+        private System.Windows.Forms.Label label94;
+        private System.Windows.Forms.TextBox textBox105;
+        private System.Windows.Forms.Label label95;
+        private System.Windows.Forms.TextBox textBox124;
+        private System.Windows.Forms.Label label96;
+        private System.Windows.Forms.TextBox textBox114;
+        private System.Windows.Forms.Label label97;
+        private System.Windows.Forms.TextBox textBox104;
+        private System.Windows.Forms.Label label98;
+        private System.Windows.Forms.TextBox textBox123;
+        private System.Windows.Forms.TextBox textBox103;
+        private System.Windows.Forms.TextBox textBox113;
+        private System.Windows.Forms.TextBox textBox125;
+        private System.Windows.Forms.Label label99;
+        private MetroFramework.Controls.MetroLabel metroLabel18;
+        private MetroFramework.Controls.MetroLabel metroLabel17;
+        private MetroFramework.Controls.MetroLabel metroLabel16;
+        private System.Windows.Forms.TabPage tabPage8;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.TextBox textBox158;
+        private System.Windows.Forms.TextBox textBox148;
+        private System.Windows.Forms.TextBox textBox138;
+        private System.Windows.Forms.TextBox textBox151;
+        private System.Windows.Forms.Label label100;
+        private System.Windows.Forms.TextBox textBox157;
+        private System.Windows.Forms.TextBox textBox141;
+        private System.Windows.Forms.TextBox textBox147;
+        private System.Windows.Forms.TextBox textBox131;
+        private System.Windows.Forms.TextBox textBox137;
+        private System.Windows.Forms.TextBox textBox156;
+        private System.Windows.Forms.Label label101;
+        private System.Windows.Forms.TextBox textBox146;
+        private System.Windows.Forms.TextBox textBox132;
+        private System.Windows.Forms.TextBox textBox136;
+        private System.Windows.Forms.TextBox textBox142;
+        private System.Windows.Forms.TextBox textBox152;
+        private System.Windows.Forms.TextBox textBox145;
+        private System.Windows.Forms.Label label102;
+        private System.Windows.Forms.TextBox textBox135;
+        private System.Windows.Forms.Label label103;
+        private System.Windows.Forms.TextBox textBox154;
+        private System.Windows.Forms.Label label104;
+        private System.Windows.Forms.TextBox textBox144;
+        private System.Windows.Forms.Label label105;
+        private System.Windows.Forms.TextBox textBox134;
+        private System.Windows.Forms.Label label106;
+        private System.Windows.Forms.TextBox textBox153;
+        private System.Windows.Forms.TextBox textBox133;
+        private System.Windows.Forms.TextBox textBox143;
+        private System.Windows.Forms.TextBox textBox155;
+        private System.Windows.Forms.Label label107;
+        private MetroFramework.Controls.MetroLabel metroLabel21;
+        private MetroFramework.Controls.MetroLabel metroLabel20;
+        private MetroFramework.Controls.MetroLabel metroLabel19;
     }
 }

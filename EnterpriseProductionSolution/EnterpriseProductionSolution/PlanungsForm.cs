@@ -1419,12 +1419,12 @@ namespace EnterprisePlanningSolution
                 cn.Close();
             }
             if (!pruefen)
-                Pruefen1();
+               Pruefen2();
 
 
         }
         //dispoGrid.Rows[i].Cells["Menge"].Style.BackColor = Color.Red;
-        public void Pruefen1()
+       /* public void Pruefen1()
         {
 
             ADODB.Connection cn = new ADODB.Connection();
@@ -1474,7 +1474,7 @@ namespace EnterprisePlanningSolution
             rs3.Close();
             cn.Close();
 
-        }
+        }*/
 
         public void Pruefen2()
         {
@@ -1484,20 +1484,31 @@ namespace EnterprisePlanningSolution
             cn.Open(cnStr);
 
             int cB = aktuellePeriode;
-            rs2.Open("Select * From GeplanterBedarf where period =" + cB, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            int kkk = 0;
+            rs2.Open("Select * From ProduktionsplanUnterabfrage where period =" + cB , cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+            
             while (!rs2.EOF)
             {
-                metroGrid1.Rows.Add();
-                metroGrid1.Rows[kkk].Cells["article"].Style.BackColor = Color.Red;
-                metroGrid1.Rows[kkk].Cells["quantity"].Style.BackColor = Color.Red;
+                foreach (DataGridViewRow row in metroGrid1.Rows)
+                {
+                    if ((rs2.Fields["productionPlan"].Value == rs2.Fields["Summevonquantity"].Value) && (Convert.ToInt32(rs2.Fields["item"].Value) == Convert.ToInt32(row.Cells["article"].Value)))
+                    {
+                        row.Cells["article"].Style.BackColor = Color.White;
+                        row.Cells["quantity"].Style.BackColor = Color.White;
+                    }
+                    else if ((rs2.Fields["productionPlan"].Value != rs2.Fields["Summevonquantity"].Value) && (Convert.ToInt32(rs2.Fields["item"].Value) == Convert.ToInt32(row.Cells["article"].Value)))
+                    {
+                       row.Cells["article"].Style.BackColor = Color.Red;
+                       row.Cells["quantity"].Style.BackColor = Color.Red;
+                    }
+                }
+               
                 rs2.MoveNext();
-                kkk++;
+               
             }
 
         }
 
-        public void StartProdPlanung()
+        /*public void StartProdPlanung()
         {
             metroGrid1.Rows.Clear();
             //Recordset
@@ -1523,12 +1534,13 @@ namespace EnterprisePlanningSolution
             }
             rs.Close();
             cn.Close();
-        }
+        }*/
 
         private void planButton_Click(object sender, EventArgs e)
         {
 
-            SaveProdPlan(true);
+            // SaveProdPlan(true);
+            metroGrid1.Rows.Clear();
             //Recordset
             ADODB.Connection cn = new ADODB.Connection();
             ADODB.Recordset rs = new ADODB.Recordset();
@@ -1541,6 +1553,7 @@ namespace EnterprisePlanningSolution
 
             while (!rs.EOF)
             {
+              
                 metroGrid1.Rows.Add();
                 metroGrid1.Rows[i].Cells["article"].Value = rs.Fields["item"].Value;
                 metroGrid1.Rows[i].Cells["quantity"].Value = rs.Fields["productionPlan"].Value;
@@ -1551,8 +1564,11 @@ namespace EnterprisePlanningSolution
             cn.Close();
         }
 
-        private void metroGrid1_SelectionChanged(object sender, EventArgs e)
+        
+        private void metroGrid1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            Pruefen2();
+            SaveProdPlan(false);
         }
 
         private void weiterButton5_Click(object sender, EventArgs e)

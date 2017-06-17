@@ -32,6 +32,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -51,6 +52,11 @@
             this.Bestellungen = new System.Windows.Forms.TabPage();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.metroGrid2 = new MetroFramework.Controls.MetroGrid();
+            this.orderPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Artikelnummer_Bestellung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Menge_Bestellung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Bestellart_Bestellung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.geplanter_Lieferzeitpunkt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PeriodeBest = new MetroFramework.Controls.MetroLabel();
             this.metroComboBox2 = new MetroFramework.Controls.MetroComboBox();
             this.Lagerzugang = new System.Windows.Forms.TabPage();
@@ -76,11 +82,12 @@
             this.metroComboBox4 = new MetroFramework.Controls.MetroComboBox();
             this.PeriodeKenn = new MetroFramework.Controls.MetroLabel();
             this.metroLink1 = new MetroFramework.Controls.MetroLink();
-            this.orderPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Artikelnummer_Bestellung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Menge_Bestellung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bestellart_Bestellung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.geplanter_Lieferzeitpunkt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.lagerwertLabel = new MetroFramework.Controls.MetroLabel();
+            this.anzahlLagerLabel = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.lagerkostenLabel = new MetroFramework.Controls.MetroLabel();
             this.metroTabControl1.SuspendLayout();
             this.Lagerbestand.SuspendLayout();
             this.metroPanel1.SuspendLayout();
@@ -104,7 +111,7 @@
             this.metroTabControl1.Controls.Add(this.Kennzahlen);
             this.metroTabControl1.Location = new System.Drawing.Point(24, 64);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(1097, 627);
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.UseSelectable = true;
@@ -121,6 +128,12 @@
             // 
             // metroPanel1
             // 
+            this.metroPanel1.Controls.Add(this.lagerkostenLabel);
+            this.metroPanel1.Controls.Add(this.metroLabel3);
+            this.metroPanel1.Controls.Add(this.anzahlLagerLabel);
+            this.metroPanel1.Controls.Add(this.lagerwertLabel);
+            this.metroPanel1.Controls.Add(this.metroLabel2);
+            this.metroPanel1.Controls.Add(this.metroLabel1);
             this.metroPanel1.Controls.Add(this.lagerTortendiagramm);
             this.metroPanel1.Controls.Add(this.PeriodeLager);
             this.metroPanel1.Controls.Add(this.metroComboBox1);
@@ -143,7 +156,7 @@
             this.lagerTortendiagramm.ChartAreas.Add(chartArea2);
             legend1.Name = "Legend1";
             this.lagerTortendiagramm.Legends.Add(legend1);
-            this.lagerTortendiagramm.Location = new System.Drawing.Point(248, 26);
+            this.lagerTortendiagramm.Location = new System.Drawing.Point(381, 26);
             this.lagerTortendiagramm.Name = "lagerTortendiagramm";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
@@ -153,6 +166,8 @@
             this.lagerTortendiagramm.Size = new System.Drawing.Size(300, 300);
             this.lagerTortendiagramm.TabIndex = 6;
             this.lagerTortendiagramm.Text = "Befüllung Lager";
+            title1.Name = "Title1";
+            this.lagerTortendiagramm.Titles.Add(title1);
             this.lagerTortendiagramm.Click += new System.EventHandler(this.lagerTortendiagramm_Click);
             // 
             // PeriodeLager
@@ -247,6 +262,31 @@
             this.metroGrid2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.metroGrid2.Size = new System.Drawing.Size(542, 403);
             this.metroGrid2.TabIndex = 9;
+            // 
+            // orderPeriod
+            // 
+            this.orderPeriod.HeaderText = "Bestellperiode";
+            this.orderPeriod.Name = "orderPeriod";
+            // 
+            // Artikelnummer_Bestellung
+            // 
+            this.Artikelnummer_Bestellung.HeaderText = "Artikelnummer";
+            this.Artikelnummer_Bestellung.Name = "Artikelnummer_Bestellung";
+            // 
+            // Menge_Bestellung
+            // 
+            this.Menge_Bestellung.HeaderText = "Menge";
+            this.Menge_Bestellung.Name = "Menge_Bestellung";
+            // 
+            // Bestellart_Bestellung
+            // 
+            this.Bestellart_Bestellung.HeaderText = "Bestellart";
+            this.Bestellart_Bestellung.Name = "Bestellart_Bestellung";
+            // 
+            // geplanter_Lieferzeitpunkt
+            // 
+            this.geplanter_Lieferzeitpunkt.HeaderText = "geplanter Lieferzeitpunkt";
+            this.geplanter_Lieferzeitpunkt.Name = "geplanter_Lieferzeitpunkt";
             // 
             // PeriodeBest
             // 
@@ -528,30 +568,56 @@
             this.metroLink1.UseSelectable = true;
             this.metroLink1.Click += new System.EventHandler(this.metroLink1_Click);
             // 
-            // orderPeriod
+            // metroLabel1
             // 
-            this.orderPeriod.HeaderText = "Bestellperiode";
-            this.orderPeriod.Name = "orderPeriod";
+            this.metroLabel1.Location = new System.Drawing.Point(21, 136);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(121, 29);
+            this.metroLabel1.TabIndex = 7;
+            this.metroLabel1.Text = "Lagerwert gesamt";
             // 
-            // Artikelnummer_Bestellung
+            // metroLabel2
             // 
-            this.Artikelnummer_Bestellung.HeaderText = "Artikelnummer";
-            this.Artikelnummer_Bestellung.Name = "Artikelnummer_Bestellung";
+            this.metroLabel2.Location = new System.Drawing.Point(21, 177);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(85, 29);
+            this.metroLabel2.TabIndex = 8;
+            this.metroLabel2.Text = "Anzahl";
             // 
-            // Menge_Bestellung
+            // lagerwertLabel
             // 
-            this.Menge_Bestellung.HeaderText = "Menge";
-            this.Menge_Bestellung.Name = "Menge_Bestellung";
+            this.lagerwertLabel.AutoSize = true;
+            this.lagerwertLabel.Location = new System.Drawing.Point(188, 136);
+            this.lagerwertLabel.Name = "lagerwertLabel";
+            this.lagerwertLabel.Size = new System.Drawing.Size(38, 19);
+            this.lagerwertLabel.TabIndex = 9;
+            this.lagerwertLabel.Text = "Wert";
             // 
-            // Bestellart_Bestellung
+            // anzahlLagerLabel
             // 
-            this.Bestellart_Bestellung.HeaderText = "Bestellart";
-            this.Bestellart_Bestellung.Name = "Bestellart_Bestellung";
+            this.anzahlLagerLabel.AutoSize = true;
+            this.anzahlLagerLabel.Location = new System.Drawing.Point(188, 177);
+            this.anzahlLagerLabel.Name = "anzahlLagerLabel";
+            this.anzahlLagerLabel.Size = new System.Drawing.Size(46, 19);
+            this.anzahlLagerLabel.TabIndex = 10;
+            this.anzahlLagerLabel.Text = "anzahl";
             // 
-            // geplanter_Lieferzeitpunkt
+            // metroLabel3
             // 
-            this.geplanter_Lieferzeitpunkt.HeaderText = "geplanter Lieferzeitpunkt";
-            this.geplanter_Lieferzeitpunkt.Name = "geplanter_Lieferzeitpunkt";
+            this.metroLabel3.Location = new System.Drawing.Point(21, 215);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(85, 29);
+            this.metroLabel3.TabIndex = 11;
+            this.metroLabel3.Text = "Lagerkosten";
+            // 
+            // lagerkostenLabel
+            // 
+            this.lagerkostenLabel.AutoSize = true;
+            this.lagerkostenLabel.Location = new System.Drawing.Point(188, 215);
+            this.lagerkostenLabel.Name = "lagerkostenLabel";
+            this.lagerkostenLabel.Size = new System.Drawing.Size(46, 19);
+            this.lagerkostenLabel.TabIndex = 12;
+            this.lagerkostenLabel.Text = "kosten";
             // 
             // ErgebnisseForm
             // 
@@ -567,6 +633,7 @@
             this.metroTabControl1.ResumeLayout(false);
             this.Lagerbestand.ResumeLayout(false);
             this.metroPanel1.ResumeLayout(false);
+            this.metroPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lagerTortendiagramm)).EndInit();
             this.Bestellungen.ResumeLayout(false);
             this.metroPanel2.ResumeLayout(false);
@@ -624,5 +691,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Menge_Bestellung;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bestellart_Bestellung;
         private System.Windows.Forms.DataGridViewTextBoxColumn geplanter_Lieferzeitpunkt;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroLabel anzahlLagerLabel;
+        private MetroFramework.Controls.MetroLabel lagerwertLabel;
+        private MetroFramework.Controls.MetroLabel lagerkostenLabel;
+        private MetroFramework.Controls.MetroLabel metroLabel3;
     }
 }

@@ -60,6 +60,7 @@ namespace EnterprisePlanningSolution
 
             refreshComboBox1();
             refreshComboBox2();
+            refreshComboBox3();
             refreshComboBox4();
 
         }
@@ -172,6 +173,7 @@ namespace EnterprisePlanningSolution
             ADODB.Recordset rs = new ADODB.Recordset();
             double warehouseValue = 0;
             double freeSpace = 250000;
+            double anzahl = 1;
             try
             {
                 cn.Open(cnStr);
@@ -181,6 +183,10 @@ namespace EnterprisePlanningSolution
                 rs.Open("Select stockvalue From warehousestock_totalvalue where period='" + periode + "'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
                 warehouseValue = Convert.ToDouble(rs.Fields["stockvalue"].Value);
                 freeSpace = maxLagerwert - warehouseValue;
+                if(warehouseValue > 250000)
+                {
+                    anzahl = Math.Floor(250000 / warehouseValue);
+                }
                 rs.Close();
             }
             catch (Exception fehler)
@@ -191,7 +197,9 @@ namespace EnterprisePlanningSolution
             {
                 cn.Close();
             }
-
+            lagerwertLabel.Text = Convert.ToString(warehouseValue);
+            anzahlLagerLabel.Text = Convert.ToString(anzahl);
+            lagerTortendiagramm.Titles["Title1"].Text = Convert.ToString(anzahl)+". Lager";
             lagerTortendiagramm.Series["Series1"].Points.Clear();
             lagerTortendiagramm.Series["Series1"].Points.Add(warehouseValue);
             lagerTortendiagramm.Series["Series1"].Points[0].LegendText = "Lagerwert";
@@ -286,37 +294,7 @@ namespace EnterprisePlanningSolution
             {
                 cn.Open(cnStr);
                 string periode = metroComboBox3.Text;
-                if (periode == "0")
-                {
-                    rs.Open("Select * From Lagerzugang", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
 
-                    metroGrid3.Rows.Clear();
-                    int i = 0;
-
-                    while (!rs.EOF)
-                    {
-                        metroGrid3.Rows.Add();
-                        metroGrid3.Rows[i].Cells["Artikelnummer_Zugang"].Value = rs.Fields["article"].Value;
-                        metroGrid3.Rows[i].Cells["Bestellperiode_Zugang"].Value = rs.Fields["orderperiod"].Value;
-                        // Überprüfung auf Eil oder Normalbestellung
-                        if (Convert.ToInt32(rs.Fields["mode"].Value) == 4)
-                        {
-                            metroGrid3.Rows[i].Cells["Modus_Zugang"].Value = "Eil";
-                        }
-                        else if (Convert.ToInt32(rs.Fields["mode"].Value) == 5)
-                        {
-                            metroGrid3.Rows[i].Cells["Modus_Zugang"].Value = "Normal";
-                        }
-                        metroGrid3.Rows[i].Cells["Lieferzeit_Zugang"].Value = rs.Fields["Lieferzeit"].Value;
-                        metroGrid3.Rows[i].Cells["Menge_Zugang"].Value = rs.Fields["amount"].Value;
-                        metroGrid3.Rows[i].Cells["Preis_Zugang"].Value = rs.Fields["price"].Value;
-                        rs.MoveNext();
-                        ++i;
-                    }
-                    //i = 0;
-                }
-                else
-                {
                     rs.Open("Select * From Lagerzugang where period ='" + periode + "'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
 
                     metroGrid3.Rows.Clear();
@@ -328,11 +306,11 @@ namespace EnterprisePlanningSolution
                         metroGrid3.Rows[i].Cells["Artikelnummer_Zugang"].Value = rs.Fields["article"].Value;
                         metroGrid3.Rows[i].Cells["Bestellperiode_Zugang"].Value = rs.Fields["orderperiod"].Value;
                         // Überprüfung auf Eil oder Normalbestellung
-                        if (Convert.ToInt32(rs.Fields["mode"].Value) == 4)
+                        if (Convert.ToString(rs.Fields["mode"].Value) == "4")
                         {
                             metroGrid3.Rows[i].Cells["Modus_Zugang"].Value = "Eil";
                         }
-                        else if (Convert.ToInt32(rs.Fields["mode"].Value) == 5)
+                        else if (Convert.ToString(rs.Fields["mode"].Value) == "5")
                         {
                             metroGrid3.Rows[i].Cells["Modus_Zugang"].Value = "Normal";
                         }
@@ -342,8 +320,7 @@ namespace EnterprisePlanningSolution
                         rs.MoveNext();
                         ++i;
                     }
-                    //i = 0;
-                }
+                
                 rs.Close();
             }
             catch (Exception fehler)
@@ -456,6 +433,29 @@ namespace EnterprisePlanningSolution
             cn.Close();
 
             metroComboBox2.DataSource = Liste;
+        }
+        private void refreshComboBox3()
+        {
+            //Recordset
+            ADODB.Connection cn = new ADODB.Connection();
+            ADODB.Recordset rs = new ADODB.Recordset();
+
+            cn.Open(cnStr);
+
+            rs.Open("Select distinct period From summary", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+
+            List<string> Liste = new List<string>();
+            //Liste.Add("0");
+            while (!rs.EOF)
+            {
+                string p = Convert.ToString(rs.Fields["period"].Value);
+                Liste.Add(p);
+                rs.MoveNext();
+            }
+            rs.Close();
+            cn.Close();
+
+            metroComboBox3.DataSource = Liste;
         }
         private void refreshComboBox4()
         {

@@ -127,43 +127,29 @@ namespace EnterprisePlanningSolution
 
         private void ErgebnisseForm_LoadKennzahl(ADODB.Connection cn, ADODB.Recordset rs)
         {
-            /*
-            rs.Open("Select * From summary", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            ADODB.Recordset rs2 = new ADODB.Recordset();
-            rs2.Open("Select * From warehousestock_totalvalue", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            double lagerwert;
-            double lagerkosten;
-            int i = 0;
-
-            while (!rs.EOF)
+            ADODB.Connection cnn = new ADODB.Connection();
+            ADODB.Recordset rss = new ADODB.Recordset();
+            try
             {
-                lagerwert = Convert.ToDouble(rs2.Fields["stockvalue"].Value);
-                metroGrid4.Rows.Add();
-                metroGrid4.Rows[i].Cells["Gewinn"].Value = rs.Fields["profit_current"].Value;
-                metroGrid4.Rows[i].Cells["GewinnDurchschnitt"].Value = rs.Fields["profit_average"].Value;
-                metroGrid4.Rows[i].Cells["GewinnGesamt"].Value = rs.Fields["profit_all"].Value;
-                metroGrid4.Rows[i].Cells["Lagerwert_Kenn"].Value = rs2.Fields["stockvalue"].Value;
-                if (lagerwert <= 25000.00)
+                cnn.Open(cnStr);
+                rss.Open("Select * From summary", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                int i = 0;
+                double gewinn = 0;
+                gewinnDiagramm.Series.Clear();
+                while (!rss.EOF)
                 {
-                    lagerkosten = Math.Round(lagerwert * 0.006, 2); //TODO: Durchschnittliche Lagerkosten
-                    metroGrid4.Rows[i].Cells["Lagerkosten_Kenn"].Value = lagerkosten;
-                    metroGrid4.Rows[i].Cells["AnzahlLager_Kenn"].Value = "1";
-
+                    gewinn = Convert.ToDouble(rss.Fields["profit_current"].Value);
+                    string serienName = Convert.ToString(i);
+                    gewinnDiagramm.Series.Add(serienName);
+                    gewinnDiagramm.Series[serienName].Points.Clear();
+                    gewinnDiagramm.Series[serienName].Points.AddXY("Periode '"+i+"'", gewinn);
+                    rss.MoveNext();
+                    i++;
                 }
-                else
-                {
-                    lagerkosten = Math.Round(250000 * 0.006, 2); //1.500 für das erste Lager
-                    lagerkosten += 5300.00;
-                    lagerkosten += Math.Round((lagerwert - 250000) * 0.016, 2);
-                    metroGrid4.Rows[i].Cells["Lagerkosten_Kenn"].Value = lagerkosten;
-                    metroGrid4.Rows[i].Cells["AnzahlLager_Kenn"].Value = "2"; //TODO: Alle Fälle abdecken bei multiplen von 250.000?
-                }
-
-                rs.MoveNext();
-                ++i;
+                rss.Close();
+                cnn.Close();
             }
-            i = 0;
-            rs.Close();*/
+            catch (Exception fehler) { Console.WriteLine("Ein Fehler ist aufgetreten", fehler); }
         }
 
         // Box 1 of 4
@@ -183,7 +169,7 @@ namespace EnterprisePlanningSolution
                 rs.Open("Select stockvalue From warehousestock_totalvalue where period='" + periode + "'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
                 warehouseValue = Convert.ToDouble(rs.Fields["stockvalue"].Value);
                 freeSpace = maxLagerwert - warehouseValue;
-                if(warehouseValue > 250000)
+                if (warehouseValue > 250000)
                 {
                     anzahl = Math.Floor(250000 / warehouseValue);
                 }
@@ -199,7 +185,7 @@ namespace EnterprisePlanningSolution
             }
             lagerwertLabel.Text = Convert.ToString(warehouseValue);
             anzahlLagerLabel.Text = Convert.ToString(anzahl);
-            lagerTortendiagramm.Titles["Title1"].Text = Convert.ToString(anzahl)+". Lager";
+            lagerTortendiagramm.Titles["Title1"].Text = Convert.ToString(anzahl) + ". Lager";
             lagerTortendiagramm.Series["Series1"].Points.Clear();
             lagerTortendiagramm.Series["Series1"].Points.Add(warehouseValue);
             lagerTortendiagramm.Series["Series1"].Points[0].LegendText = "Lagerwert";
@@ -295,32 +281,32 @@ namespace EnterprisePlanningSolution
                 cn.Open(cnStr);
                 string periode = metroComboBox3.Text;
 
-                    rs.Open("Select * From Lagerzugang where period ='" + periode + "'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs.Open("Select * From Lagerzugang where period ='" + periode + "'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
 
-                    metroGrid3.Rows.Clear();
-                    int i = 0;
+                metroGrid3.Rows.Clear();
+                int i = 0;
 
-                    while (!rs.EOF)
+                while (!rs.EOF)
+                {
+                    metroGrid3.Rows.Add();
+                    metroGrid3.Rows[i].Cells["Artikelnummer_Zugang"].Value = rs.Fields["article"].Value;
+                    metroGrid3.Rows[i].Cells["Bestellperiode_Zugang"].Value = rs.Fields["orderperiod"].Value;
+                    // Überprüfung auf Eil oder Normalbestellung
+                    if (Convert.ToString(rs.Fields["mode"].Value) == "4")
                     {
-                        metroGrid3.Rows.Add();
-                        metroGrid3.Rows[i].Cells["Artikelnummer_Zugang"].Value = rs.Fields["article"].Value;
-                        metroGrid3.Rows[i].Cells["Bestellperiode_Zugang"].Value = rs.Fields["orderperiod"].Value;
-                        // Überprüfung auf Eil oder Normalbestellung
-                        if (Convert.ToString(rs.Fields["mode"].Value) == "4")
-                        {
-                            metroGrid3.Rows[i].Cells["Modus_Zugang"].Value = "Eil";
-                        }
-                        else if (Convert.ToString(rs.Fields["mode"].Value) == "5")
-                        {
-                            metroGrid3.Rows[i].Cells["Modus_Zugang"].Value = "Normal";
-                        }
-                        metroGrid3.Rows[i].Cells["Lieferzeit_Zugang"].Value = rs.Fields["Lieferzeit"].Value;
-                        metroGrid3.Rows[i].Cells["Menge_Zugang"].Value = rs.Fields["amount"].Value;
-                        metroGrid3.Rows[i].Cells["Preis_Zugang"].Value = rs.Fields["price"].Value;
-                        rs.MoveNext();
-                        ++i;
+                        metroGrid3.Rows[i].Cells["Modus_Zugang"].Value = "Eil";
                     }
-                
+                    else if (Convert.ToString(rs.Fields["mode"].Value) == "5")
+                    {
+                        metroGrid3.Rows[i].Cells["Modus_Zugang"].Value = "Normal";
+                    }
+                    metroGrid3.Rows[i].Cells["Lieferzeit_Zugang"].Value = rs.Fields["Lieferzeit"].Value;
+                    metroGrid3.Rows[i].Cells["Menge_Zugang"].Value = rs.Fields["amount"].Value;
+                    metroGrid3.Rows[i].Cells["Preis_Zugang"].Value = rs.Fields["price"].Value;
+                    rs.MoveNext();
+                    ++i;
+                }
+
                 rs.Close();
             }
             catch (Exception fehler)

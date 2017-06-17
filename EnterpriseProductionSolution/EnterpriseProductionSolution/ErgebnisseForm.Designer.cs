@@ -43,9 +43,18 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ErgebnisseForm));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.Lagerbestand = new System.Windows.Forms.TabPage();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.lagerkostenLabel = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.anzahlLagerLabel = new MetroFramework.Controls.MetroLabel();
+            this.lagerwertLabel = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.lagerTortendiagramm = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.PeriodeLager = new MetroFramework.Controls.MetroLabel();
             this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
@@ -82,12 +91,7 @@
             this.metroComboBox4 = new MetroFramework.Controls.MetroComboBox();
             this.PeriodeKenn = new MetroFramework.Controls.MetroLabel();
             this.metroLink1 = new MetroFramework.Controls.MetroLink();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.lagerwertLabel = new MetroFramework.Controls.MetroLabel();
-            this.anzahlLagerLabel = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.lagerkostenLabel = new MetroFramework.Controls.MetroLabel();
+            this.gewinnDiagramm = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.metroTabControl1.SuspendLayout();
             this.Lagerbestand.SuspendLayout();
             this.metroPanel1.SuspendLayout();
@@ -101,6 +105,7 @@
             this.Kennzahlen.SuspendLayout();
             this.metroPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gewinnDiagramm)).BeginInit();
             this.SuspendLayout();
             // 
             // metroTabControl1
@@ -111,7 +116,7 @@
             this.metroTabControl1.Controls.Add(this.Kennzahlen);
             this.metroTabControl1.Location = new System.Drawing.Point(24, 64);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 3;
             this.metroTabControl1.Size = new System.Drawing.Size(1097, 627);
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.UseSelectable = true;
@@ -147,6 +152,57 @@
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // lagerkostenLabel
+            // 
+            this.lagerkostenLabel.AutoSize = true;
+            this.lagerkostenLabel.Location = new System.Drawing.Point(188, 215);
+            this.lagerkostenLabel.Name = "lagerkostenLabel";
+            this.lagerkostenLabel.Size = new System.Drawing.Size(46, 19);
+            this.lagerkostenLabel.TabIndex = 12;
+            this.lagerkostenLabel.Text = "kosten";
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.Location = new System.Drawing.Point(21, 215);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(85, 29);
+            this.metroLabel3.TabIndex = 11;
+            this.metroLabel3.Text = "Lagerkosten";
+            // 
+            // anzahlLagerLabel
+            // 
+            this.anzahlLagerLabel.AutoSize = true;
+            this.anzahlLagerLabel.Location = new System.Drawing.Point(188, 177);
+            this.anzahlLagerLabel.Name = "anzahlLagerLabel";
+            this.anzahlLagerLabel.Size = new System.Drawing.Size(46, 19);
+            this.anzahlLagerLabel.TabIndex = 10;
+            this.anzahlLagerLabel.Text = "anzahl";
+            // 
+            // lagerwertLabel
+            // 
+            this.lagerwertLabel.AutoSize = true;
+            this.lagerwertLabel.Location = new System.Drawing.Point(188, 136);
+            this.lagerwertLabel.Name = "lagerwertLabel";
+            this.lagerwertLabel.Size = new System.Drawing.Size(38, 19);
+            this.lagerwertLabel.TabIndex = 9;
+            this.lagerwertLabel.Text = "Wert";
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.Location = new System.Drawing.Point(21, 177);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(85, 29);
+            this.metroLabel2.TabIndex = 8;
+            this.metroLabel2.Text = "Anzahl";
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.Location = new System.Drawing.Point(21, 136);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(121, 29);
+            this.metroLabel1.TabIndex = 7;
+            this.metroLabel1.Text = "Lagerwert gesamt";
             // 
             // lagerTortendiagramm
             // 
@@ -443,6 +499,7 @@
             // 
             // metroPanel4
             // 
+            this.metroPanel4.Controls.Add(this.gewinnDiagramm);
             this.metroPanel4.Controls.Add(this.metroGrid4);
             this.metroPanel4.Controls.Add(this.metroComboBox4);
             this.metroPanel4.Controls.Add(this.PeriodeKenn);
@@ -504,7 +561,7 @@
             this.metroGrid4.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.metroGrid4.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid4.Size = new System.Drawing.Size(671, 206);
+            this.metroGrid4.Size = new System.Drawing.Size(671, 70);
             this.metroGrid4.TabIndex = 4;
             // 
             // Gewinn
@@ -568,56 +625,21 @@
             this.metroLink1.UseSelectable = true;
             this.metroLink1.Click += new System.EventHandler(this.metroLink1_Click);
             // 
-            // metroLabel1
+            // gewinnDiagramm
             // 
-            this.metroLabel1.Location = new System.Drawing.Point(21, 136);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(121, 29);
-            this.metroLabel1.TabIndex = 7;
-            this.metroLabel1.Text = "Lagerwert gesamt";
-            // 
-            // metroLabel2
-            // 
-            this.metroLabel2.Location = new System.Drawing.Point(21, 177);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(85, 29);
-            this.metroLabel2.TabIndex = 8;
-            this.metroLabel2.Text = "Anzahl";
-            // 
-            // lagerwertLabel
-            // 
-            this.lagerwertLabel.AutoSize = true;
-            this.lagerwertLabel.Location = new System.Drawing.Point(188, 136);
-            this.lagerwertLabel.Name = "lagerwertLabel";
-            this.lagerwertLabel.Size = new System.Drawing.Size(38, 19);
-            this.lagerwertLabel.TabIndex = 9;
-            this.lagerwertLabel.Text = "Wert";
-            // 
-            // anzahlLagerLabel
-            // 
-            this.anzahlLagerLabel.AutoSize = true;
-            this.anzahlLagerLabel.Location = new System.Drawing.Point(188, 177);
-            this.anzahlLagerLabel.Name = "anzahlLagerLabel";
-            this.anzahlLagerLabel.Size = new System.Drawing.Size(46, 19);
-            this.anzahlLagerLabel.TabIndex = 10;
-            this.anzahlLagerLabel.Text = "anzahl";
-            // 
-            // metroLabel3
-            // 
-            this.metroLabel3.Location = new System.Drawing.Point(21, 215);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(85, 29);
-            this.metroLabel3.TabIndex = 11;
-            this.metroLabel3.Text = "Lagerkosten";
-            // 
-            // lagerkostenLabel
-            // 
-            this.lagerkostenLabel.AutoSize = true;
-            this.lagerkostenLabel.Location = new System.Drawing.Point(188, 215);
-            this.lagerkostenLabel.Name = "lagerkostenLabel";
-            this.lagerkostenLabel.Size = new System.Drawing.Size(46, 19);
-            this.lagerkostenLabel.TabIndex = 12;
-            this.lagerkostenLabel.Text = "kosten";
+            chartArea3.Name = "ChartArea1";
+            this.gewinnDiagramm.ChartAreas.Add(chartArea3);
+            legend2.Name = "Legend1";
+            this.gewinnDiagramm.Legends.Add(legend2);
+            this.gewinnDiagramm.Location = new System.Drawing.Point(30, 150);
+            this.gewinnDiagramm.Name = "gewinnDiagramm";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.gewinnDiagramm.Series.Add(series2);
+            this.gewinnDiagramm.Size = new System.Drawing.Size(643, 300);
+            this.gewinnDiagramm.TabIndex = 5;
+            this.gewinnDiagramm.Text = "chart1";
             // 
             // ErgebnisseForm
             // 
@@ -646,6 +668,7 @@
             this.metroPanel4.ResumeLayout(false);
             this.metroPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gewinnDiagramm)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -697,5 +720,6 @@
         private MetroFramework.Controls.MetroLabel lagerwertLabel;
         private MetroFramework.Controls.MetroLabel lagerkostenLabel;
         private MetroFramework.Controls.MetroLabel metroLabel3;
+        private System.Windows.Forms.DataVisualization.Charting.Chart gewinnDiagramm;
     }
 }

@@ -381,6 +381,7 @@
             this.metroComboBox3.Size = new System.Drawing.Size(121, 29);
             this.metroComboBox3.TabIndex = 3;
             this.metroComboBox3.UseSelectable = true;
+            this.metroComboBox3.SelectedIndexChanged += new System.EventHandler(this.metroComboBox3_SelectedIndexChanged);
             // 
             // PeriodeZugang
             // 

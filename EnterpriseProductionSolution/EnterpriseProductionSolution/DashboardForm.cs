@@ -36,7 +36,7 @@ namespace EnterprisePlanningSolution
 
         private void metroTile3_Click(object sender, EventArgs e)
         {
-            stammdatenForm = new StammdatenForm();
+            stammdatenForm = new StammdatenForm(SpracheComboDashboard.Text);
             stammdatenForm.Show();
             this.Hide();
         }

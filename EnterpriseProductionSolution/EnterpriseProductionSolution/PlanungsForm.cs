@@ -2007,5 +2007,51 @@ namespace EnterprisePlanningSolution
         {
             SaveProdPlan(false);
         }
+
+        private void upLink_Click(object sender, EventArgs e)
+        {
+            if (metroGrid1.SelectedCells.Count > 0)
+            {
+                int idx = metroGrid1.SelectedCells[0].OwningRow.Index;
+
+                if (idx > 0)
+                {
+                    int col = metroGrid1.SelectedCells[0].OwningColumn.Index;
+
+                    DataGridViewRowCollection rows = metroGrid1.Rows;
+                    DataGridViewRow row = rows[idx];
+
+                    rows.Remove(row);
+                    rows.Insert(idx - 1, row);
+
+                    metroGrid1.ClearSelection();
+
+                    metroGrid1.Rows[idx - 1].Cells[col].Selected = true;
+                }
+            }
+        }
+
+        private void downLInk_Click(object sender, EventArgs e)
+        {
+            if (metroGrid1.SelectedCells.Count > 0)
+            {
+                int idx = metroGrid1.SelectedCells[0].OwningRow.Index;
+
+                if (idx < metroGrid1.Rows.Count - 2)
+                {
+                    int col = metroGrid1.SelectedCells[0].OwningColumn.Index;
+
+                    DataGridViewRowCollection rows = metroGrid1.Rows;
+                    DataGridViewRow row = rows[idx];
+
+                    rows.Remove(row);
+                    rows.Insert(idx + 1, row);
+
+                    metroGrid1.ClearSelection();
+
+                    metroGrid1.Rows[idx + 1].Cells[col].Selected = true;
+                }
+            }
+        }
     }
 }

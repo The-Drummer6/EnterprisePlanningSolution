@@ -418,7 +418,6 @@ namespace EnterprisePlanningSolution
             rs.Open("Select distinct period From warehousestock_article", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
 
             List<int> Liste = new List<int>();
-            Liste.Add(0);
             while (!rs.EOF)
             {
                 int p = Convert.ToInt32(rs.Fields["period"].Value);
@@ -431,6 +430,29 @@ namespace EnterprisePlanningSolution
             metroComboBox1.DataSource = Liste;
         }
 
+        private void refreshComboBox2()
+        {
+            //Recordset
+            ADODB.Connection cn = new ADODB.Connection();
+            ADODB.Recordset rs = new ADODB.Recordset();
+
+            cn.Open(cnStr);
+
+            rs.Open("Select distinct period From summary", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+
+            List<int> Liste = new List<int>();
+            Liste.Add(0);
+            while (!rs.EOF)
+            {
+                int p = Convert.ToInt32(rs.Fields["period"].Value);
+                Liste.Add(p);
+                rs.MoveNext();
+            }
+            rs.Close();
+            cn.Close();
+
+            metroComboBox2.DataSource = Liste;
+        }
         private void refreshComboBox4()
         {
             //Recordset

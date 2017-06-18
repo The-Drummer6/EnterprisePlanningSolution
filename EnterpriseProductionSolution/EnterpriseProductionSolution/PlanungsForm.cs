@@ -2185,7 +2185,9 @@ namespace EnterprisePlanningSolution
                 {
                     if (dispoGrid["Bestellart", i].Value != null)
                     {
-                        if (dispoGrid["Bestellart", i].Value.Equals("N"))
+                        string bestell = Convert.ToString(dispoGrid["Bestellart", i].Value);
+                        string menge = Convert.ToString(dispoGrid["Menge", i].Value);
+                        if (Convert.ToString(dispoGrid["Bestellart", i].Value) == "N" && !(Convert.ToString(dispoGrid["Menge", i].Value) == "0"))
                         {
                             rs.AddNew();
                             rs.Fields["period"].Value = aktuellePeriode;
@@ -2194,7 +2196,7 @@ namespace EnterprisePlanningSolution
                             rs.Fields["modus"].Value = "5";
                         }
 
-                        else if (dispoGrid["Bestellart", i].Value.Equals("E"))
+                        else if (Convert.ToString(dispoGrid["Bestellart", i].Value) == "E" && !(Convert.ToString(dispoGrid["Menge", i].Value) == "0"))
                         {
                             rs.AddNew();
                             rs.Fields["period"].Value = aktuellePeriode;
@@ -2343,6 +2345,7 @@ namespace EnterprisePlanningSolution
 
                     cn.Open(cnStr);
                     int cB = aktuellePeriode;
+
                     rs.Open("Select * From sellwish where planPeriod =" + cB + "and period =" + cB, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
 
                     xmlWriter.WriteStartElement("sellwish");

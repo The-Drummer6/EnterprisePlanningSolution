@@ -1016,7 +1016,7 @@ namespace EnterprisePlanningSolution
             {
                 rollback();
                 MessageBox.Show("Bisherige Planung wurde erfolgreich zurückgesetzt!");
-                DashboardForm dashboardForm = new DashboardForm();
+                DashboardForm dashboardForm = new DashboardForm(true);
                 dashboardForm.Show();
                 this.Hide();
             }
@@ -2414,8 +2414,9 @@ namespace EnterprisePlanningSolution
                     xmlWriter.WriteEndElement();
                     rs.Close();
 
+                    //rs.Open("Select * From futureinwardstockmovement where Periode =" + cB, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
                     xmlWriter.WriteEndDocument();
-                    MessageBox.Show("Erfolgreich exportiert.");
+                    MessageBox.Show("Planung wurde erfolgreich exportiert.");
 
                 }
                 catch (Exception fehler)
@@ -2426,7 +2427,6 @@ namespace EnterprisePlanningSolution
                 {
                     xmlWriter.Close();
                 }
-                MessageBox.Show("Planung wurde erfolgreich exportiert!");
             }
 
         }

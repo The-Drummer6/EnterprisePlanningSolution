@@ -472,7 +472,7 @@ namespace EnterprisePlanningSolution
 
         private void metroLink1_Click(object sender, EventArgs e)
         {
-            DashboardForm dashboardForm = new DashboardForm();
+            DashboardForm dashboardForm = new DashboardForm(true);
             dashboardForm.Show();
             this.Hide();
         }

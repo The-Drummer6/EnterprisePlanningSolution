@@ -19,7 +19,7 @@ namespace EnterprisePlanningSolution
 
             //Für Testzwecke wird Login Page übersprungen
             //Application.Run(new LoginForm());
-            Application.Run(new DashboardForm());
+            Application.Run(new DashboardForm(true));
         }
     }
 }

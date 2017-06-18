@@ -21,16 +21,20 @@ namespace EnterprisePlanningSolution
             if(language == "English")
             {
                 doLanguageEnglish();
+                deutsch = false;
             }
             else
             {
                 doLanguageDeutsch();
+                deutsch = true;
             }
         }
 
+        bool deutsch;
+
         private void metroLink1_Click(object sender, EventArgs e)
         {
-            DashboardForm dashboardForm = new DashboardForm();
+            DashboardForm dashboardForm = new DashboardForm(deutsch);
             dashboardForm.Show();
             this.Hide();
         }
@@ -473,6 +477,7 @@ namespace EnterprisePlanningSolution
             actualPrice.HeaderText = "aktueller Wert [€]";
             stockValue.HeaderText = "Summe [€]";
             Periode.Text = "Periode";
+            id.HeaderText = "Artikel";
         }
         private void doLanguageEnglish()
         {
@@ -513,6 +518,7 @@ namespace EnterprisePlanningSolution
             actualPrice.HeaderText = "current Value [€]";
             stockValue.HeaderText = "Sum [€]";
             Periode.Text = "Period";
+            id.HeaderText = "Article";
 
         }
     }

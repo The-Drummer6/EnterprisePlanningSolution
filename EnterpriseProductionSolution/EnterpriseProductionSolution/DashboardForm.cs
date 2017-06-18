@@ -17,9 +17,14 @@ namespace EnterprisePlanningSolution
         private ErgebnisseForm ergebnissform;
         public string cnStr = @"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = PPS-Datenbank.mdb";
 
-        public DashboardForm()
+        public DashboardForm(bool deutsch)
         {
             InitializeComponent();
+            if (deutsch)
+            SpracheComboDashboard.Text = "Deutsch";
+
+            if (!deutsch)
+                SpracheComboDashboard.Text = "English";
         }
         //Import XML-File
         private void metroTile1_Click(object sender, EventArgs e)

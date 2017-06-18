@@ -21,9 +21,11 @@ namespace EnterprisePlanningSolution
             passwordTextBox.MaxLength = 14;
             usernameTextBox.Text = "";
             this.Disposed += new System.EventHandler(this.LoginForm_Disposed);
+            SpracheComboLogin.Text = "Deutsch";
         }
 
         DashboardForm dashboardForm;
+        bool deutsch = true;
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
@@ -55,7 +57,7 @@ namespace EnterprisePlanningSolution
 
                 if (rs.Fields["passwort"].Value == hashpw)
                 {
-                    dashboardForm = new DashboardForm();
+                    dashboardForm = new DashboardForm(deutsch);
                     dashboardForm.Show();
                     this.Hide();
                 }
@@ -89,9 +91,11 @@ namespace EnterprisePlanningSolution
             if(Convert.ToString(SpracheComboLogin.Text) == "English")
             {
                 doLanguageEnglish();
+                deutsch = false;
             }else
             {
                 doLanguageDeutsch();
+                deutsch = true;
             }
         }
 

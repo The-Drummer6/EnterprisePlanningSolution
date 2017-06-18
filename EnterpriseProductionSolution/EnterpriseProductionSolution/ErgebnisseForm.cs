@@ -174,12 +174,12 @@ namespace EnterprisePlanningSolution
                 rs.Open("Select stockvalue From warehousestock_totalvalue where period='" + periode + "'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
                 rs2.Open("Select * From tbl_general where period='" + periode + "'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
 
-                warehouseValue = Convert.ToDouble(rs.Fields["stockvalue"].Value);
+                warehouseValue = Convert.ToDouble(rs2.Fields["storevalue_current"].Value);
                 kosten = Convert.ToDouble(rs2.Fields["storagecosts_current"].Value);
                 freeSpace = maxLagerwert - warehouseValue;
                 if (warehouseValue > 250000)
                 {
-                    anzahl = Math.Floor(250000 / warehouseValue);
+                    anzahl = Math.Floor(warehouseValue / 250000 ) + 1;
                 }
                 rs.Close();
             }
@@ -349,16 +349,16 @@ namespace EnterprisePlanningSolution
                 metroGrid4.Rows[0].Cells["Gewinn"].Value = rs.Fields["profit_current"].Value;
                 metroGrid4.Rows[0].Cells["GewinnDurchschnitt"].Value = rs.Fields["profit_average"].Value;
                 metroGrid4.Rows[0].Cells["GewinnGesamt"].Value = rs.Fields["profit_all"].Value;
-                metroGrid4.Rows[0].Cells["Lagerwert_Kenn"].Value = rs2.Fields["stockvalue"].Value;
+                metroGrid4.Rows[0].Cells["Lagerwert_Kenn"].Value = rs3.Fields["storevalue_current"].Value;
                 metroGrid4.Rows[0].Cells["Lagerkosten_Kenn"].Value = rs3.Fields["storagecosts_current"].Value;
 
-                if (Convert.ToDouble(rs3.Fields["storagecosts_current"].Value) <= 250000.00)
+                if (Convert.ToDouble(rs3.Fields["storevalue_current"].Value) <= 250000.00)
                 {
                     metroGrid4.Rows[0].Cells["AnzahlLager_Kenn"].Value = 1;
                 }
                 else
                 {
-                    metroGrid4.Rows[0].Cells["AnzahlLager_Kenn"].Value = 2; //TODO: Alle Fälle abdecken bei multiplen von 250.000?
+                    metroGrid4.Rows[0].Cells["AnzahlLager_Kenn"].Value = Math.Floor(Convert.ToDouble(rs3.Fields["storevalue_current"].Value / 250000.000)) + 1;
                 }
 
 

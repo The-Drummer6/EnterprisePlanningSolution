@@ -2431,6 +2431,9 @@ namespace EnterprisePlanningSolution
                     xmlWriter.Close();
                 }
             }
+            DashboardForm df = new DashboardForm(true);
+            this.Hide();
+            df.Show();
 
         }
     }

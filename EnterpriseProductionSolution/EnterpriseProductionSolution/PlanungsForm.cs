@@ -1922,6 +1922,7 @@ namespace EnterprisePlanningSolution
                 rsSW3.Close();
                 cn.Close();
             }
+            MessageBox.Show("Eingaben wurden gespeichert!");
         }
 
         private void speichernButtonDirekt_Click(object sender, EventArgs e)
@@ -1997,6 +1998,7 @@ namespace EnterprisePlanningSolution
                 cn.Close();
             }
 
+            MessageBox.Show("Eingaben wurden gespeichert!");
             initalizeNumbers(aktuellePeriode);
             fillTextboxes();
         }
@@ -2133,7 +2135,7 @@ namespace EnterprisePlanningSolution
 
             }
             cn.Close();
-
+            MessageBox.Show("Eingaben wurden gespeichert!");
             if (aktuellePeriode == 1)
                 Datagrid_leeren_befüllen(true, true);
             else
@@ -2206,12 +2208,14 @@ namespace EnterprisePlanningSolution
 
             rs.Close();
             cn.Close();
+            MessageBox.Show("Eingaben wurden gespeichert!");
         }
 
         private void speichernButtonProduktion_Click(object sender, EventArgs e)
         {
             saveButtonVisible();
             SaveProdPlan(false);
+            MessageBox.Show("Eingaben wurden gespeichert!");
         }
 
         private void upLink_Click(object sender, EventArgs e)
@@ -2287,8 +2291,8 @@ namespace EnterprisePlanningSolution
                 }
                 rs0.Open(SQLBefehl, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
             }
-            string SpeicherErfolg = Thread.CurrentThread.CurrentUICulture.Name == "de" ? "Erfolgreich gespeichert!" : "Saved successfully";
-            MessageBox.Show(SpeicherErfolg);
+            //string SpeicherErfolg = Thread.CurrentThread.CurrentUICulture.Name == "de" ? "Erfolgreich gespeichert!" : "Saved successfully";
+            MessageBox.Show("Eingaben wurden gespeichert!");
             cn.Close();
 
         }
@@ -2417,6 +2421,7 @@ namespace EnterprisePlanningSolution
                 {
                     xmlWriter.Close();
                 }
+                MessageBox.Show("Planung wurde erfolgreich exportiert!");
             }
 
         }

@@ -66,14 +66,14 @@ namespace EnterprisePlanningSolution
         int FORMAT_EXCEPTION = 2;
         int SPEICHER_EXCEPTION = 3;
         int NEGATIVE_PLANUNG = 4;
-        
+
         //Boolean Wert für die Sichtbarkeit des SaveButton
         bool readyPrognose = false;
         bool readyDirektbezug = false;
         bool readyBedarf = false;
         bool readyDispo = false;
-        bool readyProduktion = true;
-        bool readyKapa = true;
+        bool readyProduktion = false;
+        bool readyKapa = false;
 
         bool prüfung = true;
         //KapPlanung
@@ -435,6 +435,7 @@ namespace EnterprisePlanningSolution
                 cn.Close();
             }
             weiterButtonDispo.SelectedIndex = 1;
+            readyPrognose = true;
         }
         /// <summary>
         /// Eingaben aus Direktbezug Tab in DB schreiben
@@ -658,6 +659,7 @@ namespace EnterprisePlanningSolution
             else
                 Datagrid_leeren_befüllen(true, false);
             weiterButtonDispo.SelectedIndex = 3;
+            readyBedarf = true;
         }
         private void initializeTextboxes()
         {
@@ -1009,7 +1011,7 @@ namespace EnterprisePlanningSolution
             string caption = "Planung zurücksetzen!";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result;
-            result = MessageBox.Show(message, caption,buttons);
+            result = MessageBox.Show(message, caption, buttons);
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
                 rollback();
@@ -1017,7 +1019,8 @@ namespace EnterprisePlanningSolution
                 DashboardForm dashboardForm = new DashboardForm();
                 dashboardForm.Show();
                 this.Hide();
-            } else
+            }
+            else
             {
                 MessageBox.Show("Planung wurde nicht zurückgesetzt!");
             }
@@ -1129,7 +1132,7 @@ namespace EnterprisePlanningSolution
 
                 if (!initial)
                 {
-                    
+
                     rsLieferungen.MoveFirst();
                     while (!rsLieferungen.EOF)
                     {
@@ -1144,22 +1147,22 @@ namespace EnterprisePlanningSolution
                         int aktuellePeriode2 = aktuellePeriode + 2;
                         int aktuellePeriode3 = aktuellePeriode + 3;
                         try
-                        { 
+                        {
                             lieferung1 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode].Value);
                         }
                         catch (Exception) { }
                         try
-                        { 
+                        {
                             lieferung2 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode1].Value);
                         }
                         catch (Exception) { }
                         try
-                        { 
+                        {
                             lieferung3 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode2].Value);
                         }
                         catch (Exception) { }
                         try
-                        { 
+                        {
                             lieferung4 = Convert.ToInt32(rsLieferungen.Fields[Convert.ToString(aktuellePeriode3)].Value);
                         }
                         catch (Exception) { }
@@ -1438,62 +1441,60 @@ namespace EnterprisePlanningSolution
                 cn.Close();
             }
             if (!pruefen)
-               Pruefen2();
-
-
+                Pruefen2();
         }
         //dispoGrid.Rows[i].Cells["Menge"].Style.BackColor = Color.Red;
-       /* public void Pruefen1()
-        {
+        /* public void Pruefen1()
+         {
 
-            ADODB.Connection cn = new ADODB.Connection();
-            ADODB.Recordset rs = new ADODB.Recordset();
-            ADODB.Recordset rs2 = new ADODB.Recordset();
-            ADODB.Recordset rs3 = new ADODB.Recordset();
+             ADODB.Connection cn = new ADODB.Connection();
+             ADODB.Recordset rs = new ADODB.Recordset();
+             ADODB.Recordset rs2 = new ADODB.Recordset();
+             ADODB.Recordset rs3 = new ADODB.Recordset();
 
-            cn.Open(cnStr);
-            int cB = aktuellePeriode;
-            rs.Open("Select * From Produktionsprogramm where period =" + cB + " and Ausdr1 <> 0", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs2.Open("Select * From Produktionsprogramm2 where period =" + cB, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rs3.Open("Select * From Produktionsprogramm3 where period =" + cB, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            int i = 0;
+             cn.Open(cnStr);
+             int cB = aktuellePeriode;
+             rs.Open("Select * From Produktionsprogramm where period =" + cB + " and Ausdr1 <> 0", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+             rs2.Open("Select * From Produktionsprogramm2 where period =" + cB, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+             rs3.Open("Select * From Produktionsprogramm3 where period =" + cB, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+             int i = 0;
 
-            while (!rs3.EOF)
-            {
-                metroGrid1.Rows.Add();
-                metroGrid1.Rows[i].Cells["article"].Style.BackColor = Color.Red;
-                metroGrid1.Rows[i].Cells["quantity"].Style.BackColor = Color.Red;
-                ++i;
-                rs3.MoveNext();
-            }
-            while (!rs2.EOF)
-            {
-                metroGrid1.Rows.Add();
-                metroGrid1.Rows[i].Cells["article"].Style.BackColor = Color.Red;
-                metroGrid1.Rows[i].Cells["quantity"].Style.BackColor = Color.Red;
-                ++i;
-                rs2.MoveNext();
-            }
+             while (!rs3.EOF)
+             {
+                 metroGrid1.Rows.Add();
+                 metroGrid1.Rows[i].Cells["article"].Style.BackColor = Color.Red;
+                 metroGrid1.Rows[i].Cells["quantity"].Style.BackColor = Color.Red;
+                 ++i;
+                 rs3.MoveNext();
+             }
+             while (!rs2.EOF)
+             {
+                 metroGrid1.Rows.Add();
+                 metroGrid1.Rows[i].Cells["article"].Style.BackColor = Color.Red;
+                 metroGrid1.Rows[i].Cells["quantity"].Style.BackColor = Color.Red;
+                 ++i;
+                 rs2.MoveNext();
+             }
 
-            while (!rs.EOF)
-            {
-                metroGrid1.Rows.Add();
-                metroGrid1.Rows[i].Cells["article"].Style.BackColor = Color.Red;
-                metroGrid1.Rows[i].Cells["quantity"].Style.BackColor = Color.Red;
-                ++i;
-                if (rs.Fields["Ausdr1"].Value == 0) { rs.MoveNext(); }
-                else
-                {
-                    prüfung = false;
-                    rs.MoveNext();
-                }
-            }
-            rs.Close();
-            rs2.Close();
-            rs3.Close();
-            cn.Close();
+             while (!rs.EOF)
+             {
+                 metroGrid1.Rows.Add();
+                 metroGrid1.Rows[i].Cells["article"].Style.BackColor = Color.Red;
+                 metroGrid1.Rows[i].Cells["quantity"].Style.BackColor = Color.Red;
+                 ++i;
+                 if (rs.Fields["Ausdr1"].Value == 0) { rs.MoveNext(); }
+                 else
+                 {
+                     prüfung = false;
+                     rs.MoveNext();
+                 }
+             }
+             rs.Close();
+             rs2.Close();
+             rs3.Close();
+             cn.Close();
 
-        }*/
+         }*/
 
         public void Pruefen2()
         {
@@ -1503,8 +1504,8 @@ namespace EnterprisePlanningSolution
             cn.Open(cnStr);
 
             int cB = aktuellePeriode;
-            rs2.Open("Select * From ProduktionsplanUnterabfrage where period =" + cB , cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            
+            rs2.Open("Select * From ProduktionsplanUnterabfrage where period =" + cB, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+
             while (!rs2.EOF)
             {
                 foreach (DataGridViewRow row in metroGrid1.Rows)
@@ -1516,13 +1517,13 @@ namespace EnterprisePlanningSolution
                     }
                     else if ((rs2.Fields["productionPlan"].Value != rs2.Fields["Summevonquantity"].Value) && (Convert.ToInt32(rs2.Fields["item"].Value) == Convert.ToInt32(row.Cells["article"].Value)))
                     {
-                       row.Cells["article"].Style.BackColor = Color.Red;
-                       row.Cells["quantity"].Style.BackColor = Color.Red;
+                        row.Cells["article"].Style.BackColor = Color.Red;
+                        row.Cells["quantity"].Style.BackColor = Color.Red;
                     }
                 }
-               
+
                 rs2.MoveNext();
-               
+
             }
 
         }
@@ -1572,7 +1573,7 @@ namespace EnterprisePlanningSolution
 
             while (!rs.EOF)
             {
-              
+
                 metroGrid1.Rows.Add();
                 metroGrid1.Rows[i].Cells["article"].Value = rs.Fields["item"].Value;
                 metroGrid1.Rows[i].Cells["quantity"].Value = rs.Fields["productionPlan"].Value;
@@ -1583,7 +1584,7 @@ namespace EnterprisePlanningSolution
             cn.Close();
         }
 
-        
+
         private void metroGrid1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             Pruefen2();
@@ -1594,8 +1595,10 @@ namespace EnterprisePlanningSolution
         {
             SaveProdPlan(false);
             LoadKapPlanung();
-            
-        weiterButtonDispo.SelectedIndex = 5;
+
+            weiterButtonDispo.SelectedIndex = 5;
+            readyProduktion = true;
+            saveButtonVisible();
         }
         private void LoadKapPlanung()
         {
@@ -1605,7 +1608,7 @@ namespace EnterprisePlanningSolution
             rs1 = new ADODB.Recordset();
             rs2 = new ADODB.Recordset();
             int cB = aktuellePeriode;
-           
+
             cn.Open(cnStr);
 
             Daten = new String[15, 8];
@@ -2264,9 +2267,11 @@ namespace EnterprisePlanningSolution
             }
         }
 
-      
+
         private void speichernButtonKapPlanung_Click(object sender, EventArgs e)
         {
+            readyKapa = true;
+            saveButtonVisible();
             // Button speichert variable Rüstzeitanpassung in Datenbank für späteren Zugriff
             // Tabelle VariableRuestzeitanpassung
 
@@ -2297,8 +2302,8 @@ namespace EnterprisePlanningSolution
 
         }
 
-      
-   
+
+
         private void saveButton_Click(object sender, EventArgs e)
         {
             string xmlPeriode = Convert.ToString(aktuellePeriode);
@@ -2335,7 +2340,7 @@ namespace EnterprisePlanningSolution
 
                     ADODB.Connection cn = new ADODB.Connection();
                     ADODB.Recordset rs = new ADODB.Recordset();
-                  
+
                     cn.Open(cnStr);
                     int cB = aktuellePeriode;
                     rs.Open("Select * From sellwish where planPeriod =" + cB + "and period =" + cB, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);

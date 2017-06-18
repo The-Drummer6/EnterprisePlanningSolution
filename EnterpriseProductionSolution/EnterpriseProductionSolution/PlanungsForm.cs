@@ -152,12 +152,12 @@ namespace EnterprisePlanningSolution
             ADODB.Recordset rs = new ADODB.Recordset();
             cn.Open(cnStr);
 
-            rs.Open("Select distinct planPeriod From Prognose ORDER BY planPeriod Desc", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+            rs.Open("Select distinct period From summary ORDER BY period Desc", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
 
             List<int> Liste = new List<int>();
             while (!rs.EOF)
             {
-                Liste.Add(Convert.ToInt32(rs.Fields["planPeriod"].Value));
+                Liste.Add(Convert.ToInt32(rs.Fields["period"].Value));
                 rs.MoveNext();
             }
             rs.Close();

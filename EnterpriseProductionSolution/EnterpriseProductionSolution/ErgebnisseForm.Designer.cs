@@ -39,13 +39,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ErgebnisseForm));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.Lagerbestand = new System.Windows.Forms.TabPage();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
@@ -81,6 +81,7 @@
             this.PeriodeZugang = new MetroFramework.Controls.MetroLabel();
             this.Kennzahlen = new System.Windows.Forms.TabPage();
             this.metroPanel4 = new MetroFramework.Controls.MetroPanel();
+            this.gewinnDiagramm = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.metroGrid4 = new MetroFramework.Controls.MetroGrid();
             this.Gewinn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GewinnDurchschnitt = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -91,7 +92,6 @@
             this.metroComboBox4 = new MetroFramework.Controls.MetroComboBox();
             this.PeriodeKenn = new MetroFramework.Controls.MetroLabel();
             this.metroLink1 = new MetroFramework.Controls.MetroLink();
-            this.gewinnDiagramm = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.metroTabControl1.SuspendLayout();
             this.Lagerbestand.SuspendLayout();
             this.metroPanel1.SuspendLayout();
@@ -104,8 +104,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid3)).BeginInit();
             this.Kennzahlen.SuspendLayout();
             this.metroPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.metroGrid4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gewinnDiagramm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.metroGrid4)).BeginInit();
             this.SuspendLayout();
             // 
             // metroTabControl1
@@ -116,7 +116,7 @@
             this.metroTabControl1.Controls.Add(this.Kennzahlen);
             this.metroTabControl1.Location = new System.Drawing.Point(24, 64);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 3;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(1097, 627);
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.UseSelectable = true;
@@ -514,6 +514,22 @@
             this.metroPanel4.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel4.VerticalScrollbarSize = 10;
             // 
+            // gewinnDiagramm
+            // 
+            chartArea3.Name = "ChartArea1";
+            this.gewinnDiagramm.ChartAreas.Add(chartArea3);
+            legend2.Name = "Legend1";
+            this.gewinnDiagramm.Legends.Add(legend2);
+            this.gewinnDiagramm.Location = new System.Drawing.Point(30, 150);
+            this.gewinnDiagramm.Name = "gewinnDiagramm";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.gewinnDiagramm.Series.Add(series2);
+            this.gewinnDiagramm.Size = new System.Drawing.Size(643, 300);
+            this.gewinnDiagramm.TabIndex = 5;
+            this.gewinnDiagramm.Text = "chart1";
+            // 
             // metroGrid4
             // 
             this.metroGrid4.AllowUserToResizeRows = false;
@@ -625,22 +641,6 @@
             this.metroLink1.UseSelectable = true;
             this.metroLink1.Click += new System.EventHandler(this.metroLink1_Click);
             // 
-            // gewinnDiagramm
-            // 
-            chartArea3.Name = "ChartArea1";
-            this.gewinnDiagramm.ChartAreas.Add(chartArea3);
-            legend2.Name = "Legend1";
-            this.gewinnDiagramm.Legends.Add(legend2);
-            this.gewinnDiagramm.Location = new System.Drawing.Point(30, 150);
-            this.gewinnDiagramm.Name = "gewinnDiagramm";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.gewinnDiagramm.Series.Add(series2);
-            this.gewinnDiagramm.Size = new System.Drawing.Size(643, 300);
-            this.gewinnDiagramm.TabIndex = 5;
-            this.gewinnDiagramm.Text = "chart1";
-            // 
             // ErgebnisseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -650,7 +650,7 @@
             this.Controls.Add(this.metroTabControl1);
             this.Name = "ErgebnisseForm";
             this.Style = MetroFramework.MetroColorStyle.Silver;
-            this.Text = "ErgebnisseForm";
+            this.Text = "Ergebnisse";
             this.Load += new System.EventHandler(this.ErgebnisseForm_Load);
             this.metroTabControl1.ResumeLayout(false);
             this.Lagerbestand.ResumeLayout(false);
@@ -667,8 +667,8 @@
             this.Kennzahlen.ResumeLayout(false);
             this.metroPanel4.ResumeLayout(false);
             this.metroPanel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.metroGrid4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gewinnDiagramm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.metroGrid4)).EndInit();
             this.ResumeLayout(false);
 
         }

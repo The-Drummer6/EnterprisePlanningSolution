@@ -160,9 +160,11 @@ namespace EnterprisePlanningSolution
         {
             ADODB.Connection cn = new ADODB.Connection();
             ADODB.Recordset rs = new ADODB.Recordset();
+            ADODB.Recordset rs2 = new ADODB.Recordset();
             double warehouseValue = 0;
             double freeSpace = 250000;
             double anzahl = 1;
+            double kosten = 0;
             try
             {
                 cn.Open(cnStr);
@@ -170,7 +172,10 @@ namespace EnterprisePlanningSolution
 
 
                 rs.Open("Select stockvalue From warehousestock_totalvalue where period='" + periode + "'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs2.Open("Select * From tbl_general where period='" + periode + "'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+
                 warehouseValue = Convert.ToDouble(rs.Fields["stockvalue"].Value);
+                kosten = Convert.ToDouble(rs2.Fields["storagecosts_current"].Value);
                 freeSpace = maxLagerwert - warehouseValue;
                 if (warehouseValue > 250000)
                 {
@@ -188,6 +193,7 @@ namespace EnterprisePlanningSolution
             }
             lagerwertLabel.Text = Convert.ToString(warehouseValue);
             anzahlLagerLabel.Text = Convert.ToString(anzahl);
+            lagerkostenLabel.Text = Convert.ToString(kosten);
             lagerTortendiagramm.Titles["Title1"].Text = Convert.ToString(anzahl) + ". Lager";
             lagerTortendiagramm.Series["Series1"].Points.Clear();
             lagerTortendiagramm.Series["Series1"].Points.Add(warehouseValue);
@@ -327,38 +333,32 @@ namespace EnterprisePlanningSolution
             ADODB.Connection cn = new ADODB.Connection();
             ADODB.Recordset rs = new ADODB.Recordset();
             ADODB.Recordset rs2 = new ADODB.Recordset();
-            double lagerwert;
-            double lagerkosten;
+            ADODB.Recordset rs3 = new ADODB.Recordset();
             try
             {
                 cn.Open(cnStr);
                 string periode = metroComboBox4.Text;
                 rs.Open("Select * From summary where period='" + periode + "'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
                 rs2.Open("Select * From warehousestock_totalvalue where period='" + periode + "'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                rs3.Open("Select * From tbl_general where period='" + periode + "'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
                 metroGrid4.Rows.Clear();
 
 
 
                 metroGrid4.Rows.Add();
-                lagerwert = Convert.ToDouble(rs2.Fields["stockvalue"].Value);
                 metroGrid4.Rows[0].Cells["Gewinn"].Value = rs.Fields["profit_current"].Value;
                 metroGrid4.Rows[0].Cells["GewinnDurchschnitt"].Value = rs.Fields["profit_average"].Value;
                 metroGrid4.Rows[0].Cells["GewinnGesamt"].Value = rs.Fields["profit_all"].Value;
                 metroGrid4.Rows[0].Cells["Lagerwert_Kenn"].Value = rs2.Fields["stockvalue"].Value;
-                if (lagerwert <= 250000.00)
-                {
-                    lagerkosten = Math.Round(lagerwert * 0.006, 2); //TODO: Durchschnittliche Lagerkosten
-                    metroGrid4.Rows[0].Cells["Lagerkosten_Kenn"].Value = lagerkosten;
-                    metroGrid4.Rows[0].Cells["AnzahlLager_Kenn"].Value = "1";
+                metroGrid4.Rows[0].Cells["Lagerkosten_Kenn"].Value = rs3.Fields["storagecosts_current"].Value;
 
+                if (Convert.ToDouble(rs3.Fields["storagecosts_current"].Value) <= 250000.00)
+                {
+                    metroGrid4.Rows[0].Cells["AnzahlLager_Kenn"].Value = 1;
                 }
                 else
                 {
-                    lagerkosten = Math.Round(250000 * 0.006, 2); //1.500 für das erste Lager
-                    lagerkosten += 5300.00;
-                    lagerkosten += Math.Round((lagerwert - 250000) * 0.016, 2);
-                    metroGrid4.Rows[0].Cells["Lagerkosten_Kenn"].Value = lagerkosten;
-                    metroGrid4.Rows[0].Cells["AnzahlLager_Kenn"].Value = "2"; //TODO: Alle Fälle abdecken bei multiplen von 250.000?
+                    metroGrid4.Rows[0].Cells["AnzahlLager_Kenn"].Value = 2; //TODO: Alle Fälle abdecken bei multiplen von 250.000?
                 }
 
 

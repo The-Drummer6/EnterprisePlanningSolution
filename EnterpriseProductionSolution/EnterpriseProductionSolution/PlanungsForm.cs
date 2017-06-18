@@ -1005,11 +1005,22 @@ namespace EnterprisePlanningSolution
         /// </summary>
         private void rollbackButton_Click(object sender, EventArgs e)
         {
-            rollback();
-            MessageBox.Show("Bisherige Planung wurde erfolgreich zurückgesetzt!");
-            DashboardForm dashboardForm = new DashboardForm();
-            dashboardForm.Show();
-            this.Hide();
+            string message = "Soll die bisherige Planung zurückgesetzt werden?";
+
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result;
+            result = MessageBox.Show(message,"",buttons);
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                rollback();
+                MessageBox.Show("Bisherige Planung wurde erfolgreich zurückgesetzt!");
+                DashboardForm dashboardForm = new DashboardForm();
+                dashboardForm.Show();
+                this.Hide();
+            } else
+            {
+                MessageBox.Show("Planung wurde nicht zurückgesetzt!");
+            }
         }
 
         private void rollback()

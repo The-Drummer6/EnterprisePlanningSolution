@@ -1006,10 +1006,10 @@ namespace EnterprisePlanningSolution
         private void rollbackButton_Click(object sender, EventArgs e)
         {
             string message = "Soll die bisherige Planung zurückgesetzt werden?";
-
+            string caption = "Planung zurücksetzen!";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result;
-            result = MessageBox.Show(message,"",buttons);
+            result = MessageBox.Show(message, caption,buttons);
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
                 rollback();

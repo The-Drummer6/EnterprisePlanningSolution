@@ -118,7 +118,7 @@
             this.beendenButton.Name = "beendenButton";
             this.beendenButton.Size = new System.Drawing.Size(94, 72);
             this.beendenButton.TabIndex = 5;
-            this.beendenButton.Text = "Beenden";
+            this.beendenButton.Text = "Logout";
             this.beendenButton.UseSelectable = true;
             this.beendenButton.Click += new System.EventHandler(this.beendenButton_Click);
             // 

@@ -197,8 +197,8 @@ namespace EnterprisePlanningSolution
             rs1.Open("Select distinct period from summary ORDER BY period Desc", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
             periodePrognose = Convert.ToInt32(rs1.Fields["period"].Value);
             rs1.Close();
-            if (!(neuPeriode == periodePrognose + 1) || neuPeriode == 1)
-            {
+            //if (!(neuPeriode == periodePrognose + 1) || neuPeriode == 1)
+            //{
 
 
                 rs0.Open("Insert into Prognose (article, quantity, planPeriod, period) values (1,0," + neuPeriode + "," + neuPeriode + ")", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
@@ -276,7 +276,7 @@ namespace EnterprisePlanningSolution
                 rs0.Open("Insert into productionlist (article, quantity, period) values (16,0," + neuPeriode + ")", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
                 rs0.Open("Insert into productionlist (article, quantity, period) values (31,0," + neuPeriode + ")", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
                 rs0.Open("Insert into productionlist (article, quantity, period) values (26,0," + neuPeriode + ")", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            }
+            //}
             cn.Close();
 
         }
@@ -1062,6 +1062,7 @@ namespace EnterprisePlanningSolution
             ADODB.Recordset rs = new ADODB.Recordset();
             ADODB.Recordset rsLieferungen = new ADODB.Recordset();
             ADODB.Recordset rs2 = new ADODB.Recordset();
+            ADODB.Recordset rsTest = new ADODB.Recordset();
 
             //Connection öffnen
             cn.Open(cnStr);
@@ -1069,7 +1070,7 @@ namespace EnterprisePlanningSolution
 
 
             rs.Open("Select * From abf_Summe_Kaufteile_Gesamt WHERE planperiod =" + (aktuellePeriode), cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
-            rsLieferungen.Open("Select * From abf_Lieferzeitpunkt_bestellte_ware_Kreuztabelle WHERE period ='" + (aktuellePeriode) + "'", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+            rsLieferungen.Open("Select * From abf_Lieferzeitpunkt_bestellte_ware_Kreuztabelle", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
 
             int i = 0;
 
@@ -1094,6 +1095,8 @@ namespace EnterprisePlanningSolution
             double lieferung2 = 0;
             double lieferung3 = 0;
             double lieferung4 = 0;
+            bool nichtersterWert = false;
+            int durchlauf = 1;
 
             while (!rs.EOF)
             {
@@ -1108,6 +1111,7 @@ namespace EnterprisePlanningSolution
 
                 dispoGrid.Rows[i].Cells["Periode"].Value = Convert.ToInt32(rs.Fields["planPeriod"].Value);
                 dispoGrid.Rows[i].Cells["Kaufteil"].Value = rs.Fields["Artikel"].Value;
+                string artikel = Convert.ToString(rs.Fields["Artikel"].Value);
                 dispoGrid.Rows[i].Cells["Lieferfrist"].Value = rs.Fields["Lieferzeit"].Value;
                 dispoGrid.Rows[i].Cells["Abweichung"].Value = rs.Fields["Lieferzeitabweichung"].Value;
                 dispoGrid.Rows[i].Cells["Diskontmenge"].Value = rs.Fields["Diskontmenge"].Value;
@@ -1133,7 +1137,10 @@ namespace EnterprisePlanningSolution
                 if (!initial)
                 {
 
-                    rsLieferungen.MoveFirst();
+                    if (!nichtersterWert)
+                    {
+                        rsLieferungen.MoveFirst();
+                    }
                     while (!rsLieferungen.EOF)
                     {
                         if (rsLieferungen.Fields["article"].Value.Equals(Convert.ToInt32(rs.Fields["Artikel"].Value)))
@@ -1163,7 +1170,7 @@ namespace EnterprisePlanningSolution
                         catch (Exception) { }
                         try
                         {
-                            lieferung4 = Convert.ToInt32(rsLieferungen.Fields[Convert.ToString(aktuellePeriode3)].Value);
+                            lieferung4 = Convert.ToInt32(rsLieferungen.Fields[aktuellePeriode3].Value);
                         }
                         catch (Exception) { }
                         rsLieferungen.Update();
@@ -1306,9 +1313,45 @@ namespace EnterprisePlanningSolution
                 }
                 rs2.Close();
 
+                rsTest.Open("SELECT * FROM Test", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
+                int counter = 0;
+                
+                while(!rsTest.EOF)
+                {
+                    counter = Convert.ToInt32(rsTest.Fields["Summe"].Value);
+                    string Art = Convert.ToString(rsTest.Fields["articel"].Value);
 
-                rs.MoveNext();
-                ++i;
+                    if (Convert.ToString(rs.Fields["Artikel"].Value) == Art && counter > 1 && durchlauf != counter)
+                    {
+                        nichtersterWert = true;
+                        if (!rsLieferungen.EOF)
+                        {
+                            rsLieferungen.MoveNext();
+                            durchlauf++;
+                        }
+                        
+                        break;
+                    }
+                    else if (Convert.ToString(rs.Fields["Artikel"].Value) == Art && durchlauf == counter)
+                    {
+
+                        rs.MoveNext();
+                        ++i;
+                        nichtersterWert = false;
+                        durchlauf = 1;
+                        break;
+                    }
+                    rsTest.MoveNext();
+                }
+                if (rsTest.EOF)
+                {
+                    rs.MoveNext();
+                    ++i;
+                    nichtersterWert = false;
+                }
+                    rsTest.Close();
+                
+                
             }
 
             rs.Close();
@@ -1336,7 +1379,7 @@ namespace EnterprisePlanningSolution
             int artikel = Convert.ToInt32(dispoGrid["Kaufteil", rowIndex].Value);
 
 
-            if (Convert.ToString(dispoGrid["Bestellart", rowIndex].Value) != "")
+            if (Convert.ToString(dispoGrid["Bestellart", rowIndex].Value) != "" && Convert.ToString(dispoGrid["Menge", rowIndex].Value) != "")
             {
                 cn.Open(cnStr);
                 rs.Open("DELETE * FROM futureinwardstockmovement WHERE period = '" + aktuellePeriode + "' and article =" + artikel + ";", cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, -1);
@@ -2431,6 +2474,7 @@ namespace EnterprisePlanningSolution
                     xmlWriter.Close();
                 }
             }
+            rollback();
             DashboardForm df = new DashboardForm(true);
             this.Hide();
             df.Show();

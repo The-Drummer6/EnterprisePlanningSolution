@@ -78,7 +78,7 @@
             this.metroLink1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLink1.Image = ((System.Drawing.Image)(resources.GetObject("metroLink1.Image")));
             this.metroLink1.ImageSize = 64;
-            this.metroLink1.Location = new System.Drawing.Point(290, 119);
+            this.metroLink1.Location = new System.Drawing.Point(286, 119);
             this.metroLink1.Name = "metroLink1";
             this.metroLink1.Size = new System.Drawing.Size(94, 80);
             this.metroLink1.TabIndex = 2;

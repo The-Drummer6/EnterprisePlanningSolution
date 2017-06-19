@@ -15,6 +15,7 @@ namespace EnterprisePlanningSolution
         private StammdatenForm stammdatenForm;
         private Periodenplanung planungsForm;
         private ErgebnisseForm ergebnissform;
+        private LoginForm loginform;
         public string cnStr = @"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = PPS-Datenbank.mdb";
 
         public DashboardForm(bool deutsch)
@@ -119,7 +120,9 @@ namespace EnterprisePlanningSolution
 
         private void beendenButton_Click(object sender, EventArgs e)
         {
-            Close();
+            loginform = new LoginForm();
+            loginform.Show();
+            this.Hide();
         }
 
         private void SpracheComboDashboard_SelectedIndexChanged(object sender, EventArgs e)
